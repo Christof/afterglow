@@ -1,0 +1,129 @@
+===============================================================================
+Log File:             	C:\Program Files\Gallio\extras\H2Reg\H2Reg_Log.txt
+Date:                 	21.06.2008 22:45:36
+Operating System:      	Windows NT 6.0 (Build 6001) Service Pack 1
+SysLocale.DefaultLCID: 	0x0C07 (3079)
+SysLocale.PriLangID:   	0x0007 (7)
+SysLocale.SubLangID:   	0x0003 (3)
+DecimalSeparator:      	,
+-------------------------------------------------------------------------------
+EXE Path =          	C:\Program Files\Gallio\extras\H2Reg\H2Reg.exe
+EXE Version =       	1.6.0.0
+Cmdline Param(s) =  	-r | CmdFile=C:\Program Files\Gallio\docs\vs\GallioCollection.h2reg.ini
+Actual CmdLine =  	"C:\Program Files\Gallio\extras\H2Reg\H2Reg.exe" -r CmdFile="C:\Program Files\Gallio\docs\vs\GallioCollection.h2reg.ini"
+_RunDir =           	C:\Program Files\Gallio\extras\H2Reg
+_ModuleName =       	H2Reg.exe
+_ModuleDir =        	C:\Program Files\Gallio\extras\H2Reg
+_ModulePath =        	C:\Program Files\Gallio\extras\H2Reg\H2Reg.exe
+Module Version =       	1.6.0.0
+-------------------------------------------------------------------------------
+_hhInstalled =      	YES
+_hhVerStr =         	6.0.6001.18000
+_hhFriendlyVerStr = 	> 1.4a
+-------------------------------------------------------------------------------
+_ieInstalled =      	YES
+_ieVerStr =         	6.0.6001.18000
+_ieFriendlyVerStr = 	Internet Explorer 6 (Windows Server 2003)
+===============================================================================
+MS Help 2.x Runtime Found: YES
+    2.7.61224.0, C:\Program Files\Common Files\Microsoft Shared\Help\hxds.dll
+    2.7.61224.0, C:\Program Files\Common Files\microsoft shared\Help\hxvz.dll
+NT Admin Log On: YES
+PC Language ID = de
+-------------------------------------------------------------------------------
+Quiet Mode (-Q): No
+Registration Mode (-R): Yes
+UnRegistration Mode (-U): No
+Append Log Mode (-A): No
+No NT Admin Check (-N): No
+Merge Indexes Mode (-M): No
+Cmd Script File (CmdFile=): C:\Program Files\Gallio\docs\vs\GallioCollection.h2reg.ini
+User Dir 1 (UserDir1=): 
+User Dir 2 (UserDir2=): 
+User Dir 3 (UserDir3=): 
+User Dir 4 (UserDir4=): 
+===============================================================================
+CmdFile = C:\Program Files\Gallio\docs\vs\GallioCollection.h2reg.ini
+<windir> = C:\Windows
+<winsysdir> = C:\Windows\system32
+<programfilesdir> = C:\Program Files
+<exedir> = C:\Program Files\Gallio\extras\H2Reg
+<exedirparent> = C:\Program Files\Gallio\extras
+<cmdfiledir> = C:\Program Files\Gallio\docs\vs
+<cmdfiledirparent> = C:\Program Files\Gallio\docs
+<userdir1> = 
+<userdir1parent> = 
+<userdir2> = 
+<userdir2parent> = 
+<userdir3> = 
+<userdir3parent> = 
+<userdir4> = 
+<userdir4parent> = 
+-------------------------------------------------------------------------------
+[Reg_Namespace]
+GallioCollection|GallioCollection.HxC|Gallio API Documentation
+
+[UnReg_Namespace]
+GallioCollection
+
+[Reg_Plugin]
+ms.vsipcc+|_DEFAULT|GallioCollection|_DEFAULT|
+
+[UnReg_Plugin]
+ms.vsipcc+|_DEFAULT|GallioCollection|_DEFAULT|
+
+[Reg_Filter]
+GallioCollection|Gallio API Documentation|("DocSet"="Gallio")
+
+[UnReg_Filter]
+GallioCollection|Gallio API Documentation
+
+[Reg_Title]
+GallioCollection|Gallio|1033|Gallio.HxS|Gallio.HxS||||||
+
+[UnReg_Title]
+GallioCollection|Gallio|1033
+-------------------------------------------------------------------------------
+22:45:36   [Reg_Namespace] - Lines To Process = 1
+22:45:36     <nsName>="GallioCollection"
+22:45:36     <nsColfile>="C:\Program Files\Gallio\docs\vs\GallioCollection.HxC"
+22:45:36     <nsDesc>="Gallio API Documentation"
+22:45:36     +Mode = Not Enabled
+22:45:36    -->Registered OK
+-------------------------------------------------------------------------------
+22:45:36   [Reg_Title] - Lines To Process = 1
+22:45:36     <nsName>="GallioCollection"
+22:45:36     <TitleID>="Gallio"
+22:45:36     <LangID>="1033"
+22:45:36     <HxS_HelpFile>="C:\Program Files\Gallio\docs\vs\Gallio.HxS"
+22:45:36     <HxI_IndexFile>="C:\Program Files\Gallio\docs\vs\Gallio.HxS"
+22:45:36     <HxQ_QueryFile>=""
+22:45:36     <HxR_AttrQueryFile>=""
+22:45:36     <HxsMediaLoc>=""
+22:45:36     <HxqMediaLoc>=""
+22:45:36     <HxrMediaLoc>=""
+22:45:36     <SampleMediaLoc>=""
+22:45:36    -->Registered OK
+-------------------------------------------------------------------------------
+22:45:36   [Reg_Plugin] - Lines To Process = 1
+22:45:36     <nsName_Parent>="ms.vsipcc+"
+22:45:36     <HxT_Parent>="_DEFAULT"
+22:45:36     <nsName_Child>="GallioCollection"
+22:45:36     <HxT_Child>="_DEFAULT"
+22:45:36     <HxA_Child>=""
+22:45:36     NS Wild Card "ms.vsipcc+" matches = 2 item(s): MS.VSIPCC.v90, MS.VSIPCC.v80
+22:45:36   Plug Child "GallioCollection" into "MS.VSIPCC.v90"
+22:45:36    -->Registered OK
+22:45:36   
+22:45:36   Plug Child "GallioCollection" into "MS.VSIPCC.v80"
+22:45:36    -->Registered OK
+-------------------------------------------------------------------------------
+22:45:36   [Reg_Filter] - Lines To Process = 1
+22:45:36     <nsName>="GallioCollection"
+22:45:36     <FilterName>="Gallio API Documentation"
+22:45:36     <FilterQueryStr>="("DocSet"="Gallio")"
+22:45:36    -->Registered OK
+===============================================================================
+
+--END OF FILE--
+
