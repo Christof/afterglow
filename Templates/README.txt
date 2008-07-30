@@ -1,0 +1,1 @@
+Copy the zip-files to C:\Users\Username\Documents\Visual Studio 2008\Templates\ProjectTemplates to use them in Visual Studio.
