@@ -1,8 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graphics", "Graphics", "{C895D489-CFE7-49FB-A4DC-AF4111674CBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics", "src\Graphics\Graphics.csproj", "{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Graphics", "src\Tests.Graphics\Tests.Graphics.csproj", "{886A66F9-E7A1-4288-9F03-A10E8732E1F2}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{886A66F9-E7A1-4288-9F03-A10E8732E1F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{886A66F9-E7A1-4288-9F03-A10E8732E1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{886A66F9-E7A1-4288-9F03-A10E8732E1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{886A66F9-E7A1-4288-9F03-A10E8732E1F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46A96A45-1CCE-4C94-95A2-9836CFBA2E78} = {C895D489-CFE7-49FB-A4DC-AF4111674CBC}
+		{886A66F9-E7A1-4288-9F03-A10E8732E1F2} = {C895D489-CFE7-49FB-A4DC-AF4111674CBC}
 	EndGlobalSection
 EndGlobal
