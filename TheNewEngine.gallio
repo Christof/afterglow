@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gallio.org/">
+  <testPackageConfig>
+    <assemblyFiles>
+      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.dll</assemblyFile>
+    </assemblyFiles>
+    <hintDirectories />
+    <hostSetup applicationBaseDirectory="" workingDirectory="" enableShadowCopy="false">
+      <configuration legacyUnhandledExceptionPolicyEnabled="true" assertUiEnabled="false" remotingCustomErrorsEnabled="false">
+        <assemblyQualifications />
+        <assemblyDependencies />
+        <supportedRuntimeVersions />
+      </configuration>
+    </hostSetup>
+  </testPackageConfig>
+  <testFilters>
+    <testFilter filterName="LastRun" filter="Id: 7362410cfd165a04" />
+  </testFilters>
+</project>
