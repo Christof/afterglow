@@ -6,3 +6,4 @@ obj
 obj/*
 *.resharper
 *.resharper.user
+*.sln.cache

@@ -98,7 +98,7 @@ namespace TheNewEngine.Graphics.Utilities
 
             Assert.IsTrue(ImageComparer.Compare(FILENAME, FILENAME));
         }
-
+        
         [Test]
         public void ReturnsFalseIfOnePixelIsAltered()
         {
@@ -113,12 +113,6 @@ namespace TheNewEngine.Graphics.Utilities
                     Assert.IsFalse(ImageComparer.Compare(firstBitmap, secondBitmap));
                 }
             }
-        }
-
-        [Test]
-        public void XnaSlimDXTest()
-        {
-            Assert.IsTrue(ImageComparer.Compare("testSlimDX.bmp", "testXNA.bmp"));
         }
     }
 }
