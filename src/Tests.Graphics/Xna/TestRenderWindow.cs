@@ -2,7 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace TheNewEngine.Graphics.Xna
 {
     public class TestRenderWindow
     {
@@ -12,7 +12,7 @@ namespace TheNewEngine.Graphics.SlimDX
             using (var form = new Form())
             {
                 form.ClientSize = new Size(800, 600);
-                
+
                 using (var renderWindow = new RenderWindow(form.Handle))
                 {
                     form.KeyPress +=
@@ -20,7 +20,7 @@ namespace TheNewEngine.Graphics.SlimDX
                         {
                             if (args.KeyChar == 'p')
                             {
-                                renderWindow.TakeScreenshot("testSlimDX.bmp");
+                                renderWindow.TakeScreenshot("testXna.bmp");
                             }
                         };
 

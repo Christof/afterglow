@@ -64,6 +64,7 @@
     <Compile Include="SlimDX\TestRenderWindow.cs" />
     <Compile Include="TestRenderWindow.cs" />
     <Compile Include="Utilities\TestImageComparer.cs" />
+    <Compile Include="Xna\TestRenderWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics\Graphics.csproj">

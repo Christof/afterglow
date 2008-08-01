@@ -78,7 +78,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void ReturnsTrueIfImagesMatch()
+        public void ReturnsTrueIfImagesMatchForBitmaps()
         {
             const string FILENAME = @"..\resources\tests\test.png";
 
@@ -89,6 +89,14 @@ namespace TheNewEngine.Graphics.Utilities
                     Assert.IsTrue(ImageComparer.Compare(firstBitmap, secondBitmap));
                 }
             }
+        }
+
+        [Test]
+        public void ReturnsTrueIfImagesMatchForFiles()
+        {
+            const string FILENAME = @"..\resources\tests\test.png";
+
+            Assert.IsTrue(ImageComparer.Compare(FILENAME, FILENAME));
         }
 
         [Test]
@@ -105,6 +113,12 @@ namespace TheNewEngine.Graphics.Utilities
                     Assert.IsFalse(ImageComparer.Compare(firstBitmap, secondBitmap));
                 }
             }
+        }
+
+        [Test]
+        public void XnaSlimDXTest()
+        {
+            Assert.IsTrue(ImageComparer.Compare("testSlimDX.bmp", "testXNA.bmp"));
         }
     }
 }

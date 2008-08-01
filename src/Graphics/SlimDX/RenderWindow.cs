@@ -2,18 +2,25 @@ using System;
 using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
-using Device=SlimDX.Direct3D10.Device;
+using Device = SlimDX.Direct3D10.Device;
 
 namespace TheNewEngine.Graphics.SlimDX
 {
-    public class RenderWindow : IDisposable
+    /// <summary>
+    /// Encapsulates the SlimDX-device so that it renders in the given window.
+    /// </summary>
+    public class RenderWindow : RenderWindowBase
     {
-        private Device device;
-        private SwapChain swapChain;
-        private RenderTargetView renderTarget;
+        private readonly Device device;
+        private readonly SwapChain swapChain;
+        private readonly RenderTargetView renderTarget;
         private const int WIDTH = 800;
         private const int HEIGHT = 600;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RenderWindow"/> class.
+        /// </summary>
+        /// <param name="windowHandle">The window handle.</param>
         public RenderWindow(IntPtr windowHandle)
         {
             this.device = new Device(DeviceCreationFlags.Debug);
@@ -45,9 +52,9 @@ namespace TheNewEngine.Graphics.SlimDX
             {
                 this.swapChain = new SwapChain(factory, this.device, swapChainDescription);
             }
-            using (var resource = swapChain.GetBuffer<Texture2D>(0))
+            using (var resource = this.swapChain.GetBuffer<Texture2D>(0))
             {
-                this.renderTarget = new RenderTargetView(device, resource);
+                this.renderTarget = new RenderTargetView(this.device, resource);
             }
 
             var viewport = new Viewport
@@ -61,24 +68,34 @@ namespace TheNewEngine.Graphics.SlimDX
             };
 
             this.device.Rasterizer.SetViewports(viewport);
-            this.device.OutputMerger.SetTargets(renderTarget);
+            this.device.OutputMerger.SetTargets(this.renderTarget);
         }
 
-        public void TakeScreenshot(string filename)
+        /// <summary>
+        /// Takes a screenshot.
+        /// </summary>
+        /// <param name="filename">The filename.</param>
+        public override void TakeScreenshot(string filename)
         {
-            Texture2D buffer = this.swapChain.GetBuffer<Texture2D>(0);
+            var buffer = this.swapChain.GetBuffer<Texture2D>(0);
 
-            Texture.ToFile(buffer, ImageFileFormat.Png, filename);
+            Texture.ToFile(buffer, ImageFileFormat.Bmp, filename);
         }
 
-        public void Render()
+        /// <summary>
+        /// Renders the current scene.
+        /// </summary>
+        public override void Render()
         {
             this.device.ClearRenderTargetView(this.renderTarget, new Color4(1, 0, 0));
 
             this.swapChain.Present(0, PresentFlags.None);
         }
 
-        public void Dispose()
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public override void Dispose()
         {
             this.swapChain.Dispose();
             this.renderTarget.Dispose();
