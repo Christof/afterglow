@@ -12,10 +12,11 @@ namespace TheNewEngine.Graphics.SlimDX
     public class RenderWindow : RenderWindowBase
     {
         private readonly Device device;
-        private readonly SwapChain swapChain;
-        private readonly RenderTargetView renderTarget;
+        private SwapChain swapChain;
+        private RenderTargetView renderTarget;
         private const int WIDTH = 800;
         private const int HEIGHT = 600;
+        private IntPtr windowHandle;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RenderWindow"/> class.
@@ -23,8 +24,15 @@ namespace TheNewEngine.Graphics.SlimDX
         /// <param name="windowHandle">The window handle.</param>
         public RenderWindow(IntPtr windowHandle)
         {
+            this.windowHandle = windowHandle;
+
             this.device = new Device(DeviceCreationFlags.Debug);
 
+            this.CreateSwapChainRenderTargetAndViewport(true);
+        }
+
+        private void CreateSwapChainRenderTargetAndViewport(bool isWindowed)
+        {
             var swapChainDescription = new SwapChainDescription();
             var modeDescription = new ModeDescription();
             var sampleDescription = new SampleDescription();
@@ -33,8 +41,16 @@ namespace TheNewEngine.Graphics.SlimDX
             modeDescription.RefreshRate = new Rational(60, 1);
             modeDescription.Scaling = DisplayModeScaling.Unspecified;
             modeDescription.ScanlineOrdering = DisplayModeScanlineOrdering.Unspecified;
-            modeDescription.Width = WIDTH;
-            modeDescription.Height = HEIGHT;
+            if (isWindowed)
+            {
+                modeDescription.Width = WIDTH;
+                modeDescription.Height = HEIGHT;
+            }
+            else
+            {
+                modeDescription.Width = 1280;
+                modeDescription.Height = 1024;
+            }
 
             sampleDescription.Count = 1;
             sampleDescription.Quality = 0;
@@ -43,8 +59,8 @@ namespace TheNewEngine.Graphics.SlimDX
             swapChainDescription.SampleDescription = sampleDescription;
             swapChainDescription.BufferCount = 1;
             swapChainDescription.Flags = SwapChainFlags.None;
-            swapChainDescription.IsWindowed = true;
-            swapChainDescription.OutputHandle = windowHandle;
+            swapChainDescription.IsWindowed = isWindowed;
+            swapChainDescription.OutputHandle = this.windowHandle;
             swapChainDescription.SwapEffect = SwapEffect.Discard;
             swapChainDescription.Usage = Usage.RenderTargetOutput;
 
@@ -101,6 +117,17 @@ namespace TheNewEngine.Graphics.SlimDX
             this.renderTarget.Dispose();
 
             this.device.Dispose();
+        }
+
+        private bool isWindowed = true;
+
+        public void SwitchFullscreen()
+        {
+            this.swapChain.Dispose();
+            this.renderTarget.Dispose();
+
+            isWindowed = !isWindowed;
+            CreateSwapChainRenderTargetAndViewport(isWindowed);
         }
     }
 }
