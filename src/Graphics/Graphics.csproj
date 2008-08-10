@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IScreenshotTaker.cs" />
+    <Compile Include="OpenGl\RenderWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderWindowBase.cs" />
     <Compile Include="SlimDX\RenderWindow.cs" />
