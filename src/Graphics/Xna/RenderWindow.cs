@@ -39,11 +39,26 @@ namespace TheNewEngine.Graphics.Xna
         }
 
         /// <summary>
+        /// Gets or sets the render action.
+        /// </summary>
+        /// <value>The render action.</value>
+        public Action RenderAction
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Renders the current scene.
         /// </summary>
         public override void Render()
         {
             this.device.Clear(Color.Blue);
+
+            if (RenderAction != null)
+            {
+                RenderAction();
+            }
 
             this.device.Present();
         }
@@ -61,6 +76,16 @@ namespace TheNewEngine.Graphics.Xna
 
                 texture2D.Save(filename, ImageFileFormat.Bmp);
             }
+        }
+
+        /// <summary>
+        /// Gets or sets the device.
+        /// </summary>
+        /// <value>The device.</value>
+        internal GraphicsDevice Device
+        {
+            get { return this.device; }
+            set { this.device = value; }
         }
 
         /// <summary>

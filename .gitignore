@@ -7,3 +7,4 @@ obj/*
 *.resharper
 *.resharper.user
 *.sln.cache
+*.csproj.user
