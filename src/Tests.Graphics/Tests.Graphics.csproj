@@ -78,6 +78,8 @@
     <Compile Include="SlimDX\ApiExamples\TriangleWithVertexBuffer.cs" />
     <Compile Include="SlimDX\TestRenderWindow.cs" />
     <Compile Include="TestRenderWindow.cs" />
+    <Compile Include="Test_GraphicStream.cs" />
+    <Compile Include="Test_GraphicStreamContainer.cs" />
     <Compile Include="Utilities\TestImageComparer.cs" />
     <Compile Include="Xna\ApiExamples\CustomEffect.cs" />
     <Compile Include="Xna\ApiExamples\EmptyWindow.cs">
