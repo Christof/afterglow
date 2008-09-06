@@ -8,16 +8,16 @@ namespace TheNewEngine.Graphics
     /// Abstract implementation of <see cref="IGraphicStream"/>.
     /// </summary>
     /// <typeparam name="ElementType">The type of the lement type.</typeparam>
-    public abstract class GraphicStream<ElementType> : FrameResource, IGraphicStream, IEnumerable<ElementType>
+    public class GraphicStream<ElementType> : FrameResourceDecorator, IGraphicStream, IEnumerable<ElementType>
         where ElementType : struct 
     {
-        private ElementType[] mElements;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="GraphicStream&lt;ElementType&gt;"/> class.
         /// </summary>
         /// <param name="usage">The usage.</param>
-        protected GraphicStream(GraphicStreamUsage usage)
+        /// <param name="implementation">The implementation.</param>
+        public GraphicStream(GraphicStreamUsage usage, FrameResource implementation)
+            : base(implementation)
         {
             Usage = usage;
             ElementSize = Marshal.SizeOf(typeof(ElementType));
@@ -42,6 +42,12 @@ namespace TheNewEngine.Graphics
         public int Size { get; private set; }
 
         /// <summary>
+        /// Gets the data.
+        /// </summary>
+        /// <value>The data.</value>
+        public ElementType[] Data { get; private set; }
+
+        /// <summary>
         /// Returns an enumerator that iterates through a collection.
         /// </summary>
         /// <returns>
@@ -62,7 +68,7 @@ namespace TheNewEngine.Graphics
         /// <filterpriority>1</filterpriority>
         public IEnumerator<ElementType> GetEnumerator()
         {
-            return (IEnumerator<ElementType>)mElements.GetEnumerator();
+            return (IEnumerator<ElementType>)Data.GetEnumerator();
         }
 
         /// <summary>
@@ -72,8 +78,8 @@ namespace TheNewEngine.Graphics
         /// <returns>The instance, to support a fluent interface.</returns>
         public GraphicStream<ElementType> SetData(ElementType[] data)
         {
-            mElements = data;
-            Size = mElements.Length * ElementSize;
+            Data = data;
+            Size = Data.Length * ElementSize;
 
             return this;
         }
