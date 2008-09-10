@@ -25,13 +25,18 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
 
                 EmptyWindow.CreateDeviceSwapChainAndRenderTarget(form, out device, out swapChain, out renderTarget);
 
-                var positionsBuffer = new Buffer<Vector3>(device, 0);
+                var positionsBuffer = new Buffer<Vector3>(device) {Index = 0};
                 var positions = new GraphicStream<Vector3>(GraphicStreamUsage.Position, positionsBuffer);
                 positions.SetData(CreatePositions());
                 positionsBuffer.SetGraphicStream(positions);
-                positions.Load();
+                positions.Load(); 
 
-                var colorsBuffer = new Buffer<Color4>(device, 1);
+                // TODO
+//                var positions = mFactory.New<IGraphicStream>();
+//                positions.SetData(CreatePositions());
+//                positions.Load();//create and load buffer
+
+                var colorsBuffer = new Buffer<Color4>(device) {Index = 1};
                 var colors = new GraphicStream<Color4>(GraphicStreamUsage.Color, colorsBuffer);
                 colors.SetData(CreateColors());
                 colorsBuffer.SetGraphicStream(colors);

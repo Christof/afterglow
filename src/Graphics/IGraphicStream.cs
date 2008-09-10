@@ -4,7 +4,7 @@ namespace TheNewEngine.Graphics
     /// Interface for graphic streams which contain data for an element of a vertex,
     /// like positions, colors, normals or texture coordinates.
     /// </summary>
-    public interface IGraphicStream
+    public interface IGraphicStream : IFrameResource
     {
         /// <summary>
         /// Gets the usage.

@@ -15,18 +15,21 @@ namespace TheNewEngine.Graphics.SlimDX
 
         private Buffer mBuffer;
 
-        private int mIndex;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Buffer&lt;ElementType&gt;"/> class.
         /// </summary>
         /// <param name="device">The device.</param>
-        /// <param name="index">The index.</param>
-        public Buffer(Device device, int index)
+        public Buffer(Device device)
         {
             mDevice = device;
-            mIndex = index;
+            //mGraphicStream = new GraphicStream<ElementType>();
         }
+
+        /// <summary>
+        /// Gets or sets the index.
+        /// </summary>
+        /// <value>The index.</value>
+        public int Index { get; set; }
 
         /// <summary>
         /// Sets the graphic stream.
@@ -80,7 +83,7 @@ namespace TheNewEngine.Graphics.SlimDX
         /// </summary>
         public override void OnFrame()
         {
-            mDevice.InputAssembler.SetVertexBuffers(mIndex,
+            mDevice.InputAssembler.SetVertexBuffers(Index,
                 new VertexBufferBinding(mBuffer, mGraphicStream.ElementSize, 0));
         }
     }

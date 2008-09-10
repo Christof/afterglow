@@ -60,6 +60,7 @@
     <Compile Include="GraphicStream.cs" />
     <Compile Include="GraphicStreamContainer.cs" />
     <Compile Include="GraphicStreamUsage.cs" />
+    <Compile Include="IFrameResource.cs" />
     <Compile Include="IGraphicStream.cs" />
     <Compile Include="IScreenshotTaker.cs" />
     <Compile Include="LoadableResource.cs" />

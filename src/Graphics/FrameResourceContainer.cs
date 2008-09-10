@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace TheNewEngine.Graphics
 {
     public abstract class FrameResourceContainer<Type> : FrameResource, IEnumerable<Type>
+        where Type : IFrameResource
     {
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
