@@ -3,41 +3,34 @@ namespace TheNewEngine.Graphics
     /// <summary>
     /// Decorator for a frame resource.
     /// </summary>
-    public class FrameResourceDecorator : FrameResource
+    public abstract class FrameResourceDecorator : IFrameResource
     {
-        private readonly FrameResource mDecoree;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FrameResourceDecorator"/> class.
-        /// </summary>
-        /// <param name="decoree">The decoree.</param>
-        public FrameResourceDecorator(FrameResource decoree)
-        {
-            mDecoree = decoree;
-        }
+        public IFrameResource Decoree { get; private set; }
 
         /// <summary>
         /// Loads the resource.
         /// </summary>
-        public override void Load()
+        public virtual void Load(IFrameResource decoree)
         {
-            mDecoree.Load();
+            Decoree = decoree;
+
+            Decoree.Load(this);
         }
 
         /// <summary>
         /// Unloads the resource.
         /// </summary>
-        public override void Unload()
+        public virtual void Unload()
         {
-            mDecoree.Unload();
+            Decoree.Unload();
         }
 
         /// <summary>
         /// Called when the next frame is rendered.
         /// </summary>
-        public override void OnFrame()
+        public virtual void OnFrame()
         {
-            mDecoree.OnFrame();
+            Decoree.OnFrame();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -11,16 +12,35 @@ namespace TheNewEngine.Graphics
     public class GraphicStream<ElementType> : FrameResourceDecorator, IGraphicStream, IEnumerable<ElementType>
         where ElementType : struct 
     {
+
+        private readonly GraphicStreamFormat mFormat;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GraphicStream&lt;ElementType&gt;"/> class.
         /// </summary>
         /// <param name="usage">The usage.</param>
-        /// <param name="implementation">The implementation.</param>
-        public GraphicStream(GraphicStreamUsage usage, FrameResource implementation)
-            : base(implementation)
+        /// <param name="data">The data.</param>
+        public GraphicStream(GraphicStreamUsage usage, ElementType[] data)
         {
             Usage = usage;
             ElementSize = Marshal.SizeOf(typeof(ElementType));
+            Data = data;
+            Size = Data.Length * ElementSize;
+
+            mFormat = GetFormatForElementType(typeof (ElementType).Name);
+        }
+
+        private static GraphicStreamFormat GetFormatForElementType(string typeName)
+        {
+            switch (typeName)
+            {
+                case "Vector3":
+                    return GraphicStreamFormat.Vector3;
+                case "Color4":
+                    return GraphicStreamFormat.Color4;
+                default:
+                    throw new ArgumentOutOfRangeException("typeName", "Invalid type name");
+            }
         }
 
         /// <summary>
@@ -48,6 +68,18 @@ namespace TheNewEngine.Graphics
         public ElementType[] Data { get; private set; }
 
         /// <summary>
+        /// Gets the format.
+        /// </summary>
+        /// <value>The format.</value>
+        public GraphicStreamFormat Format
+        {
+            get
+            {
+                return mFormat;
+            }
+        }
+
+        /// <summary>
         /// Returns an enumerator that iterates through a collection.
         /// </summary>
         /// <returns>
@@ -69,19 +101,6 @@ namespace TheNewEngine.Graphics
         public IEnumerator<ElementType> GetEnumerator()
         {
             return (IEnumerator<ElementType>)Data.GetEnumerator();
-        }
-
-        /// <summary>
-        /// Sets the data.
-        /// </summary>
-        /// <param name="data">The data.</param>
-        /// <returns>The instance, to support a fluent interface.</returns>
-        public GraphicStream<ElementType> SetData(ElementType[] data)
-        {
-            Data = data;
-            Size = Data.Length * ElementSize;
-
-            return this;
         }
     }
 }

@@ -1,10 +1,13 @@
+using System;
+using System.Collections;
+
 namespace TheNewEngine.Graphics
 {
     /// <summary>
     /// Interface for graphic streams which contain data for an element of a vertex,
     /// like positions, colors, normals or texture coordinates.
     /// </summary>
-    public interface IGraphicStream : IFrameResource
+    public interface IGraphicStream : IFrameResource, IEnumerable
     {
         /// <summary>
         /// Gets the usage.
@@ -23,5 +26,11 @@ namespace TheNewEngine.Graphics
         /// </summary>
         /// <value>The overall size.</value>
         int Size { get; }
+
+        /// <summary>
+        /// Gets the format.
+        /// </summary>
+        /// <value>The format.</value>
+        GraphicStreamFormat Format { get; }
     }
 }

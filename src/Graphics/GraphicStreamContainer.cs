@@ -1,24 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TheNewEngine.Graphics
 {
     /// <summary>
     /// Container for graphic streams.
     /// </summary>
-    public class GraphicStreamContainer : FrameResourceDecorator, IEnumerable<IGraphicStream>
+    public class GraphicStreamContainer : FrameResourceDecorator, IFrameResourceContainer<IGraphicStream> 
     {
-        private FrameResourceContainer<IGraphicStream> mDecoree;
+        private List<IGraphicStream> mStreams = new List<IGraphicStream>();
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GraphicStreamContainer"/> class.
-        /// </summary>
-        /// <param name="decoree">The decoree.</param>
-        public GraphicStreamContainer(FrameResourceContainer<IGraphicStream> decoree)
-            : base(decoree)
+        public void Add(IGraphicStream frameResource)
         {
-            mDecoree = decoree;
+            mStreams.Add(frameResource);
         }
 
         /// <summary>
@@ -40,7 +34,14 @@ namespace TheNewEngine.Graphics
         /// </returns>
         public IEnumerator<IGraphicStream> GetEnumerator()
         {
-            return mDecoree.GetEnumerator();
+            return mStreams.GetEnumerator();
+        }
+
+        public void Create<ElementType>(GraphicStreamUsage usage, ElementType[] data)
+            where ElementType : struct
+        {
+            var stream = new GraphicStream<ElementType>(usage, data);
+            Add(stream);
         }
     }
 }

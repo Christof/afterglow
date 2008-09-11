@@ -1,19 +1,20 @@
 using SlimDX.Direct3D10;
 using SlimDX;
+using System.Linq;
 namespace TheNewEngine.Graphics.SlimDX
 {
     /// <summary>
     /// Implementation of a frame resource with a <see cref="Buffer"/>.
     /// </summary>
     /// <typeparam name="ElementType">The type of the lement type.</typeparam>
-    public class Buffer<ElementType> : FrameResource
+    public class Buffer<ElementType> : IFrameResource, IBuffer
         where ElementType : struct 
     {
         private readonly Device mDevice;
 
-        private GraphicStream<ElementType> mGraphicStream;
-
         private Buffer mBuffer;
+
+        private int mElementSize;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Buffer&lt;ElementType&gt;"/> class.
@@ -22,7 +23,6 @@ namespace TheNewEngine.Graphics.SlimDX
         public Buffer(Device device)
         {
             mDevice = device;
-            //mGraphicStream = new GraphicStream<ElementType>();
         }
 
         /// <summary>
@@ -32,21 +32,15 @@ namespace TheNewEngine.Graphics.SlimDX
         public int Index { get; set; }
 
         /// <summary>
-        /// Sets the graphic stream.
-        /// </summary>
-        /// <param name="graphicStream">The graphic stream.</param>
-        public void SetGraphicStream(GraphicStream<ElementType> graphicStream)
-        {
-            mGraphicStream = graphicStream;
-        }
-
-        /// <summary>
         /// Loads the resource.
         /// </summary>
-        public override void Load()
+        public void Load(IFrameResource frameResource)
         {
-            var dataStream = new DataStream(mGraphicStream.Size, false, true);
-            dataStream.WriteRange(mGraphicStream.Data);
+            var graphicStream = (GraphicStream<ElementType>)frameResource;
+            mElementSize = graphicStream.ElementSize;
+
+            var dataStream = new DataStream(graphicStream.Size, false, true);
+            dataStream.WriteRange(graphicStream.Data);
 
             // Important: when specifying initial buffer data like this, the buffer will
             // read from the current DataStream position; we must rewind the stream to 
@@ -58,7 +52,7 @@ namespace TheNewEngine.Graphics.SlimDX
                 BindFlags = BindFlags.VertexBuffer,
                 CpuAccessFlags = CpuAccessFlags.None,
                 OptionFlags = ResourceOptionFlags.None,
-                SizeInBytes = mGraphicStream.Size,
+                SizeInBytes = graphicStream.Size,
                 Usage = ResourceUsage.Default
             };
 
@@ -69,7 +63,7 @@ namespace TheNewEngine.Graphics.SlimDX
         /// <summary>
         /// Unloads the resource.
         /// </summary>
-        public override void Unload()
+        public void Unload()
         {
             if (mBuffer != null && mBuffer.Disposed)
             {
@@ -81,10 +75,10 @@ namespace TheNewEngine.Graphics.SlimDX
         /// <summary>
         /// Called when the next frame is rendered.
         /// </summary>
-        public override void OnFrame()
+        public void OnFrame()
         {
             mDevice.InputAssembler.SetVertexBuffers(Index,
-                new VertexBufferBinding(mBuffer, mGraphicStream.ElementSize, 0));
+                new VertexBufferBinding(mBuffer, mElementSize, 0));
         }
     }
 }

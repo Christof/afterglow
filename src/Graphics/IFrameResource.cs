@@ -13,7 +13,7 @@ namespace TheNewEngine.Graphics
         /// <summary>
         /// Loads the resource.
         /// </summary>
-        void Load();
+        void Load(IFrameResource decoree);
 
         /// <summary>
         /// Unloads the resource.

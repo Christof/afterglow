@@ -1,50 +1,96 @@
+using System;
+using System.Collections.Generic;
+using SlimDX;
+using SlimDX.Direct3D10;
+
 namespace TheNewEngine.Graphics.SlimDX
 {
     /// <summary>
     /// Contains buffer which build up all vertex data.
     /// </summary>
-    public class BufferContainer : FrameResource
+    public class BufferContainer : IFrameResource
     {
-        private GraphicStreamContainer mGraphicStreamContainer;
+        private readonly Device mDevice;
+
+        private IFrameResourceContainer<IGraphicStream> mGraphicStreamContainer;
+
+        private List<InputElement> mInputElements;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BufferContainer"/> class.
         /// </summary>
-        public BufferContainer()
+        public BufferContainer(Device device)
         {
-        }
-
-        /// <summary>
-        /// Sets the graphic stream container.
-        /// </summary>
-        /// <param name="graphicStreamContainer">The graphic stream container.</param>
-        public void SetGraphicStreamContainer(GraphicStreamContainer graphicStreamContainer)
-        {
-            mGraphicStreamContainer = graphicStreamContainer;
-        }
-
-        /// <summary>
-        /// Loads the resource.
-        /// </summary>
-        public override void Load()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// Unloads the resource.
-        /// </summary>
-        public override void Unload()
-        {
-            throw new System.NotImplementedException();
+            mDevice = device;
         }
 
         /// <summary>
         /// Called when the next frame is rendered.
         /// </summary>
-        public override void OnFrame()
+        public void OnFrame()
+        {
+            mDevice.InputAssembler.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
+            foreach (var graphicStream in mGraphicStreamContainer)
+            {
+                graphicStream.OnFrame();
+            }
+        }
+
+        IBuffer CreateBuffer(GraphicStreamFormat elementType)
+        {
+            switch (elementType)
+            {
+                case GraphicStreamFormat.Vector3:
+                    return new Buffer<Vector3>(mDevice);
+                case GraphicStreamFormat.Color4:
+                    return new Buffer<Color4>(mDevice);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Loads the resource.
+        /// </summary>
+        public void Load(IFrameResource decoree)
+        {
+            var streamContainer = (IFrameResourceContainer<IGraphicStream>)decoree;
+            mGraphicStreamContainer = streamContainer;
+
+            mInputElements = new List<InputElement>();
+
+            int index = 0;
+
+            foreach (var graphicStream in streamContainer)
+            {
+                var buffer = CreateBuffer(graphicStream.Format);
+
+                buffer.Index = index++;
+
+                var inputElement = new InputElement(
+                    graphicStream.Usage.ToSemantic(), 0,
+                    graphicStream.Format.ToFormat(), 0, buffer.Index);              
+
+                mInputElements.Add(inputElement);
+
+                graphicStream.Load(buffer);
+            }
+        }
+
+        /// <summary>
+        /// Unloads the resource.
+        /// </summary>
+        public void Unload()
         {
             throw new System.NotImplementedException();
+        }
+
+        public InputElement[] InputElements
+        {
+            get
+            {
+                return mInputElements.ToArray();
+            }
         }
     }
 }

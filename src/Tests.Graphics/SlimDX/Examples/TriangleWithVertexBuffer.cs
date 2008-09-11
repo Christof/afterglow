@@ -14,7 +14,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
     public class TriangleWithVertexBuffer
     {
         [Test]
-        [Category(Categories.API_EXAMPLES)]
+        [Category(Categories.EXAMPLES)]
         public void Run()
         {
             using (var form = EmptyWindow.CreateForm())
@@ -25,22 +25,12 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
 
                 EmptyWindow.CreateDeviceSwapChainAndRenderTarget(form, out device, out swapChain, out renderTarget);
 
-                var positionsBuffer = new Buffer<Vector3>(device) {Index = 0};
-                var positions = new GraphicStream<Vector3>(GraphicStreamUsage.Position, positionsBuffer);
-                positions.SetData(CreatePositions());
-                positionsBuffer.SetGraphicStream(positions);
-                positions.Load(); 
+                var container = new GraphicStreamContainer();
+                container.Create(GraphicStreamUsage.Position, CreatePositions());
+                container.Create(GraphicStreamUsage.Color, CreateColors());
 
-                // TODO
-//                var positions = mFactory.New<IGraphicStream>();
-//                positions.SetData(CreatePositions());
-//                positions.Load();//create and load buffer
-
-                var colorsBuffer = new Buffer<Color4>(device) {Index = 1};
-                var colors = new GraphicStream<Color4>(GraphicStreamUsage.Color, colorsBuffer);
-                colors.SetData(CreateColors());
-                colorsBuffer.SetGraphicStream(colors);
-                colors.Load();
+                var containerImplementation = new BufferContainer(device);
+                container.Load(containerImplementation);
 
                 Effect effect;
                 string errors = string.Empty;
@@ -60,13 +50,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 var technique = effect.GetTechniqueByIndex(0);
                 var pass = technique.GetPassByIndex(0);
 
-                var inputElements = new[]
-                {
-                    new InputElement("POSITION", 0, Format.R32G32B32_Float, 0, 0),
-                    new InputElement("COLOR", 0, Format.R32G32B32A32_Float, 0, 1)
-                };
-
-                var inputLayout = new InputLayout(device, inputElements, pass.Description.Signature);
+                var inputLayout = new InputLayout(device, containerImplementation.InputElements, pass.Description.Signature);
 
                 Application.Idle +=
                    delegate
@@ -76,8 +60,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                        device.InputAssembler.SetInputLayout(inputLayout);
                        device.InputAssembler.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
                        
-                       positions.OnFrame();
-                       colors.OnFrame();
+                       container.OnFrame();
 
                        Matrix view = Matrix.LookAtRH(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
                        Matrix projection = Matrix.PerspectiveFovRH((float) (Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
@@ -90,7 +73,8 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                        for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
                        {
                            pass.Apply();
-                           device.Draw(positions.Data.Length, 0);
+                           // TODO
+                           device.Draw(3, 0);
                        }
 
 
