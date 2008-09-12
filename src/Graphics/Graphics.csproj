@@ -60,14 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraphicStreamFormat.cs" />
+    <Compile Include="GraphicStreams\GraphicStream.cs" />
+    <Compile Include="GraphicStreams\GraphicStreamContainer.cs" />
+    <Compile Include="GraphicStreams\GraphicStreamFormat.cs" />
+    <Compile Include="GraphicStreams\GraphicStreamUsage.cs" />
+    <Compile Include="GraphicStreams\IGraphicStream.cs" />
     <Compile Include="IFrameResourceContainer.cs" />
     <Compile Include="FrameResourceDecorator.cs" />
-    <Compile Include="GraphicStream.cs" />
-    <Compile Include="GraphicStreamContainer.cs" />
-    <Compile Include="GraphicStreamUsage.cs" />
     <Compile Include="IFrameResource.cs" />
-    <Compile Include="IGraphicStream.cs" />
     <Compile Include="IScreenshotTaker.cs" />
     <Compile Include="OpenGl\RenderWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
