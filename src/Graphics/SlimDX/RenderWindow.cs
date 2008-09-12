@@ -113,18 +113,21 @@ namespace TheNewEngine.Graphics.SlimDX
         /// </summary>
         public override void Dispose()
         {
-            this.swapChain.Dispose();
-            this.renderTarget.Dispose();
+            swapChain.Dispose();
+            renderTarget.Dispose();
 
-            this.device.Dispose();
+            device.Dispose();
         }
 
         private bool isWindowed = true;
 
+        /// <summary>
+        /// Switches betwenn fullscreen and windowed mode.
+        /// </summary>
         public void SwitchFullscreen()
         {
-            this.swapChain.Dispose();
-            this.renderTarget.Dispose();
+            swapChain.Dispose();
+            renderTarget.Dispose();
 
             isWindowed = !isWindowed;
             CreateSwapChainRenderTargetAndViewport(isWindowed);

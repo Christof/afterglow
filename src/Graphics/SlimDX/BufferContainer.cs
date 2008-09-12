@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using SlimDX;
 using SlimDX.Direct3D10;
@@ -36,7 +35,7 @@ namespace TheNewEngine.Graphics.SlimDX
             }
         }
 
-        IBuffer CreateBuffer(GraphicStreamFormat elementType)
+        private IBuffer CreateBuffer(GraphicStreamFormat elementType)
         {
             switch (elementType)
             {
@@ -85,6 +84,10 @@ namespace TheNewEngine.Graphics.SlimDX
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets the input elements.
+        /// </summary>
+        /// <value>The input elements.</value>
         public InputElement[] InputElements
         {
             get

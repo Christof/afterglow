@@ -1,13 +1,13 @@
 using SlimDX.Direct3D10;
 using SlimDX;
-using System.Linq;
+
 namespace TheNewEngine.Graphics.SlimDX
 {
     /// <summary>
     /// Implementation of a frame resource with a <see cref="Buffer"/>.
     /// </summary>
     /// <typeparam name="ElementType">The type of the lement type.</typeparam>
-    public class Buffer<ElementType> : IFrameResource, IBuffer
+    public class Buffer<ElementType> : IBuffer
         where ElementType : struct 
     {
         private readonly Device mDevice;

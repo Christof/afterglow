@@ -1,11 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 
 namespace TheNewEngine.Graphics
 {
-    public interface IFrameResourceContainer<Type> : IFrameResource, IEnumerable<Type>
-        where Type : IFrameResource
+    /// <summary>
+    /// <see cref="IFrameResource"/> which contains other <see cref="IFrameResource"/> of the
+    /// generic type.
+    /// </summary>
+    /// <typeparam name="ItemType">The type of an item in the container.</typeparam>
+    public interface IFrameResourceContainer<ItemType> : IFrameResource, IEnumerable<ItemType>
+        where ItemType : IFrameResource
     {
-        void Add(Type frameResource);
+        /// <summary>
+        /// Adds the frame resource to the container.
+        /// </summary>
+        /// <param name="frameResource">The frame resource.</param>
+        void Add(ItemType frameResource);
     }
 }

@@ -5,6 +5,10 @@ namespace TheNewEngine.Graphics
     /// </summary>
     public abstract class FrameResourceDecorator : IFrameResource
     {
+        /// <summary>
+        /// Gets or sets the decoree.
+        /// </summary>
+        /// <value>The decoree.</value>
         public IFrameResource Decoree { get; private set; }
 
         /// <summary>
