@@ -5,9 +5,9 @@ namespace TheNewEngine.Graphics.Xna
     /// <summary>
     /// Encapsulates the Xna-device so that it renders in the given window.
     /// </summary>
-    public class RenderWindow : RenderWindowBase
+    public class RenderWindow : IRenderWindow
     {
-        private GraphicsDevice device;
+        private GraphicsDevice mDevice;
         private const int WIDTH = 800;
         private const int HEIGHT = 600;
 
@@ -17,24 +17,26 @@ namespace TheNewEngine.Graphics.Xna
         /// <param name="windowHandle">The window handle.</param>
         public RenderWindow(IntPtr windowHandle)
         {
-            var presentationParameters = new PresentationParameters();
-            presentationParameters.IsFullScreen = false;
-            presentationParameters.BackBufferCount = 1;
-            presentationParameters.BackBufferFormat = SurfaceFormat.Color;//SurfaceFormat.Rgba32;
-            presentationParameters.BackBufferWidth = WIDTH;
-            presentationParameters.BackBufferHeight = HEIGHT;
-            presentationParameters.DeviceWindowHandle = IntPtr.Zero;
-            presentationParameters.EnableAutoDepthStencil = true;
-            presentationParameters.PresentOptions = PresentOptions.None;
-            presentationParameters.SwapEffect = SwapEffect.Discard;
-            presentationParameters.FullScreenRefreshRateInHz = 0;
-            presentationParameters.MultiSampleQuality = 0;
-            presentationParameters.MultiSampleType = MultiSampleType.None;
-            presentationParameters.PresentationInterval = PresentInterval.Default;
-            presentationParameters.RenderTargetUsage = RenderTargetUsage.DiscardContents;
-            presentationParameters.AutoDepthStencilFormat = DepthFormat.Depth24;
+            var presentationParameters = new PresentationParameters
+            {
+                IsFullScreen = false,
+                BackBufferCount = 1,
+                BackBufferFormat = SurfaceFormat.Color,
+                BackBufferWidth = WIDTH,
+                BackBufferHeight = HEIGHT,
+                DeviceWindowHandle = IntPtr.Zero,
+                EnableAutoDepthStencil = true,
+                PresentOptions = PresentOptions.None,
+                SwapEffect = SwapEffect.Discard,
+                FullScreenRefreshRateInHz = 0,
+                MultiSampleQuality = 0,
+                MultiSampleType = MultiSampleType.None,
+                PresentationInterval = PresentInterval.Default,
+                RenderTargetUsage = RenderTargetUsage.DiscardContents,
+                AutoDepthStencilFormat = DepthFormat.Depth24
+            };
 
-            this.device = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, DeviceType.Hardware,
+            mDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, DeviceType.Hardware,
                 windowHandle, presentationParameters);
         }
 
@@ -51,28 +53,28 @@ namespace TheNewEngine.Graphics.Xna
         /// <summary>
         /// Renders the current scene.
         /// </summary>
-        public override void Render()
+        public void Render()
         {
-            this.device.Clear(Color.Blue);
+            mDevice.Clear(Color.Blue);
 
             if (RenderAction != null)
             {
                 RenderAction();
             }
 
-            this.device.Present();
+            mDevice.Present();
         }
 
         /// <summary>
         /// Takes a screenshot.
         /// </summary>
         /// <param name="filename">The filename.</param>
-        public override void TakeScreenshot(string filename)
+        public void TakeScreenshot(string filename)
         {
             using (var texture2D = new ResolveTexture2D(
-                this.device, WIDTH, HEIGHT, 1, SurfaceFormat.Color))
+                mDevice, WIDTH, HEIGHT, 1, SurfaceFormat.Color))
             {
-                this.device.ResolveBackBuffer(texture2D);
+                mDevice.ResolveBackBuffer(texture2D);
 
                 texture2D.Save(filename, ImageFileFormat.Bmp);
             }
@@ -84,16 +86,16 @@ namespace TheNewEngine.Graphics.Xna
         /// <value>The device.</value>
         internal GraphicsDevice Device
         {
-            get { return this.device; }
-            set { this.device = value; }
+            get { return mDevice; }
+            set { mDevice = value; }
         }
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public override void Dispose()
+        public void Dispose()
         {
-            this.device.Dispose();
+            mDevice.Dispose();
         }
     }
 }

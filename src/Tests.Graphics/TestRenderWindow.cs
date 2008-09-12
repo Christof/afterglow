@@ -15,7 +15,7 @@ namespace TheNewEngine.Graphics
             {
                 form.ClientSize = new Size(800, 600);
 
-                RenderWindowBase renderWindow = new Xna.RenderWindow(form.Handle);
+                IRenderWindow renderWindow = new Xna.RenderWindow(form.Handle);
                 
                 form.KeyPress +=
                     delegate(object sender, KeyPressEventArgs args)
@@ -66,7 +66,7 @@ namespace TheNewEngine.Graphics
                 var button = new Button {Size = new Size(800, 600), Top = 112, Left = 80, Parent = form};
 
                 IntPtr handle = button.Handle;
-                RenderWindowBase renderWindow = new Xna.RenderWindow(handle);
+                IRenderWindow renderWindow = new Xna.RenderWindow(handle);
                 
                 button.KeyPress +=
                     delegate(object sender, KeyPressEventArgs args)

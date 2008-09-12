@@ -4,7 +4,7 @@ namespace TheNewEngine.Graphics.OpenGl
     /// <summary>
     /// Encapsulates OpenGl so that it renders in the given window.
     /// </summary>
-    public class RenderWindow : RenderWindowBase
+    public class RenderWindow : IRenderWindow
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RenderWindow"/> class.
@@ -17,7 +17,7 @@ namespace TheNewEngine.Graphics.OpenGl
         /// <summary>
         /// Renders the current scene.
         /// </summary>
-        public override void Render()
+        public void Render()
         {
             throw new System.NotImplementedException();
         }
@@ -25,7 +25,7 @@ namespace TheNewEngine.Graphics.OpenGl
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public override void Dispose()
+        public void Dispose()
         {
             throw new System.NotImplementedException();
         }
@@ -34,7 +34,7 @@ namespace TheNewEngine.Graphics.OpenGl
         /// Takes a screenshot.
         /// </summary>
         /// <param name="filename">The filename.</param>
-        public override void TakeScreenshot(string filename)
+        public void TakeScreenshot(string filename)
         {
             throw new System.NotImplementedException();
         }

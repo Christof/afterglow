@@ -68,10 +68,10 @@
     <Compile Include="IFrameResourceContainer.cs" />
     <Compile Include="FrameResourceDecorator.cs" />
     <Compile Include="IFrameResource.cs" />
+    <Compile Include="IRenderWindow.cs" />
     <Compile Include="IScreenshotTaker.cs" />
     <Compile Include="OpenGl\RenderWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RenderWindowBase.cs" />
     <Compile Include="SlimDX\Buffer.cs" />
     <Compile Include="SlimDX\BufferContainer.cs" />
     <Compile Include="SlimDX\Extensions.cs" />
