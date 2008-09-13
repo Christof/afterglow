@@ -1,7 +1,7 @@
 using System;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.GraphicStreams
 {
     [TestFixture]
     public class Test_GraphicStreamUsageHelper

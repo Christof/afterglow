@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.GraphicStreams
 {
     /// <summary>
     /// Format of a graphic stream item.

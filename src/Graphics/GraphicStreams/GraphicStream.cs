@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.GraphicStreams
 {
     /// <summary>
     /// Abstract implementation of <see cref="IGraphicStream"/>.

@@ -4,6 +4,7 @@ using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
+using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using Device = SlimDX.Direct3D10.Device;
 

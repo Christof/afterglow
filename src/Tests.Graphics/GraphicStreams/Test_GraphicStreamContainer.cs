@@ -2,7 +2,7 @@ using MbUnit.Framework;
 using Moq;
 using System.Linq;
 
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.GraphicStreams
 {
     [TestFixture]
     public class Test_GraphicStreamContainer

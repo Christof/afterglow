@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
 
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.GraphicStreams
 {
     /// <summary>
     /// Interface for graphic streams which contain data for an element of a vertex,

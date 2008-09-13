@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.GraphicStreams
 {
     /// <summary>
     /// Defines usage of a graphic stream.

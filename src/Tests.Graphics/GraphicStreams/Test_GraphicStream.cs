@@ -2,7 +2,7 @@ using System.Linq;
 using MbUnit.Framework;
 using TheNewEngine.Math.Primitives;
 
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.GraphicStreams
 {
     [TestFixture]
     public class Test_GraphicStream
@@ -55,7 +55,6 @@ namespace TheNewEngine.Graphics
             var graphicStream = new GraphicStream<float>(GraphicStreamUsage.Color, data);
 
             Assert.IsNotNull(graphicStream);
-            Assert.AreEqual(data.Length, graphicStream.Count());
             CollectionAssert.AreElementsEqual(data, graphicStream);
         }
     }
