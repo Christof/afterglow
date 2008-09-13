@@ -72,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categories.cs" />
+    <Compile Include="GraphicStreams\Test_GraphicStream.cs" />
+    <Compile Include="GraphicStreams\Test_GraphicStreamContainer.cs" />
+    <Compile Include="GraphicStreams\Test_GraphicStreamUsageHelper.cs" />
     <Compile Include="OpenGl\TestRenderWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SlimDX\ApiExamples\TriangleWithTexture.cs" />
@@ -80,8 +83,6 @@
     <Compile Include="SlimDX\Examples\TriangleWithVertexBuffer.cs" />
     <Compile Include="SlimDX\TestRenderWindow.cs" />
     <Compile Include="TestRenderWindow.cs" />
-    <Compile Include="Test_GraphicStream.cs" />
-    <Compile Include="Test_GraphicStreamContainer.cs" />
     <Compile Include="Utilities\TestImageComparer.cs" />
     <Compile Include="Xna\ApiExamples\CustomEffect.cs" />
     <Compile Include="Xna\ApiExamples\EmptyWindow.cs">
@@ -94,6 +95,10 @@
     <ProjectReference Include="..\Graphics\Graphics.csproj">
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Math\Math.csproj">
+      <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
+      <Name>Math %28Math\Math%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,7 @@ namespace TheNewEngine.Graphics
             Data = data;
             Size = Data.Length * ElementSize;
 
-            mFormat = GetFormatForElementType(typeof (ElementType).Name);
+            mFormat = GraphicStreamFormatHelper.GetForTypeName(typeof (ElementType).Name);
         }
 
         /// <summary>
@@ -65,19 +65,6 @@ namespace TheNewEngine.Graphics
             }
         }
 
-        private static GraphicStreamFormat GetFormatForElementType(string typeName)
-        {
-            switch (typeName)
-            {
-                case "Vector3":
-                    return GraphicStreamFormat.Vector3;
-                case "Color4":
-                    return GraphicStreamFormat.Color4;
-                default:
-                    throw new ArgumentOutOfRangeException("typeName", "Invalid type name");
-            }
-        }
-
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
         /// </summary>
@@ -99,7 +86,10 @@ namespace TheNewEngine.Graphics
         /// <filterpriority>1</filterpriority>
         public IEnumerator<ElementType> GetEnumerator()
         {
-            return (IEnumerator<ElementType>)Data.GetEnumerator();
+            foreach (var element in Data)
+            {
+                yield return element;
+            }
         }
     }
 }

@@ -56,7 +56,7 @@ namespace TheNewEngine.Graphics.Xna.ApiExamples
                         device.Vertices[1].SetSource(colorsBuffer, 0, 12);
 
                         Matrix view = Matrix.CreateLookAt(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
-                        Matrix projection = Matrix.CreatePerspectiveFieldOfView((float)(Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
+                        Matrix projection = Matrix.CreatePerspectiveFieldOfView((float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
                         Matrix world = Matrix.Identity;
 
                         effect.Parameters.GetParameterBySemantic("WorldViewProjection").SetValue(

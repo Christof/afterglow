@@ -14,5 +14,10 @@ namespace TheNewEngine.Graphics
         /// Color4, which contains R, G, B and A values.
         /// </summary>
         Color4,
+
+        /// <summary>
+        /// Float value.
+        /// </summary>
+        Float
     }
 }

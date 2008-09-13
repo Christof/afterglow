@@ -10,10 +10,10 @@ namespace TheNewEngine.Math.Primitives
     /// that the positive x-axis points right, the positive y-axis points up and
     /// the positive z-axis points forward.
     /// </remarks>
-    // Don't use auto properties because then the 
-    // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
     public struct Vector3
     {
+        // Don't use auto properties because then the 
+        // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
         private float mX;
 
         private float mY;
@@ -67,6 +67,7 @@ namespace TheNewEngine.Math.Primitives
         /// Gets the value at the specified axis.
         /// </summary>
         /// <value>Value of the specified axis.</value>
+        /// <param name="index">0 -> x-axis; 1 -> y-axis; 2 -> z-axis.</param>
         public float this[int index]
         {
             get

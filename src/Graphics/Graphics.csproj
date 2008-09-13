@@ -63,6 +63,7 @@
     <Compile Include="GraphicStreams\GraphicStream.cs" />
     <Compile Include="GraphicStreams\GraphicStreamContainer.cs" />
     <Compile Include="GraphicStreams\GraphicStreamFormat.cs" />
+    <Compile Include="GraphicStreams\GraphicStreamFormatHelper.cs" />
     <Compile Include="GraphicStreams\GraphicStreamUsage.cs" />
     <Compile Include="GraphicStreams\IGraphicStream.cs" />
     <Compile Include="IFrameResourceContainer.cs" />
