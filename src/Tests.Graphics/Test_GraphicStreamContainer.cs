@@ -5,6 +5,5 @@ namespace TheNewEngine.Graphics
     [TestFixture]
     public class Test_GraphicStreamContainer
     {
-        
     }
 }

@@ -8,7 +8,6 @@ namespace TheNewEngine.Graphics
         [Test]
         public void Constructor()
         {
-            
         }
     }
 }

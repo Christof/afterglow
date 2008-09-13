@@ -6,12 +6,12 @@ namespace TheNewEngine.Graphics
     public enum GraphicStreamFormat
     {
         /// <summary>
-        /// Vector3
+        /// Vector3, which contains X, Y and Z values.
         /// </summary>
         Vector3,
 
         /// <summary>
-        /// Color4
+        /// Color4, which contains R, G, B and A values.
         /// </summary>
         Color4,
     }

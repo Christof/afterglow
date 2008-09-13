@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework.Graphics;
+
 namespace TheNewEngine.Graphics.Xna
 {
     /// <summary>
@@ -7,9 +8,10 @@ namespace TheNewEngine.Graphics.Xna
     /// </summary>
     public class RenderWindow : IRenderWindow
     {
-        private GraphicsDevice mDevice;
         private const int WIDTH = 800;
         private const int HEIGHT = 600;
+
+        private GraphicsDevice mDevice;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RenderWindow"/> class.

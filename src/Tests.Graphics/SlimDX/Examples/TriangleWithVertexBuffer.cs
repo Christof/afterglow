@@ -1,12 +1,11 @@
 using System;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
-using Device=SlimDX.Direct3D10.Device;
+using Device = SlimDX.Direct3D10.Device;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
 {
@@ -63,7 +62,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                        container.OnFrame();
 
                        Matrix view = Matrix.LookAtRH(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
-                       Matrix projection = Matrix.PerspectiveFovRH((float) (Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
+                       Matrix projection = Matrix.PerspectiveFovRH((float)(Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
                        Matrix world = Matrix.Identity;
                        Matrix worldViewProjection = world * view * projection;
 
@@ -73,10 +72,10 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                        for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
                        {
                            pass.Apply();
+
                            // TODO
                            device.Draw(3, 0);
                        }
-
 
                        swapChain.Present(0, PresentFlags.None);
 
@@ -89,7 +88,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
 
         private static Vector3[] CreatePositions()
         {
-            var top =  new Vector3(0f, 1f, 0f);
+            var top = new Vector3(0f, 1f, 0f);
             var left = new Vector3(-1f, -1f, 0f);
             var right = new Vector3(1f, -1f, 0f);
 

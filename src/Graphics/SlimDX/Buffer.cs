@@ -34,6 +34,7 @@ namespace TheNewEngine.Graphics.SlimDX
         /// <summary>
         /// Loads the resource.
         /// </summary>
+        /// <param name="frameResource">The frame resource.</param>
         public void Load(IFrameResource frameResource)
         {
             var graphicStream = (GraphicStream<ElementType>)frameResource;

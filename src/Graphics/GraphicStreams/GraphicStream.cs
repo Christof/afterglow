@@ -12,35 +12,21 @@ namespace TheNewEngine.Graphics
     public class GraphicStream<ElementType> : FrameResourceDecorator, IGraphicStream, IEnumerable<ElementType>
         where ElementType : struct 
     {
-
         private readonly GraphicStreamFormat mFormat;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GraphicStream&lt;ElementType&gt;"/> class.
+        /// Initializes a new instance of the <see cref="GraphicStream{ElementType}"/> class.
         /// </summary>
         /// <param name="usage">The usage.</param>
-        /// <param name="data">The data.</param>
+        /// <param name="data">The data which will be stored in the stream.</param>
         public GraphicStream(GraphicStreamUsage usage, ElementType[] data)
         {
             Usage = usage;
-            ElementSize = Marshal.SizeOf(typeof(ElementType));
+            ElementSize = Marshal.SizeOf(typeof (ElementType));
             Data = data;
             Size = Data.Length * ElementSize;
 
             mFormat = GetFormatForElementType(typeof (ElementType).Name);
-        }
-
-        private static GraphicStreamFormat GetFormatForElementType(string typeName)
-        {
-            switch (typeName)
-            {
-                case "Vector3":
-                    return GraphicStreamFormat.Vector3;
-                case "Color4":
-                    return GraphicStreamFormat.Color4;
-                default:
-                    throw new ArgumentOutOfRangeException("typeName", "Invalid type name");
-            }
         }
 
         /// <summary>
@@ -64,7 +50,7 @@ namespace TheNewEngine.Graphics
         /// <summary>
         /// Gets the data.
         /// </summary>
-        /// <value>The data.</value>
+        /// <value>Vertex or index data.</value>
         public ElementType[] Data { get; private set; }
 
         /// <summary>
@@ -76,6 +62,19 @@ namespace TheNewEngine.Graphics
             get
             {
                 return mFormat;
+            }
+        }
+
+        private static GraphicStreamFormat GetFormatForElementType(string typeName)
+        {
+            switch (typeName)
+            {
+                case "Vector3":
+                    return GraphicStreamFormat.Vector3;
+                case "Color4":
+                    return GraphicStreamFormat.Color4;
+                default:
+                    throw new ArgumentOutOfRangeException("typeName", "Invalid type name");
             }
         }
 

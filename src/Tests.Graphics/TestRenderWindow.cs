@@ -24,7 +24,7 @@ namespace TheNewEngine.Graphics
                         {
                             renderWindow.TakeScreenshot("test.bmp");
                         }
-                        if (args.KeyChar == 's')
+                        else if (args.KeyChar == 's')
                         {
                             if (renderWindow is Xna.RenderWindow)
                             {
@@ -63,7 +63,7 @@ namespace TheNewEngine.Graphics
             {
                 form.ClientSize = new Size(1024, 760);
 
-                var button = new Button {Size = new Size(800, 600), Top = 112, Left = 80, Parent = form};
+                var button = new Button { Size = new Size(800, 600), Top = 112, Left = 80, Parent = form };
 
                 IntPtr handle = button.Handle;
                 IRenderWindow renderWindow = new Xna.RenderWindow(handle);
@@ -75,7 +75,7 @@ namespace TheNewEngine.Graphics
                         {
                             renderWindow.TakeScreenshot("test.bmp");
                         }
-                        if (args.KeyChar == 's')
+                        else if (args.KeyChar == 's')
                         {
                             if (renderWindow is Xna.RenderWindow)
                             {

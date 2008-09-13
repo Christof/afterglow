@@ -1,4 +1,5 @@
 using System;
+
 namespace TheNewEngine.Graphics.OpenGl
 {
     /// <summary>

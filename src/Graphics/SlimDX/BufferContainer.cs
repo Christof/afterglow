@@ -18,6 +18,7 @@ namespace TheNewEngine.Graphics.SlimDX
         /// <summary>
         /// Initializes a new instance of the <see cref="BufferContainer"/> class.
         /// </summary>
+        /// <param name="device">The device.</param>
         public BufferContainer(Device device)
         {
             mDevice = device;
@@ -51,6 +52,7 @@ namespace TheNewEngine.Graphics.SlimDX
         /// <summary>
         /// Loads the resource.
         /// </summary>
+        /// <param name="decoree">The decoree.</param>
         public void Load(IFrameResource decoree)
         {
             var streamContainer = (IFrameResourceContainer<IGraphicStream>)decoree;

@@ -2,7 +2,6 @@ using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
 using System.Linq;
-using System.Drawing.Imaging;
 
 namespace TheNewEngine.Graphics.Utilities
 {

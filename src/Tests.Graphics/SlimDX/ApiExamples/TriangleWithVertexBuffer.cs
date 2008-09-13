@@ -5,8 +5,8 @@ using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
-using Buffer=SlimDX.Direct3D10.Buffer;
-using Device=SlimDX.Direct3D10.Device;
+using Buffer = SlimDX.Direct3D10.Buffer;
+using Device = SlimDX.Direct3D10.Device;
 
 namespace TheNewEngine.Graphics.SlimDX.ApiExamples
 {
@@ -95,7 +95,7 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
                            new VertexBufferBinding(buffer, Marshal.SizeOf(typeof(Vertex)), 0));
 
                        Matrix view = Matrix.LookAtRH(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
-                       Matrix projection = Matrix.PerspectiveFovRH((float) (Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
+                       Matrix projection = Matrix.PerspectiveFovRH((float)(Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
                        Matrix world = Matrix.Identity;
                        Matrix worldViewProjection = world * view * projection;
 
@@ -107,7 +107,6 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
                            pass.Apply();
                            device.Draw(vertices.Length, 0);
                        }
-
 
                        swapChain.Present(0, PresentFlags.None);
 

@@ -82,21 +82,21 @@ namespace TheNewEngine.Graphics.Xna.ApiExamples
 
                 pass.End();
             }
+
             effect.End();
         }
 
         private static VertexDeclaration CreateVertexDeclaration(GraphicsDevice device)
         {
-            return new VertexDeclaration(
-                device, new[]
-                {
-                    new VertexElement(
-                        0, 0, VertexElementFormat.Vector3,
-                        VertexElementMethod.Default, VertexElementUsage.Position, 0),
-                    new VertexElement(
-                        0, 12, VertexElementFormat.Vector3,
-                        VertexElementMethod.Default, VertexElementUsage.Color, 0)
-                });
+            var elements = new[]
+            {
+                new VertexElement(0, 0, VertexElementFormat.Vector3,
+                    VertexElementMethod.Default, VertexElementUsage.Position, 0),
+                new VertexElement(0, 12, VertexElementFormat.Vector3,
+                    VertexElementMethod.Default, VertexElementUsage.Color, 0)
+            };
+
+            return new VertexDeclaration(device, elements);
         }
 
         private static Vertex[] CreateVertices()

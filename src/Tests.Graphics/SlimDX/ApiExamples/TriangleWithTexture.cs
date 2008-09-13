@@ -5,8 +5,8 @@ using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
-using Buffer=SlimDX.Direct3D10.Buffer;
-using Device=SlimDX.Direct3D10.Device;
+using Buffer = SlimDX.Direct3D10.Buffer;
+using Device = SlimDX.Direct3D10.Device;
 
 namespace TheNewEngine.Graphics.SlimDX.ApiExamples
 {
@@ -100,10 +100,10 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
                        device.InputAssembler.SetInputLayout(inputLayout);
                        device.InputAssembler.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
                        device.InputAssembler.SetVertexBuffers(0,
-                           new VertexBufferBinding(buffer, Marshal.SizeOf(typeof(Vertex)), 0));
+                           new VertexBufferBinding(buffer, Marshal.SizeOf(typeof (Vertex)), 0));
 
                        Matrix view = Matrix.LookAtRH(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
-                       Matrix projection = Matrix.PerspectiveFovRH((float) (Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
+                       Matrix projection = Matrix.PerspectiveFovRH((float)(Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
                        Matrix world = Matrix.Identity;
                        Matrix worldViewProjection = world * view * projection;
 
@@ -118,7 +118,6 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
                            device.Draw(vertices.Length, 0);
                        }
 
-
                        swapChain.Present(0, PresentFlags.None);
 
                        Application.DoEvents();
@@ -130,12 +129,26 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
 
         private static Vertex[] CreateVertices()
         {
-            var top = new Vertex { Position = new Vector3(0f, 1f, 0f), Color = new Color4(1f, 0f, 0f),
-                TextureCoord = new Vector2(0.5f, 0f)};
-            var left = new Vertex { Position = new Vector3(-1f, -1f, 0f), Color = new Color4(0f, 1f, 0f), 
-                TextureCoord = new Vector2(0f, 1f) };
-            var right = new Vertex { Position = new Vector3(1f, -1f, 0f), Color = new Color4(0f, 0f, 1f), 
-                TextureCoord = new Vector2(1f, 1f) };
+            var top = new Vertex
+            {
+                Position = new Vector3(0f, 1f, 0f),
+                Color = new Color4(1f, 0f, 0f),
+                TextureCoord = new Vector2(0.5f, 0f)
+            };
+
+            var left = new Vertex
+            {
+                Position = new Vector3(-1f, -1f, 0f),
+                Color = new Color4(0f, 1f, 0f), 
+                TextureCoord = new Vector2(0f, 1f)
+            };
+
+            var right = new Vertex
+            {
+                Position = new Vector3(1f, -1f, 0f),
+                Color = new Color4(0f, 0f, 1f), 
+                TextureCoord = new Vector2(1f, 1f)
+            };
 
             return new[] { top, left, right };
         }

@@ -6,7 +6,7 @@ namespace TheNewEngine.Graphics
     public abstract class FrameResourceDecorator : IFrameResource
     {
         /// <summary>
-        /// Gets or sets the decoree.
+        /// Gets the decoree.
         /// </summary>
         /// <value>The decoree.</value>
         public IFrameResource Decoree { get; private set; }
@@ -14,6 +14,7 @@ namespace TheNewEngine.Graphics
         /// <summary>
         /// Loads the resource.
         /// </summary>
+        /// <param name="decoree">The decoree.</param>
         public virtual void Load(IFrameResource decoree)
         {
             Decoree = decoree;

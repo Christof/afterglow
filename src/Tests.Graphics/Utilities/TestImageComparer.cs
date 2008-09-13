@@ -45,6 +45,7 @@ namespace TheNewEngine.Graphics.Utilities
                 {
                     firstBitmap.Save(FIRST_FILENAME, ImageFormat.Png);
                 }
+
                 using (var secondBitnap = new Bitmap(400, 300))
                 {
                     secondBitnap.Save(SECOND_FILENAME, ImageFormat.Png);
@@ -58,6 +59,7 @@ namespace TheNewEngine.Graphics.Utilities
                 {
                     File.Delete(FIRST_FILENAME);
                 }
+
                 if (File.Exists(SECOND_FILENAME))
                 {
                     File.Delete(SECOND_FILENAME);

@@ -8,3 +8,4 @@ obj/*
 *.resharper.user
 *.sln.cache
 *.csproj.user
+*.Cache

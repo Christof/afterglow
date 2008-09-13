@@ -22,7 +22,7 @@ namespace TheNewEngine.Graphics.SlimDX
                             {
                                 renderWindow.TakeScreenshot("testSlimDX.bmp");
                             }
-                            if (args.KeyChar == 'f')
+                            else if (args.KeyChar == 'f')
                             {
                                 renderWindow.SwitchFullscreen();
                             }

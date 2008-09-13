@@ -2,7 +2,7 @@ using System;
 using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
-using Device=SlimDX.Direct3D10.Device;
+using Device = SlimDX.Direct3D10.Device;
 
 namespace TheNewEngine.Graphics.SlimDX
 {
@@ -75,6 +75,7 @@ namespace TheNewEngine.Graphics.SlimDX
             {
                 mSwapChain = new SwapChain(factory, mDevice, swapChainDescription);
             }
+
             using (var resource = mSwapChain.GetBuffer<Texture2D>(0))
             {
                 mRenderTarget = new RenderTargetView(mDevice, resource);

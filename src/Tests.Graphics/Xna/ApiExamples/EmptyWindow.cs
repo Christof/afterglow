@@ -17,7 +17,6 @@ namespace TheNewEngine.Graphics.Xna.ApiExamples
         {
             using (var form = CreateForm())
             {
-
                 PresentationParameters presentationParameters = CreatePresentationParameters();
 
                 var device = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, DeviceType.Hardware,
