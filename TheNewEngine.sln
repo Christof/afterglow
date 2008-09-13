@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics", "src\Graphics\Gr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Graphics", "src\Tests.Graphics\Tests.Graphics.csproj", "{886A66F9-E7A1-4288-9F03-A10E8732E1F2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Math", "Math", "{8D156FA2-5684-4C96-88E2-CB104A746426}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math", "src\Math\Math.csproj", "{2E903ACD-202D-4B64-B2EF-C262D611C45D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Math", "src\Tests.Math\Tests.Math.csproj", "{6087D02A-9541-4AD7-A065-25E847C43613}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,14 @@ Global
 		{886A66F9-E7A1-4288-9F03-A10E8732E1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{886A66F9-E7A1-4288-9F03-A10E8732E1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{886A66F9-E7A1-4288-9F03-A10E8732E1F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E903ACD-202D-4B64-B2EF-C262D611C45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E903ACD-202D-4B64-B2EF-C262D611C45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E903ACD-202D-4B64-B2EF-C262D611C45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E903ACD-202D-4B64-B2EF-C262D611C45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6087D02A-9541-4AD7-A065-25E847C43613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6087D02A-9541-4AD7-A065-25E847C43613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6087D02A-9541-4AD7-A065-25E847C43613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6087D02A-9541-4AD7-A065-25E847C43613}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -28,5 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{46A96A45-1CCE-4C94-95A2-9836CFBA2E78} = {C895D489-CFE7-49FB-A4DC-AF4111674CBC}
 		{886A66F9-E7A1-4288-9F03-A10E8732E1F2} = {C895D489-CFE7-49FB-A4DC-AF4111674CBC}
+		{2E903ACD-202D-4B64-B2EF-C262D611C45D} = {8D156FA2-5684-4C96-88E2-CB104A746426}
+		{6087D02A-9541-4AD7-A065-25E847C43613} = {8D156FA2-5684-4C96-88E2-CB104A746426}
 	EndGlobalSection
 EndGlobal
