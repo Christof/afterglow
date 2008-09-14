@@ -68,7 +68,7 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
         /// </summary>
         public void Unload()
         {
-            if (mBuffer != null && mBuffer.Disposed)
+            if (mBuffer != null && !mBuffer.Disposed)
             {
                 mBuffer.Dispose();
                 mBuffer = null;
