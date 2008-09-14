@@ -2,6 +2,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using MbUnit.Framework;
+using System;
 
 namespace TheNewEngine.Graphics.Utilities
 {
@@ -82,7 +83,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void Compare_returns_true_if_images_match_for_bitmaps()
+        public void Compare_Returns_true_if_images_match_for_bitmaps()
         {
             using (var firstBitmap = new Bitmap(TEST_FILENAME))
             {
@@ -166,6 +167,9 @@ namespace TheNewEngine.Graphics.Utilities
         [Test]
         public void ComparePerPixel_Returns_false_if_one_pixel_was_altered()
         {
+            Assert.Warning(Environment.CurrentDirectory);
+            Console.WriteLine(Environment.CurrentDirectory);
+
             using (var firstBitmap = new Bitmap(TEST_FILENAME))
             {
                 using (var secondBitmap = new Bitmap(TEST_FILENAME))
