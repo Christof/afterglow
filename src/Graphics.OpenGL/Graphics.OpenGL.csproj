@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A456EFBC-ECB0-4C64-B54E-10941689FB1D}</ProjectGuid>
+    <ProjectGuid>{C6977C42-AF28-437F-BA77-31F1F416E3C0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheNewEngine.Tests.Graphics.SlimDX</RootNamespace>
-    <AssemblyName>Tests.Graphics.SlimDX</AssemblyName>
+    <RootNamespace>TheNewEngine.Graphics.OpenGL</RootNamespace>
+    <AssemblyName>Graphics.OpenGL</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,8 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>..\..\bin\Graphics.OpenGL.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,19 +30,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>..\..\bin\Graphics.OpenGL.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gallio, Version=3.0.0.285, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL" />
-    <Reference Include="MbUnit, Version=3.0.0.285, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL" />
-    <Reference Include="SlimDX, Version=2.0.4.38, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -52,27 +45,16 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tao.OpenGl, Version=2.1.0.12, Culture=neutral, PublicKeyToken=1ca010269a4501ef, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiExamples\EmptyWindow.cs" />
-    <Compile Include="ApiExamples\TriangleWithTexture.cs" />
-    <Compile Include="ApiExamples\TriangleWithVertexBuffer.cs" />
-    <Compile Include="Examples\TriangleWithVertexBuffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test_RenderWindow.cs" />
+    <Compile Include="RenderWindow.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Graphics.SlimDX\Graphics.SlimDX.csproj">
-      <Project>{80770940-160F-4073-A000-B79B34B6FB7D}</Project>
-      <Name>Graphics.SlimDX</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Graphics\Graphics.csproj">
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tests.Graphics\Tests.Graphics.csproj">
-      <Project>{886A66F9-E7A1-4288-9F03-A10E8732E1F2}</Project>
-      <Name>Tests.Graphics</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

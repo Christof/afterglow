@@ -1,6 +1,6 @@
 using System;
 
-namespace TheNewEngine.Graphics.OpenGl
+namespace TheNewEngine.Graphics.OpenGL
 {
     /// <summary>
     /// Encapsulates OpenGl so that it renders in the given window.

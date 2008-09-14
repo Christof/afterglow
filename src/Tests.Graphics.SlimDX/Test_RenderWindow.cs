@@ -4,7 +4,7 @@ using MbUnit.Framework;
 
 namespace TheNewEngine.Graphics.SlimDX
 {
-    public class TestRenderWindow
+    public class Test_RenderWindow
     {
         [Test]
         public void Run()

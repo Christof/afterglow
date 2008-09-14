@@ -71,7 +71,6 @@
     <Compile Include="GraphicStreams\Test_GraphicStream.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStreamContainer.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStreamUsageHelper.cs" />
-    <Compile Include="OpenGl\TestRenderWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Test_FrameResourceDecorator.cs" />
     <Compile Include="TestRenderWindow.cs" />

@@ -2,9 +2,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.OpenGl
+namespace TheNewEngine.Graphics.Xna
 {
-    public class TestRenderWindow
+    public class Test_RenderWindow
     {
         [Test]
         public void Run()
@@ -20,7 +20,7 @@ namespace TheNewEngine.Graphics.OpenGl
                         {
                             if (args.KeyChar == 'p')
                             {
-                                renderWindow.TakeScreenshot("testSlimDX.bmp");
+                                renderWindow.TakeScreenshot("testXna.bmp");
                             }
                         };
 
