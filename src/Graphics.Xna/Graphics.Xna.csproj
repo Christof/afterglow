@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</ProjectGuid>
+    <ProjectGuid>{070267A1-5B14-4375-BD7D-19D629C34152}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheNewEngine.Graphics</RootNamespace>
-    <AssemblyName>Graphics</AssemblyName>
+    <RootNamespace>TheNewEngine.Graphics.Xna</RootNamespace>
+    <AssemblyName>Graphics.Xna</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\Graphics.XML</DocumentationFile>
+    <DocumentationFile>..\..\bin\Graphics.Xna.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,14 +30,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\Graphics.XML</DocumentationFile>
+    <DocumentationFile>..\..\bin\Graphics.Xna.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=3.0.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -46,26 +46,16 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tao.OpenGl, Version=2.1.0.12, Culture=neutral, PublicKeyToken=1ca010269a4501ef, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\thirdparty\lib\taoframework\bin\Tao.OpenGl.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraphicStreams\GraphicStream.cs" />
-    <Compile Include="GraphicStreams\GraphicStreamContainer.cs" />
-    <Compile Include="GraphicStreams\GraphicStreamFormat.cs" />
-    <Compile Include="GraphicStreams\GraphicStreamFormatHelper.cs" />
-    <Compile Include="GraphicStreams\GraphicStreamUsage.cs" />
-    <Compile Include="GraphicStreams\IGraphicStream.cs" />
-    <Compile Include="IRenderWindow.cs" />
-    <Compile Include="IScreenshotTaker.cs" />
-    <Compile Include="OpenGl\RenderWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\FrameResourceDecorator.cs" />
-    <Compile Include="Resources\IFrameResource.cs" />
-    <Compile Include="Resources\IFrameResourceContainer.cs" />
-    <Compile Include="Utilities\ImageComparer.cs" />
+    <Compile Include="RenderWindow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Graphics\Graphics.csproj">
+      <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
+      <Name>Graphics %28Graphics\Graphics%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
