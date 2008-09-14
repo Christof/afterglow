@@ -6,7 +6,7 @@ using System;
 namespace TheNewEngine.Graphics
 {
     [TestFixture]
-    public class TestRenderWindow
+    public class Test_RenderWindow
     {
         [Test]
         public void CanSwitchBetweenRenderWindows()
@@ -16,7 +16,7 @@ namespace TheNewEngine.Graphics
                 form.ClientSize = new Size(800, 600);
 
                 IRenderWindow renderWindow = new Xna.RenderWindow(form.Handle);
-                
+
                 form.KeyPress +=
                     delegate(object sender, KeyPressEventArgs args)
                     {
@@ -67,7 +67,7 @@ namespace TheNewEngine.Graphics
 
                 IntPtr handle = button.Handle;
                 IRenderWindow renderWindow = new Xna.RenderWindow(handle);
-                
+
                 button.KeyPress +=
                     delegate(object sender, KeyPressEventArgs args)
                     {

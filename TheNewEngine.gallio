@@ -3,6 +3,10 @@
   <testPackageConfig>
     <assemblyFiles>
       <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.dll</assemblyFile>
+      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.OpenGL.dll</assemblyFile>
+      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.SlimDX.dll</assemblyFile>
+      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.Xna.dll</assemblyFile>
+      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Math.dll</assemblyFile>
     </assemblyFiles>
     <hintDirectories />
     <hostSetup applicationBaseDirectory="" workingDirectory="" enableShadowCopy="false">
