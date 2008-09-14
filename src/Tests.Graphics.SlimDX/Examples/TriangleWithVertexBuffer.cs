@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Forms;
 using MbUnit.Framework;
 using SlimDX;
@@ -6,6 +5,7 @@ using SlimDX.Direct3D10;
 using SlimDX.DXGI;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
+using TheNewEngine.Graphics.SlimDX.GraphicStreams;
 using Device = SlimDX.Direct3D10.Device;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
@@ -38,9 +38,9 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 {
                     effect = Effect.FromFile(device, "MyShader10.fx", "fx_4_0",
                         ShaderFlags.Debug, EffectFlags.None, null, null, out errors);
-                    Console.WriteLine(errors);
+                    System.Console.WriteLine(errors);
                 }
-                catch (Exception)
+                catch (System.Exception)
                 {
                     Assert.Warning(errors);
 
@@ -53,35 +53,35 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 var inputLayout = new InputLayout(device, containerImplementation.InputElements, pass.Description.Signature);
 
                 Application.Idle +=
-                   delegate
-                   {
-                       device.ClearRenderTargetView(renderTarget, new Color4(0, 0, 0));
+                    delegate
+                    {
+                        device.ClearRenderTargetView(renderTarget, new Color4(0, 0, 0));
 
-                       device.InputAssembler.SetInputLayout(inputLayout);
-                       device.InputAssembler.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
+                        device.InputAssembler.SetInputLayout(inputLayout);
+                        device.InputAssembler.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
                        
-                       container.OnFrame();
+                        container.OnFrame();
 
-                       Matrix view = Matrix.LookAtRH(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
-                       Matrix projection = Matrix.PerspectiveFovRH((float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
-                       Matrix world = Matrix.Identity;
-                       Matrix worldViewProjection = world * view * projection;
+                        Matrix view = Matrix.LookAtRH(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
+                        Matrix projection = Matrix.PerspectiveFovRH((float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
+                        Matrix world = Matrix.Identity;
+                        Matrix worldViewProjection = world * view * projection;
 
-                       effect.GetVariableBySemantic("WorldViewProjection")
-                           .AsMatrix().SetMatrix(worldViewProjection);
+                        effect.GetVariableBySemantic("WorldViewProjection")
+                            .AsMatrix().SetMatrix(worldViewProjection);
 
-                       for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
-                       {
-                           pass.Apply();
+                        for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
+                        {
+                            pass.Apply();
 
-                           // TODO
-                           device.Draw(3, 0);
-                       }
+                            // TODO
+                            device.Draw(3, 0);
+                        }
 
-                       swapChain.Present(0, PresentFlags.None);
+                        swapChain.Present(0, PresentFlags.None);
 
-                       Application.DoEvents();
-                   };
+                        Application.DoEvents();
+                    };
 
                 Application.Run(form);
             }

@@ -4,7 +4,7 @@ using SlimDX.Direct3D10;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Resources;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 {
     /// <summary>
     /// Contains buffer which build up all vertex data.

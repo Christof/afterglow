@@ -3,7 +3,7 @@ using SlimDX;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Resources;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 {
     /// <summary>
     /// Implementation of a frame resource with a <see cref="Buffer"/>.

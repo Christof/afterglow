@@ -1,6 +1,6 @@
 ﻿using TheNewEngine.Graphics.Resources;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 {
     /// <summary>
     /// Interface for SlimDX buffers which must know the index of the buffer
