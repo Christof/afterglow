@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using SlimDX;
 using SlimDX.Direct3D10;
 using TheNewEngine.Graphics.GraphicStreams;
+using TheNewEngine.Graphics.Resources;
 
 namespace TheNewEngine.Graphics.SlimDX
 {

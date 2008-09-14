@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.Resources
 {
     /// <summary>
     /// <see cref="IFrameResource"/> which contains other <see cref="IFrameResource"/> of the

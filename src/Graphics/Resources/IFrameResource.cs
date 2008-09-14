@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.Resources
 {
     /// <summary>
     /// Resource which needs an update every frame.

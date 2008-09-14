@@ -1,4 +1,5 @@
 using System.Collections;
+using TheNewEngine.Graphics.Resources;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {

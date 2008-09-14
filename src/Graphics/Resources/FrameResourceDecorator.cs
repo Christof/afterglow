@@ -1,9 +1,9 @@
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.Resources
 {
     /// <summary>
     /// Decorator for a frame resource.
     /// </summary>
-    public abstract class FrameResourceDecorator : IFrameResource
+    public class FrameResourceDecorator : IFrameResource
     {
         /// <summary>
         /// Gets the decoree.

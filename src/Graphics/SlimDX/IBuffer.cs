@@ -1,4 +1,6 @@
-﻿namespace TheNewEngine.Graphics.SlimDX
+﻿using TheNewEngine.Graphics.Resources;
+
+namespace TheNewEngine.Graphics.SlimDX
 {
     /// <summary>
     /// Interface for SlimDX buffers which must know the index of the buffer
