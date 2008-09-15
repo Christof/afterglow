@@ -12,7 +12,7 @@ namespace TheNewEngine.Graphics.SlimDX
             using (var form = new Form())
             {
                 form.ClientSize = new Size(800, 600);
-                
+
                 using (var renderWindow = new RenderWindow(form.Handle))
                 {
                     form.KeyPress +=

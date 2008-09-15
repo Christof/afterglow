@@ -27,9 +27,21 @@ namespace TheNewEngine.Graphics.SlimDX
                 case GraphicStreamUsage.Color:
                     return "COLOR";
 
+                case GraphicStreamUsage.Normal:
+                    return "NORMAL";
+
+                case GraphicStreamUsage.Tangent:
+                    return "TANGENT";
+
+                case GraphicStreamUsage.Binormal:
+                    return "BINORMAL";
+
+                case GraphicStreamUsage.TextureCoordinate:
+                    return "TEXCOORD";
+
                 default:
-                    throw new InvalidOperationException(
-                        "Unable to convert the given graphic stream usage");
+                    throw new InvalidOperationException(string.Format(
+                        "Unable to convert the given graphic stream usage ({0})", graphicStreamUsage));
             }
         }
 
@@ -44,11 +56,17 @@ namespace TheNewEngine.Graphics.SlimDX
             {
                 case GraphicStreamFormat.Vector3:
                     return Format.R32G32B32_Float;
+
                 case GraphicStreamFormat.Color4:
                     return Format.R32G32B32A32_Float;
-            }
 
-            throw new InvalidOperationException();
+                case GraphicStreamFormat.Float:
+                    return Format.R32_Float;
+
+                default:
+                    throw new InvalidOperationException(string.Format(
+                        "Unable to convert the given format ({0})", format));
+            }
         }
     }
 }

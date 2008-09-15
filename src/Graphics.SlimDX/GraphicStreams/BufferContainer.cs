@@ -85,7 +85,10 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
         /// </summary>
         public void Unload()
         {
-            throw new System.NotImplementedException();
+            foreach (var graphicStream in mGraphicStreamContainer)
+            {
+                graphicStream.Unload();
+            }
         }
 
         /// <summary>

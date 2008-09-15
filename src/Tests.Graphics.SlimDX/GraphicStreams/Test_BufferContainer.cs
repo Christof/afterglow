@@ -31,6 +31,10 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 
             container.Load(graphicStreamContainer);
 
+            container.OnFrame();
+
+            container.Unload();
+
             streamMock.VerifyAll();
             deviceMock.VerifyAll();
         }
