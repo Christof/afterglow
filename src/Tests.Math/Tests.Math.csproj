@@ -57,7 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Primitives\Test_Matrix.cs" />
     <Compile Include="Primitives\Test_Vector3.cs" />
+    <Compile Include="Primitives\Test_Vector4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
