@@ -64,6 +64,24 @@ namespace TheNewEngine.Math.Primitives
         }
 
         /// <summary>
+        /// Gets the squared length of the vector.
+        /// </summary>
+        /// <value>The squared length.</value>
+        public float LengthSquared
+        {
+            get { return mX * mX + mY * mY + mZ * mZ; }
+        }
+
+        /// <summary>
+        /// Gets the length of the vector.
+        /// </summary>
+        /// <value>The length.</value>
+        public float Length
+        {
+            get { return (float)System.Math.Sqrt(LengthSquared); }
+        }
+
+        /// <summary>
         /// Gets the value at the specified axis.
         /// </summary>
         /// <value>Value of the specified axis.</value>
@@ -84,6 +102,33 @@ namespace TheNewEngine.Math.Primitives
                         "The Vector3 has no value at the given index");
                 }
             }
+        }
+
+        /// <summary>
+        /// Normalizes the vector.
+        /// <remarks>
+        /// A normalized vector has a length of 1.
+        /// </remarks>
+        /// </summary>
+        public void Normalize()
+        {
+            float length = Length;
+            mX /= length;
+            mY /= length;
+            mZ /= length;
+        }
+
+        /// <summary>
+        /// Returns the cross product of this vector with the given one.
+        /// </summary>
+        /// <param name="other">The other vector.</param>
+        /// <returns>The cross product.</returns>
+        public Vector3 Cross(Vector3 other)
+        {
+            return new Vector3(
+                mY * other.Z - mZ * other.Y,
+                -mX * other.Z + mZ * other.X,
+                mX * other.Y - mY * other.X);
         }
     }
 }
