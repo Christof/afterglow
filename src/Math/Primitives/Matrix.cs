@@ -10,28 +10,25 @@ namespace TheNewEngine.Math.Primitives
     {
         // Don't use auto properties because then the 
         // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
-        private Vector4 mFirstRow;
+        private float mR1C1;
+        private float mR1C2;
+        private float mR1C3;
+        private float mR1C4;
 
-        private Vector4 mSecondRow;
+        private float mR2C1;
+        private float mR2C2;
+        private float mR2C3;
+        private float mR2C4;
 
-        private Vector4 mThirdRow;
+        private float mR3C1;
+        private float mR3C2;
+        private float mR3C3;
+        private float mR3C4;
 
-        private Vector4 mFourthRow;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Matrix"/> struct.
-        /// </summary>
-        /// <param name="firstRow">The first row.</param>
-        /// <param name="secondRow">The second row.</param>
-        /// <param name="thirdRow">The third row.</param>
-        /// <param name="fourthRow">The fourth row.</param>
-        public Matrix(Vector4 firstRow, Vector4 secondRow, Vector4 thirdRow, Vector4 fourthRow)
-        {
-            mFirstRow = firstRow;
-            mSecondRow = secondRow;
-            mThirdRow = thirdRow;
-            mFourthRow = fourthRow;
-        }
+        private float mR4C1;
+        private float mR4C2;
+        private float mR4C3;
+        private float mR4C4;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Matrix"/> struct.
@@ -58,50 +55,185 @@ namespace TheNewEngine.Math.Primitives
             float r3c1, float r3c2, float r3c3, float r3c4, 
             float r4c1, float r4c2, float r4c3, float r4c4)
         {
-            mFirstRow = new Vector4(r1c1, r1c2, r1c3, r1c4);
-            mSecondRow = new Vector4(r2c1, r2c2, r2c3, r2c4);
-            mThirdRow = new Vector4(r3c1, r3c2, r3c3, r3c4);
-            mFourthRow = new Vector4(r4c1, r4c2, r4c3, r4c4);
+            mR1C1 = r1c1;
+            mR1C2 = r1c2;
+            mR1C3 = r1c3;
+            mR1C4 = r1c4;
+
+            mR2C1 = r2c1;
+            mR2C2 = r2c2;
+            mR2C3 = r2c3;
+            mR2C4 = r2c4;
+
+            mR3C1 = r3c1;
+            mR3C2 = r3c2;
+            mR3C3 = r3c3;
+            mR3C4 = r3c4;
+
+            mR4C1 = r4c1;
+            mR4C2 = r4c2;
+            mR4C3 = r4c3;
+            mR4C4 = r4c4;
         }
 
         /// <summary>
-        /// Gets or sets the first row.
+        /// Gets or sets the value of row 1 column 1.
         /// </summary>
-        /// <value>The first row.</value>
-        public Vector4 FirstRow
+        /// <value>The value of row 1 column 1.</value>
+        public float R1C1
         {
-            get { return mFirstRow; }
-            set { mFirstRow = value; }
+            get { return mR1C1; }
+            set { mR1C1 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the second row.
+        /// Gets or sets the value of row 1 column 2.
         /// </summary>
-        /// <value>The second row.</value>
-        public Vector4 SecondRow
+        /// <value>The value of row 1 column 2.</value>
+        public float R1C2
         {
-            get { return mSecondRow; }
-            set { mSecondRow = value; }
+            get { return mR1C2; }
+            set { mR1C2 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the third row.
+        /// Gets or sets the value of row 1 column 3.
         /// </summary>
-        /// <value>The third row.</value>
-        public Vector4 ThirdRow
+        /// <value>The value of row 1 column 3.</value>
+        public float R1C3
         {
-            get { return mThirdRow; }
-            set { mThirdRow = value; }
+            get { return mR1C3; }
+            set { mR1C3 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the fourth row.
+        /// Gets or sets the value of row 1 column 4.
         /// </summary>
-        /// <value>The fourth row.</value>
-        public Vector4 FourthRow
+        /// <value>The value of row 1 column 4.</value>
+        public float R1C4
         {
-            get { return mFourthRow; }
-            set { mFourthRow = value; }
+            get { return mR1C4; }
+            set { mR1C4 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 2 column 1.
+        /// </summary>
+        /// <value>The value of row 2 column 1.</value>
+        public float R2C1
+        {
+            get { return mR2C1; }
+            set { mR2C1 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 2 column 2.
+        /// </summary>
+        /// <value>The value of row 2 column 2.</value>
+        public float R2C2
+        {
+            get { return mR2C2; }
+            set { mR2C2 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 2 column 3.
+        /// </summary>
+        /// <value>The value of row 2 column 3.</value>
+        public float R2C3
+        {
+            get { return mR2C3; }
+            set { mR2C3 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 2 column 4.
+        /// </summary>
+        /// <value>The value of row 2 column 4.</value>
+        public float R2C4
+        {
+            get { return mR2C4; }
+            set { mR2C4 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 3 column 1.
+        /// </summary>
+        /// <value>The value of row 3 column 1.</value>
+        public float R3C1
+        {
+            get { return mR3C1; }
+            set { mR3C1 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 3 column 2.
+        /// </summary>
+        /// <value>The value of row 3 column 2.</value>
+        public float R3C2
+        {
+            get { return mR3C2; }
+            set { mR3C2 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 3 column 3.
+        /// </summary>
+        /// <value>The value of row 3 column 3.</value>
+        public float R3C3
+        {
+            get { return mR3C3; }
+            set { mR3C3 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 3 column 4.
+        /// </summary>
+        /// <value>The value of row 3 column 4.</value>
+        public float R3C4
+        {
+            get { return mR3C4; }
+            set { mR3C4 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 4 column 1.
+        /// </summary>
+        /// <value>The value of row 4 column 1.</value>
+        public float R4C1
+        {
+            get { return mR4C1; }
+            set { mR4C1 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 4 column 2.
+        /// </summary>
+        /// <value>The value of row 4 column 2.</value>
+        public float R4C2
+        {
+            get { return mR4C2; }
+            set { mR4C2 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 4 column 3.
+        /// </summary>
+        /// <value>The value of row 4 column 3.</value>
+        public float R4C3
+        {
+            get { return mR4C3; }
+            set { mR4C3 = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of row 4 column 4.
+        /// </summary>
+        /// <value>The value of row 4 column 4.</value>
+        public float R4C4
+        {
+            get { return mR4C4; }
+            set { mR4C4 = value; }
         }
     }
 }

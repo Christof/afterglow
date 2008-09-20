@@ -5,59 +5,53 @@ namespace TheNewEngine.Math.Primitives
     public class Test_Matrix
     {
         [Test]
-        public void Constructor_initializes_with_rows_and_access_by_rows()
-        {
-            var firstRow = new Vector4(11, 12, 13, 14);
-            var secondRow = new Vector4(21, 22, 23, 24);
-            var thirdRow = new Vector4(31, 32, 33, 34);
-            var fourthRow = new Vector4(41, 42, 43, 44);
-
-            var matrix = new Matrix(firstRow, secondRow, thirdRow, fourthRow);
-
-            Assert.AreEqual(firstRow, matrix.FirstRow);
-            Assert.AreEqual(secondRow, matrix.SecondRow);
-            Assert.AreEqual(thirdRow, matrix.ThirdRow);
-            Assert.AreEqual(fourthRow, matrix.FourthRow);
-        }
-
-        [Test]
         public void Constructor_intialize_with_values_and_access_by_values()
         {
-            float r1c1 = 11;
-            float r1c2 = 12;
-            float r1c3 = 13;
-            float r1c4 = 14;
+            var r1c1 = 11;
+            var r1c2 = 12;
+            var r1c3 = 13;
+            var r1c4 = 14;
 
-            float r2c1 = 21;
-            float r2c2 = 22;
-            float r2c3 = 23;
-            float r2c4 = 24;
+            var r2c1 = 21;
+            var r2c2 = 22;
+            var r2c3 = 23;
+            var r2c4 = 24;
 
-            float r3c1 = 31;
-            float r3c2 = 32;
-            float r3c3 = 33;
-            float r3c4 = 34;
+            var r3c1 = 31;
+            var r3c2 = 32;
+            var r3c3 = 33;
+            var r3c4 = 34;
 
-            float r4c1 = 41;
-            float r4c2 = 42;
-            float r4c3 = 43;
-            float r4c4 = 44;
+            var r4c1 = 41;
+            var r4c2 = 42;
+            var r4c3 = 43;
+            var r4c4 = 44;
 
             var matrix = new Matrix(
                 r1c1, r1c2, r1c3, r1c4,
                 r2c1, r2c2, r2c3, r2c4,
                 r3c1, r3c2, r3c3, r3c4,
                 r4c1, r4c2, r4c3, r4c4);
-        }
 
-        [Test]
-        public void Test()
-        {
-//            var matrix = new Matrix();
-//
-//            matrix.FirstRow.Z = 1.0f;
-//
-//            Assert.AreEqual(1.0f, matrix.FirstRow.X);
+            Assert.AreEqual(r1c1, matrix.R1C1);
+            Assert.AreEqual(r1c2, matrix.R1C2);
+            Assert.AreEqual(r1c3, matrix.R1C3);
+            Assert.AreEqual(r1c4, matrix.R1C4);
+
+            Assert.AreEqual(r2c1, matrix.R2C1);
+            Assert.AreEqual(r2c2, matrix.R2C2);
+            Assert.AreEqual(r2c3, matrix.R2C3);
+            Assert.AreEqual(r2c4, matrix.R2C4);
+
+            Assert.AreEqual(r3c1, matrix.R3C1);
+            Assert.AreEqual(r3c2, matrix.R3C2);
+            Assert.AreEqual(r3c3, matrix.R3C3);
+            Assert.AreEqual(r3c4, matrix.R3C4);
+            
+            Assert.AreEqual(r4c1, matrix.R4C1);
+            Assert.AreEqual(r4c2, matrix.R4C2);
+            Assert.AreEqual(r4c3, matrix.R4C3);
+            Assert.AreEqual(r4c4, matrix.R4C4);
         }
     }
 }
