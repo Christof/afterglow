@@ -48,6 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cameras\ICamera.cs" />
+    <Compile Include="Cameras\ILense.cs" />
+    <Compile Include="Cameras\IStand.cs" />
+    <Compile Include="Cameras\Stand.cs" />
     <Compile Include="GraphicStreams\GraphicStream.cs" />
     <Compile Include="GraphicStreams\GraphicStreamContainer.cs" />
     <Compile Include="GraphicStreams\GraphicStreamFormat.cs" />
@@ -61,6 +65,12 @@
     <Compile Include="Resources\IFrameResource.cs" />
     <Compile Include="Resources\IFrameResourceContainer.cs" />
     <Compile Include="Utilities\ImageComparer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Math\Math.csproj">
+      <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
+      <Name>Math %28Math\Math%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
