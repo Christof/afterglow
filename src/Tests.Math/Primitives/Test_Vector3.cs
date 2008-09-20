@@ -1,4 +1,5 @@
 using MbUnit.Framework;
+using System;
 
 namespace TheNewEngine.Math.Primitives
 {
@@ -20,7 +21,39 @@ namespace TheNewEngine.Math.Primitives
         }
 
         [Test]
-        public void AccessValuesByIndex()
+        public void Zero()
+        {
+            var zero = Vector3.Zero;
+
+            Assert.AreEqual(new Vector3(0, 0, 0), zero);
+        }
+
+        [Test]
+        public void XAxis()
+        {
+            var xAxis = Vector3.XAxis;
+
+            Assert.AreEqual(new Vector3(1, 0, 0), xAxis);
+        }
+
+        [Test]
+        public void YAxis()
+        {
+            var yAxis = Vector3.YAxis;
+
+            Assert.AreEqual(new Vector3(0, 1, 0), yAxis);
+        }
+
+        [Test]
+        public void ZAxis()
+        {
+            var zAxis = Vector3.ZAxis;
+
+            Assert.AreEqual(new Vector3(0, 0, 1), zAxis);
+        }
+
+        [Test]
+        public void Access_values_by_index()
         {
             const float X = 1.0f;
             const float Y = 2.0f;
@@ -31,6 +64,33 @@ namespace TheNewEngine.Math.Primitives
             Assert.AreEqual(X, vector3[0]);
             Assert.AreEqual(Y, vector3[1]);
             Assert.AreEqual(Z, vector3[2]);
+        }
+
+        [Test]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Access_values_by_index_throws_OutOfRangeException_if_index_is_out_of_range()
+        {
+            var vector3 = new Vector3();
+
+            var value = vector3[3];
+        }
+
+        [Test]
+        public void SetProperties()
+        {
+            const float X = 1.0f;
+            const float Y = 2.0f;
+            const float Z = 3.0f;
+
+            var vector3 = new Vector3();
+
+            vector3.X = X;
+            vector3.Y = Y;
+            vector3.Z = Z;
+
+            Assert.AreEqual(X, vector3.X);
+            Assert.AreEqual(Y, vector3.Y);
+            Assert.AreEqual(Z, vector3.Z);
         }
 
         [Test]
@@ -73,6 +133,19 @@ namespace TheNewEngine.Math.Primitives
             Assert.AreEqual(-3.0f, cross.X);
             Assert.AreEqual(6.0f, cross.Y);
             Assert.AreEqual(-3.0f, cross.Z);
+        }
+
+        [Test]
+        public void Plus_Operator()
+        {
+            var vector1 = new Vector3(2.0f, 3.0f, 4.0f);
+            var vector2 = new Vector3(5.0f, 6.0f, 7.0f);
+
+            var result = vector1 + vector2;
+
+            Assert.AreEqual(vector1.X + vector2.X, result.X);
+            Assert.AreEqual(vector1.Y + vector2.Y, result.Y);
+            Assert.AreEqual(vector1.Z + vector2.Z, result.Z);
         }
     }
 }

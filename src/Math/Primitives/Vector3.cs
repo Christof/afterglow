@@ -20,6 +20,14 @@ namespace TheNewEngine.Math.Primitives
 
         private float mZ;
 
+        private static readonly Vector3 ZERO = new Vector3(0, 0, 0);
+
+        private static readonly Vector3 X_AXIS = new Vector3(1, 0, 0);
+
+        private static readonly Vector3 Y_AXIS = new Vector3(0, 1, 0);
+
+        private static readonly Vector3 Z_AXIS = new Vector3(0, 0, 1);
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Vector3"/> struct.
         /// </summary>
@@ -61,6 +69,42 @@ namespace TheNewEngine.Math.Primitives
         {
             get { return mZ; }
             set { mZ = value; }
+        }
+
+        /// <summary>
+        /// Gets a zero initialized vector.
+        /// </summary>
+        /// <value>Zero initialized vector.</value>
+        public static Vector3 Zero
+        {
+            get { return ZERO; }
+        }
+
+        /// <summary>
+        /// Gets the X axis vector.
+        /// </summary>
+        /// <value>The X axis.</value>
+        public static Vector3 XAxis
+        {
+            get { return X_AXIS; }
+        }
+
+        /// <summary>
+        /// Gets the Y axis vector.
+        /// </summary>
+        /// <value>The Y axis.</value>
+        public static Vector3 YAxis
+        {
+            get { return Y_AXIS; }
+        }
+
+        /// <summary>
+        /// Gets the Z axis vector.
+        /// </summary>
+        /// <value>The Z axis.</value>
+        public static Vector3 ZAxis
+        {
+            get { return Z_AXIS; }
         }
 
         /// <summary>
@@ -129,6 +173,20 @@ namespace TheNewEngine.Math.Primitives
                 mY * other.Z - mZ * other.Y,
                 -mX * other.Z + mZ * other.X,
                 mX * other.Y - mY * other.X);
+        }
+
+        /// <summary>
+        /// Implements the operator + which adds up two vectors.
+        /// </summary>
+        /// <param name="summand1">The first summand.</param>
+        /// <param name="summand2">The second summand.</param>
+        /// <returns>The sum of the two summands.</returns>
+        public static Vector3 operator+(Vector3 summand1, Vector3 summand2)
+        {
+            return new Vector3(
+                summand1.X + summand2.X,
+                summand1.Y + summand2.Y,
+                summand1.Z + summand2.Z);
         }
     }
 }

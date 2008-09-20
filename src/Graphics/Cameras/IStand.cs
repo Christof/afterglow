@@ -1,3 +1,5 @@
+using TheNewEngine.Math.Primitives;
+
 namespace TheNewEngine.Graphics.Cameras
 {
     /// <summary>
@@ -5,5 +7,28 @@ namespace TheNewEngine.Graphics.Cameras
     /// </summary>
     public interface IStand
     {
+        /// <summary>
+        /// Gets or sets the position.
+        /// </summary>
+        /// <value>The position.</value>
+        Vector3 Position { get; set; }
+
+        /// <summary>
+        /// Gets or sets the direction.
+        /// </summary>
+        /// <value>The direction.</value>
+        Vector3 Direction { get; set; }
+
+        /// <summary>
+        /// Gets or sets up.
+        /// </summary>
+        /// <value>Up.</value>
+        Vector3 Up { get; set; }
+
+        /// <summary>
+        /// Gets the view matrix.
+        /// </summary>
+        /// <value>The view matrix.</value>
+        Matrix ViewMatrix { get; }
     }
 }

@@ -1,3 +1,4 @@
+using TheNewEngine.Math.Primitives;
 namespace TheNewEngine.Graphics.Cameras
 {
     /// <summary>
@@ -22,5 +23,11 @@ namespace TheNewEngine.Graphics.Cameras
         /// </summary>
         /// <value>The lense.</value>
         ILense Lense { get; set; }
+
+        /// <summary>
+        /// Gets the view projection matrix.
+        /// </summary>
+        /// <value>The view projection matrix.</value>
+        Matrix ViewProjectionMatrix { get; }
     }
 }
