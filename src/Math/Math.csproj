@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Primitives\ICoordinateSystem.cs" />
     <Compile Include="Primitives\Matrix.cs" />
     <Compile Include="Primitives\Vector3.cs" />
     <Compile Include="Primitives\Vector4.cs" />

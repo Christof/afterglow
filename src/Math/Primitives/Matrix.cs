@@ -6,7 +6,7 @@ namespace TheNewEngine.Math.Primitives
     /// The implementation is a row major matrix.
     /// </remarks>
     /// </summary>
-    public struct Matrix
+    public struct Matrix : ICoordinateSystem
     {
         // Don't use auto properties because then the 
         // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
@@ -29,6 +29,12 @@ namespace TheNewEngine.Math.Primitives
         private float mR4C2;
         private float mR4C3;
         private float mR4C4;
+
+        private static readonly Matrix IDENTITY = new Matrix(
+            1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 1.0f);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Matrix"/> struct.
@@ -234,6 +240,54 @@ namespace TheNewEngine.Math.Primitives
         {
             get { return mR4C4; }
             set { mR4C4 = value; }
+        }
+
+        /// <summary>
+        /// Gets the identity matrix.
+        /// </summary>
+        /// <remarks>
+        /// The elements on the main diagonal are 1; all others are 0.
+        /// </remarks>
+        /// <value>The identity matrix.</value>
+        public static Matrix Identity
+        {
+            get { return IDENTITY; }
+        }
+
+        /// <summary>
+        /// Gets the X axis.
+        /// </summary>
+        /// <value>The X axis.</value>
+        public Vector3 XAxis
+        {
+            get { return new Vector3(mR1C1, mR2C1, mR3C1); }
+        }
+
+        /// <summary>
+        /// Gets the Y axis.
+        /// </summary>
+        /// <value>The Y axis.</value>
+        public Vector3 YAxis
+        {
+            get { return new Vector3(mR1C2, mR2C2, mR3C2); }
+        }
+
+        /// <summary>
+        /// Gets the Z axis.
+        /// </summary>
+        /// <value>The Z axis.</value>
+        public Vector3 ZAxis
+        {
+            get { return new Vector3(mR1C3, mR2C3, mR3C3); }
+        }
+
+        /// <summary>
+        /// Gets the origin.
+        /// </summary>
+        /// <value>The origin.</value>
+        public Vector3 Origin
+        {
+            get { return new Vector3(mR1C4, mR2C4, mR3C4); }
         }
     }
 }

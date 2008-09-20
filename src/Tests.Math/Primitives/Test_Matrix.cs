@@ -53,5 +53,87 @@ namespace TheNewEngine.Math.Primitives
             Assert.AreEqual(r4c3, matrix.R4C3);
             Assert.AreEqual(r4c4, matrix.R4C4);
         }
+
+        [Test]
+        public void Identity()
+        {
+            var matrix = Matrix.Identity;
+
+            Assert.AreEqual(1.0f, matrix.R1C1);
+            Assert.AreEqual(0.0f, matrix.R1C2);
+            Assert.AreEqual(0.0f, matrix.R1C3);
+            Assert.AreEqual(0.0f, matrix.R1C4);
+
+            Assert.AreEqual(0.0f, matrix.R2C1);
+            Assert.AreEqual(1.0f, matrix.R2C2);
+            Assert.AreEqual(0.0f, matrix.R2C3);
+            Assert.AreEqual(0.0f, matrix.R2C4);
+
+            Assert.AreEqual(0.0f, matrix.R3C1);
+            Assert.AreEqual(0.0f, matrix.R3C2);
+            Assert.AreEqual(1.0f, matrix.R3C3);
+            Assert.AreEqual(0.0f, matrix.R3C4);
+
+            Assert.AreEqual(0.0f, matrix.R4C1);
+            Assert.AreEqual(0.0f, matrix.R4C2);
+            Assert.AreEqual(0.0f, matrix.R4C3);
+            Assert.AreEqual(1.0f, matrix.R4C4);
+        }
+
+        [Test]
+        public void Implements_ICoordinateSystem_XAxis()
+        {
+            ICoordinateSystem matrix = new Matrix(
+                11, 12, 13, 14,
+                21, 22, 23, 24,
+                31, 32, 33, 34,
+                41, 42, 43, 44);
+
+            Vector3 xAxis = matrix.XAxis;
+
+            Assert.AreEqual(new Vector3(11, 21, 31), xAxis);
+        }
+
+        [Test]
+        public void Implements_ICoordinateSystem_YAxis()
+        {
+            ICoordinateSystem matrix = new Matrix(
+                11, 12, 13, 14,
+                21, 22, 23, 24,
+                31, 32, 33, 34,
+                41, 42, 43, 44);
+
+            Vector3 yAxis = matrix.YAxis;
+
+            Assert.AreEqual(new Vector3(12, 22, 32), yAxis);
+        }
+
+        [Test]
+        public void Implements_ICoordinateSystem_ZAxis()
+        {
+            ICoordinateSystem matrix = new Matrix(
+                11, 12, 13, 14,
+                21, 22, 23, 24,
+                31, 32, 33, 34,
+                41, 42, 43, 44);
+
+            Vector3 zAxis = matrix.ZAxis;
+
+            Assert.AreEqual(new Vector3(13, 23, 33), zAxis);
+        }
+
+        [Test]
+        public void Implements_ICoordinateSystem_Origin()
+        {
+            ICoordinateSystem matrix = new Matrix(
+                11, 12, 13, 14,
+                21, 22, 23, 24,
+                31, 32, 33, 34,
+                41, 42, 43, 44);
+
+            Vector3 origin = matrix.Origin;
+
+            Assert.AreEqual(new Vector3(14, 24, 34), origin);
+        }
     }
 }
