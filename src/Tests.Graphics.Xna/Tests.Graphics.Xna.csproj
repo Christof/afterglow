@@ -35,6 +35,10 @@
     </DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=3.0.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\lib\xna\Microsoft.Xna.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="Gallio, Version=3.0.0.285, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL" />
     <Reference Include="MbUnit, Version=3.0.0.285, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework, Version=3.0.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86">
@@ -61,7 +65,9 @@
     <Compile Include="ApiExamples\EmptyWindow.cs" />
     <Compile Include="ApiExamples\TriangleWithStreams.cs" />
     <Compile Include="ApiExamples\TriangleWithVertexBuffer.cs" />
+    <Compile Include="Comparison\Test_Comparison_Stand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test_Extensions.cs" />
     <Compile Include="Test_RenderWindow.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,13 +79,19 @@
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Math\Math.csproj">
+      <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
+      <Name>Math %28Math\Math%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tests.Graphics\Tests.Graphics.csproj">
       <Project>{886A66F9-E7A1-4288-9F03-A10E8732E1F2}</Project>
       <Name>Tests.Graphics</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MyShader.fx" />
+    <None Include="MyShader.fx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
