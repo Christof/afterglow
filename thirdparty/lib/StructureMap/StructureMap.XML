@@ -1,0 +1,1109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StructureMap</name>
+    </assembly>
+    <members>
+        <member name="T:StructureMap.MementoSource">
+            <summary>
+            Abstract class that is the supertype of all storage and retrieval mechanisms of
+            InstanceMemento instances
+            </summary>
+        </member>
+        <member name="M:StructureMap.MementoSource.GetMemento(System.String)">
+            <summary>
+            Retrieves the named InstanceMemento
+            </summary>
+            <param name="instanceKey">The instanceKey of the requested InstanceMemento</param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.MementoSource.GetAllMementos">
+            <summary>
+            Retrieves an array of all InstanceMemento's stored by this MementoSource
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.MementoSource.containsKey(System.String)">
+            <summary>
+            Template pattern method.  Determines if the MementoSource contains a definition for the
+            requested instanceKey.
+            </summary>
+            <param name="instanceKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.MementoSource.retrieveMemento(System.String)">
+            <summary>
+            Template pattern method.  Retrieves an InstanceMemento for the instanceKey
+            </summary>
+            <param name="instanceKey"></param>
+            <returns></returns>
+        </member>
+        <member name="P:StructureMap.MementoSource.SourceType">
+            <summary>
+            The type of MementoSource
+            </summary>
+        </member>
+        <member name="P:StructureMap.MementoSource.Description">
+            <summary>
+            String description of the MementoSource.  Used in the StructureMap-Client UI.
+            </summary>
+        </member>
+        <member name="M:StructureMap.Source.EmbeddedFolderXmlMementoSource.#ctor(StructureMap.Source.XmlMementoStyle,System.String,System.String,System.String)">
+            <summary>
+            Implementation of MementoSource that stores and retrieves an XmlInstanceMemento per Embedded Resource file 
+            in a named namespace.  EmbeddedFolderXmlMementoSource is meant to simplify complicated object graph configurations 
+            by isolating each instance to a separate
+            editable file.
+            </summary>
+            <param name="style">NodeNormalized or AttributeNormalized</param>
+            <param name="assemblyName">The name of the Assembly with the embedded resources</param>
+            <param name="folderPath">The root namespace of all of the mementos.</param>
+            <param name="extension">The file extension of the memento files - "xml"</param>
+        </member>
+        <member name="T:StructureMap.InstanceMemento">
+            <summary>
+            GoF Memento representing an Object Instance
+            </summary>
+        </member>
+        <member name="M:StructureMap.InstanceMemento.GetProperty(System.String)">
+            <summary>
+            Retrieves the named property value as a string
+            </summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.InstanceMemento.getPropertyValue(System.String)">
+            <summary>
+            Template method for implementation specific retrieval of the named property
+            </summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.InstanceMemento.GetChildMemento(System.String)">
+            <summary>
+            Returns the named child InstanceMemento
+            </summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.InstanceMemento.getChild(System.String)">
+            <summary>
+            Template method for implementation specific retrieval of the named property
+            </summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.InstanceMemento.GetChildrenArray(System.String)">
+            <summary>
+            This method is made public for testing.  It is not necessary for normal usage.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.InstanceMemento.Substitute(StructureMap.InstanceMemento)">
+            <summary>
+            Used to create a templated InstanceMemento
+            </summary>
+            <param name="memento"></param>
+            <returns></returns>
+        </member>
+        <member name="P:StructureMap.InstanceMemento.ConcreteKey">
+            <summary>
+            The named type of the object instance represented by the InstanceMemento.  Translates to a concrete
+            type
+            </summary>
+        </member>
+        <member name="P:StructureMap.InstanceMemento.InstanceKey">
+            <summary>
+            The named key of the object instance represented by the InstanceMemento
+            </summary>
+        </member>
+        <member name="P:StructureMap.InstanceMemento.TemplateName">
+            <summary>
+            Gets the referred template name
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:StructureMap.InstanceMemento.IsReference">
+            <summary>
+            Template pattern property specifying whether the InstanceMemento is simply a reference
+            to another named instance.  Useful for child objects.
+            </summary>
+        </member>
+        <member name="P:StructureMap.InstanceMemento.ReferenceKey">
+            <summary>
+            Template pattern property specifying the instance key that the InstanceMemento refers to
+            </summary>
+        </member>
+        <member name="P:StructureMap.InstanceMemento.IsDefault">
+            <summary>
+            Is the InstanceMemento a reference to the default instance of the plugin type?
+            </summary>
+        </member>
+        <member name="T:StructureMap.InstanceFactory">
+            <summary>
+            Default implementation of IInstanceFactory
+            </summary>
+        </member>
+        <member name="T:StructureMap.IInstanceFactory">
+            <summary>
+            Interface for a "Factory" pattern class that creates object instances of the PluginType
+            </summary>
+        </member>
+        <member name="M:StructureMap.InstanceFactory.#ctor(StructureMap.Graph.PluginFamily)">
+            <summary>
+            Constructor to use when troubleshooting possible configuration issues.
+            </summary>
+            <param name="family"></param>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1">
+            <summary>
+            Represents the parameters for creating instances of a given Type
+            </summary>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.TheDefaultIs(StructureMap.Pipeline.Instance)">
+            <summary>
+            Sets the default instance of a Type to the definition represented by builder
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.TheDefaultIsConcreteType``1">
+            <summary>
+            Convenience method that sets the default concrete type of the PluginType.  Type T
+            can only accept types that do not have any primitive constructor arguments.
+            StructureMap has to know how to construct all of the constructor argument types.
+            </summary>
+            <typeparam name="CONCRETETYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.CacheBy(StructureMap.Attributes.InstanceScope)">
+            <summary>
+            Sets the object creation of the instances of the PluginType.  For example:  PerRequest,
+            Singleton, ThreadLocal, HttpContext, or Hybrid
+            </summary>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.AsSingletons">
+            <summary>
+            Convenience method to mark a PluginFamily as a Singleton
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.ValidationMethodAttribute">
+            <summary>
+            Marks a method with no parameters as a method that validates an instance.  StructureMap
+            uses this method to validate the configuration file.  If the method does not throw an
+            exception, the object is assumed to be valid.
+            </summary>
+        </member>
+        <member name="M:StructureMap.ValidationMethodAttribute.GetValidationMethods(System.Type)">
+            <summary>
+            Returns an array of any MethodInfo's on a Type that are marked as ValidationMethod
+            </summary>
+            <param name="objectType">CLR Type to search for validation methods</param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Graph.TypeRules.CanBeCast(System.Type,System.Type)">
+            <summary>
+            Determines if the pluggedType can be upcast to the pluginType
+            </summary>
+            <param name="pluginType"></param>
+            <param name="pluggedType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Graph.TypeRules.IsExplicitlyMarkedAsPlugin(System.Type,System.Type)">
+            <summary>
+            Determines if the PluggedType is a valid Plugin into the
+            PluginType
+            </summary>
+            <param name="pluginType"></param>
+            <param name="pluggedType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Source.XmlMementoSource">
+            <summary>
+            Base class for all MementoSource classes that store InstanceMemento's as 
+            node-normalized Xml
+            </summary>
+        </member>
+        <member name="M:StructureMap.Source.SingleEmbeddedXmlMementoSource.#ctor(System.String,StructureMap.Source.XmlMementoStyle,System.String,System.String)">
+            <summary>
+            Retrieves Xml InstanceMemento's from an xml file stored as an embedded resource in an assembly.
+            </summary>
+            <param name="nodeName">Designates the nodes that are memento nodes</param>
+            <param name="style">NodeNormalized or AttributeNormalized</param>
+            <param name="assemblyName">The name of the Assembly the file is embedded into</param>
+            <param name="path">The path to the embedded resource within the file</param>
+        </member>
+        <member name="T:StructureMap.MemoryInstanceMemento">
+            <summary>
+            An in-memory implementation of InstanceMemento.  
+            </summary>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.CreateReferencedInstanceMemento(System.String)">
+            <summary>
+            Creates an instance of MemoryInstanceMemento that represents a reference to another
+            instance.
+            </summary>
+            <param name="referenceKey">The referenced instance key to another instance</param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.CreateDefaultInstanceMemento">
+            <summary>
+            Creates a MemoryInstanceMemento that represents a reference to the default instance
+            of a plugin type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.#ctor(System.String,System.String)">
+            <summary>
+            Constructs a MemoryInstanceMemento without properties
+            </summary>
+            <param name="concreteKey">The concrete key of the plugin type</param>
+            <param name="instanceKey">The identifying instance key</param>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.#ctor(System.String,System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Constructs a MemoryInstanceMemento with properties
+            </summary>
+            <param name="concreteKey">The concrete key of the plugin type</param>
+            <param name="instanceKey">The identifying instance key</param>
+            <param name="properties">NameValueCollection of instance properties</param>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.SetProperty(System.String,System.String)">
+            <summary>
+            Sets the value of the named property
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.RemoveProperty(System.String)">
+            <summary>
+            Deletes a named property from the DefaultInstanceMemento
+            </summary>
+            <param name="Name"></param>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.AddChild(System.String,StructureMap.InstanceMemento)">
+            <summary>
+            Links a child InstanceMemento as a named property
+            </summary>
+            <param name="name"></param>
+            <param name="Memento"></param>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.AddChildArray(System.String,StructureMap.InstanceMemento[])">
+            <summary>
+            Links an array of InstanceMemento's to a named array property
+            </summary>
+            <param name="name"></param>
+            <param name="childMementos"></param>
+        </member>
+        <member name="M:StructureMap.MemoryInstanceMemento.GetChildrenArray(System.String)">
+            <summary>
+            See <cref>InstanceMemento</cref>
+            </summary>
+        </member>
+        <member name="P:StructureMap.MemoryInstanceMemento.innerConcreteKey">
+            <summary>
+            See <cref>InstanceMemento</cref>
+            </summary>
+        </member>
+        <member name="P:StructureMap.MemoryInstanceMemento.innerInstanceKey">
+            <summary>
+            See <cref>InstanceMemento</cref>
+            </summary>
+        </member>
+        <member name="P:StructureMap.MemoryInstanceMemento.IsReference">
+            <summary>
+            See <cref>InstanceMemento</cref>
+            </summary>
+        </member>
+        <member name="P:StructureMap.MemoryInstanceMemento.ReferenceKey">
+            <summary>
+            See <cref>InstanceMemento</cref>
+            </summary>
+        </member>
+        <member name="T:StructureMap.Emitting.Parameters.ParameterEmitter">
+            <summary>
+            Abstract class to provide a template for emitting the instructions for retrieving
+            one constructor function argument from an InstanceMemento and feeding into the 
+            constructor function
+            </summary>
+        </member>
+        <member name="T:StructureMap.Emitting.ClassBuilder">
+            <summary>
+            Emits the IL for a new class Type
+            </summary>
+        </member>
+        <member name="T:StructureMap.Attributes.SetterPropertyAttribute">
+            <summary>
+            Marks a Property in a Pluggable class as filled by setter injection 
+            </summary>
+        </member>
+        <member name="T:StructureMap.Source.XmlFileMementoSource">
+            <summary>
+            Implementation of XmlMementoSource that reads InstanceMemento's from an external file.
+            Useful to break the StructureMap.config file into smaller pieces.
+            </summary>
+        </member>
+        <member name="M:StructureMap.Source.XmlFileMementoSource.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="FilePath">Path to the xml file that contains the instance configuration</param>
+            <param name="XPath">XPath expression to the parent node that contains the InstanceMemento nodes.
+            If empty, it defaults to the top node</param>
+            <param name="NodeName">The name of the nodes that are InstanceMemento nodes.  Useful to store 
+            different types of instances in the same file</param>
+        </member>
+        <member name="T:StructureMap.Emitting.Parameters.EnumParameterEmitter">
+            <summary>
+            Implementation of ParameterEmitter for enumeration types
+            </summary>
+        </member>
+        <member name="T:StructureMap.Emitting.InstanceBuilderAssembly">
+            <summary>
+            Manages the IL emitting of a dynamic assembly of InstanceBuilder classes
+            </summary>
+        </member>
+        <member name="M:StructureMap.Emitting.InstanceBuilderAssembly.getInstanceBuilderClassName(System.Type)">
+            <summary>
+            Gets a class name for the InstanceBuilder that will be emitted for this Plugin
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.Child``1">
+            <summary>
+            Start the definition of a child instance for type CONSTRUCTORARGUMENTTYPE
+            </summary>
+            <typeparam name="CONSTRUCTORARGUMENTTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.Child``1(System.String)">
+            <summary>
+            Starts the definition of a child instance specifying the argument name
+            in the case of a constructor function that consumes more than one argument
+            of type T
+            </summary>
+            <typeparam name="CONSTRUCTORARGUMENTTYPE"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.WithProperty(System.String)">
+            <summary>
+            Start the definition of a primitive argument to a constructor argument
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Pipeline.ConfiguredInstance.ChildInstanceExpression">
+            <summary>
+            Part of the Fluent Interface, represents a nonprimitive argument to a 
+            constructure function
+            </summary>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.ChildInstanceExpression.IsNamedInstance(System.String)">
+            <summary>
+            Use a previously configured and named instance for the child
+            </summary>
+            <param name="instanceKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.ChildInstanceExpression.IsConcreteType``1">
+            <summary>
+            Start the definition of a child instance by defining the concrete type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.ChildInstanceExpression.Is(StructureMap.Pipeline.Instance)">
+            <summary>
+            Registers a configured instance to use as the argument to the parent's
+            constructor
+            </summary>
+            <param name="child"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.RegistryExpressions.Instance``1">
+            <summary>
+            Convenience method to start the definition of an instance of type T
+            </summary>
+            <typeparam name="PLUGGEDTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.RegistryExpressions.Prototype``1(``0)">
+            <summary>
+            Convenience method to register a prototype instance
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <param name="prototype"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.RegistryExpressions.Object``1(``0)">
+            <summary>
+            Convenience method to register a preconfigured instance of type T
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.RegistryExpressions.LoadControlFromUrl(System.String)">
+            <summary>
+            Registers a UserControl as an instance 
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.IncludeConfigurationFromNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            Programmatically adds a &lt;StructureMap&gt; node containing Xml configuration
+            </summary>
+            <param name="node"></param>
+            <param name="description">A description of this node source for troubleshooting purposes</param>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.GetStructureMapConfigurationPath">
+            <summary>
+            Returns the path to the StructureMap.config file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.ResetAll">
+            <summary>
+            Clears StructureMapConfiguration of all configuration options.  Returns StructureMap
+            to only using the default StructureMap.config file for configuration.
+            </summary>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.GetPluginGraph">
+            <summary>
+            Builds a PluginGraph object for the current configuration.  Used by ObjectFactory.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.IncludeConfigurationFromFile(System.String)">
+            <summary>
+            Directs StructureMap to include Xml configuration information from a separate file
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.ScanAssemblies">
+            <summary>
+            Programmatically determine Assembly's to be scanned for attribute configuration
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.BuildInstancesOf``1">
+            <summary>
+            Direct StructureMap to create instances of Type T
+            </summary>
+            <typeparam name="PLUGINTYPE">The Type to build</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.ForRequestedType``1">
+            <summary>
+            Direct StructureMap to create instances of Type T
+            </summary>
+            <typeparam name="PLUGINTYPE">The Type to build</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.CreateProfile(System.String)">
+            <summary>
+            Starts the definition of a configuration Profile. 
+            </summary>
+            <param name="profileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.StructureMapConfiguration.AddRegistry(StructureMap.Configuration.DSL.Registry)">
+            <summary>
+            Directs StructureMap to use a Registry class to construct the
+            PluginGraph
+            </summary>
+            <param name="registry"></param>
+        </member>
+        <member name="P:StructureMap.StructureMapConfiguration.UseDefaultStructureMapConfigFile">
+            <summary>
+            Flag to enable or disable the usage of the default StructureMap.config
+            If set to false, StructureMap will not look for a StructureMap.config file
+            </summary>
+        </member>
+        <member name="T:StructureMap.Source.XmlNodeInstanceMemento">
+            <summary>
+            Implementation of InstanceMemento that stores information in a node-normalized
+            Xml format.
+            </summary>
+        </member>
+        <member name="T:StructureMap.Source.BasicXmlMementoSource">
+            <summary>
+            Generic implementation of an XmlMementoSource
+            </summary>
+        </member>
+        <member name="T:StructureMap.Graph.SetterPropertyCollection">
+            <summary>
+            Custom collection class for SetterProperty objects
+            </summary>
+        </member>
+        <member name="T:StructureMap.Graph.PluginFamily">
+            <summary>
+            Conceptually speaking, a PluginFamily object represents a point of abstraction or variability in 
+            the system.  A PluginFamily defines a CLR Type that StructureMap can build, and all of the possible
+            Plugin’s implementing the CLR Type.
+            </summary>
+        </member>
+        <member name="P:StructureMap.Graph.IPluginFamily.DefaultInstanceKey">
+            <summary>
+            The InstanceKey of the default instance of the PluginFamily
+            </summary>
+        </member>
+        <member name="P:StructureMap.Graph.IPluginFamily.PluginType">
+            <summary>
+            The CLR Type that defines the "Plugin" interface for the PluginFamily
+            </summary>
+        </member>
+        <member name="P:StructureMap.Graph.PluginFamily.PluginType">
+            <summary>
+            The CLR Type that defines the "Plugin" interface for the PluginFamily
+            </summary>
+        </member>
+        <member name="P:StructureMap.Graph.PluginFamily.DefaultInstanceKey">
+            <summary>
+            The InstanceKey of the default instance of the PluginFamily
+            </summary>
+        </member>
+        <member name="T:StructureMap.Emitting.Parameters.ChildArrayParameterEmitter">
+            <summary>
+            Implementation of ParameterEmitter for a constructor argument like
+            MyClass(IStrategy[] strategies)
+            </summary>
+        </member>
+        <member name="M:StructureMap.Graph.Constructor.GetConstructor(System.Type)">
+            <summary>
+            Returns the System.Reflection.ConstructorInfo for the PluggedType.  Uses either
+            the "greediest" constructor with the most arguments or the constructor function
+            marked with the [DefaultConstructor]
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.configure">
+            <summary>
+            Implement this method to 
+            </summary>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.BuildInstancesOf``1">
+            <summary>
+            Direct StructureMap to build instances of type T, and look for concrete classes
+            marked with the [Pluggable] attribute that implement type T
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:StructureMap.Configuration.DSL.Registry.ForRequestedType``1" -->
+        <member name="M:StructureMap.Configuration.DSL.Registry.CreateProfile(System.String)">
+            <summary>
+            Starts the definition of a new Profile
+            </summary>
+            <param name="profileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.ScanAssemblies">
+            <summary>
+            Programmatically determine Assembly's to be scanned for attribute configuration
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Graph.PluginFamilyCollection">
+            <summary>
+            Custom collection class for PluginFamily's
+            </summary>
+        </member>
+        <member name="T:StructureMap.Exceptions.InstancePropertyValueException">
+            <summary>
+            Thrown by IProperty classes when an invalid value is applied to 
+            a property of an InstanceGraph
+            </summary>
+        </member>
+        <member name="M:StructureMap.ExplicitArgsExpression.With``1(``0)">
+            <summary>
+            Pass in additional arguments by type T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ExplicitArgsExpression.With(System.String)">
+            <summary>
+            Pass in additional arguments by name
+            </summary>
+            <param name="argName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ExplicitArgsExpression.GetInstance``1">
+            <summary>
+            Create an instance using the explicit arguments
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ExplicitArgsExpression.GetInstance(System.Type)">
+            <summary>
+            Create an instance using the explicit arguments
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Emitting.Parameters.PrimitiveParameterEmitter">
+            <summary>
+            Implementation of ParameterEmitter for primitive types other than strings.
+            </summary>
+        </member>
+        <member name="M:StructureMap.IContainer.GetInstance(System.Type)">
+            <summary>
+            Creates a new object instance of the requested type
+            </summary>
+            <param name="pluginType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.GetInstance(System.Type,StructureMap.Pipeline.Instance)">
+            <summary>
+            Creates a new instance of the requested type using the InstanceMemento.  Mostly used from other
+            classes to link children members
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.GetInstance(System.Type,System.String)">
+            <summary>
+            Creates the named instance of the PluginType
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instanceKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Emitting.Parameters.ChildParameterEmitter">
+            <summary>
+            Implementation of ParameterEmitter for a non-primitive, non-array
+            constructor argument
+            </summary>
+        </member>
+        <member name="T:StructureMap.Configuration.XmlConstants">
+            <summary>
+            Constants for the names of Xml nodes and attributes in the StructureMap.config
+            file
+            </summary>
+        </member>
+        <member name="T:StructureMap.Graph.SetterProperty">
+            <summary>
+            Represents a PropertyInfo of a Plugin.PluggedType that is filled by Setter Injection
+            </summary>
+        </member>
+        <member name="T:StructureMap.StructureMapException">
+            <summary>
+            Main exception for StructureMap.  Use the ErrorCode to aid in troubleshooting
+            StructureMap problems
+            </summary>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.ScanAssembliesExpression">
+            <summary>
+            Expression that directs StructureMap to scan the named assemblies
+            for [PluginFamily] and [Plugin] attributes
+            </summary>
+        </member>
+        <member name="T:StructureMap.PluginFamilyAttribute">
+            <summary>
+            Declares a class, abstract class, or interface to be the target of a PluginFamily in the container
+            </summary>
+        </member>
+        <member name="M:StructureMap.PluginFamilyAttribute.MarkedAsPluginFamily(System.Type)">
+            <summary>
+            Determines if a Type object is marked as a PluginFamily
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:StructureMap.PluginFamilyAttribute.Scope">
+            <summary>
+            If set, determines the shared "scope" of the instance -- PerRequest, Singleton, ThreadLocal,
+            HttpContext, etc.
+            </summary>
+        </member>
+        <member name="P:StructureMap.PluginFamilyAttribute.DefaultKey">
+            <summary>
+            InstanceKey of the default instance.  Used to implicitly define the default without
+            declaring the instance in StructureMap.config
+            </summary>
+        </member>
+        <member name="P:StructureMap.PluginFamilyAttribute.IsSingleton">
+            <summary>
+            Declares the target to be built by StructureMap as a Singleton.  One object instance will
+            be created for each named instance
+            </summary>
+        </member>
+        <member name="T:StructureMap.Pipeline.PropertyExpression`1">
+            <summary>
+            Defines the value of a primitive argument to a constructur argument
+            </summary>
+        </member>
+        <member name="M:StructureMap.Pipeline.PropertyExpression`1.EqualTo(System.Object)">
+            <summary>
+            Sets the value of the constructor argument
+            </summary>
+            <param name="propertyValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.PropertyExpression`1.EqualToAppSetting(System.String)">
+            <summary>
+            Sets the value of the constructor argument to the key/value in the 
+            AppSettings
+            </summary>
+            <param name="appSettingKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.ProfileExpression">
+            <summary>
+            Expression class to help define a runtime Profile
+            </summary>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.For``1">
+            <summary>
+            Starts the definition of the default instance for the containing Profile
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.For(System.Type)">
+            <summary>
+            Use statement to define the Profile defaults for a Generic type
+            </summary>
+            <param name="pluginType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.InstanceDefaultExpression`1.UseNamedInstance(System.String)">
+            <summary>
+            Use a named, preconfigured instance as the default instance for this profile 
+            </summary>
+            <param name="instanceKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.InstanceDefaultExpression`1.Use(StructureMap.Pipeline.Instance)">
+            <summary>
+            Define the default instance of the PluginType for the containing Profile
+            </summary>
+            <param name="mementoBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Source.XmlAttributeFileMementoSource">
+            <summary>
+            Stores Attribute-normalized InstanceMemento's in an external file
+            </summary>
+        </member>
+        <member name="T:StructureMap.Graph.PluginGraph">
+            <summary>
+            A PluginGraph models the entire listing of all PluginFamily’s and Plugin’s controlled by 
+            StructureMap within the current AppDomain. The scope of the PluginGraph is controlled by 
+            a combination of custom attributes and the StructureMap.config class
+            </summary>
+        </member>
+        <member name="M:StructureMap.Graph.PluginGraph.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:StructureMap.Graph.PluginGraph.Seal">
+            <summary>
+            Closes the PluginGraph for adding or removing members.  Searches all of the
+            AssemblyGraph's for implicit Plugin and PluginFamily's
+            </summary>
+        </member>
+        <member name="T:StructureMap.Source.MemoryMementoSource">
+            <summary>
+            An in-memory MementoSource
+            </summary>
+        </member>
+        <member name="T:StructureMap.Source.DirectoryXmlMementoSource">
+            <summary>
+            Implementation of MementoSource that stores and retrieves an XmlInstanceMemento per file in a named directory.  
+            DirectoryXmlMementoSource is meant to simplify complicated object graph configurations by isolating each instance to a separate
+            editable file.
+            </summary>
+        </member>
+        <member name="M:StructureMap.Source.DirectoryXmlMementoSource.#ctor(System.String,System.String,StructureMap.Source.XmlMementoStyle)">
+            <summary>
+            Stores an Xml InstanceMemento per file in a directory
+            </summary>
+            <param name="directory">A ";" delimited list of directories to look for mementos.  DirectoryXmlMementoSource 
+            will use the FIRST directory it finds</param>
+            <param name="extension">The file extension of the InstanceMemento files without a dot.  Typically "xml"</param>
+            <param name="mementoStyle">NodeNormalized or AttributeNormalized</param>
+        </member>
+        <member name="T:StructureMap.Emitting.BuildInstanceMethod">
+            <summary>
+            Emits the IL for the InstanceBuilder.BuildInstance(InstanceMemento) method of an
+            InstanceBuilder
+            </summary>
+        </member>
+        <member name="T:StructureMap.Emitting.Method">
+            <summary>
+            Emits the IL for one method
+            </summary>
+        </member>
+        <member name="T:StructureMap.Emitting.DynamicAssembly">
+            <summary>
+            Helper class to use to create a dynamically emitted assembly
+            </summary>
+        </member>
+        <member name="T:StructureMap.PluggableAttribute">
+            <summary>
+            Used to implicitly mark a class as a Plugin candidate for StructureMap
+            </summary>
+        </member>
+        <member name="M:StructureMap.PluggableAttribute.InstanceOf(System.Type)">
+            <summary>
+            Gets an instance of PluggableAttribute from a Type object 
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.PluggableAttribute.MarkedAsPluggable(System.Type)">
+            <summary>
+            Determines whether a Type object is marked as Pluggable
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:StructureMap.PluggableAttribute.ConcreteKey">
+            <summary>
+            The ConcreteKey alias of the Type
+            </summary>
+        </member>
+        <member name="M:StructureMap.Source.TemplatedMementoSource.#ctor(StructureMap.MementoSource,StructureMap.MementoSource)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="innerSource">MementoSource that contains the Memento Templates</param>
+            <param name="templateSource">MementoSource that contains instances consisting of Template valuee</param>
+        </member>
+        <member name="T:StructureMap.Graph.TypePath">
+            <summary>
+            Designates a CLR type that is loaded by name.
+            </summary>
+        </member>
+        <member name="T:StructureMap.DefaultConstructorAttribute">
+            <summary>
+            Used to override the constructor of a class to be used by StructureMap to create
+            a Pluggable object
+            </summary>
+        </member>
+        <member name="M:StructureMap.DefaultConstructorAttribute.GetConstructor(System.Type)">
+            <summary>
+            Examines a System.Type object and determines the ConstructorInfo to use in creating
+            instances of the Type
+            </summary>
+            <param name="ExportedType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.ObjectFactory">
+            <summary>
+            The main static Facade for the StructureMap container
+            </summary>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.Reset">
+            <summary>
+            Restarts ObjectFactory and blows away all Singleton's and cached instances.  Use with caution.
+            </summary>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.FillDependencies(System.Type)">
+            <summary>
+            Creates an instance of the concrete type specified.  Dependencies are inferred from the constructor function of the type
+            and automatically "filled"
+            </summary>
+            <param name="type">Must be a concrete type</param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.FillDependencies``1">
+            <summary>
+            Creates an instance of the concrete type specified.  Dependencies are inferred from the constructor function of the type
+            and automatically "filled"
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.GetInstance(System.Type)">
+            <summary>
+            Returns and/or constructs the default instance of the requested System.Type
+            </summary>
+            <param name="pluginType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.GetInstance``1">
+            <summary>
+            Returns and/or constructs the default instance of the requested System.Type
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.GetNamedInstance(System.Type,System.String)">
+            <summary>
+            Retrieves an instance of pluginType by name
+            </summary>
+            <param name="pluginType">The PluginType</param>
+            <param name="name">The instance name</param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.GetNamedInstance``1(System.String)">
+            <summary>
+            Retrieves an instance of PLUGINTYPE by name
+            </summary>
+            <typeparam name="PLUGINTYPE">The PluginType</typeparam>
+            <param name="name">The instance name</param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.GetAllInstances(System.Type)">
+            <summary>
+            Retrieves all instances of the pluginType
+            </summary>
+            <param name="pluginType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.GetAllInstances``1">
+            <summary>
+            Retrieves all instances of the PLUGINTYPE
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.With``1(``0)">
+            <summary>
+            Pass in an explicit argument of Type T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.With(System.String)">
+            <summary>
+            Pass in an explicit argument by name
+            </summary>
+            <param name="argName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Emitting.Parameters.StringParameterEmitter">
+            <summary>
+            Implementation of ParameterEmitter for string type constructor arguments
+            </summary>
+        </member>
+        <member name="T:StructureMap.PluginGraphBuilder">
+            <summary>
+            Reads configuration XML documents and builds the structures necessary to initialize
+            the Container/IInstanceFactory/InstanceBuilder/ObjectInstanceActivator objects
+            </summary>
+        </member>
+        <member name="M:StructureMap.PluginGraphBuilder.Build">
+            <summary>
+            Reads the configuration information and returns the PluginGraph definition of
+            plugin families and plugin's
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Container">
+            <summary>
+            A collection of IInstanceFactory's.
+            </summary>
+        </member>
+        <member name="M:StructureMap.Container.#ctor(StructureMap.Graph.PluginGraph)">
+            <summary>
+            Constructor to create an Container
+            </summary>
+            <param name="pluginGraph">PluginGraph containing the instance and type definitions 
+            for the Container</param>
+            <param name="failOnException">Flags the Container to fail or trap exceptions</param>
+        </member>
+        <member name="M:StructureMap.Container.GetInstance(System.Type,System.String)">
+            <summary>
+            Creates the named instance of the PluginType
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instanceKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.GetInstance(System.Type)">
+            <summary>
+            Creates a new object instance of the requested type
+            </summary>
+            <param name="pluginType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.GetInstance(System.Type,StructureMap.Pipeline.Instance)">
+            <summary>
+            Creates a new instance of the requested type using the InstanceMemento.  Mostly used from other
+            classes to link children members
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.Inject(System.Type,StructureMap.Pipeline.Instance)">
+            <summary>
+            Sets the default instance for the PluginType
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instance"></param>
+        </member>
+        <member name="M:StructureMap.Container.SetDefault(System.Type,System.String)">
+            <summary>
+            Sets the default instance for the PluginType
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instanceKey"></param>
+        </member>
+        <member name="M:StructureMap.Container.FillDependencies(System.Type)">
+            <summary>
+            Attempts to create a new instance of the requested type.  Automatically inserts the default
+            configured instance for each dependency in the StructureMap constructor function.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.Inject(System.Type,System.Object)">
+            <summary>
+            Sets up the Container to return the object in the "stub" argument anytime
+            any instance of the PluginType is requested
+            </summary>
+            <param name="pluginType"></param>
+            <param name="stub"></param>
+        </member>
+        <member name="T:StructureMap.InstanceBuilder">
+            <summary>
+            Base class for creating an object instance from an InstanceMemento.  SubClasses are
+            emitted for each concrete Plugin with constructor parameters.
+            </summary>
+        </member>
+        <member name="T:StructureMap.Source.XmlAttributeInstanceMemento">
+            <summary>
+            An implementation of InstanceMemento that stores properties as Xml attributes
+            Limited functionality
+            </summary>
+        </member>
+        <member name="T:StructureMap.Graph.Plugin">
+            <summary>
+            Represents a concrete class that can be built by StructureMap as an instance of the parent 
+            PluginFamily’s PluginType. The properties of a Plugin are the CLR Type of the concrete class, 
+            and the human-friendly concrete key that StructureMap will use to identify the Type.
+            </summary>
+        </member>
+        <member name="P:StructureMap.Graph.Plugin.ConcreteKey">
+            <summary>
+            The ConcreteKey that identifies the Plugin within a PluginFamily
+            </summary>
+        </member>
+        <member name="P:StructureMap.Graph.Plugin.PluggedType">
+            <summary>
+            The concrete CLR Type represented by the Plugin
+            </summary>
+        </member>
+        <member name="P:StructureMap.Graph.Plugin.Setters">
+            <summary>
+            Property's that will be filled by setter injection
+            </summary>
+        </member>
+    </members>
+</doc>

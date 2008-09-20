@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace TheNewEngine.Graphics.Xna
@@ -12,6 +13,15 @@ namespace TheNewEngine.Graphics.Xna
         private const int HEIGHT = 600;
 
         private GraphicsDevice mDevice;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RenderWindow"/> class.
+        /// </summary>
+        /// <param name="control">The control.</param>
+        public RenderWindow(Control control)
+            : this(control.Handle)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RenderWindow"/> class.
