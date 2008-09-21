@@ -5,7 +5,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
     /// <summary>
     /// Provides helper functions for the <see cref="GraphicStreamFormat"/>-enum.
     /// </summary>
-    public class GraphicStreamFormatHelper
+    public static class GraphicStreamFormatHelper
     {
         /// <summary>
         /// Gets the corresponding <see cref="GraphicStreamFormat"/> for the given type name.

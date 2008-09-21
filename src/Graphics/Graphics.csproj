@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cameras\Camera.cs" />
     <Compile Include="Cameras\ICamera.cs" />
     <Compile Include="Cameras\ILense.cs" />
     <Compile Include="Cameras\IStand.cs" />
