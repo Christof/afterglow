@@ -2,6 +2,9 @@ using System;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
 using TheNewEngine.Graphics.GraphicStreams;
+using TheNewEngine.Math.Primitives;
+using SlimDXVector3 = SlimDX.Vector3;
+using SlimDXMatrix = SlimDX.Matrix;
 
 namespace TheNewEngine.Graphics.SlimDX
 {
@@ -67,6 +70,44 @@ namespace TheNewEngine.Graphics.SlimDX
                     throw new InvalidOperationException(string.Format(
                         "Unable to convert the given format ({0})", format));
             }
+        }
+
+        /// <summary>
+        /// Converts the vector into an <see cref="SlimDXVector3"/>.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <returns>The slimDX vector.</returns>
+        public static SlimDXVector3 ToSlimDX(this Vector3 vector)
+        {
+            return new SlimDXVector3(vector.X, vector.Y, vector.Z);
+        }
+
+        /// <summary>
+        /// Converts the matrix into an <see cref="SlimDXMatrix"/>.
+        /// </summary>
+        /// <param name="matrix">The matrix.</param>
+        /// <returns>The slimDX matrix.</returns>
+        public static SlimDXMatrix ToSlimDX(this Matrix matrix)
+        {
+            return new SlimDXMatrix
+            {
+                M11 = matrix.R1C1,
+                M12 = matrix.R1C2,
+                M13 = matrix.R1C3,
+                M14 = matrix.R1C4,
+                M21 = matrix.R2C1,
+                M22 = matrix.R2C2,
+                M23 = matrix.R2C3,
+                M24 = matrix.R2C4,
+                M31 = matrix.R3C1,
+                M32 = matrix.R3C2,
+                M33 = matrix.R3C3,
+                M34 = matrix.R3C4,
+                M41 = matrix.R4C1,
+                M42 = matrix.R4C2,
+                M43 = matrix.R4C3,
+                M44 = matrix.R4C4
+            };
         }
     }
 }

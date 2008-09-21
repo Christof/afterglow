@@ -61,6 +61,7 @@
     <Compile Include="ApiExamples\EmptyWindow.cs" />
     <Compile Include="ApiExamples\TriangleWithTexture.cs" />
     <Compile Include="ApiExamples\TriangleWithVertexBuffer.cs" />
+    <Compile Include="Examples\CameraExample.cs" />
     <Compile Include="Examples\TriangleWithVertexBuffer.cs" />
     <Compile Include="GraphicStreams\Test_Buffer.cs" />
     <Compile Include="GraphicStreams\Test_BufferContainer.cs" />
@@ -76,6 +77,10 @@
     <ProjectReference Include="..\Graphics\Graphics.csproj">
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Math\Math.csproj">
+      <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
+      <Name>Math %28Math\Math%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tests.Graphics\Tests.Graphics.csproj">
       <Project>{886A66F9-E7A1-4288-9F03-A10E8732E1F2}</Project>
