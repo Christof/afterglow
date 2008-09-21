@@ -9,3 +9,4 @@ obj/*
 *.sln.cache
 *.csproj.user
 *.Cache
+NDependOut
