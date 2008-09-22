@@ -1,3 +1,5 @@
+using System;
+
 namespace TheNewEngine.Math.Primitives
 {
     /// <summary>
@@ -6,7 +8,7 @@ namespace TheNewEngine.Math.Primitives
     /// The implementation is a row major matrix.
     /// </remarks>
     /// </summary>
-    public struct Matrix : ICoordinateSystem
+    public struct Matrix : ICoordinateSystem, IEquatable<Matrix>, IDeltaEquatable<Matrix>
     {
         // Don't use auto properties because then the 
         // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
@@ -348,6 +350,112 @@ namespace TheNewEngine.Math.Primitives
                 left.mR4C1 * right.mR1C2 + left.mR4C2 * right.mR2C2 + left.mR4C3 * right.mR3C2 + left.mR4C4 * right.mR4C2,
                 left.mR4C1 * right.mR1C3 + left.mR4C2 * right.mR2C3 + left.mR4C3 * right.mR3C3 + left.mR4C4 * right.mR4C3,
                 left.mR4C1 * right.mR1C4 + left.mR4C2 * right.mR2C4 + left.mR4C3 * right.mR3C4 + left.mR4C4 * right.mR4C4);
+        }
+
+        /// <summary>
+        /// Indicates whether this instance and a specified object are equal under the consideration
+        /// of the given delta value.
+        /// </summary>
+        /// <param name="other">Another object to compare to.</param>
+        /// <param name="delta">The delta value.</param>
+        /// <returns>
+        /// true if <paramref name="other"/> and this instance have the same value; otherwise, false.
+        /// </returns>
+        public bool Equals(Matrix other, float delta)
+        {
+            return 
+                mR1C1.EqualsWithDelta(other.mR1C1, delta) &&
+                mR1C2.EqualsWithDelta(other.mR1C2, delta) &&
+                mR1C3.EqualsWithDelta(other.mR1C3, delta) &&
+                mR1C4.EqualsWithDelta(other.mR1C4, delta) &&
+                
+                mR2C1.EqualsWithDelta(other.mR2C1, delta) &&
+                mR2C2.EqualsWithDelta(other.mR2C2, delta) &&
+                mR2C3.EqualsWithDelta(other.mR2C3, delta) &&
+                mR2C4.EqualsWithDelta(other.mR2C4, delta) &&
+                
+                mR3C1.EqualsWithDelta(other.mR3C1, delta) &&
+                mR3C2.EqualsWithDelta(other.mR3C2, delta) &&
+                mR3C3.EqualsWithDelta(other.mR3C3, delta) &&
+                mR3C4.EqualsWithDelta(other.mR3C4, delta) &&
+                
+                mR4C1.EqualsWithDelta(other.mR4C1, delta) &&
+                mR4C2.EqualsWithDelta(other.mR4C2, delta) &&
+                mR4C3.EqualsWithDelta(other.mR4C3, delta) &&
+                mR4C4.EqualsWithDelta(other.mR4C4, delta);
+        }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">
+        /// An object to compare with this object.
+        /// </param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(Matrix other)
+        {
+            return Equals(other, Constants.DELTA);
+        }
+
+        /// <summary>
+        /// Indicates whether this instance and a specified object are equal.
+        /// </summary>
+        /// <param name="obj">Another object to compare to.</param>
+        /// <returns>
+        /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            //       
+            // See the full list of guidelines at
+            //   http://go.microsoft.com/fwlink/?LinkID=85237  
+            // and also the guidance for operator== at
+            //   http://go.microsoft.com/fwlink/?LinkId=85238
+            //
+
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            return Equals((Matrix)obj);
+            
+        }
+
+        /// <summary>
+        /// Returns the hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A 32-bit signed integer that is the hash code for this instance.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            return
+                mR1C1.GetHashCode() ^ mR1C2.GetHashCode() ^ mR1C3.GetHashCode() ^ mR1C4.GetHashCode() ^
+                mR2C1.GetHashCode() ^ mR2C2.GetHashCode() ^ mR2C3.GetHashCode() ^ mR2C4.GetHashCode() ^
+                mR3C1.GetHashCode() ^ mR3C2.GetHashCode() ^ mR3C3.GetHashCode() ^ mR3C4.GetHashCode() ^
+                mR4C1.GetHashCode() ^ mR4C2.GetHashCode() ^ mR4C3.GetHashCode() ^ mR4C4.GetHashCode();
+        }
+
+        /// <summary>
+        /// Returns the string representation of the matrix.
+        /// </summary>
+        /// <returns>
+        /// The string representation of the matrix.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(
+                "R1C1: {0}, R1C2: {1}, R1C3: {2}, R1C4 {3}, " + Environment.NewLine +
+                "R2C1: {4}, R2C2: {5}, R2C3: {6}, R2C4 {7}, " + Environment.NewLine +
+                "R3C1: {8}, R3C2: {9}, R3C3: {10}, R3C4 {11}, " + Environment.NewLine +
+                "R4C1: {12}, R4C2: {13}, R4C3: {14}, R4C4 {15}",
+                mR1C1, mR1C2, mR1C3, mR1C4,
+                mR2C1, mR2C2, mR2C3, mR2C4,
+                mR3C1, mR3C2, mR3C3, mR3C4,
+                mR4C1, mR4C2, mR4C3, mR4C4);
         }
     }
 }

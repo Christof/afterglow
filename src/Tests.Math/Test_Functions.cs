@@ -91,5 +91,13 @@ namespace TheNewEngine.Math
         {
             Assert.AreEqual(atan, Functions.Atan(angle), DELTA);
         }
+
+        [Test]
+        [Row(1.0f, 1.0f)]
+        [Row(1.0f, -1.0f)]
+        public void Abs(float abs, float value)
+        {
+            Assert.AreEqual(abs, Functions.Abs(value));
+        }
     }
 }

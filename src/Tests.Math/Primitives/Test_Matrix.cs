@@ -247,5 +247,23 @@ namespace TheNewEngine.Math.Primitives
 
             Assert.AreEqual(expected, multiplied);
         }
+
+        [Test]
+        public void Equals()
+        {
+            var matrix1 = new Matrix(
+                11, 12, 13, 14,
+                21, 22, 23, 24,
+                31, 32, 33, 34,
+                41, 42, 43, 44);
+
+            var matrix2 = new Matrix(
+                11, 12, 13, 14,
+                21, 22, 23, 24,
+                31, 32, 33, 34,
+                41, 42, 43, 44);
+
+            Assert.IsTrue(matrix1.Equals(matrix2));
+        }
     }
 }
