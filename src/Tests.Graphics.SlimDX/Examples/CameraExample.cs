@@ -56,7 +56,24 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 var inputLayout = new InputLayout(device, containerImplementation.InputElements, pass.Description.Signature);
 
                 var cam = new Camera("default", new Stand(), new PerspectiveProjectionLense());
-                cam.Stand.Position = new Vector3(0, 0, -3);
+                cam.Stand.Position = new Vector3(0, 0, -4);
+
+                form.KeyDown +=
+                    delegate(object sender, KeyEventArgs e)
+                    {
+                        if (e.KeyCode == Keys.W)
+                        {
+                            var position = cam.Stand.Position;
+                            position.Z += 0.1f;
+                            cam.Stand.Position = position;
+                        }
+                        if (e.KeyCode == Keys.S)
+                        {
+                            var position = cam.Stand.Position;
+                            position.Z -= 0.1f;
+                            cam.Stand.Position = position;
+                        }
+                    };
 
                 Application.Idle +=
                     delegate
@@ -68,16 +85,8 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                        
                         container.OnFrame();
 
-                        Matrix view = Matrix.LookAtRH(new SlimDXVector(0, 0, -3), new SlimDXVector(0, 0, -2), new SlimDXVector(0, 1, 0));
-                        Matrix projection = Matrix.PerspectiveFovRH((float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
-                        Matrix worldViewProjection = view * projection;
-
-                        Assert.AreEqual(view, cam.Stand.ViewMatrix.ToSlimDX());
-
-                        worldViewProjection = view * cam.Lense.ProjectionMatrix.ToSlimDX();
-
                         effect.GetVariableBySemantic("WorldViewProjection")
-                            .AsMatrix().SetMatrix(worldViewProjection);//cam.ViewProjectionMatrix.ToSlimDX());
+                            .AsMatrix().SetMatrix(cam.ViewProjectionMatrix.ToSlimDX());
 
                         for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
                         {

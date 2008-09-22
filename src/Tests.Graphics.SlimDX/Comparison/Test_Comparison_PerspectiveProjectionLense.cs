@@ -1,5 +1,6 @@
 using MbUnit.Framework;
-using TheNewEngine.Graphics.Xna;
+using TheNewEngine.Graphics.SlimDX;
+using SlimDXMatrix = SlimDX.Matrix;
 
 namespace TheNewEngine.Graphics.Cameras
 {
@@ -16,11 +17,11 @@ namespace TheNewEngine.Graphics.Cameras
             var projection = PerspectiveProjectionLense.CalculateProjectionMatrix(
                 distanceToNearPlane, distanceToFarPlane, horizontalFieldOfView, aspectRatio);
 
-            var projectionXna = Microsoft.Xna.Framework.Matrix.CreatePerspectiveFieldOfView(
+            var projectionSlimDX = SlimDXMatrix.PerspectiveFovRH(
                 horizontalFieldOfView / aspectRatio, aspectRatio, 
                 distanceToNearPlane, distanceToFarPlane);
 
-            Assert.AreEqual(projectionXna.ToMath(), projection);
+            Assert.AreEqual(projectionSlimDX.ToMath(), projection);
         }
     }
 }

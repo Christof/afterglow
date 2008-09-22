@@ -61,6 +61,8 @@
     <Compile Include="ApiExamples\EmptyWindow.cs" />
     <Compile Include="ApiExamples\TriangleWithTexture.cs" />
     <Compile Include="ApiExamples\TriangleWithVertexBuffer.cs" />
+    <Compile Include="Comparison\Test_Comparison_PerspectiveProjectionLense.cs" />
+    <Compile Include="Comparison\Test_Comparison_Stand.cs" />
     <Compile Include="Examples\CameraExample.cs" />
     <Compile Include="Examples\TriangleWithVertexBuffer.cs" />
     <Compile Include="GraphicStreams\Test_Buffer.cs" />

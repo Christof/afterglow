@@ -63,10 +63,10 @@ namespace TheNewEngine.Graphics.Cameras
             Vector3 u = s.Cross(direction);
 
             return new Matrix(
-                s.X, s.Y, s.Z, position.X,
-                u.X, u.Y, u.Z, position.Y,
-                -direction.X, -direction.Y, -direction.Z, position.Z,
-                0, 0, 0, 1);
+                s.X, s.Y, s.Z, 0,
+                u.X, u.Y, u.Z, 0,
+                -direction.X, -direction.Y, -direction.Z, 0,
+                position.X, -position.Y, position.Z, 1);
         }
     }
 }

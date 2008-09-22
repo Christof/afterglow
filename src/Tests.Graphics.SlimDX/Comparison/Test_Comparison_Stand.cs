@@ -1,6 +1,7 @@
 using MbUnit.Framework;
-using TheNewEngine.Graphics.Xna;
+using TheNewEngine.Graphics.SlimDX;
 using TheNewEngine.Math.Primitives;
+using SlimDXMatrix = SlimDX.Matrix;
 
 namespace TheNewEngine.Graphics.Cameras
 {
@@ -15,10 +16,11 @@ namespace TheNewEngine.Graphics.Cameras
 
             var view = Stand.CalculateViewMatrix(position, direction, up);
 
-            var xna = Microsoft.Xna.Framework.Matrix.CreateLookAt(
-                position.ToXna(), (position + direction).ToXna(), up.ToXna());
+            var slimDX = SlimDXMatrix.LookAtRH(
+                position.ToSlimDX(), (position + direction).ToSlimDX(), up.ToSlimDX());
 
-            Assert.AreEqual(xna.ToMath(), view);
+            Assert.AreEqual(slimDX.ToMath(), view);
         }
     }
+
 }
