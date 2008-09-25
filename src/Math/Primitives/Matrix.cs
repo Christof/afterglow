@@ -85,163 +85,147 @@ namespace TheNewEngine.Math.Primitives
         }
 
         /// <summary>
-        /// Gets or sets the value of row 1 column 1.
+        /// Gets the value of row 1 column 1.
         /// </summary>
         /// <value>The value of row 1 column 1.</value>
         public float R1C1
         {
             get { return mR1C1; }
-            set { mR1C1 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 1 column 2.
+        /// Gets the value of row 1 column 2.
         /// </summary>
         /// <value>The value of row 1 column 2.</value>
         public float R1C2
         {
             get { return mR1C2; }
-            set { mR1C2 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 1 column 3.
+        /// Gets the value of row 1 column 3.
         /// </summary>
         /// <value>The value of row 1 column 3.</value>
         public float R1C3
         {
             get { return mR1C3; }
-            set { mR1C3 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 1 column 4.
+        /// Gets the value of row 1 column 4.
         /// </summary>
         /// <value>The value of row 1 column 4.</value>
         public float R1C4
         {
             get { return mR1C4; }
-            set { mR1C4 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 2 column 1.
+        /// Gets the value of row 2 column 1.
         /// </summary>
         /// <value>The value of row 2 column 1.</value>
         public float R2C1
         {
             get { return mR2C1; }
-            set { mR2C1 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 2 column 2.
+        /// Gets the value of row 2 column 2.
         /// </summary>
         /// <value>The value of row 2 column 2.</value>
         public float R2C2
         {
             get { return mR2C2; }
-            set { mR2C2 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 2 column 3.
+        /// Gets the value of row 2 column 3.
         /// </summary>
         /// <value>The value of row 2 column 3.</value>
         public float R2C3
         {
             get { return mR2C3; }
-            set { mR2C3 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 2 column 4.
+        /// Gets the value of row 2 column 4.
         /// </summary>
         /// <value>The value of row 2 column 4.</value>
         public float R2C4
         {
             get { return mR2C4; }
-            set { mR2C4 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 3 column 1.
+        /// Gets the value of row 3 column 1.
         /// </summary>
         /// <value>The value of row 3 column 1.</value>
         public float R3C1
         {
             get { return mR3C1; }
-            set { mR3C1 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 3 column 2.
+        /// Gets the value of row 3 column 2.
         /// </summary>
         /// <value>The value of row 3 column 2.</value>
         public float R3C2
         {
             get { return mR3C2; }
-            set { mR3C2 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 3 column 3.
+        /// Gets the value of row 3 column 3.
         /// </summary>
         /// <value>The value of row 3 column 3.</value>
         public float R3C3
         {
             get { return mR3C3; }
-            set { mR3C3 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 3 column 4.
+        /// Gets the value of row 3 column 4.
         /// </summary>
         /// <value>The value of row 3 column 4.</value>
         public float R3C4
         {
             get { return mR3C4; }
-            set { mR3C4 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 4 column 1.
+        /// Gets the value of row 4 column 1.
         /// </summary>
         /// <value>The value of row 4 column 1.</value>
         public float R4C1
         {
             get { return mR4C1; }
-            set { mR4C1 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 4 column 2.
+        /// Gets the value of row 4 column 2.
         /// </summary>
         /// <value>The value of row 4 column 2.</value>
         public float R4C2
         {
             get { return mR4C2; }
-            set { mR4C2 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 4 column 3.
+        /// Gets the value of row 4 column 3.
         /// </summary>
         /// <value>The value of row 4 column 3.</value>
         public float R4C3
         {
             get { return mR4C3; }
-            set { mR4C3 = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value of row 4 column 4.
+        /// Gets the value of row 4 column 4.
         /// </summary>
         /// <value>The value of row 4 column 4.</value>
         public float R4C4
         {
             get { return mR4C4; }
-            set { mR4C4 = value; }
         }
 
         /// <summary>
@@ -407,8 +391,7 @@ namespace TheNewEngine.Math.Primitives
         /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
         /// </returns>
         public override bool Equals(object obj)
-        {
-            //       
+        {    
             // See the full list of guidelines at
             //   http://go.microsoft.com/fwlink/?LinkID=85237  
             // and also the guidance for operator== at
@@ -421,7 +404,6 @@ namespace TheNewEngine.Math.Primitives
             }
 
             return Equals((Matrix)obj);
-            
         }
 
         /// <summary>

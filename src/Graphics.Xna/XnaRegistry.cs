@@ -15,6 +15,7 @@ namespace TheNewEngine.Graphics.Xna
             ForRequestedType<IRenderWindow>()
                 .TheDefault.Is.OfConcreteType<RenderWindow>()
                 .WithCtorArg("control");
+
 //            CreateProfile("Xna")
 //                .For<IRenderWindow>().UseConcreteType<RenderWindow>();
         }

@@ -63,15 +63,11 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                     {
                         if (e.KeyCode == Keys.W)
                         {
-                            var position = cam.Stand.Position;
-                            position.Z += 0.1f;
-                            cam.Stand.Position = position;
+                            cam.Stand.Position += new Vector3(0, 0, 0.1f);
                         }
                         if (e.KeyCode == Keys.S)
                         {
-                            var position = cam.Stand.Position;
-                            position.Z -= 0.1f;
-                            cam.Stand.Position = position;
+                            cam.Stand.Position -= new Vector3(0, 0, 0.1f);
                         }
                     };
 

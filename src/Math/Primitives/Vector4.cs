@@ -38,43 +38,39 @@ namespace TheNewEngine.Math.Primitives
         }
 
         /// <summary>
-        /// Gets or sets the value for the X-axis.
+        /// Gets the value for the X-axis.
         /// </summary>
         /// <value>The value for the X-axis.</value>
         public float X
         {
             get { return mX; }
-            set { mX = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value for the Y-axis.
+        /// Gets the value for the Y-axis.
         /// </summary>
         /// <value>The value for the Y-axis.</value>
         public float Y
         {
             get { return mY; }
-            set { mY = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value for the Z-axis.
+        /// Gets the value for the Z-axis.
         /// </summary>
         /// <value>The value for the Z-axis.</value>
         public float Z
         {
             get { return mZ; }
-            set { mZ = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value for the W-axis.
+        /// Gets the value for the W-axis.
         /// </summary>
         /// <value>The value for the W-axis.</value>
         public float W
         {
             get { return mW; }
-            set { mW = value; }
         }
 
         /// <summary>

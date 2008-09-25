@@ -30,9 +30,9 @@ namespace TheNewEngine.Graphics.Cameras
         public Vector3 Direction { get; set; }
 
         /// <summary>
-        /// Gets or sets up.
+        /// Gets or sets a vector point upwards.
         /// </summary>
-        /// <value>Up.</value>
+        /// <value>The up vector.</value>
         public Vector3 Up { get; set; }
 
         /// <summary>
@@ -56,11 +56,10 @@ namespace TheNewEngine.Graphics.Cameras
         /// <returns>The calculated view matrix.</returns>
         public static Matrix CalculateViewMatrix(Vector3 position, Vector3 direction, Vector3 up)
         {
-            direction.Normalize();
-            up.Normalize();
+            var normalizedDirection = direction.Normalized();
 
-            Vector3 s = direction.Cross(up);
-            Vector3 u = s.Cross(direction);
+            var s = normalizedDirection.Cross(up.Normalized());
+            var u = s.Cross(normalizedDirection);
 
             return new Matrix(
                 s.X, s.Y, s.Z, 0,

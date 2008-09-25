@@ -1,5 +1,6 @@
 using TheNewEngine.Math.Primitives;
 using TheNewEngine.Math;
+
 namespace TheNewEngine.Graphics.Cameras
 {
     /// <summary>
@@ -73,15 +74,10 @@ namespace TheNewEngine.Graphics.Cameras
             var f = Functions.CoTan(verticalFieldOfView / 2);
             var dp = distanceToFarPlane - distanceToNearPlane;
 
-            var projection = Matrix.Identity;
-            projection.R1C1 = f / aspectRatio;
-            projection.R2C2 = f;
-            projection.R3C3 = -(distanceToFarPlane + distanceToNearPlane) / dp;
-            projection.R3C4 = -1.0f;
-            projection.R4C3 = -distanceToFarPlane * distanceToNearPlane / dp;
-            projection.R4C4 = 0;
-
-            return projection;
+            return new Matrix(f / aspectRatio, 0, 0, 0,
+                0, f, 0, 0,
+                0, 0, -(distanceToFarPlane + distanceToNearPlane) / dp, -1,
+                0, 0, -distanceToFarPlane * distanceToNearPlane / dp, 0);
         }
     }
 }

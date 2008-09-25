@@ -116,6 +116,7 @@ namespace TheNewEngine.Graphics
             ObjectFactory.Initialize(x =>
             {
                 x.AddRegistry(new XnaRegistry());
+
                 //x.AddRegistry(new SlimDXRegistry());
                 //x.DefaultProfileName = "Xna";
             });

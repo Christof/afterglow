@@ -42,33 +42,30 @@ namespace TheNewEngine.Math.Primitives
         }
 
         /// <summary>
-        /// Gets or sets the value for the X-axis.
+        /// Gets the value for the X-axis.
         /// </summary>
         /// <value>The value for the X-axis.</value>
         public float X
         {
             get { return mX; }
-            set { mX = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value for the Y-axis.
+        /// Gets the value for the Y-axis.
         /// </summary>
         /// <value>The value for the Y-axis.</value>
         public float Y
         {
             get { return mY; }
-            set { mY = value; }
         }
 
         /// <summary>
-        /// Gets or sets the value for the Z-axis.
+        /// Gets the value for the Z-axis.
         /// </summary>
         /// <value>The value for the Z-axis.</value>
         public float Z
         {
             get { return mZ; }
-            set { mZ = value; }
         }
 
         /// <summary>
@@ -149,17 +146,17 @@ namespace TheNewEngine.Math.Primitives
         }
 
         /// <summary>
-        /// Normalizes the vector.
+        /// Returns a normalized representation of the vector.
         /// <remarks>
         /// A normalized vector has a length of 1.
         /// </remarks>
         /// </summary>
-        public void Normalize()
+        /// <returns>The normalized vector.</returns>
+        public Vector3 Normalized()
         {
             float length = Length;
-            mX /= length;
-            mY /= length;
-            mZ /= length;
+
+            return new Vector3(mX / length, mY / length, mZ / length);
         }
 
         /// <summary>
@@ -187,6 +184,20 @@ namespace TheNewEngine.Math.Primitives
                 summand1.X + summand2.X,
                 summand1.Y + summand2.Y,
                 summand1.Z + summand2.Z);
+        }
+
+        /// <summary>
+        /// Implements the operator - which calculates the difference between two vectors.
+        /// </summary>
+        /// <param name="minuend">The minuend.</param>
+        /// <param name="subtrahend">The subtrahend.</param>
+        /// <returns>The difference.</returns>
+        public static Vector3 operator -(Vector3 minuend, Vector3 subtrahend)
+        {
+            return new Vector3(
+                minuend.X - subtrahend.X,
+                minuend.Y - subtrahend.Y,
+                minuend.Z - subtrahend.Z);
         }
     }
 }
