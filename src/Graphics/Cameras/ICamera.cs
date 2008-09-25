@@ -1,4 +1,5 @@
 using TheNewEngine.Math.Primitives;
+
 namespace TheNewEngine.Graphics.Cameras
 {
     /// <summary>
@@ -9,7 +10,7 @@ namespace TheNewEngine.Graphics.Cameras
         /// <summary>
         /// Gets the name of the camera.
         /// </summary>
-        /// <value>The name.</value>
+        /// <value>The name of the camera.</value>
         string Name { get; }
 
         /// <summary>

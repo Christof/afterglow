@@ -20,9 +20,9 @@ namespace TheNewEngine.Graphics.Cameras
         Vector3 Direction { get; set; }
 
         /// <summary>
-        /// Gets or sets up.
+        /// Gets or sets a vector point upwards.
         /// </summary>
-        /// <value>Up.</value>
+        /// <value>The up vector.</value>
         Vector3 Up { get; set; }
 
         /// <summary>

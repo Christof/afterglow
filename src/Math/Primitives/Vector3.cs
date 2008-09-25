@@ -12,14 +12,6 @@ namespace TheNewEngine.Math.Primitives
     /// </remarks>
     public struct Vector3
     {
-        // Don't use auto properties because then the 
-        // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
-        private float mX;
-
-        private float mY;
-
-        private float mZ;
-
         private static readonly Vector3 ZERO = new Vector3(0, 0, 0);
 
         private static readonly Vector3 X_AXIS = new Vector3(1, 0, 0);
@@ -27,6 +19,14 @@ namespace TheNewEngine.Math.Primitives
         private static readonly Vector3 Y_AXIS = new Vector3(0, 1, 0);
 
         private static readonly Vector3 Z_AXIS = new Vector3(0, 0, 1);
+
+        // Don't use auto properties because then the 
+        // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
+        private float mX;
+
+        private float mY;
+
+        private float mZ;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Vector3"/> struct.
@@ -178,7 +178,7 @@ namespace TheNewEngine.Math.Primitives
         /// <param name="summand1">The first summand.</param>
         /// <param name="summand2">The second summand.</param>
         /// <returns>The sum of the two summands.</returns>
-        public static Vector3 operator+(Vector3 summand1, Vector3 summand2)
+        public static Vector3 operator +(Vector3 summand1, Vector3 summand2)
         {
             return new Vector3(
                 summand1.X + summand2.X,

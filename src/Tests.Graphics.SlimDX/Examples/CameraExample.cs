@@ -65,6 +65,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                         {
                             cam.Stand.Position += new Vector3(0, 0, 0.1f);
                         }
+
                         if (e.KeyCode == Keys.S)
                         {
                             cam.Stand.Position -= new Vector3(0, 0, 0.1f);

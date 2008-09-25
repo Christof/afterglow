@@ -22,5 +22,4 @@ namespace TheNewEngine.Graphics.Cameras
             Assert.AreEqual(slimDX.ToMath(), view);
         }
     }
-
 }

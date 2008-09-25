@@ -10,6 +10,12 @@ namespace TheNewEngine.Math.Primitives
     /// </summary>
     public struct Matrix : ICoordinateSystem, IEquatable<Matrix>, IDeltaEquatable<Matrix>
     {
+        private static readonly Matrix IDENTITY = new Matrix(
+            1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 1.0f);
+
         // Don't use auto properties because then the 
         // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
         private float mR1C1;
@@ -31,12 +37,6 @@ namespace TheNewEngine.Math.Primitives
         private float mR4C2;
         private float mR4C3;
         private float mR4C4;
-
-        private static readonly Matrix IDENTITY = new Matrix(
-            1.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 1.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 1.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 1.0f);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Matrix"/> struct.
@@ -396,7 +396,6 @@ namespace TheNewEngine.Math.Primitives
             //   http://go.microsoft.com/fwlink/?LinkID=85237  
             // and also the guidance for operator== at
             //   http://go.microsoft.com/fwlink/?LinkId=85238
-            //
 
             if (obj == null || GetType() != obj.GetType())
             {
