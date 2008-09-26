@@ -8,12 +8,6 @@ namespace TheNewEngine.Graphics.Cameras
     public interface ICamera
     {
         /// <summary>
-        /// Gets the name of the camera.
-        /// </summary>
-        /// <value>The name of the camera.</value>
-        string Name { get; }
-
-        /// <summary>
         /// Gets or sets the stand.
         /// </summary>
         /// <value>The stand.</value>

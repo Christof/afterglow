@@ -10,21 +10,13 @@ namespace TheNewEngine.Graphics.Cameras
         /// <summary>
         /// Initializes a new instance of the <see cref="Camera"/> class.
         /// </summary>
-        /// <param name="name">The name for the camera.</param>
         /// <param name="stand">The stand which contains the view matrix.</param>
         /// <param name="lense">The lense which contains the projection matrix.</param>
-        public Camera(string name, IStand stand, ILense lense)
+        public Camera(IStand stand, ILense lense)
         {
-            Name = name;
             Stand = stand;
             Lense = lense;
         }
-
-        /// <summary>
-        /// Gets the name of the camerea.
-        /// </summary>
-        /// <value>The name of the camera.</value>
-        public string Name { get; private set; }
 
         /// <summary>
         /// Gets or sets the stand.
