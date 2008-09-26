@@ -55,7 +55,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
 
                 var inputLayout = new InputLayout(device, containerImplementation.InputElements, pass.Description.Signature);
 
-                var cam = new Camera("default", new Stand(), new PerspectiveProjectionLense());
+                var cam = new Camera(new Stand(), new PerspectiveProjectionLense());
                 cam.Stand.Position = new Vector3(0, 0, -4);
 
                 form.KeyDown +=
