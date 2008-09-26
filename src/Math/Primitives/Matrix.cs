@@ -18,25 +18,25 @@ namespace TheNewEngine.Math.Primitives
 
         // Don't use auto properties because then the 
         // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
-        private float mR1C1;
-        private float mR1C2;
-        private float mR1C3;
-        private float mR1C4;
+        private readonly float mR1C1;
+        private readonly float mR1C2;
+        private readonly float mR1C3;
+        private readonly float mR1C4;
 
-        private float mR2C1;
-        private float mR2C2;
-        private float mR2C3;
-        private float mR2C4;
+        private readonly float mR2C1;
+        private readonly float mR2C2;
+        private readonly float mR2C3;
+        private readonly float mR2C4;
 
-        private float mR3C1;
-        private float mR3C2;
-        private float mR3C3;
-        private float mR3C4;
+        private readonly float mR3C1;
+        private readonly float mR3C2;
+        private readonly float mR3C3;
+        private readonly float mR3C4;
 
-        private float mR4C1;
-        private float mR4C2;
-        private float mR4C3;
-        private float mR4C4;
+        private readonly float mR4C1;
+        private readonly float mR4C2;
+        private readonly float mR4C3;
+        private readonly float mR4C4;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Matrix"/> struct.
@@ -277,33 +277,16 @@ namespace TheNewEngine.Math.Primitives
         }
 
         /// <summary>
-        /// Transposes the matrix.
+        /// Returns the transposed matrix.
         /// </summary>
-        public void Transpose()
+        /// <returns>The transposed matrix.</returns>
+        public Matrix Transposed()
         {
-            var temp = mR1C2;
-            mR1C2 = mR2C1;
-            mR2C1 = temp;
-
-            temp = mR1C3;
-            mR1C3 = mR3C1;
-            mR3C1 = temp;
-
-            temp = mR1C4;
-            mR1C4 = mR4C1;
-            mR4C1 = temp;
-
-            temp = mR2C3;
-            mR2C3 = mR3C2;
-            mR3C2 = temp;
-
-            temp = mR2C4;
-            mR2C4 = mR4C2;
-            mR4C2 = temp;
-
-            temp = mR3C4;
-            mR3C4 = mR4C3;
-            mR4C3 = temp;
+            return new Matrix(
+                mR1C1, mR2C1, mR3C1, mR4C1,
+                mR1C2, mR2C2, mR3C2, mR4C2,
+                mR1C3, mR2C3, mR3C3, mR4C3,
+                mR1C4, mR2C4, mR3C4, mR4C4);
         }
 
         /// <summary>
@@ -429,10 +412,10 @@ namespace TheNewEngine.Math.Primitives
         public override string ToString()
         {
             return string.Format(
-                "R1C1: {0}, R1C2: {1}, R1C3: {2}, R1C4 {3}, " + Environment.NewLine +
-                "R2C1: {4}, R2C2: {5}, R2C3: {6}, R2C4 {7}, " + Environment.NewLine +
-                "R3C1: {8}, R3C2: {9}, R3C3: {10}, R3C4 {11}, " + Environment.NewLine +
-                "R4C1: {12}, R4C2: {13}, R4C3: {14}, R4C4 {15}",
+                "R1C1: {0}, R1C2: {1}, R1C3: {2}, R1C4: {3}, " + Environment.NewLine +
+                "R2C1: {4}, R2C2: {5}, R2C3: {6}, R2C4: {7}, " + Environment.NewLine +
+                "R3C1: {8}, R3C2: {9}, R3C3: {10}, R3C4: {11}, " + Environment.NewLine +
+                "R4C1: {12}, R4C2: {13}, R4C3: {14}, R4C4: {15}",
                 mR1C1, mR1C2, mR1C3, mR1C4,
                 mR2C1, mR2C2, mR2C3, mR2C4,
                 mR3C1, mR3C2, mR3C3, mR3C4,

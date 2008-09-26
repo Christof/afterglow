@@ -14,13 +14,13 @@ namespace TheNewEngine.Math.Primitives
     {
         // Don't use auto properties because then the 
         // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.
-        private float mX;
+        private readonly float mX;
 
-        private float mY;
+        private readonly float mY;
 
-        private float mZ;
+        private readonly float mZ;
 
-        private float mW;
+        private readonly float mW;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Vector3"/> struct.

@@ -151,9 +151,9 @@ namespace TheNewEngine.Math.Primitives
                 13, 23, 33, 43,
                 14, 24, 34, 44);
 
-            matrix.Transpose();
-            
-            Assert.AreEqual(expected, matrix);
+            var transposed = matrix.Transposed();
+
+            Assert.AreEqual(expected, transposed);
         }
 
         [Test]

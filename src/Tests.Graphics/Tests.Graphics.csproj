@@ -63,6 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cameras\Test_Camera.cs" />
+    <Compile Include="Cameras\Test_PerspectiveProjectionLense.cs" />
+    <Compile Include="Cameras\Test_Stand.cs" />
     <Compile Include="Categories.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStream.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStreamContainer.cs" />
@@ -85,9 +88,6 @@
     <Content Include="test.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cameras\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
