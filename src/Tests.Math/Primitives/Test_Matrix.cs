@@ -1,4 +1,5 @@
 using MbUnit.Framework;
+using System;
 
 namespace TheNewEngine.Math.Primitives
 {
@@ -183,7 +184,7 @@ namespace TheNewEngine.Math.Primitives
         }
 
         [Test]
-        public void Equals()
+        public void Equals_for_two_matrices()
         {
             var matrix1 = new Matrix(
                 11, 12, 13, 14,
@@ -198,6 +199,54 @@ namespace TheNewEngine.Math.Primitives
                 41, 42, 43, 44);
 
             Assert.IsTrue(matrix1.Equals(matrix2));
+        }
+
+        [Test]
+        public void Equals_against_null()
+        {
+            var matrix = new Matrix();
+
+            Assert.IsFalse(matrix.Equals(null));
+        }
+
+        [Test]
+        public void Equals_against_different_type()
+        {
+            var matrix = new Matrix();
+
+            Assert.IsFalse(matrix.Equals("some other type"));
+        }
+
+        [Test]
+        public void GetHashCode_for_empty_matrix()
+        {
+            var matrix = new Matrix();
+
+            var hash = matrix.GetHashCode();
+
+            Assert.AreEqual(0, hash);
+        }
+
+        [Test]
+        public void GetHashCode_for_identity_matrix()
+        {
+            var matrix = Matrix.Identity;
+
+            var hash = matrix.GetHashCode();
+
+            Assert.AreNotEqual(0, hash);
+        }
+
+        [Test]
+        public new void ToString()
+        {
+            var expected = 
+                "R1C1: 1, R1C2: 0, R1C3: 0, R1C4: 0, " + Environment.NewLine +
+	            "R2C1: 0, R2C2: 1, R2C3: 0, R2C4: 0, " + Environment.NewLine +
+                "R3C1: 0, R3C2: 0, R3C3: 1, R3C4: 0, " + Environment.NewLine +
+	            "R4C1: 0, R4C2: 0, R4C3: 0, R4C4: 1";
+
+            Assert.AreEqual(expected, Matrix.Identity.ToString());
         }
     }
 }

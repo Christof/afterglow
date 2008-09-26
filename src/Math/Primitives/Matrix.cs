@@ -397,10 +397,10 @@ namespace TheNewEngine.Math.Primitives
         public override int GetHashCode()
         {
             return
-                mR1C1.GetHashCode() ^ mR1C2.GetHashCode() ^ mR1C3.GetHashCode() ^ mR1C4.GetHashCode() ^
-                mR2C1.GetHashCode() ^ mR2C2.GetHashCode() ^ mR2C3.GetHashCode() ^ mR2C4.GetHashCode() ^
-                mR3C1.GetHashCode() ^ mR3C2.GetHashCode() ^ mR3C3.GetHashCode() ^ mR3C4.GetHashCode() ^
-                mR4C1.GetHashCode() ^ mR4C2.GetHashCode() ^ mR4C3.GetHashCode() ^ mR4C4.GetHashCode();
+                mR1C1.GetHashCode() + mR1C2.GetHashCode() + mR1C3.GetHashCode() + mR1C4.GetHashCode() +
+                mR2C1.GetHashCode() + mR2C2.GetHashCode() + mR2C3.GetHashCode() + mR2C4.GetHashCode() +
+                mR3C1.GetHashCode() + mR3C2.GetHashCode() + mR3C3.GetHashCode() + mR3C4.GetHashCode() +
+                mR4C1.GetHashCode() + mR4C2.GetHashCode() + mR4C3.GetHashCode() + mR4C4.GetHashCode();
         }
 
         /// <summary>
