@@ -10,3 +10,4 @@ obj/*
 *.csproj.user
 *.Cache
 NDependOut
+/build/test-report*
