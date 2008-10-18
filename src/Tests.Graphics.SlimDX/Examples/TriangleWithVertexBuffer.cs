@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using Gallio.Framework;
 using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
@@ -42,7 +43,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 }
                 catch (System.Exception)
                 {
-                    Assert.Warning(errors);
+                    TestLog.Warnings.WriteLine(errors);
 
                     throw;
                 }
@@ -87,11 +88,11 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             }
         }
 
-        private static Vector3[] CreatePositions()
+        private static Math.Primitives.Vector3[] CreatePositions()
         {
-            var top = new Vector3(0f, 1f, 0f);
-            var left = new Vector3(-1f, -1f, 0f);
-            var right = new Vector3(1f, -1f, 0f);
+            var top = new Math.Primitives.Vector3(0f, 1f, 0f);
+            var left = new Math.Primitives.Vector3(-1f, -1f, 0f);
+            var right = new Math.Primitives.Vector3(1f, -1f, 0f);
 
             return new[] { top, left, right };
         }

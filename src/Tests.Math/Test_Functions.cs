@@ -35,7 +35,7 @@ namespace TheNewEngine.Math
         [Row(-1, PI_HALF * 3)]
         public void Sin(float sin, float angle)
         {
-            Assert.AreEqual(sin, Functions.Sin(angle), DELTA);
+            Assert.Between(Functions.Sin(angle), sin - DELTA, sin + DELTA);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace TheNewEngine.Math
         [Row(0, PI_HALF * 3)]
         public void Cos(float cos, float angle)
         {
-            Assert.AreEqual(cos, Functions.Cos(angle), DELTA);
+            Assert.Between(Functions.Cos(angle), cos - DELTA, cos + DELTA);
         }
 
         [Test]
@@ -54,16 +54,16 @@ namespace TheNewEngine.Math
         [Row(0, PI)]
         public void Tan(float tan, float angle)
         {
-            Assert.AreEqual(tan, Functions.Tan(angle), DELTA);
+            Assert.Between(Functions.Tan(angle), tan - DELTA, tan + DELTA);
         }
 
         [Test]
         [Row(0.0f, PI_HALF)]
         [Row(1.0f, PI_QUATER)]
         [Row(float.PositiveInfinity, 0.0f)]
-        public void CoTan(float cotan, float angle)
+        public void CoTan(float coTan, float angle)
         {
-            Assert.AreEqual(cotan, Functions.CoTan(angle), DELTA);
+            Assert.Between(Functions.CoTan(angle), coTan - DELTA, coTan + DELTA);
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace TheNewEngine.Math
         [Row(-PI_HALF, -1)]
         public void Asin(float acos, float angle)
         {
-            Assert.AreEqual(acos, Functions.Asin(angle), DELTA);
+            Assert.AreEqual(acos, Functions.Asin(angle));
         }
 
         [Test]
@@ -81,7 +81,7 @@ namespace TheNewEngine.Math
         [Row(PI, -1)]
         public void Acos(float acos, float angle)
         {
-            Assert.AreEqual(acos, Functions.Acos(angle), DELTA);
+            Assert.AreEqual(acos, Functions.Acos(angle));
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace TheNewEngine.Math
         [Row(PI_QUATER, 1)]
         public void Atan(float atan, float angle)
         {
-            Assert.AreEqual(atan, Functions.Atan(angle), DELTA);
+            Assert.AreEqual(atan, Functions.Atan(angle));
         }
 
         [Test]

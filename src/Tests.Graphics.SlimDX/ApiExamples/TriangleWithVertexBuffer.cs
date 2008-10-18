@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Gallio.Framework;
 using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
@@ -68,7 +69,7 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
                 }
                 catch (Exception)
                 {
-                    Assert.Warning(errors);
+                    TestLog.Warnings.WriteLine(errors);
 
                     throw;
                 }

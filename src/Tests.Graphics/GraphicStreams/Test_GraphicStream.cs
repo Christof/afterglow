@@ -1,4 +1,3 @@
-using System.Linq;
 using MbUnit.Framework;
 using TheNewEngine.Math.Primitives;
 
@@ -55,7 +54,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
             var graphicStream = new GraphicStream<float>(GraphicStreamUsage.Color, data);
 
             Assert.IsNotNull(graphicStream);
-            CollectionAssert.AreElementsEqual(data, graphicStream);
+            Assert.AreElementsEqual(data, graphicStream);
         }
     }
 }

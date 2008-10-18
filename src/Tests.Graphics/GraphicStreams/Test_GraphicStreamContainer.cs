@@ -37,7 +37,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
             container.Add(streams[0]);
             container.Add(streams[1]);
 
-            CollectionAssert.AreElementsEqual(streams, container);
+            Assert.AreElementsEqual(streams, container);
         }
 
         [Test]
