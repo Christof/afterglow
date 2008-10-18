@@ -21,7 +21,9 @@ task :test do #=> :build do
   gallio_path = GALLIO_PATH + "Gallio.Echo.exe"
   if (File.exist?(gallio_path))
 	print "starting tests..."
-    sh "\"#{gallio_path}\" #{BUILD_DIR}/Tests.Math.dll /working-directory:bin /report-directory:build /report-type:Html" #/show-reports
+    cmd = "\"#{gallio_path}\" #{BUILD_DIR}/Tests.Graphics.SlimDX.dll /working-directory:bin /report-directory:build /report-type:Html" #/show-reports
+		print cmd
+		sh cmd
   end 
   
   dir = Dir.new("build")
