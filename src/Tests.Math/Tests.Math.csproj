@@ -43,7 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\thirdparty\tools\Gallio\bin\MbUnit.dll</HintPath>
     </Reference>
-    <Reference Include="MbUnit35, Version=3.0.4.481, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
