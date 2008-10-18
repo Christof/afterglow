@@ -2,14 +2,16 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gallio.org/">
   <testPackageConfig>
     <assemblyFiles>
-      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.dll</assemblyFile>
-      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.OpenGL.dll</assemblyFile>
-      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.SlimDX.dll</assemblyFile>
-      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Graphics.Xna.dll</assemblyFile>
-      <assemblyFile>C:\Projects\TheNewEngine\bin\Tests.Math.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Common.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Graphics.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Graphics.OpenGL.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Graphics.SlimDX.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Graphics.Xna.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Math.dll</assemblyFile>
     </assemblyFiles>
     <hintDirectories />
-    <hostSetup applicationBaseDirectory="" workingDirectory="" enableShadowCopy="false">
+    <excludedFrameworkIds />
+    <hostSetup enableShadowCopy="false">
       <configuration legacyUnhandledExceptionPolicyEnabled="true" assertUiEnabled="false" remotingCustomErrorsEnabled="false">
         <assemblyQualifications />
         <assemblyDependencies />
@@ -18,6 +20,6 @@
     </hostSetup>
   </testPackageConfig>
   <testFilters>
-    <testFilter filterName="LastRun" filter="Id: 7362410cfd165a04" />
+    <testFilter filterName="LastRun" filter="*" />
   </testFilters>
 </project>
