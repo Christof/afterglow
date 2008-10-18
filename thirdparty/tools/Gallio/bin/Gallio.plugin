@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <gallio>
+    <assemblies>
+      <assembly file="Gallio.dll" />
+    </assemblies>
+
     <runtime>
       <components>
         <component id="Core.Loader"
@@ -197,7 +201,7 @@
         
         <component id="Core.XPathNavigableFormattingRule"
                    service="Gallio.Framework.Formatting.IFormattingRule, Gallio"
-                   type="Gallio.Framework.Formatting.XPathNavigableFormattingRule, Gallio" />
+                   type="Gallio.Framework.Formatting.XPathNavigableFormattingRule, Gallio" />        
       </components>
     </runtime>
   </gallio>

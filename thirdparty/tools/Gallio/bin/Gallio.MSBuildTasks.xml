@@ -9,9 +9,9 @@
     </member>
     <member name="P:Gallio.MSBuildTasks.Gallio.ApplicationBaseDirectory">
       <summary>
-        <para> The relative or absolute path of the application base directory. </para>
+        <para> Gets or sets the relative or absolute path of the application base directory, or null to use a default value selected by the consumer. </para>
         <para> If relative, the path is based on the current working directory, so a value of "" causes the current working directory to be used. </para>
-        <para> The default is "". </para>
+        <para> The default is null. </para>
       </summary>
     </member>
     <member name="P:Gallio.MSBuildTasks.Gallio.Assemblies">
@@ -98,9 +98,9 @@
     </member>
     <member name="P:Gallio.MSBuildTasks.Gallio.WorkingDirectory">
       <summary>
-        <para> The relative or absolute path of the working directory. </para>
+        <para> Gets or sets the relative or absolute path of the working directory or null to use a default value selected by the consumer. </para>
         <para> If relative, the path is based on the current working directory, so a value of "" causes the current working directory to be used. </para>
-        <para> The default is "". </para>
+        <para> The default is null. </para>
       </summary>
     </member>
     <member name="M:Gallio.MSBuildTasks.Gallio.Execute">
