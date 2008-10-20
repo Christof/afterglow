@@ -11,3 +11,4 @@ obj/*
 *.Cache
 NDependOut
 /build/test-report*
+/Reports
