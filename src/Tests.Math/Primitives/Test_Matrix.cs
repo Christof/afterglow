@@ -242,9 +242,9 @@ namespace TheNewEngine.Math.Primitives
         {
             var expected = 
                 "R1C1: 1, R1C2: 0, R1C3: 0, R1C4: 0, " + Environment.NewLine +
-	            "R2C1: 0, R2C2: 1, R2C3: 0, R2C4: 0, " + Environment.NewLine +
+                "R2C1: 0, R2C2: 1, R2C3: 0, R2C4: 0, " + Environment.NewLine +
                 "R3C1: 0, R3C2: 0, R3C3: 1, R3C4: 0, " + Environment.NewLine +
-	            "R4C1: 0, R4C2: 0, R4C3: 0, R4C4: 1";
+                "R4C1: 0, R4C2: 0, R4C3: 0, R4C4: 1";
 
             Assert.AreEqual(expected, Matrix.Identity.ToString());
         }

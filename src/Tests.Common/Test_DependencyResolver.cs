@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
 using MbUnit.Framework;
 using StructureMap;
-using StructureMap.Configuration.DSL;
 using TheNewEngine.Common;
-using StructureMap.Pipeline;
 
 namespace TheNewEngine.Tests.Common
 {
@@ -26,7 +22,8 @@ namespace TheNewEngine.Tests.Common
         [Test]
         public void Resolve()
         {
-            StructureMapConfiguration.ForRequestedType<IContract>().TheDefaultIsConcreteType<Implementation>();
+            ObjectFactory.Initialize(c => c.ForRequestedType<IContract>()
+                .TheDefaultIsConcreteType<Implementation>());
 
             var resolve = DependencyResolver.Resolve<IContract>();
 

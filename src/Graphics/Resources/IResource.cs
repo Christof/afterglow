@@ -1,12 +1,13 @@
 namespace TheNewEngine.Graphics.Resources
 {
     /// <summary>
-    /// Resource which needs an update every frame.
+    /// Encapsulation for a Resource which needs to be loaded to use it.
+    /// Each frame it can be updated. If it isn't used any more it can be unloaded.
     /// </summary>
     public interface IResource
     {
         /// <summary>
-        /// Called when the next frame is rendered.
+        /// Called each frame before rendering so the the resource could be updated.
         /// </summary>
         void OnFrame();
 

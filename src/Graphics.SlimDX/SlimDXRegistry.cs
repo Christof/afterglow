@@ -7,6 +7,9 @@ namespace TheNewEngine.Graphics.SlimDX
     /// </summary>
     public class SlimDXRegistry : Registry
     {
+        /// <summary>
+        /// Adds entries to the registry.
+        /// </summary>
         protected override void configure()
         {
             CreateProfile("SlimDX")

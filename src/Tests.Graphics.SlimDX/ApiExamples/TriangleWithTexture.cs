@@ -5,9 +5,9 @@ using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
+using Gallio.Framework;
 using Buffer = SlimDX.Direct3D10.Buffer;
 using Device = SlimDX.Direct3D10.Device;
-using Gallio.Framework;
 
 namespace TheNewEngine.Graphics.SlimDX.ApiExamples
 {
