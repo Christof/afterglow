@@ -3,12 +3,12 @@ using System.Collections.Generic;
 namespace TheNewEngine.Graphics.Resources
 {
     /// <summary>
-    /// <see cref="IFrameResource"/> which contains other <see cref="IFrameResource"/> of the
+    /// Resource which contains other <see cref="IResource"/> of the
     /// generic type.
     /// </summary>
     /// <typeparam name="ItemType">The type of an item in the container.</typeparam>
-    public interface IFrameResourceContainer<ItemType> : IFrameResource, IEnumerable<ItemType>
-        where ItemType : IFrameResource
+    public interface IResourceContainer<ItemType> : IResource, IEnumerable<ItemType>
+        where ItemType : IResource
     {
         /// <summary>
         /// Adds the frame resource to the container.

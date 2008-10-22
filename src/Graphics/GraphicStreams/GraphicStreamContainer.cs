@@ -7,7 +7,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
     /// <summary>
     /// Container for graphic streams.
     /// </summary>
-    public class GraphicStreamContainer : FrameResourceDecorator, IFrameResourceContainer<IGraphicStream> 
+    public class GraphicStreamContainer : ResourceDecorator, IResourceContainer<IGraphicStream> 
     {
         private readonly List<IGraphicStream> mStreams = new List<IGraphicStream>();
 

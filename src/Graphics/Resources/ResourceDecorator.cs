@@ -1,21 +1,21 @@
 namespace TheNewEngine.Graphics.Resources
 {
     /// <summary>
-    /// Decorator for a frame resource.
+    /// Decorator for a resource.
     /// </summary>
-    public class FrameResourceDecorator : IFrameResource
+    public class ResourceDecorator : IResource
     {
         /// <summary>
         /// Gets the decoree.
         /// </summary>
         /// <value>The decoree.</value>
-        public IFrameResource Decoree { get; private set; }
+        public IResource Decoree { get; private set; }
 
         /// <summary>
         /// Loads the resource.
         /// </summary>
         /// <param name="decoree">The decoree.</param>
-        public virtual void Load(IFrameResource decoree)
+        public virtual void Load(IResource decoree)
         {
             Decoree = decoree;
 

@@ -63,9 +63,9 @@
     <Compile Include="IRenderWindow.cs" />
     <Compile Include="IScreenshotTaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\FrameResourceDecorator.cs" />
-    <Compile Include="Resources\IFrameResource.cs" />
-    <Compile Include="Resources\IFrameResourceContainer.cs" />
+    <Compile Include="Resources\IResource.cs" />
+    <Compile Include="Resources\IResourceContainer.cs" />
+    <Compile Include="Resources\ResourceDecorator.cs" />
     <Compile Include="Utilities\ImageComparer.cs" />
   </ItemGroup>
   <ItemGroup>

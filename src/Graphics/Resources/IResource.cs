@@ -3,7 +3,7 @@ namespace TheNewEngine.Graphics.Resources
     /// <summary>
     /// Resource which needs an update every frame.
     /// </summary>
-    public interface IFrameResource
+    public interface IResource
     {
         /// <summary>
         /// Called when the next frame is rendered.
@@ -14,7 +14,7 @@ namespace TheNewEngine.Graphics.Resources
         /// Loads the resource.
         /// </summary>
         /// <param name="decoree">The decoree.</param>
-        void Load(IFrameResource decoree);
+        void Load(IResource decoree);
 
         /// <summary>
         /// Unloads the resource.

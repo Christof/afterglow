@@ -6,7 +6,7 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
     /// Interface for SlimDX buffers which must know the index of the buffer
     /// in the container to be able to set the buffer on the input assembler.
     /// </summary>
-    public interface IBuffer : IFrameResource
+    public interface IBuffer : IResource
     {
         /// <summary>
         /// Gets or sets the index.

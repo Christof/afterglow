@@ -9,11 +9,11 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
     /// <summary>
     /// Contains buffer which build up all vertex data.
     /// </summary>
-    public class BufferContainer : IFrameResource
+    public class BufferContainer : IResource
     {
         private readonly Device mDevice;
 
-        private IFrameResourceContainer<IGraphicStream> mGraphicStreamContainer;
+        private IResourceContainer<IGraphicStream> mGraphicStreamContainer;
 
         private List<InputElement> mInputElements;
 
@@ -55,9 +55,9 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
         /// Loads the resource.
         /// </summary>
         /// <param name="decoree">The decoree.</param>
-        public void Load(IFrameResource decoree)
+        public void Load(IResource decoree)
         {
-            var streamContainer = (IFrameResourceContainer<IGraphicStream>)decoree;
+            var streamContainer = (IResourceContainer<IGraphicStream>)decoree;
             mGraphicStreamContainer = streamContainer;
 
             mInputElements = new List<InputElement>();
