@@ -29,7 +29,7 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 
             var container = new BufferContainer(deviceMock.Object);
 
-            container.Load(graphicStreamContainer);
+            container.Load(null);
 
             container.OnFrame();
 
