@@ -17,13 +17,17 @@ task :build => [BUILD_DIR] do
   sh "#{DOT_NET_PATH}msbuild.exe /property:Configuration=Release #{SOLUTION_NAME}"
 end
 
-task :test do #=> :build do
+task :test => :build do
   gallio_path = GALLIO_PATH + "Gallio.Echo.exe"
   if (File.exist?(gallio_path))
-	print "starting tests..."
+		print "starting tests..."
     cmd = "\"#{gallio_path}\" #{BUILD_DIR}/Tests.Graphics.SlimDX.dll /working-directory:bin /report-directory:build /report-type:Html" #/show-reports
 		print cmd
-		sh cmd
+		begin
+			sh cmd
+		rescue => err
+			puts err
+		end
   end 
   
   dir = Dir.new("build")
