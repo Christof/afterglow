@@ -1,3 +1,6 @@
+require 'rexml/document'
+include REXML
+
 BUILD_DIR = "bin"
 DOT_NET_PATH = "#{ENV['windir']}\\Microsoft.net\\framework\\v3.5\\"
 GALLIO_PATH = "C:\\Program Files\\Gallio\\bin\\"
@@ -59,4 +62,47 @@ def replace_underlines(path)
 		file.write(line)
 	end
 	file.close
+end
+
+task :fixRef do
+	#get all dependency names
+	puts 'dependencies'
+	dependencies = {}
+	Dir['thirdparty/**/*.dll'].each do |path|
+		if (path.include?('x64') == false) # don't support x64 currently
+			dependencies[File.basename(path, '.dll')] = '..\\..\\' + path.gsub('/', '\\')
+		end
+	end
+	
+	#dependencies.each {|k,v| puts "#{k}: #{v}"}
+	
+	#get all projects.
+	Dir['src/**/*.csproj'].each do |path|
+		puts path
+		project_file = File.new(path, 'r+')
+		doc = Document.new(project_file)
+		
+		doc.elements.each('Project/ItemGroup/Reference') do |e|
+			include_element = e.attributes['Include']
+			name = include_element.to_s.split(',')[0]
+			e.delete_element('HintPath')
+			
+			if (dependencies.has_key?(name))
+				hint_element = Element.new('HintPath')
+				hint_element.text = dependencies[name]
+				e.add_element(hint_element)
+			end
+			
+			e.elements.each('HintPath') do |element|
+				puts "\t" + element.get_text.to_s
+			end
+		end
+				
+		#file = File.new(path, 'w')
+		doc.write(project_file, 2)
+		#doc.write
+		#file.close
+		project_file.close
+		break
+	end		
 end
