@@ -3,6 +3,7 @@ using SlimDX;
 using SlimDX.Direct3D10;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Resources;
+using System.Diagnostics.Contracts;
 
 namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 {
@@ -57,6 +58,8 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
         /// <param name="decoree">The decoree.</param>
         public void Load(IResource decoree)
         {
+            CodeContract.Requires(decoree != null);
+
             var streamContainer = (IResourceContainer<IGraphicStream>)decoree;
             mGraphicStreamContainer = streamContainer;
 
