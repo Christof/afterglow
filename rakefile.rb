@@ -79,8 +79,9 @@ task :fixRef do
 	#get all projects.
 	Dir['src/**/*.csproj'].each do |path|
 		puts path
-		project_file = File.new(path, 'r+')
+		project_file = File.new(path, 'r')
 		doc = Document.new(project_file)
+		project_file.close
 		
 		doc.elements.each('Project/ItemGroup/Reference') do |e|
 			include_element = e.attributes['Include']
@@ -98,11 +99,12 @@ task :fixRef do
 			end
 		end
 				
-		#file = File.new(path, 'w')
-		doc.write(project_file, 2)
+		file = File.new(path, 'w')
+		#s = ""
+		doc.write(file, 2)
+		#s.gsub('\'', '\"')
 		#doc.write
-		#file.close
-		project_file.close
+		file.close		
 		break
 	end		
 end
