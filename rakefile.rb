@@ -100,10 +100,12 @@ task :fixRef do
 		end
 				
 		file = File.new(path, 'w')
-		#s = ""
-		doc.write(file, 2)
-		#s.gsub('\'', '\"')
-		#doc.write
+		s = ""
+		doc.write(s)
+		s.gsub!('\'', '"')
+		s.gsub!('&apos;', '\'')
+		puts s
+		file.write(s)
 		file.close		
 		break
 	end		
