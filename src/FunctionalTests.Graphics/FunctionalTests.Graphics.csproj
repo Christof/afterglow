@@ -66,10 +66,6 @@
     <Compile Include="Test_RenderWindow.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Graphics.OpenGL\Graphics.OpenGL.csproj">
       <Project>{C6977C42-AF28-437F-BA77-31F1F416E3C0}</Project>
       <Name>Graphics.OpenGL</Name>
@@ -85,6 +81,10 @@
     <ProjectReference Include="..\Graphics\Graphics.csproj">
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
+      <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Math\Math.csproj">
       <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>

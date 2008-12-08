@@ -8,8 +8,8 @@
     <ProjectGuid>{E5F6CD41-EF70-4C50-B0AD-1D10529EDB1D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheNewEngine.Tests.Common</RootNamespace>
-    <AssemblyName>Tests.Common</AssemblyName>
+    <RootNamespace>TheNewEngine.Infrastructure</RootNamespace>
+    <AssemblyName>Tests.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -64,7 +64,7 @@
     <Compile Include="Test_DependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
       <Name>Common</Name>
     </ProjectReference>
