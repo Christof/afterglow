@@ -104,9 +104,7 @@ task :fixRef do
 		doc.write(s)
 		s.gsub!('\'', '"')
 		s.gsub!('&apos;', '\'')
-		puts s
 		file.write(s)
-		file.close		
-		break
+		file.close
 	end		
 end
