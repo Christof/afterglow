@@ -12,7 +12,7 @@ using Device = SlimDX.Direct3D10.Device;
 namespace TheNewEngine.Graphics.SlimDX.Examples
 {
     [TestFixture]
-    public class TriangleWithTexute
+    public class TriangleWithTexture
     {
         [Test]
         [Category(Categories.EXAMPLES)]
