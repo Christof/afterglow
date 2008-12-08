@@ -35,7 +35,7 @@ namespace TheNewEngine.Math
         [Row(-1, PI_HALF * 3)]
         public void Sin(float sin, float angle)
         {
-            Assert.Between(Functions.Sin(angle), sin - DELTA, sin + DELTA);
+            Assert.AreApproximatelyEqual(sin, Functions.Sin(angle), DELTA);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace TheNewEngine.Math
         [Row(0, PI_HALF * 3)]
         public void Cos(float cos, float angle)
         {
-            Assert.Between(Functions.Cos(angle), cos - DELTA, cos + DELTA);
+            Assert.AreApproximatelyEqual(cos, Functions.Cos(angle), DELTA);
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace TheNewEngine.Math
         [Row(0, PI)]
         public void Tan(float tan, float angle)
         {
-            Assert.Between(Functions.Tan(angle), tan - DELTA, tan + DELTA);
+            Assert.AreApproximatelyEqual(tan, Functions.Tan(angle), DELTA);
         }
 
         [Test]
@@ -63,7 +63,7 @@ namespace TheNewEngine.Math
         [Row(float.PositiveInfinity, 0.0f)]
         public void CoTan(float coTan, float angle)
         {
-            Assert.Between(Functions.CoTan(angle), coTan - DELTA, coTan + DELTA);
+            Assert.AreApproximatelyEqual(coTan, Functions.CoTan(angle), DELTA);
         }
 
         [Test]

@@ -16,7 +16,7 @@ namespace TheNewEngine.Math
         [Row(PI_HALF, Constants.HALF_PI, Description = "0.5 Pi")]
         public void Constant_values(float expected, float actual)
         {
-            Assert.Between(actual, expected - DELTA, expected + DELTA);
+            Assert.AreApproximatelyEqual(expected, actual, DELTA);
         }
     }
 }
