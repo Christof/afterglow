@@ -33,6 +33,7 @@
     <DocumentationFile>..\..\bin\Graphics.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -60,6 +61,8 @@
     <Compile Include="GraphicStreams\GraphicStreamFormatHelper.cs" />
     <Compile Include="GraphicStreams\GraphicStreamUsage.cs" />
     <Compile Include="GraphicStreams\IGraphicStream.cs" />
+    <Compile Include="Importers\Collada\ColladaImporter.cs" />
+    <Compile Include="Importers\Collada\SourceParser.cs" />
     <Compile Include="IRenderWindow.cs" />
     <Compile Include="IScreenshotTaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,13 +73,14 @@
     <Compile Include="Utilities\ImageComparer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
+      <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Math\Math.csproj">
       <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
       <Name>Math %28Math\Math%29</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Importers\Collada\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
