@@ -45,5 +45,13 @@ namespace TheNewEngine.Math.Primitives
 
             var value = vector4[4];
         }
+
+        [Test]
+        public new void ToString()
+        {
+            var vector = new Vector4(1.1f, 2.2f, 3.3f, 4.4f);
+
+            Assert.AreEqual("X: 1.1 Y: 2.2 Z: 3.3 W: 4.4", vector.ToString());
+        }
     }
 }

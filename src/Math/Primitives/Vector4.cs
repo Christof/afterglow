@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 namespace TheNewEngine.Math.Primitives
 {
@@ -96,6 +97,19 @@ namespace TheNewEngine.Math.Primitives
                         "The Vector3 has no value at the given index");
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns the fully qualified type name of this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String" /> containing a fully qualified type name.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
+        public override string ToString()
+        {
+            return string.Format(CultureInfo.InvariantCulture, 
+                "X: {0} Y: {1} Z: {2} W: {3}", mX, mY, mZ, mW);
         }
     }
 }
