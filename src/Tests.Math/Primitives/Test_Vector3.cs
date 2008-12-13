@@ -141,5 +141,13 @@ namespace TheNewEngine.Math.Primitives
             Assert.AreEqual(vector1.Y - vector2.Y, result.Y);
             Assert.AreEqual(vector1.Z - vector2.Z, result.Z);
         }
+
+        [Test]
+        public new void ToString()
+        {
+            var vector = new Vector3(1.1f, 2.2f, 3.3f);
+
+            Assert.AreEqual("X: 1.1 Y: 2.2 Z: 3.3", vector.ToString());
+        }
     }
 }

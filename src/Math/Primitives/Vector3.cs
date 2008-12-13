@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 namespace TheNewEngine.Math.Primitives
 {
@@ -198,6 +199,18 @@ namespace TheNewEngine.Math.Primitives
                 minuend.X - subtrahend.X,
                 minuend.Y - subtrahend.Y,
                 minuend.Z - subtrahend.Z);
+        }
+
+        /// <summary>
+        /// Returns the fully qualified type name of this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.String" /> containing a fully qualified type name.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
+        public override string ToString()
+        {
+            return string.Format(CultureInfo.InvariantCulture, "X: {0} Y: {1} Z: {2}", mX, mY, mZ);
         }
     }
 }
