@@ -81,6 +81,10 @@
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
+      <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Math\Math.csproj">
       <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
       <Name>Math %28Math\Math%29</Name>

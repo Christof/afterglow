@@ -1,8 +1,7 @@
 using MbUnit.Framework;
 using StructureMap;
-using TheNewEngine.Common;
 
-namespace TheNewEngine.Tests.Common
+namespace TheNewEngine.Infrastructure
 {
     public class Test_DependencyResolver
     {

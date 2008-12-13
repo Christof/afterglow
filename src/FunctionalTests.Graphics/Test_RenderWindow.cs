@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using MbUnit.Framework;
 using System;
 using StructureMap;
-using TheNewEngine.Common;
+using TheNewEngine.Infrastructure;
 using TheNewEngine.Graphics.Xna;
 using TheNewEngine.Graphics.SlimDX;
 

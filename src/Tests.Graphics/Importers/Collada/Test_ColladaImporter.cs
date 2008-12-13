@@ -1,5 +1,7 @@
 using System.Diagnostics.Contracts;
 using MbUnit.Framework;
+using TheNewEngine.Infrastructure;
+using System.IO;
 
 namespace TheNewEngine.Graphics.Importers.Collada
 {
@@ -26,6 +28,9 @@ namespace TheNewEngine.Graphics.Importers.Collada
 
         public ColladaImporter(string path)
         {
+            CodeContract.Requires(!path.IsNullOrEmpty());
+            CodeContract.Requires(File.Exists(path));
+
             mPath = path;
         }
     }

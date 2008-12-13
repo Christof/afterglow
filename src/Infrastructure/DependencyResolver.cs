@@ -1,6 +1,6 @@
 using StructureMap;
 
-namespace TheNewEngine.Common
+namespace TheNewEngine.Infrastructure
 {
     /// <summary>
     /// Resolves dependencies with an underlying IoC-Framework.
