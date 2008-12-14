@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Xml.Linq;
 using MbUnit.Framework;
-using TheNewEngine.Math.Primitives;
 
 namespace TheNewEngine.Graphics.Importers.Collada
 {
@@ -22,7 +21,7 @@ namespace TheNewEngine.Graphics.Importers.Collada
         }
 
         [Test]
-        public void ParseVector3_for_Positions()
+        public void Parse_for_Positions()
         {
             var sourceElement = mMesh.Elements()
                 .Where(s => s.Attribute("id").Value == "Plane-Geometry-Position")
@@ -31,21 +30,21 @@ namespace TheNewEngine.Graphics.Importers.Collada
 
             var sourceParser = new SourceParser(sourceElement);
 
-            var positions = sourceParser.ParseVector3();
+            var positions = sourceParser.Parse();
 
             Assert.IsNotNull(positions);
             var expected = new[]
             {
-                new Vector3(1, 1, 0),
-                new Vector3(1, -1, 0),
-                new Vector3(-1, -1, 0),
-                new Vector3(-1, 1, 0)
+                new []{ 1f,  1f, 0f},
+                new []{ 1f, -1f, 0f},
+                new []{-1f, -1f, 0f},
+                new []{-1f,  1f, 0f}
             };
-            Assert.AreElementsEqual(expected, positions);
+            Assert.AreElementsEqual(expected, positions.ToArray());
         }
 
         [Test]
-        public void ParseVector3_for_Normals()
+        public void Parse_for_Normals()
         {
             var sourceElement = mMesh.Elements()
                 .Where(s => s.Attribute("id").Value == "Plane-Geometry-Normals")
@@ -54,19 +53,19 @@ namespace TheNewEngine.Graphics.Importers.Collada
 
             var sourceParser = new SourceParser(sourceElement);
 
-            var normals = sourceParser.ParseVector3();
+            var normals = sourceParser.Parse();
 
             Assert.IsNotNull(normals);
             var expected = new[]
             {
-                new Vector3(0, 0, 1),
-                new Vector3(0, 0, 1),
+                new []{0f, 0f, 1f},
+                new []{0f, 0f, 1f},
             };
-            Assert.AreElementsEqual(expected, normals);
+            Assert.AreElementsEqual(expected, normals.ToArray());
         }
 
         [Test]
-        public void ParseVector2_for_TexCoords()
+        public void Parse_for_TexCoords()
         {
             var sourceElement = mMesh.Elements()
                 .Where(s => s.Attribute("id").Value == "Plane-Geometry-UV")
@@ -75,19 +74,44 @@ namespace TheNewEngine.Graphics.Importers.Collada
 
             var sourceParser = new SourceParser(sourceElement);
 
-            var texCoords = sourceParser.ParseVector2();
+            var texCoords = sourceParser.Parse();
 
             Assert.IsNotNull(texCoords);
             var expected = new[]
             {
-                new Vector2(0, 0),
-                new Vector2(1, 0),
-                new Vector2(1, 1),
-                new Vector2(0, 0),
-                new Vector2(1, 1),
-                new Vector2(0, 1)
+                new []{0f, 0f},
+                new []{1f, 0f},
+                new []{1f, 1f},
+                new []{0f, 0f},
+                new []{1f, 1f},
+                new []{0f, 1f}
             };
-            Assert.AreElementsEqual(expected, texCoords);
+            Assert.AreElementsEqual(expected, texCoords.ToArray());
+        }
+
+        [Test]
+        public void Parse_for_Colors()
+        {
+            var sourceElement = mMesh.Elements()
+                .Where(s => s.Attribute("id").Value == "Plane-Geometry-color")
+                .FirstOrDefault();
+            Assert.IsNotNull(sourceElement);
+
+            var sourceParser = new SourceParser(sourceElement);
+
+            var texCoords = sourceParser.Parse();
+
+            Assert.IsNotNull(texCoords);
+            var expected = new[]
+            {
+                new []{1f, 1f, 1f, 1f},
+                new []{1f, 1f, 1f, 1f},
+                new []{1f, 1f, 1f, 1f},
+                new []{1f, 1f, 1f, 1f},
+                new []{1f, 1f, 1f, 1f},
+                new []{1f, 1f, 1f, 1f},
+            };
+            Assert.AreElementsEqual(expected, texCoords.ToArray());
         }
     }
 }
