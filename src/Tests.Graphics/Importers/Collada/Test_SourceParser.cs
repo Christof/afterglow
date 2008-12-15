@@ -2,7 +2,7 @@ using System.Linq;
 using System.Xml.Linq;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.Importers.Collada
+namespace TheNewEngine.Graphics
 {
     public class Test_SourceParser
     {

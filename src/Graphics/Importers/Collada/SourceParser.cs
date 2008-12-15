@@ -10,7 +10,7 @@ namespace TheNewEngine.Graphics
     /// <summary>
     /// Parser for source elements in a collada file.
     /// </summary>
-    internal class SourceParser
+    public class SourceParser
     {
         private readonly XElement mSourceElement;
 
