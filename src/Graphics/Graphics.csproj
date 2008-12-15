@@ -62,6 +62,7 @@
     <Compile Include="GraphicStreams\GraphicStreamUsage.cs" />
     <Compile Include="GraphicStreams\IGraphicStream.cs" />
     <Compile Include="Importers\Collada\ColladaImporter.cs" />
+    <Compile Include="Importers\Collada\MeshParser.cs" />
     <Compile Include="Importers\Collada\SourceParser.cs" />
     <Compile Include="IRenderWindow.cs" />
     <Compile Include="IScreenshotTaker.cs" />

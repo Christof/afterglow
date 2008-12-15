@@ -1,5 +1,5 @@
 using MbUnit.Framework;
-using TheNewEngine.Math.Primitives;
+using TheNewEngine.Math;
 using XnaMatrix = Microsoft.Xna.Framework.Matrix;
 
 namespace TheNewEngine.Graphics.Xna

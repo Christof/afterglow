@@ -1,4 +1,4 @@
-using TheNewEngine.Math.Primitives;
+using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics.Cameras
 {

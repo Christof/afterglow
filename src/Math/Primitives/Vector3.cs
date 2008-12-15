@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace TheNewEngine.Math.Primitives
+namespace TheNewEngine.Math
 {
     /// <summary>
     /// 3-dimensional vector which has properties for each axis (x-axis, y-axis, z-axis).

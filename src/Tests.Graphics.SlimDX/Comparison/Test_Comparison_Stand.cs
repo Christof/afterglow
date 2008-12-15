@@ -1,6 +1,6 @@
 using MbUnit.Framework;
 using TheNewEngine.Graphics.SlimDX;
-using TheNewEngine.Math.Primitives;
+using TheNewEngine.Math;
 using SlimDXMatrix = SlimDX.Matrix;
 
 namespace TheNewEngine.Graphics.Cameras

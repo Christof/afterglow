@@ -9,7 +9,7 @@ using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using TheNewEngine.Graphics.SlimDX.GraphicStreams;
 using Device = SlimDX.Direct3D10.Device;
-using Vector3 = TheNewEngine.Math.Primitives.Vector3;
+using Vector3 = TheNewEngine.Math.Vector3;
 using SlimDXVector = SlimDX.Vector3;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples

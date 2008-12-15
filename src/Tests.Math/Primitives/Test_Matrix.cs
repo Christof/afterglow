@@ -1,7 +1,7 @@
 using MbUnit.Framework;
 using System;
 
-namespace TheNewEngine.Math.Primitives
+namespace TheNewEngine.Math
 {
     public class Test_Matrix
     {

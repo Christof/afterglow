@@ -1,6 +1,6 @@
 using MbUnit.Framework;
 
-namespace TheNewEngine.Math.Primitives
+namespace TheNewEngine.Math
 {
     public class Test_Vector2
     {

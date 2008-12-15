@@ -1,4 +1,4 @@
-namespace TheNewEngine.Math.Primitives
+namespace TheNewEngine.Math
 {
     /// <summary>
     /// Defines a coordinate system in 3d-space.

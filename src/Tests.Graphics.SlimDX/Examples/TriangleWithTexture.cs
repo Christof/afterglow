@@ -88,11 +88,11 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             }
         }
 
-        private static Math.Primitives.Vector3[] CreatePositions()
+        private static Math.Vector3[] CreatePositions()
         {
-            var top = new Math.Primitives.Vector3(0f, 1f, 0f);
-            var left = new Math.Primitives.Vector3(-1f, -1f, 0f);
-            var right = new Math.Primitives.Vector3(1f, -1f, 0f);
+            var top = new Math.Vector3(0f, 1f, 0f);
+            var left = new Math.Vector3(-1f, -1f, 0f);
+            var right = new Math.Vector3(1f, -1f, 0f);
 
             return new[] { top, left, right };
         }

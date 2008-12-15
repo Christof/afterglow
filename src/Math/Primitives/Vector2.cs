@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace TheNewEngine.Math.Primitives
+namespace TheNewEngine.Math
 {
     /// <summary>
     /// 2-dimensional vector which has properties for each axis (x-axis, y-axis).
@@ -12,8 +12,6 @@ namespace TheNewEngine.Math.Primitives
         private static readonly Vector2 X_AXIS = new Vector2(1, 0);
 
         private static readonly Vector2 Y_AXIS = new Vector2(0, 1);
-
-        private static readonly Vector2 Z_AXIS = new Vector2(0, 0);
 
         // Don't use auto properties because then the 
         // default StructLayout (which is LayoutKind.Sequential for structs) is not guaranteed.

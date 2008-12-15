@@ -1,4 +1,4 @@
-using TheNewEngine.Math.Primitives;
+using TheNewEngine.Math;
 using XnaMatrix = Microsoft.Xna.Framework.Matrix;
 
 namespace TheNewEngine.Graphics.Xna

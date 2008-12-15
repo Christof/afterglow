@@ -1,6 +1,6 @@
 using MbUnit.Framework;
 using TheNewEngine.Graphics.Xna;
-using TheNewEngine.Math.Primitives;
+using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics.Cameras
 {

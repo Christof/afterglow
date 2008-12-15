@@ -44,7 +44,7 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
             switch (elementType)
             {
                 case GraphicStreamFormat.Vector3:
-                    return new Buffer<TheNewEngine.Math.Primitives.Vector3>(mDevice);
+                    return new Buffer<Math.Vector3>(mDevice);
                 case GraphicStreamFormat.Color4:
                     return new Buffer<Color4>(mDevice);
             }

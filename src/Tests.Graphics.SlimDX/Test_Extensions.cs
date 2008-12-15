@@ -2,7 +2,7 @@ using System;
 using MbUnit.Framework;
 using TheNewEngine.Graphics.GraphicStreams;
 using SlimDX.DXGI;
-using TheNewEngine.Math.Primitives;
+using TheNewEngine.Math;
 using SlimDXVector3 = SlimDX.Vector3;
 using SlimDXMatrix = SlimDX.Matrix;
 
