@@ -40,15 +40,30 @@ namespace TheNewEngine.Graphics
         /// <returns>The source element for the given reference.</returns>
         public XElement FindSource(string reference)
         {
-            string id = reference.Replace("#", "");
+            var foundSources = FindSources(reference);
 
-            var foundSources = mMeshElement.Elements(ColladaImporter.Namespace + "source")
-                .Where(s => s.Attribute("id").Value == id);
+            if (foundSources.Count() == 1)
+                return foundSources.First();
+
+            var inputElement = mMeshElement
+                .Element(ColladaImporter.Namespace + "vertices")
+                .Element(ColladaImporter.Namespace + "input");
+
+            string referenceFromVertices = inputElement.Attribute("source").Value;
+            foundSources = FindSources(referenceFromVertices);
 
             if (foundSources.Count() == 1)
                 return foundSources.First();
 
             return null;
+        }
+
+        private IEnumerable<XElement> FindSources(string reference)
+        {
+            string id = reference.Replace("#", "");
+
+            return mMeshElement.Elements(ColladaImporter.Namespace + "source")
+                .Where(s => s.Attribute("id").Value == id);
         }
     }
 }
