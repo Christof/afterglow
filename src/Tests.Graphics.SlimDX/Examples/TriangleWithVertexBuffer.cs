@@ -6,6 +6,8 @@ using SlimDX.Direct3D10;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using TheNewEngine.Graphics.SlimDX.GraphicStreams;
+using System.IO;
+using TheNewEngine.Graphics.Utilities;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
 {
@@ -88,10 +90,31 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
 
                     mRenderWindow.Render();
 
+                    AssertWithScreenshot();
+
                     Application.DoEvents();
                 };
 
             Application.Run(mForm);
+        }
+
+        private void AssertWithScreenshot()
+        {
+            var name = "TheNewEngine.Graphics.SlimDX.Examples.TriangleWithVertexBuffer.Run";
+            var expected = name + "_expected.bmp";
+            var actual = name + "_actual.bmp";
+            if (File.Exists(expected))
+            {
+                mRenderWindow.TakeScreenshot(actual);
+
+                Assert.IsTrue(ImageComparer.Compare(expected, actual));
+            }
+            else
+            {
+                mRenderWindow.TakeScreenshot(expected);
+                Assert.Fail("First run. Excpected image was taken and must be verified");
+            }
+            Application.Exit();
         }
 
         private static Math.Vector3[] CreatePositions()
