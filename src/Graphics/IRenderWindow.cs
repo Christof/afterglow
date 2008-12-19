@@ -8,6 +8,11 @@ namespace TheNewEngine.Graphics
     public interface IRenderWindow : IDisposable, IScreenshotTaker
     {
         /// <summary>
+        /// Starts the rendering of the scene by cleaning the render target.
+        /// </summary>
+        void StartRendering();
+
+        /// <summary>
         /// Renders the current scene.
         /// </summary>
         void Render();

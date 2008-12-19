@@ -63,12 +63,18 @@ namespace TheNewEngine.Graphics.Xna
         }
 
         /// <summary>
+        /// Starts the rendering of the scene by cleaning the render target.
+        /// </summary>
+        public void StartRendering()
+        {
+            mDevice.Clear(Color.Blue);
+        }
+
+        /// <summary>
         /// Renders the current scene.
         /// </summary>
         public void Render()
         {
-            mDevice.Clear(Color.Blue);
-
             if (RenderAction != null)
             {
                 RenderAction();

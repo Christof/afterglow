@@ -16,6 +16,14 @@ namespace TheNewEngine.Graphics.OpenGL
         }
 
         /// <summary>
+        /// Starts the rendering of the scene by cleaning the render target.
+        /// </summary>
+        public void StartRendering()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
         /// Renders the current scene.
         /// </summary>
         public void Render()

@@ -96,6 +96,19 @@ namespace TheNewEngine.Graphics.SlimDX
         }
 
         /// <summary>
+        /// Gets the device.
+        /// </summary>
+        /// <value>The device.</value>
+        // TODO : change to internal
+        public Device Device
+        {
+            get
+            {
+                return mDevice;
+            }
+        }
+
+        /// <summary>
         /// Takes a screenshot.
         /// </summary>
         /// <param name="filename">The filename.</param>
@@ -107,12 +120,18 @@ namespace TheNewEngine.Graphics.SlimDX
         }
 
         /// <summary>
+        /// Starts the rendering of the scene by cleaning the render target.
+        /// </summary>
+        public void StartRendering()
+        {
+            mDevice.ClearRenderTargetView(mRenderTarget, new Color4(1, 0, 0));
+        }
+
+        /// <summary>
         /// Renders the current scene.
         /// </summary>
         public void Render()
         {
-            mDevice.ClearRenderTargetView(mRenderTarget, new Color4(1, 0, 0));
-
             mSwapChain.Present(0, PresentFlags.None);
         }
 

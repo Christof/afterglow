@@ -27,6 +27,8 @@ namespace TheNewEngine.Graphics.Xna
                     Application.Idle +=
                         delegate
                         {
+                            renderWindow.StartRendering();
+
                             renderWindow.Render();
 
                             Application.DoEvents();
