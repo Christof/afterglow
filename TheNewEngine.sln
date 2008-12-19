@@ -46,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Infrastructure", "src\Tests.Infrastructure\Tests.Infrastructure.csproj", "{E5F6CD41-EF70-4C50-B0AD-1D10529EDB1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestInfrastructure", "src\TestInfrastructure\TestInfrastructure.csproj", "{80F94562-64F0-48BB-8CFC-327CA0637B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.TestInfrastructure", "src\Tests.TestInfrastructure\Tests.TestInfrastructure.csproj", "{2159C99B-4EF9-469A-BBE8-4BCA87F4789A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +108,14 @@ Global
 		{E5F6CD41-EF70-4C50-B0AD-1D10529EDB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5F6CD41-EF70-4C50-B0AD-1D10529EDB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5F6CD41-EF70-4C50-B0AD-1D10529EDB1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80F94562-64F0-48BB-8CFC-327CA0637B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F94562-64F0-48BB-8CFC-327CA0637B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80F94562-64F0-48BB-8CFC-327CA0637B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80F94562-64F0-48BB-8CFC-327CA0637B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2159C99B-4EF9-469A-BBE8-4BCA87F4789A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2159C99B-4EF9-469A-BBE8-4BCA87F4789A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2159C99B-4EF9-469A-BBE8-4BCA87F4789A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2159C99B-4EF9-469A-BBE8-4BCA87F4789A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,5 +138,7 @@ Global
 		{B6D880B2-49BB-4ABF-8780-609E573E19A5} = {0AEA9517-E1D6-4629-BFCF-C430F191F46D}
 		{F236295E-8AC5-47A1-B751-23FCDC90688F} = {38C3A798-FCA5-4785-BB06-B7404B6EAEEC}
 		{E5F6CD41-EF70-4C50-B0AD-1D10529EDB1D} = {38C3A798-FCA5-4785-BB06-B7404B6EAEEC}
+		{80F94562-64F0-48BB-8CFC-327CA0637B82} = {38C3A798-FCA5-4785-BB06-B7404B6EAEEC}
+		{2159C99B-4EF9-469A-BBE8-4BCA87F4789A} = {38C3A798-FCA5-4785-BB06-B7404B6EAEEC}
 	EndGlobalSection
 EndGlobal
