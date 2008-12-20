@@ -66,6 +66,9 @@ namespace TheNewEngine.Graphics.SlimDX
                 case GraphicStreamFormat.Float:
                     return Format.R32_Float;
 
+                case GraphicStreamFormat.Int:
+                    return Format.R32_SInt;
+
                 default:
                     throw new InvalidOperationException(string.Format(
                         "Unable to convert the given format ({0})", format));

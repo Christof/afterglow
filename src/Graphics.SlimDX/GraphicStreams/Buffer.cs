@@ -1,7 +1,9 @@
 using SlimDX.Direct3D10;
 using SlimDX;
+using SlimDX.DXGI;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Resources;
+using Device=SlimDX.Direct3D10.Device;
 
 namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 {
@@ -17,6 +19,10 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
         private Buffer mBuffer;
 
         private int mElementSize;
+
+        private bool mIsIndexBuffer;
+
+        private Format mFormat;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Buffer&lt;ElementType&gt;"/> class.
@@ -42,6 +48,9 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
             var graphicStream = (GraphicStream<ElementType>)resource;
             mElementSize = graphicStream.ElementSize;
 
+            mIsIndexBuffer = graphicStream.Usage == GraphicStreamUsage.Index;
+            mFormat = graphicStream.Format.ToFormat();
+
             var dataStream = new DataStream(graphicStream.Size, false, true);
             dataStream.WriteRange(graphicStream.Data);
 
@@ -52,7 +61,7 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 
             var bufferDescription = new BufferDescription
             {
-                BindFlags = BindFlags.VertexBuffer,
+                BindFlags = mIsIndexBuffer ? BindFlags.IndexBuffer : BindFlags.VertexBuffer,
                 CpuAccessFlags = CpuAccessFlags.None,
                 OptionFlags = ResourceOptionFlags.None,
                 SizeInBytes = graphicStream.Size,
@@ -79,9 +88,16 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
         /// Called when the next frame is rendered.
         /// </summary>
         public void OnFrame()
-        {
-            mDevice.InputAssembler.SetVertexBuffers(Index,
-                new VertexBufferBinding(mBuffer, mElementSize, 0));
+        {    
+            if (mIsIndexBuffer)
+            {
+                mDevice.InputAssembler.SetIndexBuffer(mBuffer, mFormat, 0);
+            }
+            else
+            {
+                mDevice.InputAssembler.SetVertexBuffers(Index,
+                    new VertexBufferBinding(mBuffer, mElementSize, 0));
+            }
         }
     }
 }

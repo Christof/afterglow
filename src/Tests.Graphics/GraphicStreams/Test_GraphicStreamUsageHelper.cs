@@ -10,10 +10,11 @@ namespace TheNewEngine.Graphics.GraphicStreams
         [Row(GraphicStreamFormat.Float, "Single")]
         [Row(GraphicStreamFormat.Vector3, "Vector3")]
         [Row(GraphicStreamFormat.Color4, "Color4")]
+        [Row(GraphicStreamFormat.Int, "Int32")]
         [Row(GraphicStreamFormat.Float, "invalid", ExpectedException = typeof(ArgumentOutOfRangeException))]
-        public void GetForTypeName(GraphicStreamFormat format, string typeName)
+        public void GetForTypeName(GraphicStreamFormat expectedFormat, string typeName)
         {
-            Assert.AreEqual(format, GraphicStreamFormatHelper.GetForTypeName(typeName));
+            Assert.AreEqual(expectedFormat, GraphicStreamFormatHelper.GetForTypeName(typeName));
         }
     }
 }

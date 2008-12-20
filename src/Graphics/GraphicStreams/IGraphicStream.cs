@@ -16,6 +16,12 @@ namespace TheNewEngine.Graphics.GraphicStreams
         GraphicStreamUsage Usage { get; }
 
         /// <summary>
+        /// Gets the count.
+        /// </summary>
+        /// <value>The count.</value>
+        int Count { get; }
+
+        /// <summary>
         /// Gets the size of the element.
         /// </summary>
         /// <value>The size of the element.</value>

@@ -95,7 +95,7 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
                        device.InputAssembler.SetVertexBuffers(0,
                            new VertexBufferBinding(buffer, Marshal.SizeOf(typeof(Vertex)), 0));
 
-                       Matrix view = Matrix.LookAtRH(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
+                       Matrix view = Matrix.LookAtRH(new Vector3(0, 0, 3), new Vector3(), new Vector3(0, 1, 0));
                        Matrix projection = Matrix.PerspectiveFovRH((float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
                        Matrix world = Matrix.Identity;
                        Matrix worldViewProjection = world * view * projection;
@@ -124,7 +124,7 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
             var left = new Vertex { Position = new Vector3(-1f, -1f, 0f), Color = new Color4(0f, 1f, 0f) };
             var right = new Vertex { Position = new Vector3(1f, -1f, 0f), Color = new Color4(0f, 0f, 1f) };
 
-            return new[] { top, left, right };
+            return new[] { top, right, left };
         }
     }
 }

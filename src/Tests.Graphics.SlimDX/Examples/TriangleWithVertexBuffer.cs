@@ -38,6 +38,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var container = new GraphicStreamContainer();
             container.Create(GraphicStreamUsage.Position, CreatePositions());
             container.Create(GraphicStreamUsage.Color, CreateColors());
+            //container.Create(GraphicStreamUsage.Index, CreateIndices());
 
             var containerImplementation = new BufferContainer(mRenderWindow.Device);
             container.Load(containerImplementation);
@@ -72,7 +73,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                    
                     container.OnFrame();
 
-                    Matrix view = Matrix.LookAtRH(new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
+                    Matrix view = Matrix.LookAtRH(new Vector3(0, 0, 3), new Vector3(), new Vector3(0, 1, 0));
                     Matrix projection = Matrix.PerspectiveFovRH((float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
                     Matrix world = Matrix.Identity;
                     Matrix worldViewProjection = world * view * projection;
@@ -84,13 +85,19 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                     {
                         pass.Apply();
 
-                        // TODO
-                        mRenderWindow.Device.Draw(3, 0);
+                        if (container.IndexCount != 0)
+                        {
+                            mRenderWindow.Device.DrawIndexed(container.IndexCount, 0, 0);
+                        }
+                        else
+                        {
+                            mRenderWindow.Device.Draw(container.VertexCount, 0);
+                        }
                     }
 
                     mRenderWindow.Render();
 
-                    AssertWithScreenshot();
+                    //AssertWithScreenshot();
 
                     Application.DoEvents();
                 };
@@ -133,6 +140,11 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var right = new Color4(0f, 0f, 1f);
 
             return new[] { top, left, right };
+        }
+
+        private static int[] CreateIndices()
+        {
+            return new[] { 0, 1, 2 };
         }
     }
 }

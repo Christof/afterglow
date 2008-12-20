@@ -36,6 +36,15 @@ namespace TheNewEngine.Graphics.GraphicStreams
         public GraphicStreamUsage Usage { get; private set; }
 
         /// <summary>
+        /// Gets the count.
+        /// </summary>
+        /// <value>The count.</value>
+        public int Count
+        {
+            get { return Data.Length; }
+        }
+
+        /// <summary>
         /// Gets the size of the element.
         /// </summary>
         /// <value>The size of the element.</value>

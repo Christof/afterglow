@@ -47,6 +47,8 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
                     return new Buffer<Math.Vector3>(mDevice);
                 case GraphicStreamFormat.Color4:
                     return new Buffer<Color4>(mDevice);
+                case GraphicStreamFormat.Int:
+                    return new Buffer<int>(mDevice);
             }
 
             return null;
@@ -73,12 +75,14 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 
                 buffer.Index = index++;
 
-                var inputElement = new InputElement(
-                    graphicStream.Usage.ToSemantic(), 0,
-                    graphicStream.Format.ToFormat(), 0, buffer.Index);              
+                if (graphicStream.Usage != GraphicStreamUsage.Index)
+                {
+                    var inputElement = new InputElement(
+                        graphicStream.Usage.ToSemantic(), 0,
+                        graphicStream.Format.ToFormat(), 0, buffer.Index);
 
-                mInputElements.Add(inputElement);
-
+                    mInputElements.Add(inputElement);
+                }
                 graphicStream.Load(buffer);
             }
         }

@@ -18,6 +18,11 @@ namespace TheNewEngine.Graphics.GraphicStreams
         /// <summary>
         /// Float value.
         /// </summary>
-        Float
+        Float,
+
+        /// <summary>
+        /// Int32 value.
+        /// </summary>
+        Int
     }
 }

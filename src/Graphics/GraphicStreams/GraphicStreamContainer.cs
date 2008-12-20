@@ -11,12 +11,21 @@ namespace TheNewEngine.Graphics.GraphicStreams
     {
         private readonly List<IGraphicStream> mStreams = new List<IGraphicStream>();
 
+        private int mVertexCount;
+
+        private int mIndexCount;
+
         /// <summary>
         /// Adds the frame resource to the container.
         /// </summary>
         /// <param name="frameResource">The frame resource.</param>
         public void Add(IGraphicStream frameResource)
         {
+            if (frameResource.Usage == GraphicStreamUsage.Position)
+                mVertexCount = frameResource.Count;
+            if (frameResource.Usage == GraphicStreamUsage.Index)
+                mIndexCount = frameResource.Count;
+
             mStreams.Add(frameResource);
         }
 
@@ -56,6 +65,24 @@ namespace TheNewEngine.Graphics.GraphicStreams
             Add(stream);
 
             return stream;
+        }
+
+        /// <summary>
+        /// Gets the vertex count.
+        /// </summary>
+        /// <value>The vertex count.</value>
+        public int VertexCount
+        {
+            get { return mVertexCount; }
+        }
+
+        /// <summary>
+        /// Gets the index count.
+        /// </summary>
+        /// <value>The index count.</value>
+        public int IndexCount
+        {
+            get { return mIndexCount; }
         }
     }
 }

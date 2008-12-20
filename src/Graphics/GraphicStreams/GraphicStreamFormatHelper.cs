@@ -22,6 +22,8 @@ namespace TheNewEngine.Graphics.GraphicStreams
                     return GraphicStreamFormat.Color4;
                 case "Single":
                     return GraphicStreamFormat.Float;
+                case "Int32":
+                    return GraphicStreamFormat.Int;
                 default:
                     throw new ArgumentOutOfRangeException("typeName", typeName, "Invalid type name");
             }

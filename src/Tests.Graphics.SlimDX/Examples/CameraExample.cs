@@ -57,19 +57,19 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 var inputLayout = new InputLayout(device, containerImplementation.InputElements, pass.Description.Signature);
 
                 var cam = new Camera(new Stand(), new PerspectiveProjectionLense());
-                cam.Stand.Position = new Vector3(0, 0, -4);
+                cam.Stand.Position = new Vector3(0, 0, 3);
 
                 form.KeyDown +=
                     delegate(object sender, KeyEventArgs e)
                     {
                         if (e.KeyCode == Keys.W)
                         {
-                            cam.Stand.Position += new Vector3(0, 0, 0.1f);
+                            cam.Stand.Position += cam.Stand.Direction * 0.1f;
                         }
 
                         if (e.KeyCode == Keys.S)
                         {
-                            cam.Stand.Position -= new Vector3(0, 0, 0.1f);
+                            cam.Stand.Position -= cam.Stand.Direction * 0.1f;
                         }
                     };
 
@@ -109,7 +109,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var left = new Vector3(-1f, -1f, 0f);
             var right = new Vector3(1f, -1f, 0f);
 
-            return new[] { top, left, right };
+            return new[] { top, right, left };
         }
 
         private static Color4[] CreateColors()
@@ -118,7 +118,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var left = new Color4(0f, 1f, 0f);
             var right = new Color4(0f, 0f, 1f);
 
-            return new[] { top, left, right };
+            return new[] { top, right, left };
         }
     }
 }
