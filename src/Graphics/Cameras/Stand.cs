@@ -56,27 +56,16 @@ namespace TheNewEngine.Graphics.Cameras
         /// <returns>The calculated view matrix.</returns>
         public static Matrix CalculateViewMatrix(Vector3 position, Vector3 direction, Vector3 up)
         {
-//            var normalizedDirection = direction.Normalized();
-//
-//            var s = normalizedDirection.Cross(up.Normalized());
-//            var u = s.Cross(normalizedDirection);
-//
-//            return new Matrix(
-//                s.X, s.Y, s.Z, 0,
-//                u.X, u.Y, u.Z, 0,
-//                -direction.X, -direction.Y, -direction.Z, 0,
-//                position.X, -position.Y, -position.Z, 1);
-
             var n = -direction.Normalized();
             var u = up.Cross(n).Normalized();
             var v = n.Cross(u);
-            var e = position;
+            var e = -position;
 
             return new Matrix(
-                u.X, u.Y, u.Z, -u.Dot(e),
-                v.X, v.Y, v.Z, -v.Dot(e),
-                n.X, n.Y, n.Z, -n.Dot(e),
-                  0,   0,   0,         1).Transposed();
+                u.X, v.X, n.X, 0,
+                u.Y, v.Y, n.Y, 0,
+                u.Z, v.Z, n.Z, 0,
+                u.Dot(e), v.Dot(e), n.Dot(e), 1);
         }
     }
 }
