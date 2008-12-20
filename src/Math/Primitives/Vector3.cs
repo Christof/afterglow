@@ -9,7 +9,7 @@ namespace TheNewEngine.Math
     /// <remarks>
     /// The coordinate system which is used throughout the engine is right handed which means
     /// that the positive x-axis points right, the positive y-axis points up and
-    /// the positive z-axis points forward.
+    /// the positive z-axis points forward (towards you).
     /// </remarks>
     public struct Vector3
     {
@@ -202,6 +202,38 @@ namespace TheNewEngine.Math
         }
 
         /// <summary>
+        /// Implements the unary minus operator which negates all elements.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <returns>Vector with negated elements.</returns>
+        public static Vector3 operator -(Vector3 vector)
+        {
+            return new Vector3(-vector.X, -vector.Y, -vector.Z);
+        }
+
+        /// <summary>
+        /// Implements the multiplication operator for a vector and a scalar.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <param name="scalar">The scalar.</param>
+        /// <returns>The scaled vector.</returns>
+        public static Vector3 operator *(Vector3 vector, float scalar)
+        {
+            return new Vector3(vector.X * scalar, vector.Y * scalar, vector.Z * scalar);
+        }
+
+        /// <summary>
+        /// Implements the multiplication operator for a scalar and a vector.
+        /// </summary>
+        /// <param name="scalar">The scalar.</param>
+        /// <param name="vector">The vector.</param>
+        /// <returns>The scaled vector.</returns>
+        public static Vector3 operator *(float scalar, Vector3 vector)
+        {
+            return vector * scalar;
+        }
+
+        /// <summary>
         /// Returns the fully qualified type name of this instance.
         /// </summary>
         /// <returns>
@@ -211,6 +243,16 @@ namespace TheNewEngine.Math
         public override string ToString()
         {
             return string.Format(CultureInfo.InvariantCulture, "X: {0} Y: {1} Z: {2}", mX, mY, mZ);
+        }
+
+        /// <summary>
+        /// Calculates the dot product of the two vectors.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <returns>The dot product.</returns>
+        public float Dot(Vector3 vector)
+        {
+            return mX * vector.X + mY * vector.Y + mZ * vector.Z;
         }
     }
 }

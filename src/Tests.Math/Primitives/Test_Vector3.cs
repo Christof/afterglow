@@ -117,6 +117,17 @@ namespace TheNewEngine.Math
         }
 
         [Test]
+        public void Dot()
+        {
+            var vector1 = new Vector3(2.0f, 3.0f, 4.0f);
+            var vector2 = new Vector3(5.0f, 6.0f, 7.0f);
+
+            var result = vector1.Dot(vector2);
+
+            Assert.AreEqual(2 * 5 + 3 * 6 + 4 * 7, result);
+        }
+
+        [Test]
         public void Plus_Operator()
         {
             var vector1 = new Vector3(2.0f, 3.0f, 4.0f);
@@ -140,6 +151,30 @@ namespace TheNewEngine.Math
             Assert.AreEqual(vector1.X - vector2.X, result.X);
             Assert.AreEqual(vector1.Y - vector2.Y, result.Y);
             Assert.AreEqual(vector1.Z - vector2.Z, result.Z);
+        }
+
+        [Test]
+        public void Unary_Minus_Operator()
+        {
+            var vector = new Vector3(2.0f, 3.0f, 4.0f);
+
+            var result = -vector;
+
+            Assert.AreEqual(-vector.X, result.X);
+            Assert.AreEqual(-vector.Y, result.Y);
+            Assert.AreEqual(-vector.Z, result.Z);
+        }
+
+        [Test]
+        public void Multiplication_with_scalar_operator()
+        {
+            var vector = new Vector3(2.0f, 3.0f, 4.0f);
+
+            var result = 2.0f * vector;
+
+            Assert.AreEqual(2.0f * vector.X, result.X);
+            Assert.AreEqual(2.0f * vector.Y, result.Y);
+            Assert.AreEqual(2.0f * vector.Z, result.Z);
         }
 
         [Test]
