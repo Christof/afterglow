@@ -12,7 +12,7 @@ namespace TheNewEngine.Graphics.Cameras
 
             Assert.IsNotNull(stand);
             Assert.AreEqual(Vector3.YAxis, stand.Up);
-            Assert.AreEqual(Vector3.ZAxis, stand.Direction);
+            Assert.AreEqual(-Vector3.ZAxis, stand.Direction);
             Assert.AreEqual(Vector3.Zero, stand.Position);
         }
 
@@ -60,10 +60,10 @@ namespace TheNewEngine.Graphics.Cameras
             };
 
             var expected = new Matrix(
-                0.09137172f, -0.1827435f, 0.09137174f, 0,
-                -0.1770172f, -0.02082554f, 0.1353661f, 0,
-                -4, -5, -6, 0,
-                7, -8, 9, 1);
+                 0.4082483f,  -0.7909116f, -0.4558423f, 0,
+                -0.8164966f, -0.09304842f, -0.5698029f, 0,
+                 0.4082483f,   0.6048148f, -0.6837634f, 0,
+                         0f,   0.8374357f,   13.90319f, 1);
 
             Assert.AreEqual(expected, stand.ViewMatrix);
         }
