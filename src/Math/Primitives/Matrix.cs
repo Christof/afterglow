@@ -5,7 +5,8 @@ namespace TheNewEngine.Math
     /// <summary>
     /// 4x4 Matrix which can represent transformations like translation, scale, rotation.
     /// <remarks>
-    /// The implementation is a row major matrix.
+    /// The implementation is a row major matrix like used in DirectX. OpenGL however uses
+    /// a column major matrix. To convert between these to forms use the Transpose()-method.
     /// </remarks>
     /// </summary>
     public struct Matrix : ICoordinateSystem, IEquatable<Matrix>, IDeltaEquatable<Matrix>
