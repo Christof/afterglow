@@ -55,6 +55,8 @@
     <Compile Include="Cameras\IStand.cs" />
     <Compile Include="Cameras\PerspectiveProjectionLense.cs" />
     <Compile Include="Cameras\Stand.cs" />
+    <Compile Include="Effects\IEffect.cs" />
+    <Compile Include="Effects\IEffectCompiler.cs" />
     <Compile Include="GraphicStreams\GraphicStream.cs" />
     <Compile Include="GraphicStreams\GraphicStreamContainer.cs" />
     <Compile Include="GraphicStreams\GraphicStreamFormat.cs" />
