@@ -8,15 +8,15 @@ namespace TheNewEngine.Graphics.SlimDX.Effects
     /// </summary>
     public class Effect : IEffect
     {
-        private SlimDXEffect mEffect;
+        internal SlimDXEffect SlimDXEffect { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Effect"/> class.
+        /// Initializes a new instance of the <see cref="SlimDXEffect"/> class.
         /// </summary>
         /// <param name="effect">The SlimDX effect.</param>
         public Effect(SlimDXEffect effect)
         {
-            mEffect = effect;
+            SlimDXEffect = effect;
         }
     }
 }

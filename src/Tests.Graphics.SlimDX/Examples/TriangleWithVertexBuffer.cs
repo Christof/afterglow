@@ -1,5 +1,4 @@
 using System.Windows.Forms;
-using Gallio.Framework;
 using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
@@ -8,6 +7,8 @@ using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using TheNewEngine.Graphics.SlimDX.GraphicStreams;
 using System.IO;
 using TheNewEngine.Graphics.Utilities;
+using TheNewEngine.Graphics.Effects;
+using TheNewEngine.Graphics.SlimDX.Effects;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
 {
@@ -42,26 +43,16 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var containerImplementation = new BufferContainer(mRenderWindow.Device);
             container.Load(containerImplementation);
 
-            Effect effect;
-            string errors = string.Empty;
-            try
-            {
-                effect = Effect.FromFile(mRenderWindow.Device, "MyShader10.fx", "fx_4_0",
-                    ShaderFlags.Debug, EffectFlags.None, null, null, out errors);
-                System.Console.WriteLine(errors);
-            }
-            catch (System.Exception)
-            {
-                TestLog.Warnings.WriteLine(errors);
+            IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
 
-                throw;
-            }
-
-            var technique = effect.GetTechniqueByIndex(0);
+            var technique = ((Effects.Effect)effect).SlimDXEffect.GetTechniqueByIndex(0);
             var pass = technique.GetPassByIndex(0);
 
             var inputLayout = new InputLayout(mRenderWindow.Device, 
                 containerImplementation.InputElements, pass.Description.Signature);
+
+            EffectParameter<Math.Matrix> worldViewProjectionParameter =
+                new MatrixEffectParameter("WorldViewProjection");
 
             Application.Idle +=
                 delegate
@@ -77,8 +68,9 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                     Matrix world = Matrix.Identity;
                     Matrix worldViewProjection = world * view * projection;
 
-                    effect.GetVariableBySemantic("WorldViewProjection")
-                        .AsMatrix().SetMatrix(worldViewProjection);
+
+                    worldViewProjectionParameter.Value = worldViewProjection.ToMath();
+                    worldViewProjectionParameter.SetParameterOn(effect);
 
                     for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
                     {
