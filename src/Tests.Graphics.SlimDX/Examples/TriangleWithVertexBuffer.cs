@@ -38,7 +38,6 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var container = new GraphicStreamContainer();
             container.Create(GraphicStreamUsage.Position, CreatePositions());
             container.Create(GraphicStreamUsage.Color, CreateColors());
-            //container.Create(GraphicStreamUsage.Index, CreateIndices());
 
             var containerImplementation = new BufferContainer(mRenderWindow.Device);
             container.Load(containerImplementation);
@@ -130,7 +129,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var left = new Math.Vector3(-1f, -1f, 0f);
             var right = new Math.Vector3(1f, -1f, 0f);
 
-            return new[] { top, left, right };
+            return new[] { top, right, left };
         }
 
         private static Color4[] CreateColors()
@@ -139,12 +138,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var left = new Color4(0f, 1f, 0f);
             var right = new Color4(0f, 0f, 1f);
 
-            return new[] { top, left, right };
-        }
-
-        private static int[] CreateIndices()
-        {
-            return new[] { 0, 1, 2 };
+            return new[] { top, right, left };
         }
     }
 }
