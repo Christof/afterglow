@@ -43,5 +43,16 @@ namespace TheNewEngine.Infrastructure
                 }
             }
         }
+
+        /// <summary>
+        /// Downcasts the specified base instance to the given target type.
+        /// </summary>
+        /// <typeparam name="TargetType">The target type.</typeparam>
+        /// <param name="baseInstance">Instance of the base type.</param>
+        /// <returns>Downcast representation of the base instance.</returns>
+        public static TargetType DowncastTo<TargetType>(this object baseInstance)
+        {
+            return (TargetType)baseInstance;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using MbUnit.Framework;
 
@@ -24,6 +25,16 @@ namespace TheNewEngine.Infrastructure
             Assert.IsNotNull(slices);
             Assert.AreEqual(3, slices.Count());
             Assert.AreEqual(2, slices.ElementAt(0).Count());
+        }
+
+        [Test]
+        public void DowncastTo()
+        {
+            IList<int> listInterface = new List<int>();
+
+            List<int> downcastList = listInterface.DowncastTo<List<int>>();
+
+            Assert.IsNotNull(downcastList);
         }
     }
 }
