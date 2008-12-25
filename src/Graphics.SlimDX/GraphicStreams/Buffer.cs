@@ -3,7 +3,7 @@ using SlimDX;
 using SlimDX.DXGI;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Resources;
-using Device=SlimDX.Direct3D10.Device;
+using Device = SlimDX.Direct3D10.Device;
 
 namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 {

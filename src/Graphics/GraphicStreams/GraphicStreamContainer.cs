@@ -22,9 +22,14 @@ namespace TheNewEngine.Graphics.GraphicStreams
         public void Add(IGraphicStream frameResource)
         {
             if (frameResource.Usage == GraphicStreamUsage.Position)
+            {
                 mVertexCount = frameResource.Count;
+            }
+
             if (frameResource.Usage == GraphicStreamUsage.Index)
+            {
                 mIndexCount = frameResource.Count;
+            }
 
             mStreams.Add(frameResource);
         }

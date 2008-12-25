@@ -5,6 +5,5 @@ namespace TheNewEngine.Graphics.Effects
     /// </summary>
     public interface IEffect
     {
-        
     }
 }

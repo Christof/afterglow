@@ -35,10 +35,10 @@ namespace TheNewEngine.Graphics
             Assert.IsNotNull(positions);
             var expected = new[]
             {
-                new []{ 1f,  1f, 0f},
-                new []{ 1f, -1f, 0f},
-                new []{-1f, -1f, 0f},
-                new []{-1f,  1f, 0f}
+                new[] { 1f, 1f, 0f },
+                new[] { 1f, -1f, 0f },
+                new[] { -1f, -1f, 0f },
+                new[] { -1f, 1f, 0f }
             };
             Assert.AreElementsEqual(expected, positions.ToArray());
         }
@@ -58,8 +58,8 @@ namespace TheNewEngine.Graphics
             Assert.IsNotNull(normals);
             var expected = new[]
             {
-                new []{0f, 0f, 1f},
-                new []{0f, 0f, 1f},
+                new[] { 0f, 0f, 1f },
+                new[] { 0f, 0f, 1f },
             };
             Assert.AreElementsEqual(expected, normals.ToArray());
         }
@@ -79,12 +79,12 @@ namespace TheNewEngine.Graphics
             Assert.IsNotNull(texCoords);
             var expected = new[]
             {
-                new []{0f, 0f},
-                new []{1f, 0f},
-                new []{1f, 1f},
-                new []{0f, 0f},
-                new []{1f, 1f},
-                new []{0f, 1f}
+                new[] { 0f, 0f },
+                new[] { 1f, 0f },
+                new[] { 1f, 1f },
+                new[] { 0f, 0f },
+                new[] { 1f, 1f },
+                new[] { 0f, 1f }
             };
             Assert.AreElementsEqual(expected, texCoords.ToArray());
         }
@@ -104,12 +104,12 @@ namespace TheNewEngine.Graphics
             Assert.IsNotNull(texCoords);
             var expected = new[]
             {
-                new []{1f, 1f, 1f, 1f},
-                new []{1f, 1f, 1f, 1f},
-                new []{1f, 1f, 1f, 1f},
-                new []{1f, 1f, 1f, 1f},
-                new []{1f, 1f, 1f, 1f},
-                new []{1f, 1f, 1f, 1f},
+                new[] { 1f, 1f, 1f, 1f },
+                new[] { 1f, 1f, 1f, 1f },
+                new[] { 1f, 1f, 1f, 1f },
+                new[] { 1f, 1f, 1f, 1f },
+                new[] { 1f, 1f, 1f, 1f },
+                new[] { 1f, 1f, 1f, 1f },
             };
             Assert.AreElementsEqual(expected, texCoords.ToArray());
         }

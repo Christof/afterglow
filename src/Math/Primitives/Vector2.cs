@@ -48,7 +48,6 @@ namespace TheNewEngine.Math
             get { return mY; }
         }
 
-
         /// <summary>
         /// Gets a zero initialized vector.
         /// </summary>

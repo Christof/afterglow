@@ -83,6 +83,7 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
 
                     mInputElements.Add(inputElement);
                 }
+
                 graphicStream.Load(buffer);
             }
         }

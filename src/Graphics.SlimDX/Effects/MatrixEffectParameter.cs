@@ -11,7 +11,7 @@ namespace TheNewEngine.Graphics.SlimDX.Effects
         /// <summary>
         /// Initializes a new instance of the <see cref="MatrixEffectParameter"/> class.
         /// </summary>
-        /// <param name="semanticName">Semantic-name.</param>
+        /// <param name="semanticName">Semantic name.</param>
         public MatrixEffectParameter(string semanticName)
             : base(semanticName)
         {

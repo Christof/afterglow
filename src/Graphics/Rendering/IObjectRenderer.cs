@@ -5,6 +5,9 @@ namespace TheNewEngine.Graphics.SlimDX.Rendering
     /// </summary>
     public interface IObjectRenderer
     {
+        /// <summary>
+        /// Renders the object.
+        /// </summary>
         void Render();
     }
 }

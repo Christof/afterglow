@@ -92,6 +92,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 mRenderWindow.TakeScreenshot(expected);
                 Assert.Fail("First run. Excpected image was taken and must be verified");
             }
+
             Application.Exit();
         }
 

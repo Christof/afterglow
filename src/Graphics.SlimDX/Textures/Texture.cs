@@ -4,7 +4,7 @@ using TheNewEngine.Graphics.Resources;
 namespace TheNewEngine.Graphics.SlimDX.Textures
 {
     /// <summary>
-    /// 
+    /// SlimDX texture implementation.
     /// </summary>
     public class Texture : IResource
     {
@@ -26,7 +26,6 @@ namespace TheNewEngine.Graphics.SlimDX.Textures
         /// </summary>
         public void OnFrame()
         {
-            
         }
 
         /// <summary>

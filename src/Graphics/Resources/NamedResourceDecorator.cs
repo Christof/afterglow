@@ -9,16 +9,16 @@ namespace TheNewEngine.Graphics.Resources
         /// <summary>
         /// Initializes a new instance of the <see cref="NamedResourceDecorator"/> class.
         /// </summary>
-        /// <param name="name">The name.</param>
+        /// <param name="name">The name of the resource.</param>
         public NamedResourceDecorator(string name)
         {
             Name = name;
         }
 
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets the name of the resource.
         /// </summary>
-        /// <value>The name.</value>
+        /// <value>The name of the resource.</value>
         public string Name { get; private set; }
     }
 }

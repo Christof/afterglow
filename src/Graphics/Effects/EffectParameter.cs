@@ -8,7 +8,7 @@ namespace TheNewEngine.Graphics.Effects
     public abstract class EffectParameter<T>
     {
         /// <summary>
-        /// Gets or sets the semantic-name of the parameter.
+        /// Gets the semantic-name of the parameter.
         /// </summary>
         /// <value>The semantic-name.</value>
         public string SemanticName { get; private set; }
@@ -22,7 +22,7 @@ namespace TheNewEngine.Graphics.Effects
         /// <summary>
         /// Initializes a new instance of the <see cref="EffectParameter&lt;T&gt;"/> class.
         /// </summary>
-        /// <param name="semanticName">Semantic-name.</param>
+        /// <param name="semanticName">Semantic name.</param>
         protected EffectParameter(string semanticName)
         {
             SemanticName = semanticName;

@@ -43,7 +43,9 @@ namespace TheNewEngine.Graphics
             var foundSources = FindSources(reference);
 
             if (foundSources.Count() == 1)
+            {
                 return foundSources.First();
+            }
 
             var inputElement = mMeshElement
                 .Element(ColladaImporter.Namespace + "vertices")
@@ -53,14 +55,16 @@ namespace TheNewEngine.Graphics
             foundSources = FindSources(referenceFromVertices);
 
             if (foundSources.Count() == 1)
+            {
                 return foundSources.First();
+            }
 
             return null;
         }
 
         private IEnumerable<XElement> FindSources(string reference)
         {
-            string id = reference.Replace("#", "");
+            string id = reference.Replace("#", string.Empty);
 
             return mMeshElement.Elements(ColladaImporter.Namespace + "source")
                 .Where(s => s.Attribute("id").Value == id);

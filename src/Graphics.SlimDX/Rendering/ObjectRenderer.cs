@@ -5,10 +5,13 @@ using TheNewEngine.Graphics.GraphicStreams;
 using SlimDXDevice = SlimDX.Direct3D10.Device;
 using SlimDXEffect = SlimDX.Direct3D10.Effect;
 using InputLayout = SlimDX.Direct3D10.InputLayout;
-using Effect=TheNewEngine.Graphics.SlimDX.Effects.Effect;
+using Effect = TheNewEngine.Graphics.SlimDX.Effects.Effect;
 
 namespace TheNewEngine.Graphics.SlimDX.Rendering
 {
+    /// <summary>
+    /// Object renderer for SlimDX.
+    /// </summary>
     public class ObjectRenderer : IObjectRenderer
     {
         private readonly SlimDXDevice mDevice;
@@ -19,6 +22,12 @@ namespace TheNewEngine.Graphics.SlimDX.Rendering
 
         private InputLayout mInputLayout;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectRenderer"/> class.
+        /// </summary>
+        /// <param name="renderWindow">The render window.</param>
+        /// <param name="effect">The effect.</param>
+        /// <param name="container">The container.</param>
         public ObjectRenderer(IRenderWindow renderWindow, IEffect effect, 
             GraphicStreamContainer container)
         {
@@ -27,10 +36,15 @@ namespace TheNewEngine.Graphics.SlimDX.Rendering
             mContainer = container;
         }
 
+        /// <summary>
+        /// Renders the object.
+        /// </summary>
         public void Render()
         {
             if (mInputLayout == null)
+            {
                 CreateInputLayout();
+            }
 
             mDevice.InputAssembler.SetInputLayout(mInputLayout);
 
