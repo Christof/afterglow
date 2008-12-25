@@ -20,7 +20,6 @@ namespace TheNewEngine.Graphics.OpenGL
         /// </summary>
         public void StartRendering()
         {
-            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace TheNewEngine.Graphics.OpenGL
         /// </summary>
         public void Render()
         {
-            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace TheNewEngine.Graphics.OpenGL
         /// </summary>
         public void Dispose()
         {
-            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace TheNewEngine.Graphics.OpenGL
         /// <param name="filename">The filename.</param>
         public void TakeScreenshot(string filename)
         {
-            throw new System.NotImplementedException();
         }
     }
 }

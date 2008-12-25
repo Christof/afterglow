@@ -73,7 +73,6 @@
     <Compile Include="Comparison\Test_Comparison_PerspectiveProjectionLense.cs" />
     <Compile Include="Comparison\Test_Comparison_Stand.cs" />
     <Compile Include="Examples\CameraExample.cs" />
-    <Compile Include="Examples\TriangleWithTexture.cs" />
     <Compile Include="Examples\TriangleWithVertexBuffer.cs" />
     <Compile Include="GraphicStreams\Test_Buffer.cs" />
     <Compile Include="GraphicStreams\Test_BufferContainer.cs" />

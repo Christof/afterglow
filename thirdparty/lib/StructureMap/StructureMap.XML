@@ -21,6 +21,85 @@
             The concrete type of the immediate parent object in the object graph
             </summary>
         </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression">
+            <summary>
+            Expression Builder that has grammars for defining policies at the 
+            PluginType level.  This expression is used for registering 
+            open generic types
+            </summary>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.TheDefaultIsConcreteType(System.Type)">
+            <summary>
+            Convenience method that sets the default concrete type of the PluginType.  The "concreteType"
+            can only accept types that do not have any primitive constructor arguments.
+            StructureMap has to know how to construct all of the constructor argument types.
+            </summary>
+            <param name="concreteType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.AddType(System.Type)">
+            <summary>
+            Shortcut method to add an additional Instance to this Plugin Type
+            as just a Concrete Type.  This will only work if the Concrete Type
+            has no primitive constructor or mandatory Setter arguments.
+            </summary>
+            <param name="concreteType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.CacheBy(StructureMap.Attributes.InstanceScope)">
+            <summary>
+            Sets the object creation of the instances of the PluginType.  For example:  PerRequest,
+            Singleton, ThreadLocal, HttpContext, or Hybrid
+            </summary>
+            <param name="scope"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.OnCreation(System.Action{System.Object})">
+            <summary>
+            Register an Action to run against any object of this PluginType immediately after
+            it is created, but before the new object is passed back to the caller
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.EnrichWith(System.Func{System.Object,System.Object})">
+            <summary>
+            Register a Func to run against any object of this PluginType immediately after it is created,
+            but before the new object is passed back to the caller.  Unlike <see cref="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.OnCreation(System.Action{System.Object})">OnCreation()</see>,
+            EnrichWith() gives the the ability to return a different object.  Use this method for runtime AOP
+            scenarios or to return a decorator.
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.InterceptConstructionWith(StructureMap.Pipeline.IBuildInterceptor)">
+            <summary>
+            Registers an IBuildInterceptor for this Plugin Type that executes before
+            any object of this PluginType is created.  IBuildInterceptor's can be
+            used to create a custom scope
+            </summary>
+            <param name="interceptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.AddConcreteType(System.Type)">
+            <summary>
+            Shortcut method to add an additional Instance to this Plugin Type
+            as just a Concrete Type.  You can also chain other declarations after
+            this method to add constructor and setter arguments
+            </summary>
+            <param name="concreteType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericFamilyExpression.AddConcreteType(System.Type,System.String)">
+            <summary>
+            Shortcut method to add an additional Instance to this Plugin Type
+            as just a Concrete Type by a specified name.  You can also chain other declarations after
+            this method to add constructor and setter arguments
+            </summary>
+            <param name="concreteType"></param>
+            <param name="instanceName"></param>
+            <returns></returns>
+        </member>
         <member name="M:StructureMap.IExplicitProperty.EqualTo(System.Object)">
             <summary>
             Specify the value of this explicit argument
@@ -102,26 +181,174 @@
             The CLR Type that defines the "Plugin" interface for the PluginFamily
             </summary>
         </member>
-        <member name="T:StructureMap.PluginTypeConfiguration">
+        <member name="M:StructureMap.Graph.IAssemblyScanner.Assembly(System.Reflection.Assembly)">
             <summary>
-            Metadata describing the registration of a PluginType
+            Add an Assembly to the scanning operation
+            </summary>
+            <param name="assembly"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.Assembly(System.String)">
+            <summary>
+            Add an Assembly by name to the scanning operation
+            </summary>
+            <param name="assemblyName"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.TheCallingAssembly">
+            <summary>
+            Add the currently executing Assembly to the scanning operation
             </summary>
         </member>
-        <member name="P:StructureMap.PluginTypeConfiguration.Default">
+        <member name="M:StructureMap.Graph.IAssemblyScanner.AssemblyContainingType``1">
             <summary>
-            The "instance" that will be used when Container.GetInstance(PluginType) is called.
-            See <see cref="T:StructureMap.Pipeline.IInstance">IInstance</see> for more information
+            Add the Assembly that contains type T to the scanning operation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.AssemblyContainingType(System.Type)">
+            <summary>
+            Add the Assembly that contains type to the scanning operation
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.AssembliesFromPath(System.String)">
+            <summary>
+            Sweep the designated path and add any Assembly's found in this folder to the
+            scanning operation
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.AssembliesFromPath(System.String,System.Predicate{System.Reflection.Assembly})">
+            <summary>
+            Sweep the designated path and add any Assembly's found in this folder to the
+            scanning operation.  The assemblyFilter can be used to filter or limit the 
+            Assembly's that are picked up.
+            </summary>
+            <param name="path"></param>
+            <param name="assemblyFilter"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.With(StructureMap.Graph.ITypeScanner)">
+            <summary>
+            Adds an ITypeScanner object to the scanning operation
+            </summary>
+            <param name="scanner"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.WithDefaultConventions">
+            <summary>
+            Adds the DefaultConventionScanner to the scanning operations.  I.e., a concrete
+            class named "Something" that implements "ISomething" will be automatically 
+            added to PluginType "ISomething"
             </summary>
         </member>
-        <member name="P:StructureMap.PluginTypeConfiguration.Policy">
+        <member name="M:StructureMap.Graph.IAssemblyScanner.With``1">
             <summary>
-            The build "policy" for this PluginType.  Used by the WhatDoIHave() diagnostics methods
+            Creates and adds a new ITypeScanner of type T to this scanning operation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.LookForRegistries">
+            <summary>
+            Directs the scanning operation to automatically detect and include any Registry
+            classes found in the Assembly's being scanned
             </summary>
         </member>
-        <member name="P:StructureMap.PluginTypeConfiguration.Instances">
+        <member name="M:StructureMap.Graph.IAssemblyScanner.AddAllTypesOf``1">
             <summary>
-            All of the <see cref="T:StructureMap.Pipeline.IInstance">IInstance</see>'s registered
-            for this PluginType
+            Add all concrete types of the Plugin Type as Instances of Plugin Type
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.AddAllTypesOf(System.Type)">
+            <summary>
+            Add all concrete types of the Plugin Type as Instances of Plugin Type
+            </summary>
+            <param name="pluginType"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.IgnoreStructureMapAttributes">
+            <summary>
+            Makes this scanning operation ignore all [PluginFamily] and [Pluggable] attributes
+            </summary>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.Exclude(System.Predicate{System.Type})">
+            <summary>
+            Exclude types that match the Predicate from being scanned
+            </summary>
+            <param name="exclude"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.ExcludeNamespace(System.String)">
+            <summary>
+            Exclude all types in this nameSpace or its children from the scanning operation
+            </summary>
+            <param name="nameSpace"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.ExcludeNamespaceContainingType``1">
+            <summary>
+            Exclude all types in this nameSpace or its children from the scanning operation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.Include(System.Predicate{System.Type})">
+            <summary>
+            Only include types matching the Predicate in the scanning operation. You can 
+            use multiple Include() calls in a single scanning operation
+            </summary>
+            <param name="predicate"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.IncludeNamespace(System.String)">
+            <summary>
+            Only include types from this nameSpace or its children in the scanning operation.  You can 
+            use multiple Include() calls in a single scanning operation
+            </summary>
+            <param name="nameSpace"></param>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.IncludeNamespaceContainingType``1">
+            <summary>
+            Only include types from this nameSpace or its children in the scanning operation.  You can 
+            use multiple Include() calls in a single scanning operation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StructureMap.Graph.IAssemblyScanner.ExcludeType``1">
+            <summary>
+            Exclude this specific type from the scanning operation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:StructureMap.Interceptors.TypeInterceptor">
+            <summary>
+            A TypeInterceptor that is only applied if the MatchesType()
+            method is true for a given Type
+            </summary>
+        </member>
+        <member name="T:StructureMap.Interceptors.InstanceInterceptor">
+            <summary>
+            An InstanceInterceptor can be registered on a per-Instance basis
+            to act on, or even replace, the object that is created before
+            it is passed back to the caller.  This is primarily a hook
+            for runtime AOP scenarios.
+            </summary>
+        </member>
+        <member name="M:StructureMap.Interceptors.TypeInterceptor.MatchesType(System.Type)">
+            <summary>
+            Does this TypeInterceptor apply to the given type?
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Pipeline.IBuildPolicy">
+            <summary>
+            An object that specifies a "Policy" about how Instance's are invoked.
+            </summary>
+        </member>
+        <member name="T:StructureMap.Pipeline.IBuildInterceptor">
+            <summary>
+            Plugin interface to create custom build or lifecycle policies for a Plugin Type
+            </summary>
+        </member>
+        <member name="T:StructureMap.Pipeline.ConfiguredInstance">
+            <summary>
+            An Instance class that builds objects by calling a constructor function on a concrete type
+            and filling setter properties.  ConfiguredInstance should only be used for open generic types.
+            Favor <see cref="T:StructureMap.Pipeline.SmartInstance`1">SmartInstance{T}</see> for all other usages.
             </summary>
         </member>
         <member name="P:StructureMap.Pipeline.IInstance.ConcreteType">
@@ -130,11 +357,57 @@
             can determine the ConcreteType
             </summary>
         </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.OnCreation``1(System.Action{``0})">
+            <summary>
+            Register an Action to perform on the object created by this Instance
+            before it is returned to the caller
+            </summary>
+            <typeparam name="TYPE"></typeparam>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.EnrichWith``1(StructureMap.Interceptors.EnrichmentHandler{``0})">
+            <summary>
+            Register a Func to potentially enrich or substitute for the object
+            created by this Instance before it is returned to the caller
+            </summary>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.ChildArray``1(System.String)">
+            <summary>
+            Inline definition of a dependency array like IService[] or IHandler[]
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.ChildArray(System.String)">
+            <summary>
+            Inline definition of a dependency array like IService[] or IHandler[]
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.ChildArray``1">
+            <summary>
+            Inline definition of a dependency array like IService[] or IHandler[]
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
         <member name="M:StructureMap.Pipeline.ConfiguredInstance.Child``1">
             <summary>
             Start the definition of a child instance for type CONSTRUCTORARGUMENTTYPE
             </summary>
             <typeparam name="CONSTRUCTORARGUMENTTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.Child(System.String)">
+            <summary>
+            Inline definition of a constructor or a setter property dependency
+            </summary>
+            <param name="propertyName"></param>
             <returns></returns>
         </member>
         <member name="M:StructureMap.Pipeline.ConfiguredInstance.Child``1(System.String)">
@@ -147,11 +420,41 @@
             <param name="propertyName"></param>
             <returns></returns>
         </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.CtorDependency``1(System.String)">
+            <summary>
+            Inline definition of a constructor dependency
+            </summary>
+            <typeparam name="CONSTRUCTORARGUMENTTYPE"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.SetterDependency``1(System.String)">
+            <summary>
+            Inline definition of a setter dependency
+            </summary>
+            <typeparam name="CONSTRUCTORARGUMENTTYPE"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
         <member name="M:StructureMap.Pipeline.ConfiguredInstance.WithProperty(System.String)">
             <summary>
             Start the definition of a primitive argument to a constructor argument
             </summary>
             <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.WithCtorArg(System.String)">
+            <summary>
+            Configure a primitive constructor argument
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.ChildArrayExpression.Contains(StructureMap.Pipeline.Instance[])">
+            <summary>
+            Configures an array of Instance's for the array dependency
+            </summary>
+            <param name="instances"></param>
             <returns></returns>
         </member>
         <member name="T:StructureMap.Pipeline.ConfiguredInstance.ChildInstanceExpression">
@@ -180,6 +483,52 @@
             constructor
             </summary>
             <param name="child"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ConfiguredInstance.ChildInstanceExpression.IsAutoFilled">
+            <summary>
+            Directs StructureMap to fill this dependency with the Default Instance of the 
+            constructor or property type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Pipeline.ExpressedInstance`1">
+            <summary>
+            Base class for many of the Instance subclasses to support 
+            method chaining in the Registry DSL for common options
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StructureMap.Pipeline.ExpressedInstance`1.WithName(System.String)">
+            <summary>
+            Set the name of this Instance
+            </summary>
+            <param name="instanceKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ExpressedInstance`1.OnCreation``1(System.Action{``0})">
+            <summary>
+            Register an Action to perform on the object created by this Instance
+            before it is returned to the caller
+            </summary>
+            <typeparam name="TYPE"></typeparam>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ExpressedInstance`1.EnrichWith``1(StructureMap.Interceptors.EnrichmentHandler{``0})">
+            <summary>
+            Register a Func to potentially enrich or substitute for the object
+            created by this Instance before it is returned to the caller
+            </summary>
+            <typeparam name="TYPE"></typeparam>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.ExpressedInstance`1.InterceptWith(StructureMap.Interceptors.InstanceInterceptor)">
+            <summary>
+            Register an <see cref="T:StructureMap.Interceptors.InstanceInterceptor">InstanceInterceptor</see> with this Instance
+            </summary>
+            <param name="interceptor"></param>
             <returns></returns>
         </member>
         <member name="T:StructureMap.DefaultConstructorAttribute">
@@ -275,10 +624,29 @@
             file
             </summary>
         </member>
+        <member name="F:StructureMap.Configuration.ConfigurationParserBuilder.DefaultConfigurationFilename">
+            <summary>
+            The name of the default configuration file. The value is always <c>StructurMap.config</c>
+            </summary>
+        </member>
+        <member name="M:StructureMap.Configuration.ConfigurationParserBuilder.GetStructureMapConfigurationPath">
+            <summary>
+            Returns the absolute path to the StructureMap.config file
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1">
             <summary>
-            Represents the parameters for creating instances of a given Type
+            Expression Builder that has grammars for defining policies at the 
+            PluginType level
             </summary>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.AddInstances(System.Action{StructureMap.Configuration.DSL.Expressions.IInstanceExpression{`0}})">
+            <summary>
+            Add multiple Instance's to this PluginType
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
         </member>
         <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.TheDefaultIsConcreteType``1">
             <summary>
@@ -303,6 +671,54 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.OnCreation(System.Action{`0})">
+            <summary>
+            Register an Action to run against any object of this PluginType immediately after
+            it is created, but before the new object is passed back to the caller
+            </summary>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.EnrichWith(StructureMap.Interceptors.EnrichmentHandler{`0})">
+            <summary>
+            Register a Func to run against any object of this PluginType immediately after it is created,
+            but before the new object is passed back to the caller.  Unlike <see cref="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.OnCreation(System.Action{`0})">OnCreation()</see>,
+            EnrichWith() gives the the ability to return a different object.  Use this method for runtime AOP
+            scenarios or to return a decorator.
+            </summary>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.AddConcreteType``1">
+            <summary>
+            Shortcut method to add an additional Instance to this Plugin Type
+            as just a Concrete Type.  This will only work if the Concrete Type
+            has no primitive constructor or mandatory Setter arguments.
+            </summary>
+            <typeparam name="PLUGGEDTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.InterceptConstructionWith(StructureMap.Pipeline.IBuildInterceptor)">
+            <summary>
+            Registers an IBuildInterceptor for this Plugin Type that executes before
+            any object of this PluginType is created.  IBuildInterceptor's can be
+            used to create a custom scope
+            </summary>
+            <param name="interceptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.AddInstancesFrom(StructureMap.MementoSource)">
+            <summary>
+            Largely deprecated and unnecessary with the ability to add Xml configuration files
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="P:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1.TheDefault">
+            <summary>
+            Define the Default Instance for this PluginType
+            </summary>
+        </member>
         <member name="T:StructureMap.Configuration.DSL.Expressions.ProfileExpression">
             <summary>
             Expression class to help define a runtime Profile
@@ -310,7 +726,16 @@
         </member>
         <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.For``1">
             <summary>
-            Starts the definition of the default instance for the containing Profile
+            Starts the definition of the default instance for the containing Profile.  This is
+            still valid, but Type() is recommended
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.Type``1">
+            <summary>
+            Designate or define the Instance for a type within
+            this Profile
             </summary>
             <typeparam name="T"></typeparam>
             <returns></returns>
@@ -321,6 +746,39 @@
             </summary>
             <param name="pluginType"></param>
             <returns></returns>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.ProfileExpression.GenericDefaultExpression">
+            <summary>
+            Expression Builder inside of a Profile creation for
+            open generic types
+            </summary>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.GenericDefaultExpression.UseConcreteType(System.Type)">
+            <summary>
+            Use this concreteType for the Instance of this Profile for the PluginType
+            </summary>
+            <param name="concreteType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.GenericDefaultExpression.Use(StructureMap.Pipeline.Instance)">
+            <summary>
+            Use this Instance for the Profile Instance of this Plugin Type
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.GenericDefaultExpression.UseNamedInstance(System.String)">
+            <summary>
+            Use the named Instance as the Profile Instance for this PluginType
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.ProfileExpression.InstanceDefaultExpression`1">
+            <summary>
+            Expression Builder within defining a Profile
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.InstanceDefaultExpression`1.UseNamedInstance(System.String)">
             <summary>
@@ -336,26 +794,140 @@
             <param name="mementoBuilder"></param>
             <returns></returns>
         </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.InstanceDefaultExpression`1.Use(System.Func{`0})">
+            <summary>
+            For this Profile, use an Instance with this Func
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.InstanceDefaultExpression`1.Use(`0)">
+            <summary>
+            For this Profile, use this object
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.ProfileExpression.InstanceDefaultExpression`1.UseConcreteType``1">
+            <summary>
+            For this Profile, use the Concrete Type
+            </summary>
+            <typeparam name="CONCRETETYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Registry">
+            <summary>
+            A Registry class provides methods and grammars for configuring a Container or ObjectFactory.
+            Using a Registry subclass is the recommended way of configuring a StructureMap Container.
+            </summary>
+            <example>
+            public class MyRegistry : Registry
+            {
+                public MyRegistry()
+                {
+                    ForRequestedType(typeof(IService)).TheDefaultIsConcreteType(typeof(Service));
+                }
+            }
+            </example>
+        </member>
         <member name="M:StructureMap.Configuration.DSL.Registry.configure">
             <summary>
-            Implement this method to 
+            You can overide this method as a place to put the Registry DSL
+            declarations.  This is not mandatory.
             </summary>
         </member>
         <member name="M:StructureMap.Configuration.DSL.Registry.BuildInstancesOf``1">
             <summary>
-            Direct StructureMap to build instances of type T, and look for concrete classes
-            marked with the [Pluggable] attribute that implement type T
+            Expression Builder used to define policies for a PluginType including
+            Scoping, the Default Instance, and interception.  BuildInstancesOf()
+            and ForRequestedType() are synonyms
             </summary>
             <typeparam name="PLUGINTYPE"></typeparam>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:StructureMap.Configuration.DSL.Registry.ForRequestedType``1" -->
+        <member name="M:StructureMap.Configuration.DSL.Registry.ForRequestedType(System.Type)">
+            <summary>
+            Expression Builder used to define policies for a PluginType including
+            Scoping, the Default Instance, and interception.  This method is specifically
+            meant for registering open generic types
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.ForConcreteType``1">
+            <summary>
+            This method is a shortcut for specifying the default constructor and 
+            setter arguments for a ConcreteType.  ForConcreteType is shorthand for:
+            ForRequestedType[T]().TheDefault.Is.OfConcreteType[T].**************
+            when the PluginType and ConcreteType are the same Type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.ForRequestedType``1">
+            <summary>
+            Expression Builder used to define policies for a PluginType including
+            Scoping, the Default Instance, and interception.  BuildInstancesOf()
+            and ForRequestedType() are synonyms
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.Build">
+            <summary>
+            Uses the configuration expressions of this Registry to create a PluginGraph
+            object that could be used to initialize a Container.  This method is 
+            mostly for internal usage, but might be helpful for diagnostics
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.InstanceOf``1">
+            <summary>
+            Adds an additional, non-Default Instance to the PluginType T.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.InstanceOf(System.Type)">
+            <summary>
+            Adds an additional, non-Default Instance to the designated pluginType
+            This method is mostly meant for open generic types
+            </summary>
+            <param name="pluginType"></param>
+            <returns></returns>
+        </member>
         <member name="M:StructureMap.Configuration.DSL.Registry.CreateProfile(System.String)">
             <summary>
-            Starts the definition of a new Profile
+            Expression Builder to define the defaults for a named Profile.  Each call
+            to CreateProfile is additive.
             </summary>
             <param name="profileName"></param>
             <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.CreateProfile(System.String,System.Action{StructureMap.Configuration.DSL.Expressions.ProfileExpression})">
+            <summary>
+            An alternative way to use CreateProfile that uses ProfileExpression
+            as a Nested Closure.  This usage will result in cleaner code for 
+            multiple declarations
+            </summary>
+            <param name="profileName"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.RegisterInterceptor(StructureMap.Interceptors.TypeInterceptor)">
+            <summary>
+            Registers a new TypeInterceptor object with the Container
+            </summary>
+            <param name="interceptor"></param>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.IfTypeMatches(System.Predicate{System.Type})">
+            <summary>
+            Allows you to define a TypeInterceptor inline with Lambdas or anonymous delegates
+            </summary>
+            <param name="match"></param>
+            <returns></returns>
+            <example>
+            IfTypeMatches( ... ).InterceptWith( o => new ObjectWrapper(o) );
+            </example>
         </member>
         <member name="M:StructureMap.Configuration.DSL.Registry.Scan(System.Action{StructureMap.Graph.IAssemblyScanner})">
             <summary>
@@ -363,6 +935,20 @@
             register types
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Registry.FillAllPropertiesOfType``1">
+            <summary>
+            Directs StructureMap to always inject dependencies into any and all public Setter properties
+            of the type PLUGINTYPE.
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Registry.BuildWithExpression`1">
+            <summary>
+            Define the constructor and setter arguments for the default T
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="T:StructureMap.Emitting.BuildInstanceMethod">
             <summary>
@@ -643,6 +1229,39 @@
             <param name="pluginType"></param>
             <returns></returns>
         </member>
+        <member name="M:StructureMap.IContainer.TryGetInstance(System.Type,System.String)">
+            <summary>
+            Creates or finds the named instance of the pluginType. Returns null if the named instance is not known to the container.
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instanceKey"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.TryGetInstance(System.Type)">
+            <summary>
+            Creates or finds the default instance of the pluginType. Returns null if the pluginType is not known to the container.
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.TryGetInstance``1">
+            <summary>
+            Creates or finds the default instance of type T. Returns the default value of T if it is not known to the container.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IContainer.TryGetInstance``1(System.String)">
+            <summary>
+            Creates or finds the named instance of type T. Returns the default value of T if the named instance is not known to the container.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
         <member name="M:StructureMap.IContainer.Configure(System.Action{StructureMap.ConfigurationExpression})">
             <summary>
             Used to add additional configuration to a Container *after* the initialization.
@@ -859,6 +1478,39 @@
             <param name="instanceKey"></param>
             <returns></returns>
         </member>
+        <member name="M:StructureMap.Container.TryGetInstance(System.Type,System.String)">
+            <summary>
+            Creates or finds the named instance of the pluginType. Returns null if the named instance is not known to the container.
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instanceKey"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.TryGetInstance(System.Type)">
+            <summary>
+            Creates or finds the default instance of the pluginType. Returns null if the pluginType is not known to the container.
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.TryGetInstance``1">
+            <summary>
+            Creates or finds the default instance of type T. Returns the default value of T if it is not known to the container.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Container.TryGetInstance``1(System.String)">
+            <summary>
+            Creates or finds the named instance of type T. Returns the default value of T if the named instance is not known to the container.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
         <member name="M:StructureMap.Container.GetInstance(System.Type)">
             <summary>
             Creates or finds the default instance of the pluginType
@@ -1020,6 +1672,11 @@
         <member name="P:StructureMap.InstanceMemento.IsDefault">
             <summary>
             Is the InstanceMemento a reference to the default instance of the plugin type?
+            </summary>
+        </member>
+        <member name="T:StructureMap.Interceptors.PluginTypeInterceptor">
+            <summary>
+            A TypeInterceptor that always applies to all Instances of a given Plugin Type
             </summary>
         </member>
         <member name="T:StructureMap.MementoSource">
@@ -1292,6 +1949,39 @@
             </summary>
             <param name="configure"></param>
         </member>
+        <member name="M:StructureMap.ObjectFactory.TryGetInstance(System.Type,System.String)">
+            <summary>
+            Creates or finds the named instance of the pluginType. Returns null if the named instance is not known to the container.
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instanceKey"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.TryGetInstance(System.Type)">
+            <summary>
+            Creates or finds the default instance of the pluginType. Returns null if the pluginType is not known to the container.
+            </summary>
+            <param name="pluginType"></param>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.TryGetInstance``1">
+            <summary>
+            Creates or finds the default instance of type T. Returns the default value of T if it is not known to the container.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.ObjectFactory.TryGetInstance``1(System.String)">
+            <summary>
+            Creates or finds the named instance of type T. Returns the default value of T if the named instance is not known to the container.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
         <member name="P:StructureMap.ObjectFactory.Model">
             <summary>
             Provides queryable access to the configured PluginType's and Instances of the inner Container
@@ -1480,6 +2170,53 @@
             If set to false, StructureMap will not look for a StructureMap.config file
             </summary>
         </member>
+        <member name="T:StructureMap.ConfigurationExpression">
+            <summary>
+            Used as the argument in the Container.Configure() method to describe
+            configuration directives and specify the sources of configuration for
+            a Container
+            </summary>
+        </member>
+        <member name="M:StructureMap.ConfigurationExpression.AddRegistry``1">
+            <summary>
+            Creates and adds a Registry object of type T.  
+            </summary>
+            <typeparam name="T">The Registry Type</typeparam>
+        </member>
+        <member name="M:StructureMap.ConfigurationExpression.AddRegistry(StructureMap.Configuration.DSL.Registry)">
+            <summary>
+            Imports all the configuration from a Registry object
+            </summary>
+            <param name="registry"></param>
+        </member>
+        <member name="M:StructureMap.ConfigurationExpression.AddConfigurationFromXmlFile(System.String)">
+            <summary>
+            Imports configuration from an Xml file.  The fileName
+            must point to an Xml file with valid StructureMap
+            configuration
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:StructureMap.ConfigurationExpression.AddConfigurationFromNode(System.Xml.XmlNode)">
+            <summary>
+            Imports configuration directly from an XmlNode.  This
+            method was intended for scenarios like Xml being embedded
+            into an assembly.  The node must be a 'StructureMap' node
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="P:StructureMap.ConfigurationExpression.IncludeConfigurationFromConfigFile">
+            <summary>
+            If true, directs StructureMap to look for configuration in the App.config.
+            The default value is false.
+            </summary>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.IsExpression`1">
+            <summary>
+            Expression Builder to define an Instance
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
         <member name="M:StructureMap.Configuration.DSL.Expressions.IsExpression`1.IsThis(StructureMap.Pipeline.Instance)">
             <summary>
             Shortcut to specify a prebuilt Instance
@@ -1496,6 +2233,294 @@
         <member name="P:StructureMap.Configuration.DSL.Expressions.IsExpression`1.Is">
             <summary>
             Gives you full access to all the different ways to specify an "Instance"
+            </summary>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.GenericIsExpression">
+            <summary>
+            An Expression Builder to define Instances of a PluginType.
+            This is mostly used for configuring open generic types
+            </summary>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericIsExpression.Is(System.Type)">
+            <summary>
+            Shortcut to register a Concrete Type as an instance.  This method supports
+            method chaining to allow you to add constructor and setter arguments for 
+            the concrete type
+            </summary>
+            <param name="concreteType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.GenericIsExpression.TheInstanceNamed(System.String)">
+            <summary>
+            Shortcut to simply use the Instance with the given name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1">
+            <summary>
+            An Expression Builder that is used throughout the Registry DSL to
+            add and define Instances
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.Instance(StructureMap.Pipeline.Instance)">
+            <summary>
+            Register a previously built Instance.  This provides a "catch all"
+            method to attach custom Instance objects.  Synonym for IsThis()
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.IsThis(StructureMap.Pipeline.Instance)">
+            <summary>
+            Register a previously built Instance.  This provides a "catch all"
+            method to attach custom Instance objects.  Synonym for Instance()
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.IsThis(`0)">
+            <summary>
+            Inject this object directly.  Synonym to Object()
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.Object(`0)">
+            <summary>
+            Inject this object directly.  Synonym to IsThis()
+            </summary>
+            <param name="theObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.OfConcreteType``1">
+            <summary>
+            Build the Instance with the constructor function and setter arguments.  Starts
+            the definition of a <see cref="T:StructureMap.Pipeline.SmartInstance`1">SmartInstance</see>
+            </summary>
+            <typeparam name="PLUGGEDTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.OfConcreteType(System.Type)">
+            <summary>
+            Build the Instance with the constructor function and setter arguments.  Use this
+            method for open generic types, and favor the generic version of OfConcreteType
+            for all other types
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.ConstructedBy(System.Func{`0})">
+            <summary>
+            Create an Instance that builds an object by calling a Lambda or
+            an anonymous delegate with no arguments
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.ConstructedBy(System.Func{StructureMap.IContext,`0})">
+            <summary>
+            Create an Instance that builds an object by calling a Lambda or
+            an anonymous delegate with the <see cref="T:StructureMap.IContext">IContext</see> representing
+            the current object graph.
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.TheInstanceNamed(System.String)">
+            <summary>
+            Use the Instance of this PluginType with the specified name.  This is
+            generally only used while configuring child dependencies within a deep
+            object graph
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.TheDefault">
+            <summary>
+            Use the default Instance of this PluginType.  This is
+            generally only used while configuring child dependencies within a deep
+            object graph
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.PrototypeOf(`0)">
+            <summary>
+            Creates an Instance that stores this object of type T,
+            and returns a cloned copy of the template.  
+            </summary>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.SerializedCopyOf(`0)">
+            <summary>
+            Caches template as a serialized byte stream.  Uses deserialization
+            to create copies when the Instance is built.
+            </summary>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Configuration.DSL.Expressions.IInstanceExpression`1.LoadControlFrom(System.String)">
+            <summary>
+            Creates an Instance that will load an ASCX user control from the url
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.AddConfigurationFromXmlFile(System.String)">
+            <summary>
+            Imports configuration from an Xml file.  The fileName
+            must point to an Xml file with valid StructureMap
+            configuration
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.AddConfigurationFromNode(System.Xml.XmlNode)">
+            <summary>
+            Imports configuration directly from an XmlNode.  This
+            method was intended for scenarios like Xml being embedded
+            into an assembly.  The node must be a 'StructureMap' node
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.AddRegistry``1">
+            <summary>
+            Creates and adds a Registry object of type T.  
+            </summary>
+            <typeparam name="T">The Registry Type</typeparam>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.AddRegistry(StructureMap.Configuration.DSL.Registry)">
+            <summary>
+            Imports all the configuration from a Registry object
+            </summary>
+            <param name="registry"></param>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.BuildInstancesOf``1">
+            <summary>
+            Expression Builder used to define policies for a PluginType including
+            Scoping, the Default Instance, and interception.  BuildInstancesOf()
+            and ForRequestedType() are synonyms
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.ForRequestedType``1">
+            <summary>
+            Expression Builder used to define policies for a PluginType including
+            Scoping, the Default Instance, and interception.  BuildInstancesOf()
+            and ForRequestedType() are synonyms
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.ForRequestedType(System.Type)">
+            <summary>
+            Expression Builder used to define policies for a PluginType including
+            Scoping, the Default Instance, and interception.  This method is specifically
+            meant for registering open generic types
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.ForConcreteType``1">
+            <summary>
+            This method is a shortcut for specifying the default constructor and 
+            setter arguments for a ConcreteType.  ForConcreteType is shorthand for:
+            ForRequestedType[T]().TheDefault.Is.OfConcreteType[T].**************
+            when the PluginType and ConcreteType are the same Type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.InstanceOf``1">
+            <summary>
+            Adds an additional, non-Default Instance to the PluginType T.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.InstanceOf(System.Type)">
+            <summary>
+            Adds an additional, non-Default Instance to the designated pluginType
+            This method is mostly meant for open generic types
+            </summary>
+            <param name="pluginType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.CreateProfile(System.String)">
+            <summary>
+            Expression Builder to define the defaults for a named Profile.  Each call
+            to CreateProfile is additive.
+            </summary>
+            <param name="profileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.CreateProfile(System.String,System.Action{StructureMap.Configuration.DSL.Expressions.ProfileExpression})">
+            <summary>
+            An alternative way to use CreateProfile that uses ProfileExpression
+            as a Nested Closure.  This usage will result in cleaner code for 
+            multiple declarations
+            </summary>
+            <param name="profileName"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.RegisterInterceptor(StructureMap.Interceptors.TypeInterceptor)">
+            <summary>
+            Registers a new TypeInterceptor object with the Container
+            </summary>
+            <param name="interceptor"></param>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.IfTypeMatches(System.Predicate{System.Type})">
+            <summary>
+            Allows you to define a TypeInterceptor inline with Lambdas or anonymous delegates
+            </summary>
+            <param name="match"></param>
+            <returns></returns>
+            <example>
+            IfTypeMatches( ... ).InterceptWith( o => new ObjectWrapper(o) );
+            </example>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.Scan(System.Action{StructureMap.Graph.IAssemblyScanner})">
+            <summary>
+            Expresses a single "Scanning" action
+            </summary>
+            <param name="action"></param>
+            <example>
+            Scan(x => {
+                x.Assembly("Foo.Services");
+                x.WithDefaultConventions();
+            });
+            </example>
+        </member>
+        <member name="M:StructureMap.IInitializationExpression.FillAllPropertiesOfType``1">
+            <summary>
+            Directs StructureMap to always inject dependencies into any and all public Setter properties
+            of the type PLUGINTYPE.
+            </summary>
+            <typeparam name="PLUGINTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="P:StructureMap.IInitializationExpression.UseDefaultStructureMapConfigFile">
+            <summary>
+            If true, makes the existence of the StructureMap.config mandatory.
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:StructureMap.IInitializationExpression.IgnoreStructureMapConfig">
+            <summary>
+            If true, the StructureMap.config file will be ignored even if it exists.
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:StructureMap.IInitializationExpression.PullConfigurationFromAppConfig">
+            <summary>
+            If true, directs StructureMap to look for configuration in the App.config.
+            The default value is false.
+            </summary>
+        </member>
+        <member name="P:StructureMap.IInitializationExpression.DefaultProfileName">
+            <summary>
+            Designate the Default Profile.  This will be applied as soon as the 
+            Container is initialized.
             </summary>
         </member>
         <member name="T:StructureMap.IModel">
@@ -1544,6 +2569,29 @@
         <member name="P:StructureMap.IModel.PluginTypes">
             <summary>
             Access to all the <seealso cref="!:PluginType">PluginType</seealso> registrations 
+            </summary>
+        </member>
+        <member name="T:StructureMap.Pipeline.BuildFrame">
+            <summary>
+            Models the current place in an object graph during the construction of
+            an instance.  Provides contextual information that can be used
+            to alter the desired construction of child objects
+            </summary>
+        </member>
+        <member name="P:StructureMap.Pipeline.BuildFrame.RequestedType">
+            <summary>
+            The requested PluginType of the Instance being create
+            </summary>
+        </member>
+        <member name="P:StructureMap.Pipeline.BuildFrame.Name">
+            <summary>
+            The Name of the Instance being created
+            </summary>
+        </member>
+        <member name="P:StructureMap.Pipeline.BuildFrame.ConcreteType">
+            <summary>
+            The actual ConcreteType being created.  This will not always
+            be available
             </summary>
         </member>
         <member name="T:StructureMap.Pipeline.BuildStack">
@@ -1595,6 +2643,216 @@
             <param name="appSettingKey">The key in appSettings for the value to use.</param>
             <param name="defaultValue">The value to use if an entry for <paramref name="appSettingKey"/> does not exist in the appSettings section.</param>
             <returns></returns>
+        </member>
+        <member name="T:StructureMap.Pipeline.SmartInstance`1">
+            <summary>
+            Instance that builds objects with by calling constructor functions and using setter properties
+            </summary>
+            <typeparam name="T">The concrete type constructed by SmartInstance</typeparam>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.WithName(System.String)">
+            <summary>
+            Sets the name of this Instance
+            </summary>
+            <param name="instanceKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.OnCreation(System.Action{`0})">
+            <summary>
+            Register an Action to perform on the object created by this Instance
+            before it is returned to the caller
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.EnrichWith(StructureMap.Interceptors.EnrichmentHandler{`0})">
+            <summary>
+            Register a Func to potentially enrich or substitute for the object
+            created by this Instance before it is returned to the caller
+            </summary>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.EnrichWith``1(StructureMap.Interceptors.EnrichmentHandler{``0})">
+            <summary>
+            Register a Func to potentially enrich or substitute for the object
+            created by this Instance before it is returned to the caller
+            </summary>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.InterceptWith(StructureMap.Interceptors.InstanceInterceptor)">
+            <summary>
+            Register an <see cref="T:StructureMap.Interceptors.InstanceInterceptor">InstanceInterceptor</see> with this Instance
+            </summary>
+            <param name="interceptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.WithCtorArg(System.String)">
+            <summary>
+            Define a primitive constructor argument
+            </summary>
+            <param name="argumentName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.SetProperty(System.Action{`0})">
+            <summary>
+            Set simple setter properties
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.WithProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Define a primitive setter property by specifying the property name with
+            an expression
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.WithProperty(System.String)">
+            <summary>
+            Define a primitive setter property by specifying the property name
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.CtorDependency``1">
+            <summary>
+            Inline definition of a constructor dependency.  Select the constructor argument by type.  Do not
+            use this method if there is more than one constructor arguments of the same type
+            </summary>
+            <typeparam name="CTORTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.CtorDependency``1(System.String)">
+            <summary>
+            Inline definition of a constructor dependency.  Select the constructor argument by type and constructor name.  
+            Use this method if there is more than one constructor arguments of the same type
+            </summary>
+            <typeparam name="CTORTYPE"></typeparam>
+            <param name="constructorArg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.SetterDependency``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Inline definition of a setter dependency.  The property name is specified with an Expression
+            </summary>
+            <typeparam name="SETTERTYPE"></typeparam>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.SetterDependency``1">
+            <summary>
+            Inline definition of a setter dependency.  Only use this method if there
+            is only a single property of the SETTERTYPE
+            </summary>
+            <typeparam name="SETTERTYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.TheArrayOf``1">
+            <summary>
+            Inline definition of a dependency on an Array of the CHILD type.  I.e. CHILD[].
+            This method can be used for either constructor arguments or setter properties
+            </summary>
+            <typeparam name="CHILD"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.TheArrayOf``1(System.String)">
+            <summary>
+            Inline definition of a dependency on an Array of the CHILD type and the specified setter property or constructor argument name.  I.e. CHILD[].
+            This method can be used for either constructor arguments or setter properties
+            </summary>
+            <typeparam name="CHILD"></typeparam>
+            <param name="ctorOrPropertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Pipeline.SmartInstance`1.ArrayDefinitionExpression`2">
+            <summary>
+            Expression Builder to help define multiple Instances for an Array dependency
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="ARRAY"></typeparam>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.ArrayDefinitionExpression`2.Contains(System.Action{StructureMap.Configuration.DSL.Expressions.IInstanceExpression{`2}})">
+            <summary>
+            Nested Closure that allows you to add an unlimited number of child Instances
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.ArrayDefinitionExpression`2.Contains(StructureMap.Pipeline.Instance[])">
+            <summary>
+            Specify an array of Instance objects directly for an Array dependency
+            </summary>
+            <param name="arrayInstances"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.Pipeline.SmartInstance`1.DependencyExpression`2">
+            <summary>
+            Expression Builder that helps to define child dependencies inline 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="CHILD"></typeparam>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.DependencyExpression`2.Is(System.Action{StructureMap.Configuration.DSL.Expressions.IInstanceExpression{`2}})">
+            <summary>
+            Nested Closure to define a child dependency inline
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.DependencyExpression`2.Is(StructureMap.Pipeline.Instance)">
+            <summary>
+            Shortcut to set an inline dependency to an Instance
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.DependencyExpression`2.Is(`2)">
+            <summary>
+            Shortcut to set an inline dependency to a designated object
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.DependencyExpression`2.IsTheDefault">
+            <summary>
+            Set an Inline dependency to the Default Instance of the Property type
+            Used mostly to force an optional Setter property to be filled by
+            StructureMap
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StructureMap.Pipeline.SmartInstance`1.DependencyExpression`2.Is``1">
+            <summary>
+            Shortcut method to define a child dependency inline
+            </summary>
+            <typeparam name="CONCRETETYPE"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:StructureMap.PluginTypeConfiguration">
+            <summary>
+            Metadata describing the registration of a PluginType
+            </summary>
+        </member>
+        <member name="P:StructureMap.PluginTypeConfiguration.Default">
+            <summary>
+            The "instance" that will be used when Container.GetInstance(PluginType) is called.
+            See <see cref="T:StructureMap.Pipeline.IInstance">IInstance</see> for more information
+            </summary>
+        </member>
+        <member name="P:StructureMap.PluginTypeConfiguration.Policy">
+            <summary>
+            The build "policy" for this PluginType.  Used by the WhatDoIHave() diagnostics methods
+            </summary>
+        </member>
+        <member name="P:StructureMap.PluginTypeConfiguration.Instances">
+            <summary>
+            All of the <see cref="T:StructureMap.Pipeline.IInstance">IInstance</see>'s registered
+            for this PluginType
+            </summary>
         </member>
     </members>
 </doc>
