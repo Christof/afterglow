@@ -1,106 +1,84 @@
 using System.Windows.Forms;
-using Gallio.Framework;
 using MbUnit.Framework;
-using SlimDX;
-using SlimDX.Direct3D10;
-using SlimDX.DXGI;
 using TheNewEngine.Graphics.Cameras;
+using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using TheNewEngine.Graphics.SlimDX.GraphicStreams;
-using Device = SlimDX.Direct3D10.Device;
-using Vector3 = TheNewEngine.Math.Vector3;
-using SlimDXVector = SlimDX.Vector3;
+using TheNewEngine.Graphics.SlimDX.Effects;
+using TheNewEngine.Graphics.SlimDX.Rendering;
+using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
 {
     [TestFixture]
     public class CameraExample
     {
+        private Form mForm;
+
+        private RenderWindow mRenderWindow;
+
+        [SetUp]
+        public void Setup()
+        {
+            mForm = EmptyWindow.CreateForm();
+            mRenderWindow = new RenderWindow(mForm.Handle);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            mForm.Dispose();
+        }
+
         [Test]
         [Category(Categories.EXAMPLES)]
         public void Run()
         {
-            using (var form = EmptyWindow.CreateForm())
-            {
-                Device device;
-                SwapChain swapChain;
-                RenderTargetView renderTarget;
+            var container = new GraphicStreamContainer();
+            container.Create(GraphicStreamUsage.Position, CreatePositions());
+            container.Create(GraphicStreamUsage.Color, CreateColors());
 
-                EmptyWindow.CreateDeviceSwapChainAndRenderTarget(form, out device, out swapChain, out renderTarget);
+            var containerImplementation = new BufferContainer(mRenderWindow.Device);
+            container.Load(containerImplementation);
 
-                var container = new GraphicStreamContainer();
-                container.Create(GraphicStreamUsage.Position, CreatePositions());
-                container.Create(GraphicStreamUsage.Color, CreateColors());
+            IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
+            IObjectRenderer renderer = new ObjectRenderer(mRenderWindow, effect, container);
 
-                var containerImplementation = new BufferContainer(device);
-                container.Load(containerImplementation);
+            EffectParameter<Matrix> worldViewProjectionParameter =
+                new MatrixEffectParameter("WorldViewProjection");
 
-                Effect effect;
-                string errors = string.Empty;
-                try
+            var cam = new Camera(new Stand(), new PerspectiveProjectionLense());
+            cam.Stand.Position = new Vector3(0, 0, 3);
+
+            mForm.KeyDown +=
+                delegate(object sender, KeyEventArgs e)
                 {
-                    effect = Effect.FromFile(device, "MyShader10.fx", "fx_4_0",
-                        ShaderFlags.Debug, EffectFlags.None, null, null, out errors);
-                    System.Console.WriteLine(errors);
-                }
-                catch (System.Exception)
+                    if (e.KeyCode == Keys.W)
+                    {
+                        cam.Stand.Position += cam.Stand.Direction * 0.1f;
+                    }
+
+                    if (e.KeyCode == Keys.S)
+                    {
+                        cam.Stand.Position -= cam.Stand.Direction * 0.1f;
+                    }
+                };
+
+            Application.Idle +=
+                delegate
                 {
-                    TestLog.Warnings.WriteLine(errors);
+                    worldViewProjectionParameter.Value = cam.ViewProjectionMatrix;
+                    worldViewProjectionParameter.SetParameterOn(effect);
 
-                    throw;
-                }
+                    mRenderWindow.StartRendering();
+                    renderer.Render();
+                    mRenderWindow.Render();
 
-                var technique = effect.GetTechniqueByIndex(0);
-                var pass = technique.GetPassByIndex(0);
+                    Application.DoEvents();
+                };
 
-                var inputLayout = new InputLayout(device, containerImplementation.InputElements, pass.Description.Signature);
-
-                var cam = new Camera(new Stand(), new PerspectiveProjectionLense());
-                cam.Stand.Position = new Vector3(0, 0, 3);
-
-                form.KeyDown +=
-                    delegate(object sender, KeyEventArgs e)
-                    {
-                        if (e.KeyCode == Keys.W)
-                        {
-                            cam.Stand.Position += cam.Stand.Direction * 0.1f;
-                        }
-
-                        if (e.KeyCode == Keys.S)
-                        {
-                            cam.Stand.Position -= cam.Stand.Direction * 0.1f;
-                        }
-                    };
-
-                Application.Idle +=
-                    delegate
-                    {
-                        device.ClearRenderTargetView(renderTarget, new Color4(0, 0, 0));
-
-                        device.InputAssembler.SetInputLayout(inputLayout);
-                        device.InputAssembler.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
-                       
-                        container.OnFrame();
-
-                        effect.GetVariableBySemantic("WorldViewProjection")
-                            .AsMatrix().SetMatrix(cam.ViewProjectionMatrix.ToSlimDX());
-
-                        for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
-                        {
-                            pass.Apply();
-
-                            // TODO
-                            device.Draw(3, 0);
-                        }
-
-                        swapChain.Present(0, PresentFlags.None);
-
-                        Application.DoEvents();
-                    };
-
-                Application.Run(form);
-            }
+            Application.Run(mForm);
         }
 
         private static Vector3[] CreatePositions()
@@ -112,11 +90,11 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             return new[] { top, right, left };
         }
 
-        private static Color4[] CreateColors()
+        private static Vector3[] CreateColors()
         {
-            var top = new Color4(1f, 0f, 0f);
-            var left = new Color4(0f, 1f, 0f);
-            var right = new Color4(0f, 0f, 1f);
+            var top = new Vector3(1f, 0f, 0f);
+            var left = new Vector3(0f, 1f, 0f);
+            var right = new Vector3(0f, 0f, 1f);
 
             return new[] { top, right, left };
         }
