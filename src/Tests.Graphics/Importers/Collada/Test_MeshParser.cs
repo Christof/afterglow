@@ -20,24 +20,6 @@ namespace TheNewEngine.Graphics.Importers.Collada
         }
 
         [Test]
-        public void ParseIntArray()
-        {
-            var pElement = mMesh
-                .Element(ColladaImporter.Namespace + "triangles")
-                .Element(ColladaImporter.Namespace + "p");
-            Assert.IsNotNull(pElement);
-
-            var indices = MeshParser.ParseIntArray(pElement);
-            var expected = new[]
-            {
-                0, 0, 0, 0, 3, 0, 1, 1, 2, 0, 2, 2,
-                0, 1, 3, 3, 2, 1, 4, 4, 1, 1, 5, 5
-            };
-
-            Assert.AreElementsEqual(expected, indices);
-        }
-
-        [Test]
         public void FindSource()
         {
             var parser = new MeshParser(mMesh);

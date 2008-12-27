@@ -22,16 +22,7 @@ namespace TheNewEngine.Graphics
             mMeshElement = meshElement;
         }
 
-        /// <summary>
-        /// Parses the given element as int array.
-        /// </summary>
-        /// <param name="intArray">The element containing the int array.</param>
-        /// <returns>The int array.</returns>
-        public static IEnumerable<int> ParseIntArray(XElement intArray)
-        {
-            return intArray.Value.Split(' ')
-                .Select(s => Convert.ToInt32(s, CultureInfo.InvariantCulture));
-        }
+
 
         /// <summary>
         /// Finds the source for the given reference.
