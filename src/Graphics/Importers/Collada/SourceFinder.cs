@@ -1,29 +1,25 @@
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
 
 namespace TheNewEngine.Graphics
 {
     /// <summary>
-    /// Parses the mesh element of a collada file.
+    /// Finds source elements in a collada mesh element.
     /// </summary>
-    internal class MeshParser
+    internal class SourceFinder
     {
         private readonly XElement mMeshElement;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MeshParser"/> class.
+        /// Initializes a new instance of the <see cref="SourceFinder"/> class.
         /// </summary>
         /// <param name="meshElement">The mesh element.</param>
-        public MeshParser(XElement meshElement)
+        public SourceFinder(XElement meshElement)
         {
             mMeshElement = meshElement;
         }
-
-
-
+        
         /// <summary>
         /// Finds the source for the given reference.
         /// </summary>

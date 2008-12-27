@@ -3,7 +3,7 @@ using MbUnit.Framework;
 
 namespace TheNewEngine.Graphics.Importers.Collada
 {
-    public class Test_MeshParser
+    public class Test_SourceFinder
     {
         private const string COLLAD_PLANE = "plane.dae";
 
@@ -22,7 +22,7 @@ namespace TheNewEngine.Graphics.Importers.Collada
         [Test]
         public void FindSource()
         {
-            var parser = new MeshParser(mMesh);
+            var parser = new SourceFinder(mMesh);
 
             var source = parser.FindSource("#Plane-Geometry-color");
 
@@ -33,7 +33,7 @@ namespace TheNewEngine.Graphics.Importers.Collada
         [Test]
         public void FindSource_over_vertices_element()
         {
-            var parser = new MeshParser(mMesh);
+            var parser = new SourceFinder(mMesh);
 
             var source = parser.FindSource("#Plane-Geometry-Vertex");
 

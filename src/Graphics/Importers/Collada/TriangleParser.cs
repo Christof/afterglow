@@ -44,7 +44,7 @@ namespace TheNewEngine.Graphics
 
             string sourceReference = element.Attribute("source").Value;
 
-            XElement source = new MeshParser(mMeshElement).FindSource(sourceReference);
+            XElement source = new SourceFinder(mMeshElement).FindSource(sourceReference);
 
             return new Input(semantic, offset, source);
         }
