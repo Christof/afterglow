@@ -1,5 +1,4 @@
 using System.Diagnostics.Contracts;
-using System.IO;
 using TheNewEngine.Infrastructure;
 
 namespace TheNewEngine.Graphics

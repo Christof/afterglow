@@ -9,7 +9,7 @@ namespace TheNewEngine.Graphics
     /// <summary>
     /// Parses the mesh element of a collada file.
     /// </summary>
-    public class MeshParser
+    internal class MeshParser
     {
         private readonly XElement mMeshElement;
 
