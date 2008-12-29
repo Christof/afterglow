@@ -61,7 +61,6 @@
     <Compile Include="Effects\MatrixEffectParameter.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="GraphicStreams\SlimDXBuffer.cs" />
-    <Compile Include="GraphicStreams\BufferContainer.cs" />
     <Compile Include="GraphicStreams\ISlimDXBuffer.cs" />
     <Compile Include="GraphicStreams\SlimDXBufferBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
