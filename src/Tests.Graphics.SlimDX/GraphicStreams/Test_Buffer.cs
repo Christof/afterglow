@@ -1,16 +1,15 @@
 using MbUnit.Framework;
 using Moq;
 using SlimDX.Direct3D10;
-using TheNewEngine.Graphics.GraphicStreams;
 
-namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
+namespace TheNewEngine.Graphics.GraphicStreams
 {
     public class Test_Buffer
     {
         [Test]
         public void Constructor()
         {
-            var buffer = new Buffer<float>(new Mock<Device>(DeviceCreationFlags.None).Object);
+            var buffer = new SlimDXBuffer(new Mock<Device>(DeviceCreationFlags.None).Object);
 
             Assert.IsNotNull(buffer);
         }
@@ -23,11 +22,9 @@ namespace TheNewEngine.Graphics.SlimDX.GraphicStreams
             var data = new[] { 1f, 2f, 3f };
             var stream = new GraphicStream<float>(GraphicStreamUsage.Position, data);
 
-            var buffer = new Buffer<float>(deviceMock.Object);
+            var buffer = new SlimDXBuffer(deviceMock.Object);
 
             buffer.Load(stream);
-
-            buffer.OnFrame();
 
             buffer.Unload();
         }

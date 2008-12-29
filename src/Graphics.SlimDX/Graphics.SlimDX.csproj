@@ -60,9 +60,10 @@
     <Compile Include="Effects\EffectCompiler.cs" />
     <Compile Include="Effects\MatrixEffectParameter.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="GraphicStreams\Buffer.cs" />
+    <Compile Include="GraphicStreams\SlimDXBuffer.cs" />
     <Compile Include="GraphicStreams\BufferContainer.cs" />
-    <Compile Include="GraphicStreams\IBuffer.cs" />
+    <Compile Include="GraphicStreams\ISlimDXBuffer.cs" />
+    <Compile Include="GraphicStreams\SlimDXBufferBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\ObjectRenderer.cs" />
     <Compile Include="RenderWindow.cs" />

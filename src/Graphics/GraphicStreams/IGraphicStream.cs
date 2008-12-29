@@ -1,5 +1,4 @@
 using System.Collections;
-using TheNewEngine.Graphics.Resources;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {
@@ -7,36 +6,12 @@ namespace TheNewEngine.Graphics.GraphicStreams
     /// Interface for graphic streams which contain data for an element of a vertex,
     /// like positions, colors, normals or texture coordinates.
     /// </summary>
-    public interface IGraphicStream : IResource, IEnumerable
+    public interface IGraphicStream : IEnumerable
     {
         /// <summary>
-        /// Gets the usage.
+        /// Gets the description of the graphic stream.
         /// </summary>
-        /// <value>The usage.</value>
-        GraphicStreamUsage Usage { get; }
-
-        /// <summary>
-        /// Gets the count.
-        /// </summary>
-        /// <value>The count.</value>
-        int Count { get; }
-
-        /// <summary>
-        /// Gets the size of the element.
-        /// </summary>
-        /// <value>The size of the element.</value>
-        int ElementSize { get; }
-
-        /// <summary>
-        /// Gets the overall size.
-        /// </summary>
-        /// <value>The overall size.</value>
-        int Size { get; }
-
-        /// <summary>
-        /// Gets the format.
-        /// </summary>
-        /// <value>The format.</value>
-        GraphicStreamFormat Format { get; }
+        /// <value>The description.</value>
+        GraphicStreamDescription Description { get; }
     }
 }

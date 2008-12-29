@@ -4,7 +4,6 @@ using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
-using TheNewEngine.Graphics.SlimDX.GraphicStreams;
 using TheNewEngine.Graphics.SlimDX.Effects;
 using TheNewEngine.Graphics.SlimDX.Rendering;
 using TheNewEngine.Math;
@@ -39,11 +38,10 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             container.Create(GraphicStreamUsage.Position, CreatePositions());
             container.Create(GraphicStreamUsage.Color, CreateColors());
 
-            var containerImplementation = new BufferContainer(mRenderWindow.Device);
-            container.Load(containerImplementation);
+            // TODO
 
             IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
-            IObjectRenderer renderer = new ObjectRenderer(mRenderWindow, effect, container);
+            IObjectRenderer renderer = new ObjectRenderer(mRenderWindow, effect, null ); // TODO
 
             EffectParameter<Matrix> worldViewProjectionParameter =
                 new MatrixEffectParameter("WorldViewProjection");

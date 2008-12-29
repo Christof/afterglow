@@ -50,33 +50,10 @@ namespace TheNewEngine.Graphics.GraphicStreams
             var stream = container.Create(usage, data);
 
             Assert.IsNotNull(stream);
-            Assert.AreEqual(usage, stream.Usage);
+            Assert.AreEqual(usage, stream.Description.Usage);
             Assert.AreEqual(data, stream.Data);
 
             Assert.AreEqual(1, container.Count());
-        }
-
-        [Test]
-        public void VertexCount_should_return_the_number_of_positions()
-        {
-            var container = new GraphicStreamContainer();
-            container.Create(GraphicStreamUsage.Normal, new[] { 1f, 2f, 3f });
-
-            var positions = new[] { 1f, 2f };
-            container.Create(GraphicStreamUsage.Position, positions);
-
-            Assert.AreEqual(positions.Length, container.VertexCount);
-        }
-
-        [Test]
-        public void IndexCount_should_return_the_number_of_indices()
-        {
-            var container = new GraphicStreamContainer();
-
-            var indices = new[] { 0, 1, 3, 2, 1, 0 };
-            container.Create(GraphicStreamUsage.Index, indices);
-
-            Assert.AreEqual(indices.Length, container.IndexCount);
         }
     }
 }

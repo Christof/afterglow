@@ -3,7 +3,6 @@ using MbUnit.Framework;
 using SlimDX;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
-using TheNewEngine.Graphics.SlimDX.GraphicStreams;
 using System.IO;
 using TheNewEngine.Graphics.Utilities;
 using TheNewEngine.Graphics.Effects;
@@ -37,16 +36,23 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
         public void Run()
         {
             var container = new GraphicStreamContainer();
-            container.Create(GraphicStreamUsage.Position, CreatePositions());
-            container.Create(GraphicStreamUsage.Color, CreateColors());
+            var positions = container.Create(GraphicStreamUsage.Position, CreatePositions());
+            var colors = container.Create(GraphicStreamUsage.Color, CreateColors());
 
-            var containerImplementation = new BufferContainer(mRenderWindow.Device);
-            container.Load(containerImplementation);
+            var positionsBuffer = new SlimDXBuffer(mRenderWindow.Device);
+            positionsBuffer.Load(positions);
+
+            var colorsBuffer = new SlimDXBuffer(mRenderWindow.Device);
+            colorsBuffer.Load(colors);
 
             IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
 
             IObjectRenderer renderer = new ObjectRenderer(mRenderWindow,
-                effect, container);
+                effect, new []
+                {
+                    new SlimDXBufferBinding(mRenderWindow.Device, positionsBuffer),
+                    new SlimDXBufferBinding(mRenderWindow.Device, colorsBuffer)
+                });
 
             EffectParameter<Math.Matrix> worldViewProjectionParameter =
                 new MatrixEffectParameter("WorldViewProjection");

@@ -1,0 +1,19 @@
+﻿using SlimDX.Direct3D10;
+
+namespace TheNewEngine.Graphics.GraphicStreams
+{
+    /// <summary>
+    /// Interface for SlimDX buffers which must know the index of the buffer
+    /// in the container to be able to set the buffer on the input assembler.
+    /// </summary>
+    public interface ISlimDXBuffer : IBuffer
+    {
+        /// <summary>
+        /// Gets the buffer.
+        /// </summary>
+        /// <value>The buffer.</value>
+        Buffer Buffer { get; }
+
+        GraphicStreamDescription Description { get; }
+    }
+}

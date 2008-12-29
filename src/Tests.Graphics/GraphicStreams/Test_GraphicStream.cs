@@ -15,7 +15,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
             var graphicStream = new GraphicStream<float>(usage, data);
 
             Assert.IsNotNull(graphicStream);
-            Assert.AreEqual(usage, graphicStream.Usage);
+            Assert.AreEqual(usage, graphicStream.Description.Usage);
             Assert.AreEqual(data, graphicStream.Data);
         }
 
@@ -28,9 +28,9 @@ namespace TheNewEngine.Graphics.GraphicStreams
             var sizeOfFloat = sizeof(float);
 
             Assert.IsNotNull(graphicStream);
-            Assert.AreEqual(sizeOfFloat, graphicStream.ElementSize);
-            Assert.AreEqual(sizeOfFloat * data.Length, graphicStream.Size);
-            Assert.AreEqual(GraphicStreamFormat.Float, graphicStream.Format);
+            Assert.AreEqual(sizeOfFloat, graphicStream.Description.ElementSize);
+            Assert.AreEqual(sizeOfFloat * data.Length, graphicStream.Description.Size);
+            Assert.AreEqual(GraphicStreamFormat.Float, graphicStream.Description.Format);
         }
 
         [Test]
@@ -42,9 +42,9 @@ namespace TheNewEngine.Graphics.GraphicStreams
             var sizeOfVector3 = 12;
 
             Assert.IsNotNull(graphicStream);
-            Assert.AreEqual(sizeOfVector3, graphicStream.ElementSize);
-            Assert.AreEqual(sizeOfVector3 * data.Length, graphicStream.Size);
-            Assert.AreEqual(GraphicStreamFormat.Vector3, graphicStream.Format);
+            Assert.AreEqual(sizeOfVector3, graphicStream.Description.ElementSize);
+            Assert.AreEqual(sizeOfVector3 * data.Length, graphicStream.Description.Size);
+            Assert.AreEqual(GraphicStreamFormat.Vector3, graphicStream.Description.Format);
         }
 
         [Test]

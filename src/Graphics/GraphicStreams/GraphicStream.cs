@@ -1,79 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
-using TheNewEngine.Graphics.Resources;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {
     /// <summary>
     /// Abstract implementation of <see cref="IGraphicStream"/>.
     /// </summary>
-    /// <typeparam name="ElementType">The type of the lement type.</typeparam>
-    public class GraphicStream<ElementType> : ResourceDecorator, IGraphicStream, IEnumerable<ElementType>
+    /// <typeparam name="ElementType">The type of the element.</typeparam>
+    public class GraphicStream<ElementType> :  IGraphicStream, IEnumerable<ElementType>
         where ElementType : struct 
     {
-        private readonly GraphicStreamFormat mFormat;
+        private readonly GraphicStreamDescription mDescription;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GraphicStream{ElementType}"/> class.
         /// </summary>
         /// <param name="usage">The usage.</param>
         /// <param name="data">The data which will be stored in the stream.</param>
-        public GraphicStream(GraphicStreamUsage usage, ElementType[] data)
+        public GraphicStream(GraphicStreamUsage usage, IEnumerable<ElementType> data)
         {
-            Usage = usage;
-            ElementSize = Marshal.SizeOf(typeof (ElementType));
+            mDescription = new GraphicStreamDescription(usage,
+                GraphicStreamFormatHelper.GetForTypeName(typeof (ElementType).Name),
+                Marshal.SizeOf(typeof (ElementType)),
+                data.Count());
+
             Data = data;
-            Size = Data.Length * ElementSize;
-
-            mFormat = GraphicStreamFormatHelper.GetForTypeName(typeof (ElementType).Name);
         }
 
         /// <summary>
-        /// Gets the usage.
+        /// Gets the description of the graphic stream.
         /// </summary>
-        /// <value>The usage.</value>
-        public GraphicStreamUsage Usage { get; private set; }
-
-        /// <summary>
-        /// Gets the count.
-        /// </summary>
-        /// <value>The count.</value>
-        public int Count
+        /// <value>The description.</value>
+        public GraphicStreamDescription Description
         {
-            get { return Data.Length; }
+            get { return mDescription; }
         }
-
-        /// <summary>
-        /// Gets the size of the element.
-        /// </summary>
-        /// <value>The size of the element.</value>
-        public int ElementSize { get; private set; }
-
-        /// <summary>
-        /// Gets the overall size.
-        /// </summary>
-        /// <value>The overall size.</value>
-        public int Size { get; private set; }
 
         /// <summary>
         /// Gets the data.
         /// </summary>
         /// <value>Vertex or index data.</value>
-        public ElementType[] Data { get; private set; }
-
-        /// <summary>
-        /// Gets the format.
-        /// </summary>
-        /// <value>The format.</value>
-        public GraphicStreamFormat Format
-        {
-            get
-            {
-                return mFormat;
-            }
-        }
-
+        public IEnumerable<ElementType> Data { get; private set; }
+        
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
         /// </summary>

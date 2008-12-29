@@ -62,8 +62,11 @@
     <Compile Include="GraphicStreams\GraphicStreamContainer.cs" />
     <Compile Include="GraphicStreams\GraphicStreamFormat.cs" />
     <Compile Include="GraphicStreams\GraphicStreamFormatHelper.cs" />
+    <Compile Include="GraphicStreams\GraphicStreamDescription.cs" />
     <Compile Include="GraphicStreams\GraphicStreamUsage.cs" />
+    <Compile Include="GraphicStreams\BufferBinding.cs" />
     <Compile Include="GraphicStreams\IGraphicStream.cs" />
+    <Compile Include="GraphicStreams\IBuffer.cs" />
     <Compile Include="Importers\Collada\ColladaImporter.cs" />
     <Compile Include="Importers\Collada\Input.cs" />
     <Compile Include="Importers\Collada\SourceFinder.cs" />

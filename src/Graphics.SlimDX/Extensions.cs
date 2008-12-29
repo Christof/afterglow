@@ -6,7 +6,7 @@ using TheNewEngine.Math;
 using SlimDXVector3 = SlimDX.Vector3;
 using SlimDXMatrix = SlimDX.Matrix;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace TheNewEngine.Graphics
 {
     /// <summary>
     /// This class contains extension methods which help to map engine types to
