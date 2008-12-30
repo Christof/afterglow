@@ -11,7 +11,7 @@ namespace TheNewEngine.Graphics
     /// </summary>
     internal class TriangleParser
     {
-        private XElement mMeshElement;
+        private readonly XElement mMeshElement;
 
         private readonly XElement mTriangleElement;
 

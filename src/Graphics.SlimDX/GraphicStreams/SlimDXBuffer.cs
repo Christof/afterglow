@@ -33,6 +33,10 @@ namespace TheNewEngine.Graphics.GraphicStreams
             get { return mBuffer; }
         }
 
+        /// <summary>
+        /// Gets the description for the elements in the buffer.
+        /// </summary>
+        /// <value>The description.</value>
         public GraphicStreamDescription Description
         {
             get { return mDescription; }
@@ -41,6 +45,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
         /// <summary>
         /// Loads the specified graphic stream into the buffer.
         /// </summary>
+        /// <typeparam name="ElementType">The type of the element.</typeparam>
         /// <param name="graphicStream">The graphic stream.</param>
         public void Load<ElementType>(GraphicStream<ElementType> graphicStream)
             where ElementType : struct 

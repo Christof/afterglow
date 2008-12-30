@@ -8,6 +8,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
         /// <summary>
         /// Loads the specified graphic stream into the buffer.
         /// </summary>
+        /// <typeparam name="ElementType">The type of the element.</typeparam>
         /// <param name="graphicStream">The graphic stream.</param>
         void Load<ElementType>(GraphicStream<ElementType> graphicStream)
             where ElementType : struct;

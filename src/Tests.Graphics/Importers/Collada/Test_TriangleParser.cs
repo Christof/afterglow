@@ -18,7 +18,6 @@ namespace TheNewEngine.Graphics
                 .Element(ColladaImporter.Namespace + "library_geometries")
                 .Element(ColladaImporter.Namespace + "geometry")
                 .Element(ColladaImporter.Namespace + "mesh");
-                
         }
 
         [Test]

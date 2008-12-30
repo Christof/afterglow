@@ -2,12 +2,12 @@ using SlimDX.Direct3D10;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Infrastructure;
 using TheNewEngine.Graphics.GraphicStreams;
+using System.Collections.Generic;
+using System.Linq;
 using SlimDXDevice = SlimDX.Direct3D10.Device;
 using SlimDXEffect = SlimDX.Direct3D10.Effect;
 using InputLayout = SlimDX.Direct3D10.InputLayout;
 using Effect = TheNewEngine.Graphics.SlimDX.Effects.Effect;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace TheNewEngine.Graphics.SlimDX.Rendering
 {
@@ -22,11 +22,11 @@ namespace TheNewEngine.Graphics.SlimDX.Rendering
 
         private readonly Effect mEffect;
 
-        private InputLayout mInputLayout;
-
         private readonly int mIndexCount;
 
         private readonly int mVertexCount;
+
+        private InputLayout mInputLayout;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObjectRenderer"/> class.

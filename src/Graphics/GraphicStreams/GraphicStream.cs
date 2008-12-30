@@ -9,7 +9,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
     /// Abstract implementation of <see cref="IGraphicStream"/>.
     /// </summary>
     /// <typeparam name="ElementType">The type of the element.</typeparam>
-    public class GraphicStream<ElementType> :  IGraphicStream, IEnumerable<ElementType>
+    public class GraphicStream<ElementType> : IGraphicStream, IEnumerable<ElementType>
         where ElementType : struct 
     {
         private readonly GraphicStreamDescription mDescription;

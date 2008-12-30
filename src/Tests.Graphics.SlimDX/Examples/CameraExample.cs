@@ -41,7 +41,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             // TODO
 
             IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
-            IObjectRenderer renderer = new ObjectRenderer(mRenderWindow, effect, null ); // TODO
+            IObjectRenderer renderer = new ObjectRenderer(mRenderWindow, effect, null); // TODO
 
             EffectParameter<Matrix> worldViewProjectionParameter =
                 new MatrixEffectParameter("WorldViewProjection");

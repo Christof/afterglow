@@ -5,8 +5,16 @@ namespace TheNewEngine.Graphics.GraphicStreams
     /// </summary>
     public abstract class BufferBinding
     {
+        /// <summary>
+        /// Gets the description of the elements in the referenced buffer.
+        /// </summary>
+        /// <value>The description.</value>
         public GraphicStreamDescription Description { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BufferBinding"/> class.
+        /// </summary>
+        /// <param name="description">The description.</param>
         protected BufferBinding(GraphicStreamDescription description)
         {
             Description = description;

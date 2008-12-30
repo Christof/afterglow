@@ -68,7 +68,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
         /// <summary>
         /// Gets overall size in bytes.
         /// </summary>
-        /// <value>The size.</value>
+        /// <value>The overall size.</value>
         public int Size
         {
             get

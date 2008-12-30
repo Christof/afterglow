@@ -44,15 +44,17 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
 
             var colorsBuffer = new SlimDXBuffer(mRenderWindow.Device);
             colorsBuffer.Load(colors);
+            
+            var bufferBindings = new[]
+            {
+                new SlimDXBufferBinding(mRenderWindow.Device, positionsBuffer),
+                new SlimDXBufferBinding(mRenderWindow.Device, colorsBuffer)
+            };
 
             IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
 
             IObjectRenderer renderer = new ObjectRenderer(mRenderWindow,
-                effect, new []
-                {
-                    new SlimDXBufferBinding(mRenderWindow.Device, positionsBuffer),
-                    new SlimDXBufferBinding(mRenderWindow.Device, colorsBuffer)
-                });
+                effect, bufferBindings);
 
             EffectParameter<Math.Matrix> worldViewProjectionParameter =
                 new MatrixEffectParameter("WorldViewProjection");
