@@ -1,13 +1,14 @@
 using System.Windows.Forms;
 using MbUnit.Framework;
-using SlimDX;
 using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using System.IO;
+using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using TheNewEngine.Graphics.Utilities;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.SlimDX.Effects;
 using TheNewEngine.Graphics.SlimDX.Rendering;
+using TheNewEngine.Graphics.Cameras;
+using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
 {
@@ -56,20 +57,22 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             IObjectRenderer renderer = new ObjectRenderer(mRenderWindow,
                 effect, bufferBindings);
 
-            EffectParameter<Math.Matrix> worldViewProjectionParameter =
+            EffectParameter<Matrix> worldViewProjectionParameter =
                 new MatrixEffectParameter("WorldViewProjection");
 
             Application.Idle +=
                 delegate
                 {
-                    Matrix view = Matrix.LookAtRH(new Vector3(0, 0, 3), new Vector3(), new Vector3(0, 1, 0));
-                    Matrix projection = Matrix.PerspectiveFovRH((float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
+                    Matrix view = Stand.CalculateViewMatrix(
+                        new Vector3(0, 0, 3), -Vector3.ZAxis, Vector3.YAxis);
+                    Matrix projection = PerspectiveProjectionLense.CalculateProjectionMatrix(
+                        0.01f, 100f, (float)(System.Math.PI / 3), 800f / 600.0f);
                     Matrix world = Matrix.Identity;
                     Matrix worldViewProjection = world * view * projection;
 
                     mRenderWindow.StartRendering();
 
-                    worldViewProjectionParameter.Value = worldViewProjection.ToMath();
+                    worldViewProjectionParameter.Value = worldViewProjection;
                     worldViewProjectionParameter.SetParameterOn(effect);
 
                     renderer.Render();
@@ -104,20 +107,20 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             Application.Exit();
         }
 
-        private static Math.Vector3[] CreatePositions()
+        private static Vector3[] CreatePositions()
         {
-            var top = new Math.Vector3(0f, 1f, 0f);
-            var left = new Math.Vector3(-1f, -1f, 0f);
-            var right = new Math.Vector3(1f, -1f, 0f);
+            var top = new Vector3(0f, 1f, 0f);
+            var left = new Vector3(-1f, -1f, 0f);
+            var right = new Vector3(1f, -1f, 0f);
 
             return new[] { top, right, left };
         }
 
-        private static Color4[] CreateColors()
+        private static Vector3[] CreateColors()
         {
-            var top = new Color4(1f, 0f, 0f);
-            var left = new Color4(0f, 1f, 0f);
-            var right = new Color4(0f, 0f, 1f);
+            var top = new Vector3(1f, 0f, 0f);
+            var left = new Vector3(0f, 1f, 0f);
+            var right = new Vector3(0f, 0f, 1f);
 
             return new[] { top, right, left };
         }
