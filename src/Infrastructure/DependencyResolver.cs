@@ -1,5 +1,3 @@
-using StructureMap;
-
 namespace TheNewEngine.Infrastructure
 {
     /// <summary>
@@ -15,7 +13,7 @@ namespace TheNewEngine.Infrastructure
         /// <returns>Resolved instantiated implementation.</returns>
         public static T Resolve<T>()
         {
-            return ObjectFactory.GetInstance<T>();
+            return default(T);
         }
 
         /// <summary>
@@ -28,7 +26,7 @@ namespace TheNewEngine.Infrastructure
         /// <returns>Resolved instantiated implementation.</returns>
         public static T ResolveWith<T>(string parameterName, object value)
         {
-            return ObjectFactory.With(parameterName).EqualTo(value).GetInstance<T>();
+            return default(T);
         }
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace TheNewEngine.Infrastructure
         /// <returns>Resolved instantiated implementation.</returns>
         public static T ResolveWith<T, ArgumentType>(ArgumentType value)
         {
-            return ObjectFactory.With(value).GetInstance<T>();
+            return default(T);
         }
     }
 }

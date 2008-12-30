@@ -113,14 +113,6 @@ namespace TheNewEngine.Graphics
         [Test]
         public void WithDependencyInjection()
         {
-            ObjectFactory.Initialize(x =>
-            {
-                x.AddRegistry(new XnaRegistry());
-
-                //x.AddRegistry(new SlimDXRegistry());
-                //x.DefaultProfileName = "Xna";
-            });
-
             using (var form = new Form())
             {
                 form.ClientSize = new Size(800, 600);

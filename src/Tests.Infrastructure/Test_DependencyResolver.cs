@@ -1,5 +1,4 @@
 using MbUnit.Framework;
-using StructureMap;
 
 namespace TheNewEngine.Infrastructure
 {
@@ -21,9 +20,6 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void Resolve()
         {
-            ObjectFactory.Initialize(c => c.ForRequestedType<IContract>()
-                .TheDefaultIsConcreteType<Implementation>());
-
             var resolve = DependencyResolver.Resolve<IContract>();
 
             Assert.IsNotNull(resolve);
@@ -48,10 +44,7 @@ namespace TheNewEngine.Infrastructure
         public void Constructor_with_not_injected_parameter()
         {
             var parameter = "param";
-            ObjectFactory.Initialize(x => x.ForRequestedType<IContract>()
-                .TheDefault.Is.OfConcreteType<ImplementationWithParameter>()
-                .WithCtorArg("parameter"));
-
+            
             var implementation = DependencyResolver.ResolveWith<IContract>("parameter", parameter);
 
             Assert.IsNotNull(implementation);
@@ -62,10 +55,7 @@ namespace TheNewEngine.Infrastructure
         public void Constructor_with_not_injected_parameter_with_profile()
         {
             var parameter = "param";
-            ObjectFactory.Initialize(x => x.ForRequestedType<IContract>()
-                .TheDefault.Is.OfConcreteType<ImplementationWithParameter>()
-                .WithCtorArg("parameter"));
-
+            
             var implementation = DependencyResolver.ResolveWith<IContract>("parameter", parameter);
 
             Assert.IsNotNull(implementation);
@@ -73,13 +63,9 @@ namespace TheNewEngine.Infrastructure
         }
 
         [Test]
-        [Ignore("Doesn't work since version 2.5.0")]
-        public void Constructor_with_not_injected_parameter2()
+        public void Constructor_with_not_injected_generic_parameter()
         {
             var parameter = "param";
-            ObjectFactory.Initialize(x => x.ForRequestedType<IContract>()
-                .TheDefault.Is.OfConcreteType<ImplementationWithParameter>()
-                .WithCtorArg("parameter"));
 
             var implementation = DependencyResolver.ResolveWith<IContract, string>(parameter);
 
