@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<NDepend AppName="TheNewEngine">
+<NDepend AppName="TheNewEngine" Platform="DotNet">
   <OutputDir KeepHistoric="True" KeepXmlFiles="True" ViewReport="True">C:\Projects\TheNewEngine\build\NDependOut</OutputDir>
   <Assemblies>
     <Name>Graphics</Name>
@@ -7,17 +7,18 @@
     <Name>Graphics.SlimDX</Name>
     <Name>Graphics.Xna</Name>
     <Name>Graphics.OpenGL</Name>
-    <Name>Common</Name>
+    <Name>Infrastructure</Name>
+    <Name>TestInfrastructure</Name>
   </Assemblies>
   <FrameworkAssemblies>
     <Name>mscorlib</Name>
     <Name>System.Drawing</Name>
     <Name>System.Core</Name>
     <Name>System</Name>
-    <Name>StructureMap</Name>
+    <Name>System.Xml.Linq</Name>
     <Name>SlimDX</Name>
-    <Name>System.Windows.Forms</Name>
     <Name>Microsoft.Xna.Framework</Name>
+    <Name>System.Windows.Forms</Name>
   </FrameworkAssemblies>
   <Dirs>
     <Dir>C:\Windows\Microsoft.NET\Framework\v2.0.50727</Dir>
@@ -40,7 +41,7 @@
     <Section Enabled="True">Types Metrics</Section>
     <Section Enabled="False">Types Dependencies</Section>
   </Report>
-  <BuildComparisonSetting ProjectMode="DontCompare" BuildMode="MostRecentBuildAvailable" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="1" />
+  <BuildComparisonSetting ProjectMode="DontCompare" BuildMode="MostRecentBuildAvailable" ProjectFileToCompareWith="C:\Projects\TheNewEngine\build\NDependProject.xml" BuildFileToCompareWith="" NDaysAgo="1" />
   <CoverageFiles UncoverableAttribute="" />
   <SourceFileRebasing FromPath="" ToPath="" /><CQLQueries>
     <CQLGroup Name="Code Quality" Active="True">
