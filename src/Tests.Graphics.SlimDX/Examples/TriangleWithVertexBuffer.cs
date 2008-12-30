@@ -40,16 +40,12 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var positions = container.Create(GraphicStreamUsage.Position, CreatePositions());
             var colors = container.Create(GraphicStreamUsage.Color, CreateColors());
 
-            var positionsBuffer = new SlimDXBuffer(mRenderWindow.Device);
-            positionsBuffer.Load(positions);
-
-            var colorsBuffer = new SlimDXBuffer(mRenderWindow.Device);
-            colorsBuffer.Load(colors);
+            IBufferService bufferService = new SlimDXBufferService(mRenderWindow.Device);
             
             var bufferBindings = new[]
             {
-                new SlimDXBufferBinding(mRenderWindow.Device, positionsBuffer),
-                new SlimDXBufferBinding(mRenderWindow.Device, colorsBuffer)
+                bufferService.CreateFor(positions),
+                bufferService.CreateFor(colors)
             };
 
             IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");

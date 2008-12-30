@@ -35,13 +35,19 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
         public void Run()
         {
             var container = new GraphicStreamContainer();
-            container.Create(GraphicStreamUsage.Position, CreatePositions());
-            container.Create(GraphicStreamUsage.Color, CreateColors());
+            var positions = container.Create(GraphicStreamUsage.Position, CreatePositions());
+            var colors = container.Create(GraphicStreamUsage.Color, CreateColors());
 
-            // TODO
+            IBufferService bufferService = new SlimDXBufferService(mRenderWindow.Device);
+
+            var bufferBindings = new[]
+            {
+                bufferService.CreateFor(colors),
+                bufferService.CreateFor(positions),
+            };
 
             IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
-            IObjectRenderer renderer = new ObjectRenderer(mRenderWindow, effect, null); // TODO
+            IObjectRenderer renderer = new ObjectRenderer(mRenderWindow, effect, bufferBindings);
 
             EffectParameter<Matrix> worldViewProjectionParameter =
                 new MatrixEffectParameter("WorldViewProjection");

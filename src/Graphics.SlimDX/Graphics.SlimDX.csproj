@@ -63,6 +63,7 @@
     <Compile Include="GraphicStreams\SlimDXBuffer.cs" />
     <Compile Include="GraphicStreams\ISlimDXBuffer.cs" />
     <Compile Include="GraphicStreams\SlimDXBufferBinding.cs" />
+    <Compile Include="GraphicStreams\SlimDXBufferService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\ObjectRenderer.cs" />
     <Compile Include="RenderWindow.cs" />

@@ -65,6 +65,7 @@
     <Compile Include="GraphicStreams\GraphicStreamDescription.cs" />
     <Compile Include="GraphicStreams\GraphicStreamUsage.cs" />
     <Compile Include="GraphicStreams\BufferBinding.cs" />
+    <Compile Include="GraphicStreams\IBufferService.cs" />
     <Compile Include="GraphicStreams\IGraphicStream.cs" />
     <Compile Include="GraphicStreams\IBuffer.cs" />
     <Compile Include="Importers\Collada\ColladaImporter.cs" />
