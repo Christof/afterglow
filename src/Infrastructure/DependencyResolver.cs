@@ -1,3 +1,4 @@
+using Autofac;
 namespace TheNewEngine.Infrastructure
 {
     /// <summary>
@@ -5,6 +6,13 @@ namespace TheNewEngine.Infrastructure
     /// </summary>
     public static class DependencyResolver
     {
+        private static IContainer mContainer;
+
+        public static void SetContainer(IContainer container)
+        {
+            mContainer = container;
+        }
+
         /// <summary>
         /// Resolves the dependencies for the given generic type and
         /// returns the resolved implementation.
@@ -13,7 +21,7 @@ namespace TheNewEngine.Infrastructure
         /// <returns>Resolved instantiated implementation.</returns>
         public static T Resolve<T>()
         {
-            return default(T);
+            return mContainer.Resolve<T>();
         }
 
         /// <summary>
@@ -26,7 +34,7 @@ namespace TheNewEngine.Infrastructure
         /// <returns>Resolved instantiated implementation.</returns>
         public static T ResolveWith<T>(string parameterName, object value)
         {
-            return default(T);
+            return mContainer.Resolve<T>(new NamedParameter(parameterName, value));
         }
 
         /// <summary>
@@ -39,7 +47,7 @@ namespace TheNewEngine.Infrastructure
         /// <returns>Resolved instantiated implementation.</returns>
         public static T ResolveWith<T, ArgumentType>(ArgumentType value)
         {
-            return default(T);
+            return mContainer.Resolve<T>(new TypedParameter(typeof (ArgumentType), value));
         }
     }
 }
