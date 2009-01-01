@@ -4,8 +4,6 @@ using MbUnit.Framework;
 using System;
 using StructureMap;
 using TheNewEngine.Infrastructure;
-using TheNewEngine.Graphics.Xna;
-using TheNewEngine.Graphics.SlimDX;
 
 namespace TheNewEngine.Graphics
 {
@@ -33,7 +31,7 @@ namespace TheNewEngine.Graphics
                             if (renderWindow is Xna.RenderWindow)
                             {
                                 renderWindow.Dispose();
-                                renderWindow = new SlimDX.RenderWindow(form.Handle);
+                                renderWindow = new SlimDXRenderWindow(form.Handle);
                             }
                             else
                             {
@@ -84,7 +82,7 @@ namespace TheNewEngine.Graphics
                             if (renderWindow is Xna.RenderWindow)
                             {
                                 renderWindow.Dispose();
-                                renderWindow = new SlimDX.RenderWindow(handle);
+                                renderWindow = new SlimDXRenderWindow(handle);
                             }
                             else
                             {
@@ -138,7 +136,7 @@ namespace TheNewEngine.Graphics
 //                            if (renderWindow is Xna.RenderWindow)
 //                            {
 //                                renderWindow.Dispose();
-//                                renderWindow = new SlimDX.RenderWindow(form.Handle);
+//                                renderWindow = new SlimDX.SlimDXRenderWindow(form.Handle);
 //                            }
 //                            else
 //                            {

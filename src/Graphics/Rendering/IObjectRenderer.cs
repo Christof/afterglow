@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.SlimDX.Rendering
+namespace TheNewEngine.Graphics.Rendering
 {
     /// <summary>
     /// Renders a specific object.

@@ -12,7 +12,7 @@ namespace TheNewEngine.Graphics
     /// This class contains extension methods which help to map engine types to
     /// the corresponding SlimDX types.
     /// </summary>
-    public static class Extensions
+    public static class SlimDXExtensions
     {
         /// <summary>
         /// Returns the semantic corresponding to the <see cref="GraphicStreamUsage"/>

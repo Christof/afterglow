@@ -1,18 +1,17 @@
-using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Math;
 
-namespace TheNewEngine.Graphics.SlimDX.Effects
+namespace TheNewEngine.Graphics.Effects
 {
     /// <summary>
     /// Matrix effect parameter.
     /// </summary>
-    public class MatrixEffectParameter : EffectParameter<Matrix>
+    public class SlimDXMatrixEffectParameter : EffectParameter<Matrix>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatrixEffectParameter"/> class.
+        /// Initializes a new instance of the <see cref="SlimDXMatrixEffectParameter"/> class.
         /// </summary>
         /// <param name="semanticName">Semantic name.</param>
-        public MatrixEffectParameter(string semanticName)
+        public SlimDXMatrixEffectParameter(string semanticName)
             : base(semanticName)
         {
         }
@@ -23,7 +22,7 @@ namespace TheNewEngine.Graphics.SlimDX.Effects
         /// <param name="effect">The effect.</param>
         public override void SetParameterOn(IEffect effect)
         {
-            ((Effect)effect).SlimDXEffect
+            ((SlimDXEffect)effect).Effect
                 .GetVariableBySemantic(SemanticName)
                 .AsMatrix()
                 .SetMatrix(Value.ToSlimDX());

@@ -2,7 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace TheNewEngine.Graphics
 {
     public class Test_RenderWindow
     {
@@ -13,7 +13,7 @@ namespace TheNewEngine.Graphics.SlimDX
             {
                 form.ClientSize = new Size(800, 600);
 
-                using (var renderWindow = new RenderWindow(form.Handle))
+                using (var renderWindow = new SlimDXRenderWindow(form.Handle))
                 {
                     form.KeyPress +=
                         delegate(object sender, KeyPressEventArgs args)

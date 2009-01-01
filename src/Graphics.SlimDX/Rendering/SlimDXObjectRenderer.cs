@@ -4,23 +4,19 @@ using TheNewEngine.Infrastructure;
 using TheNewEngine.Graphics.GraphicStreams;
 using System.Collections.Generic;
 using System.Linq;
-using SlimDXDevice = SlimDX.Direct3D10.Device;
-using SlimDXEffect = SlimDX.Direct3D10.Effect;
-using InputLayout = SlimDX.Direct3D10.InputLayout;
-using Effect = TheNewEngine.Graphics.SlimDX.Effects.Effect;
 
-namespace TheNewEngine.Graphics.SlimDX.Rendering
+namespace TheNewEngine.Graphics.Rendering
 {
     /// <summary>
     /// Object renderer for SlimDX.
     /// </summary>
-    public class ObjectRenderer : IObjectRenderer
+    public class SlimDXObjectRenderer : IObjectRenderer
     {
         private readonly IEnumerable<BufferBinding> mBufferBindings;
 
-        private readonly SlimDXDevice mDevice;
+        private readonly Device mDevice;
 
-        private readonly Effect mEffect;
+        private readonly SlimDXEffect mEffect;
 
         private readonly int mIndexCount;
 
@@ -29,17 +25,17 @@ namespace TheNewEngine.Graphics.SlimDX.Rendering
         private InputLayout mInputLayout;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ObjectRenderer"/> class.
+        /// Initializes a new instance of the <see cref="SlimDXObjectRenderer"/> class.
         /// </summary>
         /// <param name="renderWindow">The render window.</param>
         /// <param name="effect">The effect.</param>
         /// <param name="bufferBindings">The buffer bindings.</param>
-        public ObjectRenderer(IRenderWindow renderWindow, IEffect effect, 
+        public SlimDXObjectRenderer(IRenderWindow renderWindow, IEffect effect, 
             IEnumerable<BufferBinding> bufferBindings)
         {
             mBufferBindings = bufferBindings;
-            mDevice = renderWindow.DowncastTo<RenderWindow>().Device;
-            mEffect = effect.DowncastTo<Effect>();
+            mDevice = renderWindow.DowncastTo<SlimDXRenderWindow>().Device;
+            mEffect = effect.DowncastTo<SlimDXEffect>();
 
             foreach (var bufferBinding in bufferBindings)
             {
@@ -74,7 +70,7 @@ namespace TheNewEngine.Graphics.SlimDX.Rendering
                 bufferBinding.Bind();
             }
 
-            var technique = mEffect.SlimDXEffect.GetTechniqueByIndex(0);
+            var technique = mEffect.Effect.GetTechniqueByIndex(0);
             var pass = technique.GetPassByIndex(0);
             for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
             {
@@ -93,7 +89,7 @@ namespace TheNewEngine.Graphics.SlimDX.Rendering
 
         private void CreateInputLayout()
         {
-            var technique = mEffect.SlimDXEffect.GetTechniqueByIndex(0);
+            var technique = mEffect.Effect.GetTechniqueByIndex(0);
             var pass = technique.GetPassByIndex(0);
 
             var inputElements = mBufferBindings

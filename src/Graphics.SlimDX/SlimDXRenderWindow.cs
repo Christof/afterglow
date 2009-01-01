@@ -4,12 +4,12 @@ using SlimDX.Direct3D10;
 using SlimDX.DXGI;
 using Device = SlimDX.Direct3D10.Device;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace TheNewEngine.Graphics
 {
     /// <summary>
     /// Encapsulates the SlimDX-device so that it renders in the given window.
     /// </summary>
-    public class RenderWindow : IRenderWindow
+    public class SlimDXRenderWindow : IRenderWindow
     {
         private const int HEIGHT = 600;
 
@@ -26,10 +26,10 @@ namespace TheNewEngine.Graphics.SlimDX
         private SwapChain mSwapChain;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RenderWindow"/> class.
+        /// Initializes a new instance of the <see cref="SlimDXRenderWindow"/> class.
         /// </summary>
         /// <param name="windowHandle">The window handle.</param>
-        public RenderWindow(IntPtr windowHandle)
+        public SlimDXRenderWindow(IntPtr windowHandle)
         {
             mWindowHandle = windowHandle;
 

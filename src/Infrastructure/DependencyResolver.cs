@@ -1,4 +1,5 @@
 using Autofac;
+
 namespace TheNewEngine.Infrastructure
 {
     /// <summary>

@@ -1,21 +1,19 @@
-using TheNewEngine.Graphics.Effects;
 using SlimDX.Direct3D10;
-using SlimDXEffect = SlimDX.Direct3D10.Effect;
 
-namespace TheNewEngine.Graphics.SlimDX.Effects
+namespace TheNewEngine.Graphics.Effects
 {
     /// <summary>
     /// Implementation of an effect compiler for SlimDX.
     /// </summary>
-    public class EffectCompiler : IEffectCompiler
+    public class SlimDXEffectCompiler : IEffectCompiler
     {
-        private Device mDevice;
+        private readonly Device mDevice;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EffectCompiler"/> class.
+        /// Initializes a new instance of the <see cref="SlimDXEffectCompiler"/> class.
         /// </summary>
         /// <param name="device">The device.</param>
-        public EffectCompiler(Device device)
+        public SlimDXEffectCompiler(Device device)
         {
             mDevice = device;
         }
@@ -28,12 +26,12 @@ namespace TheNewEngine.Graphics.SlimDX.Effects
         public IEffect Compile(string path)
         {
             string errors;
-            var effect = SlimDXEffect.FromFile(
+            var effect = Effect.FromFile(
                 mDevice, path, "fx_4_0",
                 ShaderFlags.Debug, EffectFlags.None, 
                 null, null, out errors);
 
-            return new Effect(effect);
+            return new SlimDXEffect(effect);
         }
     }
 }

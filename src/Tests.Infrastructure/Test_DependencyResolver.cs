@@ -1,4 +1,3 @@
-using Autofac;
 using Autofac.Builder;
 using MbUnit.Framework;
 
@@ -69,6 +68,7 @@ namespace TheNewEngine.Infrastructure
             {
                 mName = name;
             }
+
             public string ReturnParameter()
             {
                 return mName + "A";

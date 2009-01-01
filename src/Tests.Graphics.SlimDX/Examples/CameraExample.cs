@@ -3,9 +3,8 @@ using MbUnit.Framework;
 using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.GraphicStreams;
+using TheNewEngine.Graphics.Rendering;
 using TheNewEngine.Graphics.SlimDX.ApiExamples;
-using TheNewEngine.Graphics.SlimDX.Effects;
-using TheNewEngine.Graphics.SlimDX.Rendering;
 using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
@@ -15,13 +14,13 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
     {
         private Form mForm;
 
-        private RenderWindow mRenderWindow;
+        private SlimDXRenderWindow mRenderWindow;
 
         [SetUp]
         public void Setup()
         {
             mForm = EmptyWindow.CreateForm();
-            mRenderWindow = new RenderWindow(mForm.Handle);
+            mRenderWindow = new SlimDXRenderWindow(mForm.Handle);
         }
 
         [TearDown]
@@ -46,11 +45,11 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 bufferService.CreateFor(positions),
             };
 
-            IEffect effect = new EffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
-            IObjectRenderer renderer = new ObjectRenderer(mRenderWindow, effect, bufferBindings);
+            IEffect effect = new SlimDXEffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
+            IObjectRenderer renderer = new SlimDXObjectRenderer(mRenderWindow, effect, bufferBindings);
 
             EffectParameter<Matrix> worldViewProjectionParameter =
-                new MatrixEffectParameter("WorldViewProjection");
+                new SlimDXMatrixEffectParameter("WorldViewProjection");
 
             var cam = new Camera(new Stand(), new PerspectiveProjectionLense());
             cam.Stand.Position = new Vector3(0, 0, 3);
