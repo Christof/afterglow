@@ -63,7 +63,7 @@
     <Compile Include="Rendering\SlimDXObjectRenderer.cs" />
     <Compile Include="SlimDXExtensions.cs" />
     <Compile Include="SlimDXRenderWindow.cs" />
-    <Compile Include="Textures\Texture.cs" />
+    <Compile Include="Textures\SlimDXTexture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics\Graphics.csproj">

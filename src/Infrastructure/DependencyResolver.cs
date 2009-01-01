@@ -9,6 +9,10 @@ namespace TheNewEngine.Infrastructure
     {
         private static IContainer mContainer;
 
+        /// <summary>
+        /// Sets the container.
+        /// </summary>
+        /// <param name="container">The container.</param>
         public static void SetContainer(IContainer container)
         {
             mContainer = container;

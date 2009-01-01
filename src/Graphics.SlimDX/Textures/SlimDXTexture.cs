@@ -1,22 +1,22 @@
 using SlimDX.Direct3D10;
 using TheNewEngine.Graphics.Resources;
 
-namespace TheNewEngine.Graphics.SlimDX.Textures
+namespace TheNewEngine.Graphics.Textures
 {
     /// <summary>
     /// SlimDX texture implementation.
     /// </summary>
-    public class Texture : IResource
+    public class SlimDXTexture : IResource
     {
         private readonly Device mDevice;
 
         private Texture2D mTexture;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Texture"/> class.
+        /// Initializes a new instance of the <see cref="SlimDXTexture"/> class.
         /// </summary>
         /// <param name="device">The device.</param>
-        public Texture(Device device)
+        public SlimDXTexture(Device device)
         {
             mDevice = device;
         }
