@@ -31,6 +31,16 @@ namespace TheNewEngine.Math
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Vector2"/> struct.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public Vector2(float[] values)
+        {
+            mX = values[0];
+            mY = values[1];
+        }
+
+        /// <summary>
         /// Gets the value for the X-axis.
         /// </summary>
         /// <value>The value for the X-axis.</value>

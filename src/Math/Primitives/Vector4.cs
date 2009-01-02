@@ -39,6 +39,18 @@ namespace TheNewEngine.Math
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Vector4"/> struct.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public Vector4(float[] values)
+        {
+            mX = values[0];
+            mY = values[1];
+            mZ = values[2];
+            mW = values[3];
+        }
+
+        /// <summary>
         /// Gets the value for the X-axis.
         /// </summary>
         /// <value>The value for the X-axis.</value>

@@ -21,6 +21,21 @@ namespace TheNewEngine.Math
         }
 
         [Test]
+        public void Constructor_with_array_as_argument()
+        {
+            const float X = 1.0f;
+            const float Y = 2.0f;
+            const float Z = 3.0f;
+            var values = new[] { X, Y, Z };
+
+            var vector3 = new Vector3(values);
+
+            Assert.AreEqual(X, vector3.X);
+            Assert.AreEqual(Y, vector3.Y);
+            Assert.AreEqual(Z, vector3.Z);
+        }
+
+        [Test]
         public void Zero()
         {
             var zero = Vector3.Zero;
