@@ -2,6 +2,8 @@ using System.Linq;
 using System.Xml.Linq;
 using MbUnit.Framework;
 using TheNewEngine.Graphics.GraphicStreams;
+using TheNewEngine.Infrastructure;
+using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics
 {
@@ -93,7 +95,25 @@ namespace TheNewEngine.Graphics
             GraphicStreamContainer container = triangleParser.Parse();
 
             Assert.IsNotNull(container);
-            Assert.AreEqual(4, container.Count());
+            Assert.AreEqual(5, container.Count());
+
+            var expectedIndices = new uint[] { 0, 3, 2, 0, 2, 1 };
+            var indexStream = container.GetByUsage(GraphicStreamUsage.Index)
+                .DowncastTo<GraphicStream<uint>>();
+
+            Assert.AreElementsEqual(expectedIndices, indexStream.Data);
+
+            var expectedPositions = new[]
+            {
+                new Vector3(1f, 1f, 0f),
+                new Vector3(1f, -1f, 0f),
+                new Vector3(-1f, -1f, 0f),
+                new Vector3(-1f, 1f, 0f)
+            };
+            var positionStream = container.GetByUsage(GraphicStreamUsage.Position)
+                .DowncastTo<GraphicStream<Vector3>>();
+
+            Assert.AreElementsEqual(expectedPositions, positionStream.Data);
         }
     }
 }

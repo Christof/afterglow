@@ -72,6 +72,9 @@ namespace TheNewEngine.Graphics
                 case GraphicStreamFormat.Float:
                     return Format.R32_Float;
 
+                case GraphicStreamFormat.UInt:
+                    return Format.R32_UInt;
+
                 case GraphicStreamFormat.Int:
                     return Format.R32_SInt;
 

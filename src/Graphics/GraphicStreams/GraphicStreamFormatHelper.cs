@@ -18,16 +18,25 @@ namespace TheNewEngine.Graphics.GraphicStreams
             {
                 case "Vector2":
                     return GraphicStreamFormat.Vector2;
+
                 case "Vector3":
                     return GraphicStreamFormat.Vector3;
+
                 case "Vector4":
                     return GraphicStreamFormat.Vector4;
+
                 case "Color4":
                     return GraphicStreamFormat.Color4;
+
                 case "Single":
                     return GraphicStreamFormat.Float;
+
+                case "UInt32":
+                    return GraphicStreamFormat.UInt;
+
                 case "Int32":
                     return GraphicStreamFormat.Int;
+
                 default:
                     throw new ArgumentOutOfRangeException("typeName", typeName, "Invalid type name");
             }

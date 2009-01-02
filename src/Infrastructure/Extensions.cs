@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TheNewEngine.Infrastructure
 {
@@ -25,7 +26,9 @@ namespace TheNewEngine.Infrastructure
         /// <typeparam name="T">Type of the elements in the enumerable</typeparam>
         /// <param name="enumerable">The sequence.</param>
         /// <param name="size">The size of slice.</param>
-        /// <returns>A enumerable of slices with the given size.</returns>
+        /// <returns>
+        /// A enumerable of slices with the given size.
+        /// </returns>
         public static IEnumerable<T[]> Slice<T>(this IEnumerable<T> enumerable, int size)
         {
             int counter = 0;
@@ -42,6 +45,40 @@ namespace TheNewEngine.Infrastructure
                     slice = new T[size];
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns each nth plus offset element.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable">The enumerable.</param>
+        /// <param name="n">Number n.</param>
+        /// <param name="offset">The offset.</param>
+        /// <returns>
+        /// Each element with an index multiple of n plus offset.
+        /// </returns>
+        public static IEnumerable<T> IndexIsMultipleOf<T>(
+            this IEnumerable<T> enumerable, int n, int offset)
+        {
+            int index = 0;
+            foreach (var value in enumerable)
+            {
+                if (index++ % n == offset)
+                    yield return value;
+            }
+        }
+
+        /// <summary>
+        /// Returns each nth element.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable">The enumerable.</param>
+        /// <param name="n">Number n.</param>
+        /// <returns>Each element with an index multiple of n.</returns>
+        public static IEnumerable<T> IndexIsMultipleOf<T>(
+            this IEnumerable<T> enumerable, int n)
+        {
+            return enumerable.IndexIsMultipleOf(n, 0);
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 using MbUnit.Framework;
 using Moq;
 using System.Linq;
+using TheNewEngine.Infrastructure;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {
@@ -54,6 +55,30 @@ namespace TheNewEngine.Graphics.GraphicStreams
             Assert.AreEqual(data, stream.Data);
 
             Assert.AreEqual(1, container.Count());
+        }
+
+        [Test]
+        public void GetByUsage()
+        {
+            var container = new GraphicStreamContainer();
+
+            var indices = new[] { 0, 1, 3 };
+            container.Create(GraphicStreamUsage.Position, new [] { 1f, 2f, 3f });
+            container.Create(GraphicStreamUsage.Index, indices);
+
+            var stream = container.GetByUsage(GraphicStreamUsage.Index);
+
+            Assert.IsNotNull(stream);
+            Assert.AreEqual(GraphicStreamUsage.Index, stream.Description.Usage);
+            Assert.AreElementsEqual(indices, stream.DowncastTo<GraphicStream<int>>().Data);
+        }
+
+        [Test]
+        public void GetByUsage_returns_null_if_usage_is_not_found()
+        {
+            var container = new GraphicStreamContainer();
+
+            Assert.IsNull(container.GetByUsage(GraphicStreamUsage.Normal));
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Xml.Linq;
 using System.Linq;
 using System;
 using TheNewEngine.Graphics.GraphicStreams;
+using TheNewEngine.Infrastructure;
 using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics
@@ -71,11 +72,20 @@ namespace TheNewEngine.Graphics
 
         public GraphicStreamContainer Parse()
         {
+            int triangleCount = Convert.ToInt32(
+                mTriangleElement.Attribute("count").Value,
+                CultureInfo.InvariantCulture);
+
             var allIndices = ParseUIntArray(mTriangleElement.Element(
                 ColladaImporter.Namespace + "p"));
+            var segmentLenght = allIndices.Count() / triangleCount / 3;
+
             var container = new GraphicStreamContainer();
+            var indices = allIndices.IndexIsMultipleOf(segmentLenght);
+            container.Create(GraphicStreamUsage.Index, indices.ToArray());
 
             var inputs = ParseInputs();
+            
             foreach (var input in inputs)
             {
                 var usage = SemanticHelper.GetUsageForSemantic(input.Semantic);

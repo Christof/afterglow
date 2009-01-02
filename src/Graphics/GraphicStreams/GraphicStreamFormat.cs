@@ -34,5 +34,10 @@ namespace TheNewEngine.Graphics.GraphicStreams
         /// Int32 value.
         /// </summary>
         Int,
+
+        /// <summary>
+        /// UInt32 value.
+        /// </summary>
+        UInt,
     }
 }

@@ -12,6 +12,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
         [Row(GraphicStreamFormat.Vector3, "Vector3")]
         [Row(GraphicStreamFormat.Vector4, "Vector4")]
         [Row(GraphicStreamFormat.Color4, "Color4")]
+        [Row(GraphicStreamFormat.UInt, "UInt32")]
         [Row(GraphicStreamFormat.Int, "Int32")]
         [Row(GraphicStreamFormat.Float, "invalid", ExpectedException = typeof(ArgumentOutOfRangeException))]
         public void GetForTypeName(GraphicStreamFormat expectedFormat, string typeName)

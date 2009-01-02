@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {
@@ -55,6 +56,16 @@ namespace TheNewEngine.Graphics.GraphicStreams
             Add(stream);
 
             return stream;
+        }
+
+        /// <summary>
+        /// Gets a graphic stream identified by usage.
+        /// </summary>
+        /// <param name="usage">The usage.</param>
+        /// <returns>The found graphic stream or <c>null</c>.</returns>
+        public IGraphicStream GetByUsage(GraphicStreamUsage usage)
+        {
+            return mStreams.Where(s => s.Description.Usage == usage).FirstOrDefault();
         }
     }
 }

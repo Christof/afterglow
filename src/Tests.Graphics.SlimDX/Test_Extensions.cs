@@ -30,6 +30,7 @@ namespace TheNewEngine.Graphics.SlimDX
         [Row(GraphicStreamFormat.Vector4, Format.R32G32B32A32_Float)]
         [Row(GraphicStreamFormat.Color4, Format.R32G32B32A32_Float)]
         [Row(GraphicStreamFormat.Int, Format.R32_SInt)]
+        [Row(GraphicStreamFormat.UInt, Format.R32_UInt)]
         public void ToFormat(GraphicStreamFormat graphicStreamFormat, Format format)
         {
             Assert.AreEqual(format, graphicStreamFormat.ToFormat());
