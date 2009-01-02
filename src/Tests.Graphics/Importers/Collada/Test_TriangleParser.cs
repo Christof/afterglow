@@ -48,7 +48,7 @@ namespace TheNewEngine.Graphics
                 .Elements(ColladaImporter.Namespace + "input")
                 .ToArray()[1];
 
-            var input = triangleParser.ParseInput(normalInputElement);
+            Input input = triangleParser.ParseInput(normalInputElement);
 
             Assert.IsNotNull(input);
             Assert.AreEqual("NORMAL", input.Semantic);
@@ -66,12 +66,22 @@ namespace TheNewEngine.Graphics
                 .Elements(ColladaImporter.Namespace + "input")
                 .First();
 
-            var input = triangleParser.ParseInput(vertexInputElement);
+            Input input = triangleParser.ParseInput(vertexInputElement);
 
             Assert.IsNotNull(input);
             Assert.AreEqual("POSITION", input.Semantic);
             Assert.AreEqual(0, input.Offset);
             Assert.IsNotNull(input.SourceElement);
+        }
+
+        [Test]
+        public void ParseInputs()
+        {
+            var triangleParser = new TriangleParser(mMesh);
+
+            var inputs = triangleParser.ParseInputs();
+
+            Assert.AreEqual(4, inputs.Count());
         }
     }
 }

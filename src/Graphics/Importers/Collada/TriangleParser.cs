@@ -25,14 +25,21 @@ namespace TheNewEngine.Graphics
             mTriangleElement = meshElement.Element(ColladaImporter.Namespace + "triangles");
         }
 
-        public IEnumerable<Input> Parse()
+        /// <summary>
+        /// Parses all input elements in the triangle element.
+        /// </summary>
+        /// <returns>All input instances.</returns>
+        public IEnumerable<Input> ParseInputs()
         {
-            mTriangleElement.Elements(ColladaImporter.Namespace + "input")
-                .Select(e => e);
-
-            return null;
+            return mTriangleElement.Elements(ColladaImporter.Namespace + "input")
+                .Select(inputElement => ParseInput(inputElement));
         }
 
+        /// <summary>
+        /// Parses an input element.
+        /// </summary>
+        /// <param name="element">The input element.</param>
+        /// <returns>Input instance.</returns>
         public Input ParseInput(XElement element)
         {
             int offset = Convert.ToInt32(element.Attribute("offset").Value);
