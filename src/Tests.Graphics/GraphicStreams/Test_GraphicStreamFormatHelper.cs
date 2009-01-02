@@ -4,11 +4,13 @@ using MbUnit.Framework;
 namespace TheNewEngine.Graphics.GraphicStreams
 {
     [TestFixture]
-    public class Test_GraphicStreamUsageHelper
+    public class Test_GraphicStreamFormatHelper
     {
         [Test]
         [Row(GraphicStreamFormat.Float, "Single")]
+        [Row(GraphicStreamFormat.Vector2, "Vector2")]
         [Row(GraphicStreamFormat.Vector3, "Vector3")]
+        [Row(GraphicStreamFormat.Vector4, "Vector4")]
         [Row(GraphicStreamFormat.Color4, "Color4")]
         [Row(GraphicStreamFormat.Int, "Int32")]
         [Row(GraphicStreamFormat.Float, "invalid", ExpectedException = typeof(ArgumentOutOfRangeException))]

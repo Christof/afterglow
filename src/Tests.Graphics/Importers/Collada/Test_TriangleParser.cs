@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Xml.Linq;
 using MbUnit.Framework;
+using TheNewEngine.Graphics.GraphicStreams;
 
 namespace TheNewEngine.Graphics
 {
@@ -28,8 +29,8 @@ namespace TheNewEngine.Graphics
                 .Element(ColladaImporter.Namespace + "p");
             Assert.IsNotNull(pElement);
 
-            var indices = TriangleParser.ParseIntArray(pElement);
-            var expected = new[]
+            var indices = TriangleParser.ParseUIntArray(pElement);
+            var expected = new uint[]
             {
                 0, 0, 0, 0, 3, 0, 1, 1, 2, 0, 2, 2,
                 0, 1, 3, 3, 2, 1, 4, 4, 1, 1, 5, 5
@@ -82,6 +83,17 @@ namespace TheNewEngine.Graphics
             var inputs = triangleParser.ParseInputs();
 
             Assert.AreEqual(4, inputs.Count());
+        }
+
+        [Test]
+        public void Parse()
+        {
+            var triangleParser = new TriangleParser(mMesh);
+
+            GraphicStreamContainer container = triangleParser.Parse();
+
+            Assert.IsNotNull(container);
+            Assert.AreEqual(4, container.Count());
         }
     }
 }

@@ -57,8 +57,14 @@ namespace TheNewEngine.Graphics
         {
             switch (format)
             {
+                case GraphicStreamFormat.Vector2:
+                    return Format.R32G32_Float;
+
                 case GraphicStreamFormat.Vector3:
                     return Format.R32G32B32_Float;
+
+                case GraphicStreamFormat.Vector4:
+                    return Format.R32G32B32A32_Float;
 
                 case GraphicStreamFormat.Color4:
                     return Format.R32G32B32A32_Float;

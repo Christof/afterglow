@@ -25,7 +25,9 @@ namespace TheNewEngine.Graphics.SlimDX
 
         [Test]
         [Row(GraphicStreamFormat.Float, Format.R32_Float)]
+        [Row(GraphicStreamFormat.Vector2, Format.R32G32_Float)]
         [Row(GraphicStreamFormat.Vector3, Format.R32G32B32_Float)]
+        [Row(GraphicStreamFormat.Vector4, Format.R32G32B32A32_Float)]
         [Row(GraphicStreamFormat.Color4, Format.R32G32B32A32_Float)]
         [Row(GraphicStreamFormat.Int, Format.R32_SInt)]
         public void ToFormat(GraphicStreamFormat graphicStreamFormat, Format format)

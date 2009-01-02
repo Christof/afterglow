@@ -3,6 +3,8 @@ using System.Globalization;
 using System.Xml.Linq;
 using System.Linq;
 using System;
+using TheNewEngine.Graphics.GraphicStreams;
+using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics
 {
@@ -61,10 +63,43 @@ namespace TheNewEngine.Graphics
         /// </summary>
         /// <param name="intArray">The element containing the int array.</param>
         /// <returns>The int array.</returns>
-        public static IEnumerable<int> ParseIntArray(XElement intArray)
+        public static IEnumerable<uint> ParseUIntArray(XElement intArray)
         {
             return intArray.Value.Split(' ')
-                .Select(s => Convert.ToInt32(s, CultureInfo.InvariantCulture));
+                .Select(s => Convert.ToUInt32(s, CultureInfo.InvariantCulture));
+        }
+
+        public GraphicStreamContainer Parse()
+        {
+            var allIndices = ParseUIntArray(mTriangleElement.Element(
+                ColladaImporter.Namespace + "p"));
+            var container = new GraphicStreamContainer();
+
+            var inputs = ParseInputs();
+            foreach (var input in inputs)
+            {
+                var usage = SemanticHelper.GetUsageForSemantic(input.Semantic);
+                var data = new SourceParser(input.SourceElement).Parse();
+
+                var elementLength = data.First().Length;
+                switch (elementLength)
+                {
+                    case 2:
+                        container.Create(usage, data.Select(
+                            element => new Vector2(element)).ToArray());
+                        break;
+                    case 3:
+                        container.Create(usage, data.Select(
+                            element => new Vector3(element)).ToArray());
+                        break;
+                    case 4:
+                        container.Create(usage, data.Select(
+                            element => new Vector4(element)).ToArray());
+                        break;
+                }
+            }
+
+            return container;
         }
     }
 }

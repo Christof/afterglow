@@ -16,8 +16,12 @@ namespace TheNewEngine.Graphics.GraphicStreams
         {
             switch (typeName)
             {
+                case "Vector2":
+                    return GraphicStreamFormat.Vector2;
                 case "Vector3":
                     return GraphicStreamFormat.Vector3;
+                case "Vector4":
+                    return GraphicStreamFormat.Vector4;
                 case "Color4":
                     return GraphicStreamFormat.Color4;
                 case "Single":

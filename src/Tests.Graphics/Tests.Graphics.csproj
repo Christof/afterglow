@@ -70,7 +70,7 @@
     <Compile Include="Categories.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStream.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStreamContainer.cs" />
-    <Compile Include="GraphicStreams\Test_GraphicStreamUsageHelper.cs" />
+    <Compile Include="GraphicStreams\Test_GraphicStreamFormatHelper.cs" />
     <Compile Include="Importers\Collada\Test_SemanticHelper.cs" />
     <Compile Include="Importers\Collada\Test_ColladaImporter.cs" />
     <Compile Include="Importers\Collada\Test_SourceFinder.cs" />
