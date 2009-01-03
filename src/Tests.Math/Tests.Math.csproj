@@ -60,6 +60,7 @@
     <Compile Include="Primitives\Test_Matrix.cs" />
     <Compile Include="Primitives\Test_Vector2.cs" />
     <Compile Include="Primitives\Test_Vector3.cs" />
+    <Compile Include="Primitives\Test_Vector3EqualityComparer.cs" />
     <Compile Include="Primitives\Test_Vector4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_Constants.cs" />
