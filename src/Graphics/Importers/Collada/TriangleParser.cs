@@ -83,6 +83,7 @@ namespace TheNewEngine.Graphics
             var container = new GraphicStreamContainer();
             var indices = allIndices.IndexIsMultipleOf(segmentLenght);
             container.Create(GraphicStreamUsage.Index, indices.ToArray());
+            var vertexCount = (int)indices.Max() + 1;
 
             var inputs = ParseInputs();
             
@@ -90,6 +91,20 @@ namespace TheNewEngine.Graphics
             {
                 var usage = SemanticHelper.GetUsageForSemantic(input.Semantic);
                 var data = new SourceParser(input.SourceElement).Parse();
+
+                if (usage != GraphicStreamUsage.Position)
+                {
+                    var specificIndices = allIndices.IndexIsMultipleOf(
+                        segmentLenght, input.Offset);
+
+                    var newData = new List<float[]>(vertexCount);
+                    for (int i = 0; i < vertexCount; i++)
+                    {
+                        newData.Add(data.ElementAt((int)specificIndices.ElementAt(i)));
+                    }
+
+                    data = newData;
+                }
 
                 var elementLength = data.First().Length;
                 switch (elementLength)

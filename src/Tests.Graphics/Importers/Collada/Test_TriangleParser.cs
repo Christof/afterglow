@@ -100,7 +100,6 @@ namespace TheNewEngine.Graphics
             var expectedIndices = new uint[] { 0, 3, 2, 0, 2, 1 };
             var indexStream = container.GetByUsage(GraphicStreamUsage.Index)
                 .DowncastTo<GraphicStream<uint>>();
-
             Assert.AreElementsEqual(expectedIndices, indexStream.Data);
 
             var expectedPositions = new[]
@@ -112,8 +111,38 @@ namespace TheNewEngine.Graphics
             };
             var positionStream = container.GetByUsage(GraphicStreamUsage.Position)
                 .DowncastTo<GraphicStream<Vector3>>();
-
             Assert.AreElementsEqual(expectedPositions, positionStream.Data);
+
+            var expectedNormals = new[]
+            {
+                Vector3.ZAxis, Vector3.ZAxis, Vector3.ZAxis, Vector3.ZAxis
+            };
+            var normalStream = container.GetByUsage(GraphicStreamUsage.Normal)
+                .DowncastTo<GraphicStream<Vector3>>();
+            Assert.AreElementsEqual(expectedNormals, normalStream.Data);
+
+            var expectedTexCoords = new[]
+            {
+                new Vector2(0, 0),
+                new Vector2(0, 1),
+                new Vector2(1, 1),
+                new Vector2(1, 0),
+            };
+            var texCoordStream = container.GetByUsage(GraphicStreamUsage.TextureCoordinate)
+                .DowncastTo<GraphicStream<Vector2>>();
+            // TODO implement
+            //Assert.AreElementsEqual(expectedTexCoords, texCoordStream.Data);
+
+            var expectedColors = new[]
+            {
+                new Vector4(1, 1, 1, 1),
+                new Vector4(1, 1, 1, 1),
+                new Vector4(1, 1, 1, 1),
+                new Vector4(1, 1, 1, 1),
+            };
+            var colorStream = container.GetByUsage(GraphicStreamUsage.Color)
+                .DowncastTo<GraphicStream<Vector4>>();
+            Assert.AreElementsEqual(expectedColors, colorStream.Data);
         }
     }
 }
