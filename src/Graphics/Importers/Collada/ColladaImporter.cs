@@ -1,5 +1,7 @@
 using System.Diagnostics.Contracts;
+using System.Xml.Linq;
 using TheNewEngine.Infrastructure;
+using TheNewEngine.Graphics.GraphicStreams;
 
 namespace TheNewEngine.Graphics
 {
@@ -24,6 +26,21 @@ namespace TheNewEngine.Graphics
             CodeContract.Requires(!path.IsNullOrEmpty());
 
             mPath = path;
+        }
+
+        /// <summary>
+        /// Gets the first mesh in the collada file.
+        /// </summary>
+        /// <returns>Parsed mesh.</returns>
+        public GraphicStreamContainer GetFirstMesh()
+        {
+            var doc = XDocument.Load(mPath);
+            var mesh = doc.Root
+                .Element(Namespace + "library_geometries")
+                .Element(Namespace + "geometry")
+                .Element(Namespace + "mesh");
+
+            return new TriangleParser(mesh).Parse();
         }
     }
 }

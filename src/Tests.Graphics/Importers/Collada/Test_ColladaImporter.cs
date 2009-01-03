@@ -13,5 +13,15 @@ namespace TheNewEngine.Graphics.Importers.Collada
 
             Assert.IsNotNull(importer);
         }
+
+        [Test]
+        public void GetFirstMesh()
+        {
+            var importer = new ColladaImporter(COLLADA_SPHERE);
+
+            var container = importer.GetFirstMesh();
+
+            Assert.IsNotNull(container);
+        }
     }
 }
