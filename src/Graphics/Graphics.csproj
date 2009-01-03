@@ -53,6 +53,7 @@
     <Compile Include="Cameras\ICamera.cs" />
     <Compile Include="Cameras\ILense.cs" />
     <Compile Include="Cameras\IStand.cs" />
+    <Compile Include="Cameras\OrbitingStand.cs" />
     <Compile Include="Cameras\PerspectiveProjectionLense.cs" />
     <Compile Include="Cameras\Stand.cs" />
     <Compile Include="Effects\EffectParameter.cs" />

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cameras\Test_Camera.cs" />
+    <Compile Include="Cameras\Test_OrbitingStand.cs" />
     <Compile Include="Cameras\Test_PerspectiveProjectionLense.cs" />
     <Compile Include="Cameras\Test_Stand.cs" />
     <Compile Include="Categories.cs" />
