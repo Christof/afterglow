@@ -10,13 +10,13 @@ using System.Collections.Generic;
 
 namespace TheNewEngine.Graphics
 {
-    public class Test_ColladaImporter
+    public class FunctionalTest_ColladaImporter
     {
         private Form mForm;
 
         private SlimDXRenderWindow mRenderWindow;
 
-        private const string COLLAD_PLANE = "sphere.dae";
+        private const string COLLAD_PLANE = "suzanne.dae";
 
         [SetUp]
         public void Setup()
@@ -35,7 +35,7 @@ namespace TheNewEngine.Graphics
             mForm.Dispose();
         }
 
-        private IEnumerable<BufferBinding> CreateBufferBindings(
+        private static IEnumerable<BufferBinding> CreateBufferBindings(
             IEnumerable<IGraphicStream> container,
             IBufferService bufferService)
         {
@@ -82,27 +82,41 @@ namespace TheNewEngine.Graphics
             var bufferBindings = CreateBufferBindings(container, bufferService);
             //bufferBindings = container.Select(stream => bufferService.CreateFor(stream));
 
-            IEffect effect = new SlimDXEffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
+            IEffect effect = new SlimDXEffectCompiler(mRenderWindow.Device)
+                .Compile("NormalLighting10.fx");
             IObjectRenderer renderer = new SlimDXObjectRenderer(mRenderWindow, effect, bufferBindings);
 
             EffectParameter<Matrix> worldViewProjectionParameter =
                 new SlimDXMatrixEffectParameter("WorldViewProjection");
 
-            var cam = new Camera(new Stand(), new PerspectiveProjectionLense());
-            cam.Stand.Position = new Vector3(0, 0, -3);
-            cam.Stand.Direction = -cam.Stand.Direction;
+            var stand = new OrbitingStand(5.0f, 0, 0);
+            var cam = new Camera(stand, new PerspectiveProjectionLense());
+//            cam.Stand.Position = new Vector3(0, 0, -3);
+//            cam.Stand.Direction = -cam.Stand.Direction;
 
             mForm.KeyDown +=
                 delegate(object sender, KeyEventArgs e)
                 {
-                    if (e.KeyCode == Keys.W)
+                    switch (e.KeyCode)
                     {
-                        cam.Stand.Position += cam.Stand.Direction * 0.1f;
-                    }
-
-                    if (e.KeyCode == Keys.S)
-                    {
-                        cam.Stand.Position -= cam.Stand.Direction * 0.1f;
+                        case Keys.W:
+                            stand.Radius -= 0.1f;
+                            break;
+                        case Keys.S:
+                            stand.Radius += 0.1f;
+                            break;
+                        case Keys.A:
+                            stand.Azimuth -= 0.1f;
+                            break;
+                        case Keys.D:
+                            stand.Azimuth += 0.1f;
+                            break;
+                        case Keys.Escape:
+                            Application.Exit();
+                            break;
+                        case Keys.P:
+                            mRenderWindow.TakeScreenshot("screenshot.bmp");
+                            break;
                     }
                 };
 
