@@ -1,4 +1,5 @@
 float4x4 WorldViewProj : WorldViewProjection;
+float3 LightPosition = (15, 15, 15);
 
 struct VS_IN
 {
@@ -12,8 +13,20 @@ struct PS_IN
 	float3 col : COLOR;
 };
 
-
 PS_IN VS( VS_IN input )
+{
+	PS_IN output = (PS_IN)0;
+	
+	output.pos = mul(float4(input.position.xyz, 1.0), WorldViewProj);
+	
+	float3 lightDir = normalize(LightPosition - input.position);
+	output.col.rgb = dot(input.normal, lightDir) * 0.5 + 0.5;
+	output.col.rgb = output.col.rgb * 0.8 + 0.2;
+	
+	return output;
+}
+
+PS_IN VS_Normals( VS_IN input )
 {
 	PS_IN output = (PS_IN)0;
 	
@@ -36,6 +49,16 @@ technique10 Render
 	{
 		SetGeometryShader( 0 );
 		SetVertexShader( CompileShader( vs_4_0, VS() ) );
+		SetPixelShader( CompileShader( ps_4_0, PS() ) );
+	}
+}
+
+technique10 RenderNormals
+{
+	pass P0
+	{
+		SetGeometryShader( 0 );
+		SetVertexShader( CompileShader( vs_4_0, VS_Normals() ) );
 		SetPixelShader( CompileShader( ps_4_0, PS() ) );
 	}
 }
