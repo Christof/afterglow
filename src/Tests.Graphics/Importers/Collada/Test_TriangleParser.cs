@@ -130,8 +130,7 @@ namespace TheNewEngine.Graphics
             };
             var texCoordStream = container.GetByUsage(GraphicStreamUsage.TextureCoordinate)
                 .DowncastTo<GraphicStream<Vector2>>();
-            // TODO implement
-            //Assert.AreElementsEqual(expectedTexCoords, texCoordStream.Data);
+            Assert.AreElementsEqual(expectedTexCoords, texCoordStream.Data);
 
             var expectedColors = new[]
             {

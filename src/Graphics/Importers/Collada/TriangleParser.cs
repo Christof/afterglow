@@ -81,8 +81,8 @@ namespace TheNewEngine.Graphics
             var segmentLenght = allIndices.Count() / triangleCount / 3;
 
             var container = new GraphicStreamContainer();
-            var indices = allIndices.IndexIsMultipleOf(segmentLenght);
-            container.Create(GraphicStreamUsage.Index, indices.ToArray());
+            var indices = allIndices.IndexIsMultipleOf(segmentLenght).ToArray();
+            container.Create(GraphicStreamUsage.Index, indices);
             var vertexCount = (int)indices.Max() + 1;
 
             var inputs = ParseInputs();
@@ -95,12 +95,13 @@ namespace TheNewEngine.Graphics
                 if (usage != GraphicStreamUsage.Position)
                 {
                     var specificIndices = allIndices.IndexIsMultipleOf(
-                        segmentLenght, input.Offset);
+                        segmentLenght, input.Offset).ToArray();
 
-                    var newData = new List<float[]>(vertexCount);
-                    for (int i = 0; i < vertexCount; i++)
+                    var newData = new float[vertexCount][];
+                    for (int i = 0; i < indices.Length; i++)
                     {
-                        newData.Add(data.ElementAt((int)specificIndices.ElementAt(i)));
+                        var positionIndex = (int)indices[i];
+                        newData[positionIndex] = data.ElementAt((int)specificIndices[i]);
                     }
 
                     data = newData;
