@@ -9,14 +9,20 @@ SOLUTION_NAME = "TheNewEngine.sln"
 task :default => [:build]
 #task :all => [ :removeBuildDir, :removeVsDirs, :default]
 
+task :clear do
+	sh "cls"
+end
+
 task :removeBuildDir => :clear do
-	  sh "echo removeBuildDir"
-	  rm_rf(BUILD_DIR)
+	puts "removing build directory (#{BUILD_DIR})"
+	if (File.exist?(BUILD_DIR))
+		sh "rd /s /q #{BUILD_DIR}"
+	end
 end
 
 directory BUILD_DIR
 
-task :build => [BUILD_DIR] do
+task :build => [:removeBuildDir, BUILD_DIR] do
 	  sh "#{DOT_NET_PATH}msbuild.exe /property:Configuration=Release #{SOLUTION_NAME}"
 end
 
