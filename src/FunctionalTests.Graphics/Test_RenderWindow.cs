@@ -2,7 +2,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
 using System;
-using StructureMap;
 using TheNewEngine.Infrastructure;
 
 namespace TheNewEngine.Graphics
@@ -129,7 +128,7 @@ namespace TheNewEngine.Graphics
                         {
                             renderWindow.Dispose();
 
-                            ObjectFactory.Profile = ObjectFactory.Profile == "Xna" ? "SlimDX" : "Xna";
+                            //ObjectFactory.Profile = ObjectFactory.Profile == "Xna" ? "SlimDX" : "Xna";
 
                             renderWindow = DependencyResolver.ResolveWith<IRenderWindow>(
                                 "windowHandle", form.Handle);

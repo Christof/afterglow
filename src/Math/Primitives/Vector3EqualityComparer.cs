@@ -33,10 +33,10 @@ namespace TheNewEngine.Math
         /// true if the specified objects are equal; otherwise, false.
         /// </returns>
         /// <param name="firstVector">
-        /// The first object of type <see="Vector3"/> to compare.
+        /// The first vector to compare.
         /// </param>
         /// <param name="secondVector">
-        /// The second object of type <see="Vector3"/> to compare.
+        /// The second vector to compare.
         /// </param>
         public bool Equals(Vector3 firstVector, Vector3 secondVector)
         {
