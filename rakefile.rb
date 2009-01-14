@@ -30,10 +30,7 @@ task :test do#=> :build do
 	gallio_path = GALLIO_PATH + "Gallio.Echo.exe"
 	if (File.exist?(gallio_path))
 		puts "starting tests..."
-		assemblies = ""
-		Dir["#{BUILD_DIR}/Tests.*.dll"].each do |path|
-			assemblies << path << " "
-		end
+		assemblies = Dir["#{BUILD_DIR}/Tests.*.dll"].join(" ")
 		cmd = "\"#{gallio_path}\" #{assemblies} /filter:not(Type:TriangleWithTexture) " + 
 			" /working-directory:bin /report-directory:build /report-type:Html" #/show-reports
 		puts cmd
