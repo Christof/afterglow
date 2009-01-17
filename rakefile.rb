@@ -2,8 +2,7 @@ require 'rexml/document'
 include REXML
 
 BUILD_DIR = "bin"
-DOT_NET_PATH = "#{ENV['windir']}\\Microsoft.net\\framework\\v3.5\\"
-GALLIO_PATH = "C:\\Program Files\\Gallio\\bin\\"
+GALLIO_PATH = "C:/Program Files/Gallio/bin/"
 SOLUTION_NAME = "TheNewEngine.sln"
 
 task :default => [:build]
@@ -11,6 +10,15 @@ task :default => [:build]
 
 task :clear do
 	sh "cls"
+end
+
+class MsBuild
+	@@DOT_NET_PATH = "#{ENV['windir']}/Microsoft.net/framework/v3.5/"
+
+	def self.build(solution_name, configuration = "Debug", additional_options = "")
+		sh "#{@@DOT_NET_PATH}msbuild.exe /property:Configuration=#{configuration} #{solution_name} " +
+			" /maxcpucount:2 #{additional_options}"
+	end
 end
 
 task :removeBuildDir => :clear do
@@ -23,7 +31,7 @@ end
 directory BUILD_DIR
 
 task :build => [:removeBuildDir, BUILD_DIR] do
-	  sh "#{DOT_NET_PATH}msbuild.exe /property:Configuration=Release #{SOLUTION_NAME}"
+	MsBuild.build(SOLUTION_NAME)
 end
 
 task :test do#=> :build do
@@ -31,7 +39,7 @@ task :test do#=> :build do
 	if (File.exist?(gallio_path))
 		puts "starting tests..."
 		assemblies = Dir["#{BUILD_DIR}/Tests.*.dll"].join(" ")
-		cmd = "\"#{gallio_path}\" #{assemblies} /filter:not(Type:TriangleWithTexture) " + 
+		cmd = "\"#{gallio_path}\" #{assemblies} "#/f:not(CategoryName:API_Examples) " +#/filter:not(Type:TriangleWithTexture) " + 
 			" /working-directory:bin /report-directory:build /report-type:Html" #/show-reports
 		puts cmd
 		begin
@@ -48,12 +56,12 @@ task :test do#=> :build do
 	end
 	
 	newest_file = entries.max do |a, b|
-		File.new("build\\#{a}").atime <=> File.new("build\\#{b}").atime
+		File.new("build/#{a}").atime <=> File.new("build/#{b}").atime
 	end
 	
 	print "\nnewest file #{newest_file}\n"
 	
-	replace_underlines("build\\#{newest_file}")
+	replace_underlines("build/#{newest_file}")
 end
 
 def replace_underlines(path)
