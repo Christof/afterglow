@@ -114,12 +114,7 @@ namespace TheNewEngine.Graphics.Cameras
             }
             set
             {
-                if (mDeclination > mMaxDeclination)
-                    mDeclination = mMaxDeclination;
-                else if (mDeclination < mMinDeclination)
-                    mDeclination = mMinDeclination;
-                else
-                    mDeclination = value;
+                mDeclination = value.Clamp(mMinDeclination, mMaxDeclination);
             }
         }
 
@@ -135,10 +130,7 @@ namespace TheNewEngine.Graphics.Cameras
             }
             set
             {
-                if (value > MAX_DECLINATION)
-                    mMaxDeclination = MAX_DECLINATION;
-                else
-                    mMaxDeclination = value;
+                mMaxDeclination = value.ClampMax(MAX_DECLINATION);
             }
         }
 
@@ -154,10 +146,7 @@ namespace TheNewEngine.Graphics.Cameras
             }
             set
             {
-                if (value > MIN_DECLINATION)
-                    mMinDeclination = MIN_DECLINATION;
-                else
-                    mMinDeclination = value;
+                mMinDeclination = value.ClampMin(MIN_DECLINATION);
             }
         }
     }

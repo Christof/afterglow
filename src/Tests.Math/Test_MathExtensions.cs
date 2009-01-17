@@ -29,7 +29,7 @@ namespace TheNewEngine.Math
         }
 
         [Test]
-        public void Clamp_for_value_in_the_range()
+        public void Clamp_for_value_in_the_range_returns_the_value()
         {
             float value = 5.0f;
 
@@ -50,6 +50,38 @@ namespace TheNewEngine.Math
             float value = -5.0f;
 
             Assert.AreEqual(0.0f, value.Clamp(0.0f, 10.0f));
+        }
+
+        [Test]
+        public void ClampMax_returns_value_if_not_over_max()
+        {
+            float value = 10.0f;
+
+            Assert.AreEqual(10.0f, value.ClampMax(15.0f));
+        }
+
+        [Test]
+        public void ClampMax_sets_too_large_value_to_max()
+        {
+            float value = 15.0f;
+
+            Assert.AreEqual(10.0f, value.ClampMax(10.0f));
+        }
+
+        [Test]
+        public void ClampMin_returns_value_if_not_under_min()
+        {
+            float value = 10.0f;
+
+            Assert.AreEqual(10.0f, value.ClampMin(5.0f));
+        }
+
+        [Test]
+        public void ClampMin_sets_too_small_value_to_min()
+        {
+            float value = 5.0f;
+
+            Assert.AreEqual(10.0f, value.ClampMin(10.0f));
         }
     }
 }
