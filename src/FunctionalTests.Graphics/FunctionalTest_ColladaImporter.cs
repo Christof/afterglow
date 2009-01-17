@@ -16,7 +16,7 @@ namespace TheNewEngine.Graphics
 
         private SlimDXRenderWindow mRenderWindow;
 
-        private const string COLLAD_PLANE = "suzanne.dae";
+        private const string COLLAD_PLANE = "plane.dae";
 
         [SetUp]
         public void Setup()
@@ -110,6 +110,12 @@ namespace TheNewEngine.Graphics
                             break;
                         case Keys.D:
                             stand.Azimuth += 0.1f;
+                            break;
+                        case Keys.R:
+                            stand.Declination += 0.1f;
+                            break;
+                        case Keys.F:
+                            stand.Declination -= 0.1f;
                             break;
                         case Keys.Escape:
                             Application.Exit();

@@ -10,6 +10,16 @@ namespace TheNewEngine.Graphics.Cameras
     /// </summary>
     public class OrbitingStand : IStand
     {
+        private const float MAX_DECLINATION = Constants.HALF_PI - float.Epsilon;
+
+        private const float MIN_DECLINATION = -MAX_DECLINATION;
+
+        private float mMaxDeclination = MAX_DECLINATION;
+
+        private float mMinDeclination = MIN_DECLINATION;
+
+        private float mDeclination;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OrbitingStand"/> class.
         /// </summary>
@@ -45,14 +55,10 @@ namespace TheNewEngine.Graphics.Cameras
         {
             get
             {
-//                return new Vector3(
-//                    Functions.Sin(Declination) * Functions.Cos(Azimuth),
-//                    Functions.Sin(Declination) * Functions.Sin(Azimuth),
-//                    Functions.Cos(Declination)) * Radius;
                 return new Vector3(
-                    Functions.Cos(Azimuth),
-                    0,
-                    Functions.Sin(Azimuth)) * Radius;
+                    Functions.Cos(Azimuth) * Functions.Cos(Declination),
+                    Functions.Sin(Declination),
+                    Functions.Sin(Azimuth) * Functions.Cos(Declination)) * Radius;
             }
             set { throw new NotSupportedException(); }
         }
@@ -95,11 +101,64 @@ namespace TheNewEngine.Graphics.Cameras
         /// </summary>
         /// <value>The azimuth.</value>
         public float Azimuth { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the declination.
         /// </summary>
         /// <value>The declination.</value>
-        public float Declination { get; set; }
+        public float Declination
+        {
+            get
+            {
+                return mDeclination;
+            }
+            set
+            {
+                if (mDeclination > mMaxDeclination)
+                    mDeclination = mMaxDeclination;
+                else if (mDeclination < mMinDeclination)
+                    mDeclination = mMinDeclination;
+                else
+                    mDeclination = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the max declination wich is limited to pi/2.
+        /// </summary>
+        /// <value>The max declination.</value>
+        public float MaxDeclination
+        {
+            get
+            {
+                return mMaxDeclination;
+            }
+            set
+            {
+                if (value > MAX_DECLINATION)
+                    mMaxDeclination = MAX_DECLINATION;
+                else
+                    mMaxDeclination = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the max declination wich is limited to -spi/2.
+        /// </summary>
+        /// <value>The min declination.</value>
+        public float MinDeclination
+        {
+            get
+            {
+                return mMinDeclination;
+            }
+            set
+            {
+                if (value > MIN_DECLINATION)
+                    mMinDeclination = MIN_DECLINATION;
+                else
+                    mMinDeclination = value;
+            }
+        }
     }
 }

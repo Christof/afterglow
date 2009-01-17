@@ -47,5 +47,33 @@ namespace TheNewEngine.Graphics.Cameras
             Assert.AreEqual(new Vector3(0, 0, 10), orbitingStand.Position,
                 new Vector3EqualityComparer());
         }
+
+        [Test]
+        public void Position_with_radius_and_declination()
+        {
+            var orbitingStand = new OrbitingStand(10, 0, Constants.HALF_PI);
+
+            Assert.AreEqual(new Vector3(0, 10, 0), orbitingStand.Position,
+                new Vector3EqualityComparer());
+        }
+
+        [Test]
+        public void Position_with_radius_and_declination_for_z_axis()
+        {
+            var orbitingStand = new OrbitingStand(10, 0, Constants.HALF_PI * 0.5f);
+
+            Assert.AreEqual(new Vector3(10 / Functions.Sqrt(2), 10 / Functions.Sqrt(2), 0), orbitingStand.Position,
+                new Vector3EqualityComparer());
+        }
+
+        [Test]
+        public void Position_with_radius_azimuth_and_declination()
+        {
+            var orbitingStand = new OrbitingStand(
+                10, Constants.PI * 0.75f, Constants.HALF_PI * 0.5f);
+
+            Assert.AreEqual(new Vector3(-5, 7.071068f, 5), orbitingStand.Position,
+                new Vector3EqualityComparer());
+        }
     }
 }
