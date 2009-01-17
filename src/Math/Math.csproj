@@ -48,9 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="IDeltaEquatable.cs" />
+    <Compile Include="MathExtensions.cs" />
     <Compile Include="Primitives\ICoordinateSystem.cs" />
     <Compile Include="Primitives\Matrix.cs" />
     <Compile Include="Primitives\Vector2.cs" />
