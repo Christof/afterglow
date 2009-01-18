@@ -109,6 +109,19 @@ namespace TheNewEngine.Graphics
         }
 
         /// <summary>
+        /// Gets the render target.
+        /// </summary>
+        /// <value>The render target.</value>
+        // TODO : change to internal
+        public RenderTargetView RenderTarget
+        {
+            get
+            {
+                return mRenderTarget;
+            }
+        }
+
+        /// <summary>
         /// Takes a screenshot.
         /// </summary>
         /// <param name="filename">The filename.</param>

@@ -10,7 +10,7 @@ namespace TheNewEngine.Graphics.Cameras
     /// </summary>
     public class OrbitingStand : IStand
     {
-        private const float MAX_DECLINATION = Constants.HALF_PI - float.Epsilon;
+        private const float MAX_DECLINATION = Constants.HALF_PI - Constants.DELTA;
 
         private const float MIN_DECLINATION = -MAX_DECLINATION;
 
