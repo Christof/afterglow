@@ -25,6 +25,14 @@ namespace TheNewEngine.Graphics
 
         private SwapChain mSwapChain;
 
+        private Texture2D mDepthBuffer;
+
+        private DepthStencilView mDepthStencilView;
+
+        private int mHeight;
+ 
+        private int mWidth;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SlimDXRenderWindow"/> class.
         /// </summary>
@@ -35,41 +43,23 @@ namespace TheNewEngine.Graphics
 
             mDevice = new Device(DeviceCreationFlags.Debug);
 
-            CreateSwapChainRenderTargetAndViewport(true);
-        }
-
-        private void CreateSwapChainRenderTargetAndViewport(bool isWindowed)
-        {
-            var swapChainDescription = new SwapChainDescription();
-            var modeDescription = new ModeDescription();
-            var sampleDescription = new SampleDescription();
-
-            modeDescription.Format = Format.R8G8B8A8_UNorm;
-            modeDescription.RefreshRate = new Rational(60, 1);
-            modeDescription.Scaling = DisplayModeScaling.Unspecified;
-            modeDescription.ScanlineOrdering = DisplayModeScanlineOrdering.Unspecified;
-            if (isWindowed)
+            if (mIsWindowed)
             {
-                modeDescription.Width = WIDTH;
-                modeDescription.Height = HEIGHT;
+                mHeight = HEIGHT;
+                mWidth = WIDTH;
             }
             else
             {
-                modeDescription.Width = 1280;
-                modeDescription.Height = 1024;
+                mWidth = 1280;
+                mHeight = 1024;
             }
 
-            sampleDescription.Count = 1;
-            sampleDescription.Quality = 0;
+            CreateSwapChainRenderTargetAndViewport();
+        }
 
-            swapChainDescription.ModeDescription = modeDescription;
-            swapChainDescription.SampleDescription = sampleDescription;
-            swapChainDescription.BufferCount = 1;
-            swapChainDescription.Flags = SwapChainFlags.None;
-            swapChainDescription.IsWindowed = isWindowed;
-            swapChainDescription.OutputHandle = mWindowHandle;
-            swapChainDescription.SwapEffect = SwapEffect.Discard;
-            swapChainDescription.Usage = Usage.RenderTargetOutput;
+        private void CreateSwapChainRenderTargetAndViewport()
+        {
+            var swapChainDescription = CreateSwapChainDescription();
 
             using (var factory = new Factory())
             {
@@ -85,14 +75,75 @@ namespace TheNewEngine.Graphics
             {
                 X = 0,
                 Y = 0,
-                Width = WIDTH,
-                Height = HEIGHT,
+                Width = mWidth,
+                Height = mHeight,
                 MinZ = 0.0f,
                 MaxZ = 1.0f
             };
 
+            CreateDepthBuffer();
+
             mDevice.Rasterizer.SetViewports(viewport);
-            mDevice.OutputMerger.SetTargets(mRenderTarget);
+            mDevice.OutputMerger.SetTargets(
+                mDepthStencilView, mRenderTarget);
+        }
+
+        private ModeDescription CreateModeDescription()
+        {
+            return new ModeDescription
+            {
+                Format = Format.R8G8B8A8_UNorm,
+                RefreshRate = new Rational(60, 1),
+                Scaling = DisplayModeScaling.Unspecified,
+                ScanlineOrdering = DisplayModeScanlineOrdering.Unspecified,
+                Width = mWidth,
+                Height = mHeight
+            };
+        }
+
+        private SwapChainDescription CreateSwapChainDescription()
+        {
+            var sampleDescription = new SampleDescription { Count = 1, Quality = 0 };
+
+            return new SwapChainDescription
+            {
+                ModeDescription = CreateModeDescription(),
+                SampleDescription = sampleDescription,
+                BufferCount = 1,
+                Flags = SwapChainFlags.None,
+                IsWindowed = mIsWindowed,
+                OutputHandle = mWindowHandle,
+                SwapEffect = SwapEffect.Discard,
+                Usage = Usage.RenderTargetOutput
+            };
+        }
+
+        private void CreateDepthBuffer()
+        {
+            // Create depth stencil texture
+            var descDepth = new Texture2DDescription
+            {
+                Width = mWidth,
+                Height = mHeight,
+                MipLevels = 1,
+                ArraySize = 1,
+                Format = Format.D32_Float,
+                SampleDescription = new SampleDescription(1, 0),
+                Usage = ResourceUsage.Default,
+                BindFlags = BindFlags.DepthStencil,
+                CpuAccessFlags = 0,
+                OptionFlags = ResourceOptionFlags.None
+            };
+            mDepthBuffer = new Texture2D(mDevice, descDepth);
+
+            var descDSV = new DepthStencilViewDescription
+            {
+                Format = descDepth.Format,
+                Dimension = DepthStencilViewDimension.Texture2D,
+                MipSlice = 0
+            };
+            mDepthStencilView = new DepthStencilView(
+                mDevice, mDepthBuffer, descDSV);
         }
 
         /// <summary>
@@ -138,6 +189,8 @@ namespace TheNewEngine.Graphics
         public void StartRendering()
         {
             mDevice.ClearRenderTargetView(mRenderTarget, new Color4(1, 0, 0));
+            mDevice.ClearDepthStencilView(mDepthStencilView,
+                DepthStencilClearFlags.Depth, 1.0f, 0);
         }
 
         /// <summary>
@@ -155,6 +208,8 @@ namespace TheNewEngine.Graphics
         {
             mSwapChain.Dispose();
             mRenderTarget.Dispose();
+            mDepthBuffer.Dispose();
+            mDepthStencilView.Dispose();
 
             mDevice.Dispose();
         }
@@ -166,9 +221,11 @@ namespace TheNewEngine.Graphics
         {
             mSwapChain.Dispose();
             mRenderTarget.Dispose();
+            mDepthBuffer.Dispose();
+            mDepthStencilView.Dispose();
 
             mIsWindowed = !mIsWindowed;
-            CreateSwapChainRenderTargetAndViewport(mIsWindowed);
+            CreateSwapChainRenderTargetAndViewport();
         }
     }
 }

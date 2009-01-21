@@ -2,7 +2,6 @@ using System.Linq;
 using MbUnit.Framework;
 using System.Windows.Forms;
 using SlimDX.Direct3D10;
-using SlimDX.DXGI;
 using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.GraphicStreams;
@@ -96,34 +95,6 @@ namespace TheNewEngine.Graphics
 //            cam.Stand.Position = new Vector3(0, 0, -3);
 //            cam.Stand.Direction = -cam.Stand.Direction;
 
-            // Create depth stencil texture
-            var descDepth = new Texture2DDescription
-            {
-                Width = 800,
-                Height = 600,
-                MipLevels = 1,
-                ArraySize = 1,
-                Format = Format.D32_Float,
-                SampleDescription = new SampleDescription(1, 0),
-                Usage = ResourceUsage.Default,
-                BindFlags = BindFlags.DepthStencil,
-                CpuAccessFlags = 0,
-                OptionFlags = ResourceOptionFlags.None
-            };
-            var depthBuffer = new Texture2D(
-                mRenderWindow.Device, descDepth);
-
-            // Create the depth stencil view
-            var descDSV = new DepthStencilViewDescription();
-            descDSV.Format = descDepth.Format;
-            descDSV.Dimension = DepthStencilViewDimension.Texture2D;
-            descDSV.MipSlice = 0;
-            var depthStencil = new DepthStencilView(
-                mRenderWindow.Device, depthBuffer, descDSV);
-
-            mRenderWindow.Device.OutputMerger.SetTargets(
-                depthStencil, mRenderWindow.RenderTarget);
-
             var rasterizerDesc = new RasterizerStateDescription
             {
                 CullMode = CullMode.None,
@@ -140,7 +111,6 @@ namespace TheNewEngine.Graphics
 
             mRenderWindow.Device.Rasterizer.State = RasterizerState.FromDescription(
                 mRenderWindow.Device, rasterizerDesc);
-
 
             mForm.KeyDown +=
                 delegate(object sender, KeyEventArgs e)
@@ -181,8 +151,6 @@ namespace TheNewEngine.Graphics
                     worldViewProjectionParameter.SetParameterOn(effect);
                     
                     mRenderWindow.StartRendering();
-                    mRenderWindow.Device.ClearDepthStencilView(depthStencil,
-                        SlimDX.Direct3D10.DepthStencilClearFlags.Depth, 1.0f, 0);
                     
                     renderer.Render();
                     mRenderWindow.Render();
