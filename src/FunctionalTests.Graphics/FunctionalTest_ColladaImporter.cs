@@ -1,7 +1,6 @@
 using System.Linq;
 using MbUnit.Framework;
 using System.Windows.Forms;
-using SlimDX.Direct3D10;
 using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.GraphicStreams;
@@ -17,7 +16,7 @@ namespace TheNewEngine.Graphics
 
         private SlimDXRenderWindow mRenderWindow;
 
-        private const string COLLAD_PLANE = "suzanne.dae";
+        private const string COLLAD_PLANE = "thing.dae";
 
         [SetUp]
         public void Setup()
@@ -94,23 +93,6 @@ namespace TheNewEngine.Graphics
             var cam = new Camera(stand, new PerspectiveProjectionLense());
 //            cam.Stand.Position = new Vector3(0, 0, -3);
 //            cam.Stand.Direction = -cam.Stand.Direction;
-
-            var rasterizerDesc = new RasterizerStateDescription
-            {
-                CullMode = CullMode.None,
-                DepthBias = 0,
-                DepthBiasClamp = 0.0f,
-                FillMode = FillMode.Solid,
-                IsAntialiasedLineEnabled = true,
-                IsDepthClipEnabled = true,
-                IsFrontCounterclockwise = true,
-                IsMultisampleEnabled = true,
-                IsScissorEnabled = false,
-                SlopeScaledDepthBias = 0.0f
-            };
-
-            mRenderWindow.Device.Rasterizer.State = RasterizerState.FromDescription(
-                mRenderWindow.Device, rasterizerDesc);
 
             mForm.KeyDown +=
                 delegate(object sender, KeyEventArgs e)

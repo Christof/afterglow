@@ -55,6 +55,8 @@ namespace TheNewEngine.Graphics
             }
 
             CreateSwapChainRenderTargetAndViewport();
+
+            SetRasterizeStateDescription();
         }
 
         private void CreateSwapChainRenderTargetAndViewport()
@@ -144,6 +146,26 @@ namespace TheNewEngine.Graphics
             };
             mDepthStencilView = new DepthStencilView(
                 mDevice, mDepthBuffer, descDSV);
+        }
+
+        private void SetRasterizeStateDescription()
+        {
+            var rasterizerDesc = new RasterizerStateDescription
+            {
+                CullMode = CullMode.None,
+                DepthBias = 0,
+                DepthBiasClamp = 0.0f,
+                FillMode = FillMode.Solid,
+                IsAntialiasedLineEnabled = false,
+                IsDepthClipEnabled = true,
+                IsFrontCounterclockwise = true,
+                IsMultisampleEnabled = false,
+                IsScissorEnabled = false,
+                SlopeScaledDepthBias = 0.0f
+            };
+
+            mDevice.Rasterizer.State = RasterizerState.FromDescription(
+                mDevice, rasterizerDesc);
         }
 
         /// <summary>

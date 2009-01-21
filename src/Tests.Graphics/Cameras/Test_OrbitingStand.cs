@@ -51,10 +51,10 @@ namespace TheNewEngine.Graphics.Cameras
         [Test]
         public void Position_with_radius_and_declination()
         {
-            var orbitingStand = new OrbitingStand(10, 0, Constants.HALF_PI);
+            var orbitingStand = new OrbitingStand(10, 0, Constants.HALF_PI * 0.5f);
 
-            Assert.AreEqual(new Vector3(0, 10, 0), orbitingStand.Position,
-                new Vector3EqualityComparer());
+            Assert.AreEqual(new Vector3(10 / Functions.Sqrt(2), 10 / Functions.Sqrt(2), 0),
+                orbitingStand.Position, new Vector3EqualityComparer());
         }
 
         [Test]

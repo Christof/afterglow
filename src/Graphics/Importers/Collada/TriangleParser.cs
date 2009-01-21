@@ -111,16 +111,16 @@ namespace TheNewEngine.Graphics
                 switch (elementLength)
                 {
                     case 2:
-                        container.Create(usage, data.Select(
-                            element => new Vector2(element)).ToArray());
+                        container.Create(usage,
+                            data.Select(element => new Vector2(element)).ToArray());
                         break;
                     case 3:
-                        container.Create(usage, data.Select(
-                            element => new Vector3(element)).ToArray());
+                        container.Create(usage,
+                            data.Select(element => new Vector3(element)).ToArray());
                         break;
                     case 4:
-                        container.Create(usage, data.Select(
-                            element => new Vector4(element)).ToArray());
+                        container.Create(usage,
+                            data.Select(element => new Vector4(element)).ToArray());
                         break;
                 }
             }

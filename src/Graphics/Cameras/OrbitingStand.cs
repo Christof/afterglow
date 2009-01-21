@@ -60,7 +60,10 @@ namespace TheNewEngine.Graphics.Cameras
                     Functions.Sin(Declination),
                     Functions.Sin(Azimuth) * Functions.Cos(Declination)) * Radius;
             }
-            set { throw new NotSupportedException(); }
+            set
+            {
+                throw new NotSupportedException();
+            }
         }
 
         /// <summary>

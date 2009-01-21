@@ -50,9 +50,9 @@ namespace TheNewEngine.Infrastructure
         /// <summary>
         /// Returns each nth plus offset element.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">Type of an element in the enumerable.</typeparam>
         /// <param name="enumerable">The enumerable.</param>
-        /// <param name="n">Number n.</param>
+        /// <param name="n">Number n to specify the nth elements.</param>
         /// <param name="offset">The offset.</param>
         /// <returns>
         /// Each element with an index multiple of n plus offset.
@@ -64,16 +64,18 @@ namespace TheNewEngine.Infrastructure
             foreach (var value in enumerable)
             {
                 if (index++ % n == offset)
+                {
                     yield return value;
+                }
             }
         }
 
         /// <summary>
         /// Returns each nth element.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">Type of an element in the enumerable.</typeparam>
         /// <param name="enumerable">The enumerable.</param>
-        /// <param name="n">Number n.</param>
+        /// <param name="n">Number n to specify the nth elements.</param>
         /// <returns>Each element with an index multiple of n.</returns>
         public static IEnumerable<T> IndexIsMultipleOf<T>(
             this IEnumerable<T> enumerable, int n)
