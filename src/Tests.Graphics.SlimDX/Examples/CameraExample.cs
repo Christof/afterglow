@@ -1,37 +1,26 @@
 using System.Windows.Forms;
-using MbUnit.Framework;
 using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Rendering;
-using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
 {
-    [TestFixture]
-    public class CameraExample
+    public class CameraExample : SceneTestBase
     {
-        private Form mForm;
+        private IObjectRenderer mRenderer;
 
-        private SlimDXRenderWindow mRenderWindow;
+        private EffectParameter<Matrix> mWorldViewProjectionParameter;
 
-        [SetUp]
-        public void Setup()
-        {
-            mForm = EmptyWindow.CreateForm();
-            mRenderWindow = new SlimDXRenderWindow(mForm.Handle);
-        }
+        private Camera mCamera;
 
-        [TearDown]
-        public void TearDown()
-        {
-            mForm.Dispose();
-        }
+        private IEffect mEffect;
 
-        [Test]
-        [Category(Categories.EXAMPLES)]
-        public void Run()
+        /// <summary>
+        /// Loads the resources for this scene.
+        /// </summary>
+        public override void Load()
         {
             var container = new GraphicStreamContainer();
             var positions = container.Create(GraphicStreamUsage.Position, CreatePositions());
@@ -45,43 +34,53 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 bufferService.CreateFor(positions),
             };
 
-            IEffect effect = new SlimDXEffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
-            IObjectRenderer renderer = new SlimDXObjectRenderer(mRenderWindow, effect, bufferBindings);
+            mEffect = new SlimDXEffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
+            mRenderer = new SlimDXObjectRenderer(mRenderWindow, mEffect, bufferBindings);
 
-            EffectParameter<Matrix> worldViewProjectionParameter =
-                new SlimDXMatrixEffectParameter("WorldViewProjection");
+            mWorldViewProjectionParameter = new SlimDXMatrixEffectParameter("WorldViewProjection");
 
-            var cam = new Camera(new Stand(), new PerspectiveProjectionLense());
-            cam.Stand.Position = new Vector3(0, 0, 3);
+            mCamera = new Camera(new Stand(), new PerspectiveProjectionLense());
+            mCamera.Stand.Position = new Vector3(0, 0, 3);
 
+            SetupKeysAndActions();
+        }
+
+        private void SetupKeysAndActions()
+        {
             mForm.KeyDown +=
                 delegate(object sender, KeyEventArgs e)
                 {
                     if (e.KeyCode == Keys.W)
                     {
-                        cam.Stand.Position += cam.Stand.Direction * 0.1f;
+                        mCamera.Stand.Position += mCamera.Stand.Direction * 0.1f;
                     }
 
                     if (e.KeyCode == Keys.S)
                     {
-                        cam.Stand.Position -= cam.Stand.Direction * 0.1f;
+                        mCamera.Stand.Position -= mCamera.Stand.Direction * 0.1f;
                     }
                 };
+        }
 
-            Application.Idle +=
-                delegate
-                {
-                    worldViewProjectionParameter.Value = cam.ViewProjectionMatrix;
-                    worldViewProjectionParameter.SetParameterOn(effect);
+        /// <summary>
+        /// Updates the scene every frame.
+        /// </summary>
+        /// <param name="timeSinceLastCall">The time since the last call.</param>
+        public override void Update(float timeSinceLastCall)
+        {
+        }
 
-                    mRenderWindow.StartRendering();
-                    renderer.Render();
-                    mRenderWindow.Render();
+        /// <summary>
+        /// Renders the scene.
+        /// </summary>
+        public override void Render()
+        {
+            mWorldViewProjectionParameter.Value = mCamera.ViewProjectionMatrix;
+            mWorldViewProjectionParameter.SetParameterOn(mEffect);
 
-                    Application.DoEvents();
-                };
-
-            Application.Run(mForm);
+            mRenderWindow.StartRendering();
+            mRenderer.Render();
+            mRenderWindow.Render();
         }
 
         private static Vector3[] CreatePositions()

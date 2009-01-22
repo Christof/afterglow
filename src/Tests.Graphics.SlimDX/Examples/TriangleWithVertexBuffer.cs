@@ -3,7 +3,6 @@ using MbUnit.Framework;
 using TheNewEngine.Graphics.GraphicStreams;
 using System.IO;
 using TheNewEngine.Graphics.Rendering;
-using TheNewEngine.Graphics.SlimDX.ApiExamples;
 using TheNewEngine.Graphics.Utilities;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.Cameras;
@@ -11,75 +10,68 @@ using TheNewEngine.Math;
 
 namespace TheNewEngine.Graphics.SlimDX.Examples
 {
-    [TestFixture]
-    public class TriangleWithVertexBuffer
+    public class TriangleWithVertexBuffer : SceneTestBase
     {
-        private Form mForm;
+        private IEffect mEffect;
 
-        private SlimDXRenderWindow mRenderWindow;
+        private EffectParameter<Matrix> mWorldViewProjectionParameter;
 
-        [SetUp]
-        public void Setup()
-        {
-            mForm = EmptyWindow.CreateForm();
-            mRenderWindow = new SlimDXRenderWindow(mForm.Handle);
-        }
+        private IObjectRenderer mRenderer;
 
-        [TearDown]
-        public void TearDown()
-        {
-            mForm.Dispose();
-        }
-
-        [Test]
-        [Category(Categories.EXAMPLES)]
-        public void Run()
+        /// <summary>
+        /// Loads the resources for this scene.
+        /// </summary>
+        public override void Load()
         {
             var container = new GraphicStreamContainer();
             var positions = container.Create(GraphicStreamUsage.Position, CreatePositions());
             var colors = container.Create(GraphicStreamUsage.Color, CreateColors());
 
             IBufferService bufferService = new SlimDXBufferService(mRenderWindow.Device);
-            
+
             var bufferBindings = new[]
             {
                 bufferService.CreateFor(positions),
                 bufferService.CreateFor(colors)
             };
 
-            IEffect effect = new SlimDXEffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
+            mEffect = new SlimDXEffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
 
-            IObjectRenderer renderer = new SlimDXObjectRenderer(mRenderWindow,
-                effect, bufferBindings);
+            mRenderer = new SlimDXObjectRenderer(mRenderWindow,
+                mEffect, bufferBindings);
 
-            EffectParameter<Matrix> worldViewProjectionParameter =
-                new SlimDXMatrixEffectParameter("WorldViewProjection");
+            mWorldViewProjectionParameter = new SlimDXMatrixEffectParameter("WorldViewProjection");
+        }
 
-            Application.Idle +=
-                delegate
-                {
-                    Matrix view = Stand.CalculateViewMatrix(
-                        new Vector3(0, 0, 3), -Vector3.ZAxis, Vector3.YAxis);
-                    Matrix projection = PerspectiveProjectionLense.CalculateProjectionMatrix(
-                        0.01f, 100f, (float)(System.Math.PI / 3), 800f / 600.0f);
-                    Matrix world = Matrix.Identity;
-                    Matrix worldViewProjection = world * view * projection;
+        /// <summary>
+        /// Updates the scene every frame.
+        /// </summary>
+        /// <param name="timeSinceLastCall">The time since the last call.</param>
+        public override void Update(float timeSinceLastCall)
+        {
+        }
 
-                    mRenderWindow.StartRendering();
+        /// <summary>
+        /// Renders the scene.
+        /// </summary>
+        public override void Render()
+        {
+            Matrix view = Stand.CalculateViewMatrix(
+                new Vector3(0, 0, 3), -Vector3.ZAxis, Vector3.YAxis);
+            Matrix projection = PerspectiveProjectionLense.CalculateProjectionMatrix(
+                0.01f, 100f, (float)(System.Math.PI / 3), 800f / 600.0f);
+            Matrix world = Matrix.Identity;
+            Matrix worldViewProjection = world * view * projection;
 
-                    worldViewProjectionParameter.Value = worldViewProjection;
-                    worldViewProjectionParameter.SetParameterOn(effect);
+            mRenderWindow.StartRendering();
+            mWorldViewProjectionParameter.Value = worldViewProjection;
+            mWorldViewProjectionParameter.SetParameterOn(mEffect);
 
-                    renderer.Render();
+            mRenderer.Render();
 
-                    mRenderWindow.Render();
+            mRenderWindow.Render();
 
-                    //AssertWithScreenshot();
-
-                    Application.DoEvents();
-                };
-
-            Application.Run(mForm);
+            //AssertWithScreenshot();
         }
 
         private void AssertWithScreenshot()

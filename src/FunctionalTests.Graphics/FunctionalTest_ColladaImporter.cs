@@ -1,38 +1,110 @@
-using System.Linq;
-using MbUnit.Framework;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Rendering;
+using TheNewEngine.Graphics.SlimDX;
 using TheNewEngine.Math;
-using System.Collections.Generic;
 
 namespace TheNewEngine.Graphics
 {
-    public class FunctionalTest_ColladaImporter
+    public class FunctionalTest_ColladaImporter : SceneTestBase
     {
-        private Form mForm;
-
-        private SlimDXRenderWindow mRenderWindow;
-
         private const string COLLAD_PLANE = "thing.dae";
 
-        [SetUp]
-        public void Setup()
-        {
-            mForm = new Form
-            {
-                ClientSize = new System.Drawing.Size(800, 600)
-            };
+        private EffectParameter<Matrix> mWorldViewProjectionParameter;
 
-            mRenderWindow = new SlimDXRenderWindow(mForm.Handle);
+        private Camera mCamera;
+
+        private OrbitingStand mStand;
+
+        private IObjectRenderer mRenderer;
+
+        private IEffect mEffect;
+
+        /// <summary>
+        /// Loads the resources for this scene.
+        /// </summary>
+        public override void Load()
+        {
+            var importer = new ColladaImporter(COLLAD_PLANE);
+            var container = importer.GetFirstMesh();
+
+            IBufferService bufferService = new SlimDXBufferService(mRenderWindow.Device);
+
+            var bufferBindings = CreateBufferBindings(container, bufferService);
+            //bufferBindings = container.Select(stream => bufferService.CreateFor(stream));
+
+            mEffect = new SlimDXEffectCompiler(mRenderWindow.Device)
+                .Compile("NormalLighting10.fx");
+            mRenderer = new SlimDXObjectRenderer(mRenderWindow, mEffect, bufferBindings);
+
+            mWorldViewProjectionParameter =
+                new SlimDXMatrixEffectParameter("WorldViewProjection");
+
+            mStand = new OrbitingStand(5.0f, 0, 0);
+            mCamera = new Camera(mStand, new PerspectiveProjectionLense());
+
+            SetupKeysAndActions();
         }
 
-        [TearDown]
-        public void TearDown()
+        /// <summary>
+        /// Updates the scene every frame.
+        /// </summary>
+        /// <param name="timeSinceLastCall">The time since the last call.</param>
+        public override void Update(float timeSinceLastCall)
         {
-            mForm.Dispose();
+        }
+
+        /// <summary>
+        /// Renders the scene.
+        /// </summary>
+        public override void Render()
+        {
+            mWorldViewProjectionParameter.Value = mCamera.ViewProjectionMatrix;
+            mWorldViewProjectionParameter.SetParameterOn(mEffect);
+
+            mRenderWindow.StartRendering();
+
+            mRenderer.Render();
+
+            mRenderWindow.Render();
+        }
+
+        private void SetupKeysAndActions()
+        {
+            mForm.KeyDown +=
+                delegate(object sender, KeyEventArgs e)
+                {
+                    switch (e.KeyCode)
+                    {
+                        case Keys.W:
+                            mStand.Radius -= 0.1f;
+                            break;
+                        case Keys.S:
+                            mStand.Radius += 0.1f;
+                            break;
+                        case Keys.A:
+                            mStand.Azimuth -= 0.1f;
+                            break;
+                        case Keys.D:
+                            mStand.Azimuth += 0.1f;
+                            break;
+                        case Keys.R:
+                            mStand.Declination += 0.1f;
+                            break;
+                        case Keys.F:
+                            mStand.Declination -= 0.1f;
+                            break;
+                        case Keys.Escape:
+                            Application.Exit();
+                            break;
+                        case Keys.P:
+                            mRenderWindow.TakeScreenshot("screenshot.bmp");
+                            break;
+                    }
+                };
         }
 
         private static IEnumerable<BufferBinding> CreateBufferBindings(
@@ -68,79 +140,6 @@ namespace TheNewEngine.Graphics
             }
 
             return bindings;
-        }
-
-        [Test]
-        //[Category(Categories.EXAMPLES)]
-        public void Run()
-        {
-            var importer = new ColladaImporter(COLLAD_PLANE);
-            var container = importer.GetFirstMesh();
-
-            IBufferService bufferService = new SlimDXBufferService(mRenderWindow.Device);
-
-            var bufferBindings = CreateBufferBindings(container, bufferService);
-            //bufferBindings = container.Select(stream => bufferService.CreateFor(stream));
-
-            IEffect effect = new SlimDXEffectCompiler(mRenderWindow.Device)
-                .Compile("NormalLighting10.fx");
-            IObjectRenderer renderer = new SlimDXObjectRenderer(mRenderWindow, effect, bufferBindings);
-
-            EffectParameter<Matrix> worldViewProjectionParameter =
-                new SlimDXMatrixEffectParameter("WorldViewProjection");
-
-            var stand = new OrbitingStand(5.0f, 0, 0);
-            var cam = new Camera(stand, new PerspectiveProjectionLense());
-//            cam.Stand.Position = new Vector3(0, 0, -3);
-//            cam.Stand.Direction = -cam.Stand.Direction;
-
-            mForm.KeyDown +=
-                delegate(object sender, KeyEventArgs e)
-                {
-                    switch (e.KeyCode)
-                    {
-                        case Keys.W:
-                            stand.Radius -= 0.1f;
-                            break;
-                        case Keys.S:
-                            stand.Radius += 0.1f;
-                            break;
-                        case Keys.A:
-                            stand.Azimuth -= 0.1f;
-                            break;
-                        case Keys.D:
-                            stand.Azimuth += 0.1f;
-                            break;
-                        case Keys.R:
-                            stand.Declination += 0.1f;
-                            break;
-                        case Keys.F:
-                            stand.Declination -= 0.1f;
-                            break;
-                        case Keys.Escape:
-                            Application.Exit();
-                            break;
-                        case Keys.P:
-                            mRenderWindow.TakeScreenshot("screenshot.bmp");
-                            break;
-                    }
-                };
-
-            Application.Idle +=
-                delegate
-                {
-                    worldViewProjectionParameter.Value = cam.ViewProjectionMatrix;
-                    worldViewProjectionParameter.SetParameterOn(effect);
-                    
-                    mRenderWindow.StartRendering();
-                    
-                    renderer.Render();
-                    mRenderWindow.Render();
-
-                    Application.DoEvents();
-                };
-
-            Application.Run(mForm);
         }
     }
 }

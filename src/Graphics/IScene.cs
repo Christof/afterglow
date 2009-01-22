@@ -13,6 +13,12 @@ namespace TheNewEngine.Graphics
         /// <summary>
         /// Updates the scene every frame.
         /// </summary>
-        void Update();
+        /// <param name="timeSinceLastCall">The time since the last call.</param>
+        void Update(float timeSinceLastCall);
+
+        /// <summary>
+        /// Renders the scene.
+        /// </summary>
+        void Render();
     }
 }
