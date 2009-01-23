@@ -4,7 +4,7 @@ namespace TheNewEngine.Graphics.Importers.Collada
 {
     public class Test_ColladaImporter
     {
-        private const string COLLADA_SPHERE = "sphere.dae"; 
+        private const string COLLADA_SPHERE = "plane.dae"; 
 
         [Test]
         public void Constructor_awaits_path_to_a_collada_file()

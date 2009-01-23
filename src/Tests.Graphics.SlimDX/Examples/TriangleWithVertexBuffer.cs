@@ -1,9 +1,5 @@
-using System.Windows.Forms;
-using MbUnit.Framework;
 using TheNewEngine.Graphics.GraphicStreams;
-using System.IO;
 using TheNewEngine.Graphics.Rendering;
-using TheNewEngine.Graphics.Utilities;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Math;
@@ -70,28 +66,6 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             mRenderer.Render();
 
             mRenderWindow.Render();
-
-            //AssertWithScreenshot();
-        }
-
-        private void AssertWithScreenshot()
-        {
-            var name = "TheNewEngine.Graphics.SlimDX.Examples.TriangleWithVertexBuffer.Run";
-            var expected = name + "_expected.bmp";
-            var actual = name + "_actual.bmp";
-            if (File.Exists(expected))
-            {
-                mRenderWindow.TakeScreenshot(actual);
-
-                Assert.IsTrue(ImageComparer.Compare(expected, actual));
-            }
-            else
-            {
-                mRenderWindow.TakeScreenshot(expected);
-                Assert.Fail("First run. Excpected image was taken and must be verified");
-            }
-
-            Application.Exit();
         }
 
         private static Vector3[] CreatePositions()

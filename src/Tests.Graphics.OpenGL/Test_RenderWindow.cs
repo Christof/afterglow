@@ -7,6 +7,7 @@ namespace TheNewEngine.Graphics.OpenGL
     public class Test_RenderWindow
     {
         [Test]
+        [Ignore("Ignore until an OpenGL implementatio exists.")]
         public void Run()
         {
             using (var form = new Form())

@@ -10,13 +10,13 @@ namespace TheNewEngine.Graphics.Utilities
         private const string TEST_FILENAME = "test.png";
 
         [Test]
-        public void Compare_Provides_early_out_if_first_file_does_not_exist()
+        public void Compare_provides_early_out_if_first_file_does_not_exist()
         {
             Assert.IsFalse(ImageComparer.Compare("none existing file", "doesnt matter"));
         }
 
         [Test]
-        public void Compare_Provides_early_out_if_second_file_does_not_exist()
+        public void Compare_provides_early_out_if_second_file_does_not_exist()
         {
             const string FILENAME = "somefile.test";
 
@@ -36,7 +36,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void Compare_Provides_early_out_for_files_with_different_size()
+        public void Compare_provides_early_out_for_files_with_different_size()
         {
             const string FIRST_FILENAME = "testFile1.png";
             const string SECOND_FILENAME = "testFile2.png";
@@ -70,7 +70,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void Compare_Provides_early_out_for_bitmaps_with_different_size()
+        public void Compare_ürovides_early_out_for_bitmaps_with_different_size()
         {
             using (var firstBitmap = new Bitmap(800, 600))
             {
@@ -82,7 +82,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void Compare_Returns_true_if_images_match_for_bitmaps()
+        public void Compare_returns_true_if_images_match_for_bitmaps()
         {
             using (var firstBitmap = new Bitmap(TEST_FILENAME))
             {
@@ -94,13 +94,13 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void Compare_Returns_true_for_same_image()
+        public void Compare_returns_true_for_same_image()
         {
             Assert.IsTrue(ImageComparer.Compare(TEST_FILENAME, TEST_FILENAME));
         }
         
         [Test]
-        public void Compare_Returns_false_if_one_pixel_was_altered()
+        public void Compare_returns_false_if_one_pixel_was_altered()
         {
             using (var firstBitmap = new Bitmap(TEST_FILENAME))
             {
@@ -114,7 +114,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void ComparePerByte_Returns_true_for_same_image()
+        public void ComparePerByte_returns_true_for_same_image()
         {
             using (var firstBitmap = new Bitmap(TEST_FILENAME))
             {
@@ -126,7 +126,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void ComparePerByte_Returns_false_if_one_pixel_was_altered()
+        public void ComparePerByte_returns_false_if_one_pixel_was_altered()
         {
             using (var firstBitmap = new Bitmap(TEST_FILENAME))
             {
@@ -140,7 +140,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void ComparePerBytel_Provides_early_out_for_bitmaps_with_different_size()
+        public void ComparePerBytel_provides_early_out_for_bitmaps_with_different_size()
         {
             using (var firstBitmap = new Bitmap(800, 600))
             {
@@ -152,7 +152,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void ComparePerPixel_Returns_true_for_same_image()
+        public void ComparePerPixel_returns_true_for_same_image()
         {
             using (var firstBitmap = new Bitmap(TEST_FILENAME))
             {
@@ -164,7 +164,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void ComparePerPixel_Returns_false_if_one_pixel_was_altered()
+        public void ComparePerPixel_returns_false_if_one_pixel_was_altered()
         {
             using (var firstBitmap = new Bitmap(TEST_FILENAME))
             {
@@ -178,7 +178,7 @@ namespace TheNewEngine.Graphics.Utilities
         }
 
         [Test]
-        public void ComparePerPixel_Provides_early_out_for_bitmaps_with_different_size()
+        public void ComparePerPixel_provides_early_out_for_bitmaps_with_different_size()
         {
             using (var firstBitmap = new Bitmap(800, 600))
             {

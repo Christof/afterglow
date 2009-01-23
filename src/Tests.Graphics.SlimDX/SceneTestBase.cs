@@ -1,5 +1,7 @@
+using System.IO;
 using System.Windows.Forms;
 using MbUnit.Framework;
+using TheNewEngine.Graphics.Utilities;
 
 namespace TheNewEngine.Graphics.SlimDX
 {
@@ -38,10 +40,31 @@ namespace TheNewEngine.Graphics.SlimDX
                     Update(0.1f);
                     Render();
 
+                    AssertWithScreenshot();
+
                     Application.DoEvents();
                 };
 
             Application.Run(mForm);
+        }
+
+        private void AssertWithScreenshot()
+        {
+            var name = GetType().Name;
+            var expected = name + "_expected.bmp";
+            var actual = name + "_actual.bmp";
+            if (File.Exists(expected))
+            {
+                mRenderWindow.TakeScreenshot(actual);
+
+                Assert.IsTrue(ImageComparer.Compare(expected, actual));
+            }
+            else
+            {
+                mRenderWindow.TakeScreenshot(expected);
+            }
+
+            Application.Exit();
         }
 
         /// <summary>
