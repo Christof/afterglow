@@ -2,7 +2,6 @@ require 'rexml/document'
 include REXML
 
 BUILD_DIR = "bin"
-GALLIO_PATH = "C:/Program Files/Gallio/bin/"
 SOLUTION_NAME = "TheNewEngine.sln"
 
 task :default => [:build]
@@ -21,6 +20,40 @@ class MsBuild
 	end
 end
 
+class Gallio
+	@@GALLIO_PATH = "C:/Program Files/Gallio/bin/Gallio.Echo.exe"
+	
+	def initialize(build_dir, report_dir)
+		@build_dir = build_dir
+		@report_dir = report_dir
+		@show_reports = false
+	end
+	
+	def assemblies()
+		assemblies = Dir["#{@build_dir}/Tests.*.dll"].join(" ")
+	end
+	
+	def filter_option()
+		#/f:not(CategoryName:API_Examples) " +#/filter:not(Type:TriangleWithTexture) " + 
+		""
+	end
+	
+	def show_reports()
+		@show_reports = true
+	end
+	
+	def show_reports_option()
+		if @show_reports
+			"/show-reports"
+		end
+	end
+	
+	def run()
+		sh "\"#{@@GALLIO_PATH}\" #{assemblies}  /working-directory:#{@build_dir} " + 
+			" /report-directory:#{@report_dir} /report-type:Html #{show_reports_option}"
+	end
+end
+
 task :removeBuildDir => :clear do
 	puts "removing build directory (#{BUILD_DIR})"
 	if (File.exist?(BUILD_DIR))
@@ -34,34 +67,24 @@ task :build => [:removeBuildDir, BUILD_DIR] do
 	MsBuild.build(SOLUTION_NAME)
 end
 
-task :test do#=> :build do
-	gallio_path = GALLIO_PATH + "Gallio.Echo.exe"
-	if (File.exist?(gallio_path))
-		puts "starting tests..."
-		assemblies = Dir["#{BUILD_DIR}/Tests.*.dll"].join(" ")
-		cmd = "\"#{gallio_path}\" #{assemblies} "#/f:not(CategoryName:API_Examples) " +#/filter:not(Type:TriangleWithTexture) " + 
-			" /working-directory:bin /report-directory:build /report-type:Html" #/show-reports
-		puts cmd
-		begin
-			sh cmd
-		rescue => err
-			puts err
-		end
-	end
+task :test do
+	report_dir = "build"
+	gallio = Gallio.new(BUILD_DIR, report_dir)
+	gallio.run
 	
-	dir = Dir.new("build")
+	dir = Dir.new(report_dir)
 	
 	entries = dir.entries.find_all do	|filename|
 		/html/ =~ filename
 	end
 	
 	newest_file = entries.max do |a, b|
-		File.new("build/#{a}").atime <=> File.new("build/#{b}").atime
+		File.new("#{report_dir}/#{a}").atime <=> File.new("#{report_dir}/#{b}").atime
 	end
 	
 	print "\nnewest file #{newest_file}\n"
 	
-	replace_underlines("build/#{newest_file}")
+	replace_underlines("#{report_dir}/#{newest_file}")
 end
 
 def replace_underlines(path)
