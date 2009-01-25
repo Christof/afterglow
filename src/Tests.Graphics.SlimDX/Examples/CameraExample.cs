@@ -26,7 +26,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var positions = container.Create(GraphicStreamUsage.Position, CreatePositions());
             var colors = container.Create(GraphicStreamUsage.Color, CreateColors());
 
-            IBufferService bufferService = new SlimDXBufferService(mRenderWindow.Device);
+            IBufferService bufferService = new SlimDXBufferService(RenderWindow.Device);
 
             var bufferBindings = new[]
             {
@@ -34,8 +34,8 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 bufferService.CreateFor(positions),
             };
 
-            mEffect = new SlimDXEffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
-            mRenderer = new SlimDXObjectRenderer(mRenderWindow, mEffect, bufferBindings);
+            mEffect = new SlimDXEffectCompiler(RenderWindow.Device).Compile("MyShader10.fx");
+            mRenderer = new SlimDXObjectRenderer(RenderWindow, mEffect, bufferBindings);
 
             mWorldViewProjectionParameter = new SlimDXMatrixEffectParameter("WorldViewProjection");
 
@@ -47,7 +47,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
 
         private void SetupKeysAndActions()
         {
-            mForm.KeyDown +=
+            Form.KeyDown +=
                 delegate(object sender, KeyEventArgs e)
                 {
                     if (e.KeyCode == Keys.W)
@@ -78,9 +78,9 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             mWorldViewProjectionParameter.Value = mCamera.ViewProjectionMatrix;
             mWorldViewProjectionParameter.SetParameterOn(mEffect);
 
-            mRenderWindow.StartRendering();
+            RenderWindow.StartRendering();
             mRenderer.Render();
-            mRenderWindow.Render();
+            RenderWindow.Render();
         }
 
         private static Vector3[] CreatePositions()

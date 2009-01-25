@@ -66,13 +66,21 @@ namespace TheNewEngine.Infrastructure
         }
 
         [Test]
-        public void DisposeIfNotNull()
+        public void DisposeIfNotNull_for_not_null_disposable_calls_Dispose()
         {
             var disposable = new Mock<IDisposable>();
             
             disposable.Object.DisposeIfNotNull();
 
             disposable.Verify(d => d.Dispose());
+        }
+
+        [Test]
+        public void DisposeIfNotNull_for_null_disposable_does_not_call_Dispose()
+        {
+            IDisposable disposable = null;
+
+            disposable.DisposeIfNotNull();
         }
     }
 }

@@ -31,14 +31,14 @@ namespace TheNewEngine.Graphics
             var importer = new ColladaImporter(COLLAD_PLANE);
             var container = importer.GetFirstMesh();
 
-            IBufferService bufferService = new SlimDXBufferService(mRenderWindow.Device);
+            IBufferService bufferService = new SlimDXBufferService(RenderWindow.Device);
 
             var bufferBindings = CreateBufferBindings(container, bufferService);
             //bufferBindings = container.Select(stream => bufferService.CreateFor(stream));
 
-            mEffect = new SlimDXEffectCompiler(mRenderWindow.Device)
+            mEffect = new SlimDXEffectCompiler(RenderWindow.Device)
                 .Compile("NormalLighting10.fx");
-            mRenderer = new SlimDXObjectRenderer(mRenderWindow, mEffect, bufferBindings);
+            mRenderer = new SlimDXObjectRenderer(RenderWindow, mEffect, bufferBindings);
 
             mWorldViewProjectionParameter =
                 new SlimDXMatrixEffectParameter("WorldViewProjection");
@@ -65,16 +65,16 @@ namespace TheNewEngine.Graphics
             mWorldViewProjectionParameter.Value = mCamera.ViewProjectionMatrix;
             mWorldViewProjectionParameter.SetParameterOn(mEffect);
 
-            mRenderWindow.StartRendering();
+            RenderWindow.StartRendering();
 
             mRenderer.Render();
 
-            mRenderWindow.Render();
+            RenderWindow.Render();
         }
 
         private void SetupKeysAndActions()
         {
-            mForm.KeyDown +=
+            Form.KeyDown +=
                 delegate(object sender, KeyEventArgs e)
                 {
                     switch (e.KeyCode)
@@ -101,7 +101,7 @@ namespace TheNewEngine.Graphics
                             Application.Exit();
                             break;
                         case Keys.P:
-                            mRenderWindow.TakeScreenshot("screenshot.bmp");
+                            RenderWindow.TakeScreenshot("screenshot.bmp");
                             break;
                     }
                 };

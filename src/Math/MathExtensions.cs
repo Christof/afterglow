@@ -37,17 +37,21 @@ namespace TheNewEngine.Math
         /// <summary>
         /// Clamps the value to the range given by min and max.
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="min">The min.</param>
-        /// <param name="max">The max.</param>
+        /// <param name="value">The value to be clamped.</param>
+        /// <param name="min">The min value.</param>
+        /// <param name="max">The max value.</param>
         /// <returns>The clamped value.</returns>
         public static float Clamp(this float value, float min, float max)
         {
             if (value > max)
+            {
                 return max;
+            }
 
             if (value < min)
+            {
                 return min;
+            }
 
             return value;
         }
@@ -61,7 +65,9 @@ namespace TheNewEngine.Math
         public static float ClampMax(this float value, float max)
         {
             if (value > max)
+            {
                 return max;
+            }
 
             return value;
         }
@@ -75,7 +81,9 @@ namespace TheNewEngine.Math
         public static float ClampMin(this float value, float min)
         {
             if (value < min)
+            {
                 return min;
+            }
 
             return value;
         }

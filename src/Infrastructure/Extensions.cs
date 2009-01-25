@@ -95,9 +95,16 @@ namespace TheNewEngine.Infrastructure
             return (TargetType)baseInstance;
         }
 
+        /// <summary>
+        /// Disposes the object if it's not null.
+        /// </summary>
+        /// <param name="disposable">The disposable.</param>
         public static void DisposeIfNotNull(this IDisposable disposable)
         {
-            disposable.Dispose();
+            if (disposable != null)
+            {
+                disposable.Dispose();
+            }
         }
     }
 }

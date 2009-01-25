@@ -135,5 +135,17 @@ namespace TheNewEngine.Graphics
                 matrix.M31, matrix.M32, matrix.M33, matrix.M34,
                 matrix.M41, matrix.M42, matrix.M43, matrix.M44);
         }
+
+        /// <summary>
+        /// Disposes the object if it isn't already disposed or null.
+        /// </summary>
+        /// <param name="comObject">The COM object.</param>
+        public static void DisposeIfNotDisposed(this SlimDX.ComObject comObject)
+        {
+            if (comObject != null && !comObject.Disposed)
+            {
+                comObject.Dispose();
+            }
+        }
     }
 }

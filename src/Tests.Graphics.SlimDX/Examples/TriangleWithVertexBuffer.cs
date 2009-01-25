@@ -23,7 +23,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             var positions = container.Create(GraphicStreamUsage.Position, CreatePositions());
             var colors = container.Create(GraphicStreamUsage.Color, CreateColors());
 
-            IBufferService bufferService = new SlimDXBufferService(mRenderWindow.Device);
+            IBufferService bufferService = new SlimDXBufferService(RenderWindow.Device);
 
             var bufferBindings = new[]
             {
@@ -31,9 +31,9 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
                 bufferService.CreateFor(colors)
             };
 
-            mEffect = new SlimDXEffectCompiler(mRenderWindow.Device).Compile("MyShader10.fx");
+            mEffect = new SlimDXEffectCompiler(RenderWindow.Device).Compile("MyShader10.fx");
 
-            mRenderer = new SlimDXObjectRenderer(mRenderWindow,
+            mRenderer = new SlimDXObjectRenderer(RenderWindow,
                 mEffect, bufferBindings);
 
             mWorldViewProjectionParameter = new SlimDXMatrixEffectParameter("WorldViewProjection");
@@ -59,13 +59,13 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
             Matrix world = Matrix.Identity;
             Matrix worldViewProjection = world * view * projection;
 
-            mRenderWindow.StartRendering();
+            RenderWindow.StartRendering();
             mWorldViewProjectionParameter.Value = worldViewProjection;
             mWorldViewProjectionParameter.SetParameterOn(mEffect);
 
             mRenderer.Render();
 
-            mRenderWindow.Render();
+            RenderWindow.Render();
         }
 
         private static Vector3[] CreatePositions()

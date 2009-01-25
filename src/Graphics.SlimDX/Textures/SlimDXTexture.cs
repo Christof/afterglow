@@ -44,11 +44,7 @@ namespace TheNewEngine.Graphics.Textures
         /// </summary>
         public void Unload()
         {
-            if (mTexture != null && !mTexture.Disposed)
-            {
-                mTexture.Dispose();
-                mTexture = null;
-            }
+            mTexture.DisposeIfNotDisposed();
         }
     }
 }

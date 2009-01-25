@@ -63,7 +63,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
             var container = new GraphicStreamContainer();
 
             var indices = new[] { 0, 1, 3 };
-            container.Create(GraphicStreamUsage.Position, new [] { 1f, 2f, 3f });
+            container.Create(GraphicStreamUsage.Position, new[] { 1f, 2f, 3f });
             container.Create(GraphicStreamUsage.Index, indices);
 
             var stream = container.GetByUsage(GraphicStreamUsage.Index);

@@ -7,25 +7,25 @@ namespace TheNewEngine.Graphics.SlimDX
 {
     public abstract class SceneTestBase : IScene
     {
-        protected Form mForm;
+        public Form Form { get; set; }
 
-        protected SlimDXRenderWindow mRenderWindow;
+        public SlimDXRenderWindow RenderWindow { get; set; }
 
         [SetUp]
         public void Setup()
         {
-            mForm = new Form
+            Form = new Form
             {
                 ClientSize = new System.Drawing.Size(800, 600)
             };
 
-            mRenderWindow = new SlimDXRenderWindow(mForm.Handle);
+            RenderWindow = new SlimDXRenderWindow(Form.Handle);
         }
 
         [TearDown]
         public void TearDown()
         {
-            mForm.Dispose();
+            Form.Dispose();
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace TheNewEngine.Graphics.SlimDX
                     Application.DoEvents();
                 };
 
-            Application.Run(mForm);
+            Application.Run(Form);
         }
 
         private void AssertWithScreenshot()
@@ -55,13 +55,13 @@ namespace TheNewEngine.Graphics.SlimDX
             var actual = name + "_actual.bmp";
             if (File.Exists(expected))
             {
-                mRenderWindow.TakeScreenshot(actual);
+                RenderWindow.TakeScreenshot(actual);
 
                 Assert.IsTrue(ImageComparer.Compare(expected, actual));
             }
             else
             {
-                mRenderWindow.TakeScreenshot(expected);
+                RenderWindow.TakeScreenshot(expected);
             }
 
             Application.Exit();
