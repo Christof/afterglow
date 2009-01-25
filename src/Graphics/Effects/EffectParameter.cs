@@ -7,6 +7,8 @@ namespace TheNewEngine.Graphics.Effects
     /// <typeparam name="T">Type of the parameter's value</typeparam>
     public abstract class EffectParameter<T>
     {
+        private T mValue;
+
         /// <summary>
         /// Gets the semantic-name of the parameter.
         /// </summary>
@@ -17,7 +19,17 @@ namespace TheNewEngine.Graphics.Effects
         /// Gets or sets the value.
         /// </summary>
         /// <value>The value.</value>
-        public T Value { get; set; }
+        public virtual T Value
+        {
+            get
+            {
+                return mValue;
+            }
+            set
+            {
+                mValue = value;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EffectParameter&lt;T&gt;"/> class.

@@ -5,13 +5,13 @@ namespace TheNewEngine.Graphics.Textures
     /// <summary>
     /// SlimDX texture implementation.
     /// </summary>
-    public class SlimDXTexture
+    public class SlimDXTexture : ITexture
     {
         private readonly string mFilename;
 
         private readonly Device mDevice;
 
-        private Texture2D mTexture;
+        internal Texture2D Texture { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SlimDXTexture"/> class.
@@ -36,7 +36,7 @@ namespace TheNewEngine.Graphics.Textures
         /// </summary>
         public void Load()
         {
-            mTexture = Texture2D.FromFile(mDevice, mFilename);
+            Texture = Texture2D.FromFile(mDevice, mFilename);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace TheNewEngine.Graphics.Textures
         /// </summary>
         public void Unload()
         {
-            mTexture.DisposeIfNotDisposed();
+            Texture.DisposeIfNotDisposed();
         }
     }
 }

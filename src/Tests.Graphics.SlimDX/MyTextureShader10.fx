@@ -1,6 +1,6 @@
 float4x4 WorldViewProj : WorldViewProjection;
 
-Texture2D<float4> MyTexture
+Texture2D<float4> MyTexture : Texture
 <
 	string ResourceName = "default_color.dds";
 >;

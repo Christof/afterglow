@@ -55,6 +55,7 @@
     <Compile Include="Effects\SlimDXEffect.cs" />
     <Compile Include="Effects\SlimDXEffectCompiler.cs" />
     <Compile Include="Effects\SlimDXMatrixEffectParameter.cs" />
+    <Compile Include="Effects\SlimDXTextureEffectParameter.cs" />
     <Compile Include="GraphicStreams\SlimDXBuffer.cs" />
     <Compile Include="GraphicStreams\ISlimDXBuffer.cs" />
     <Compile Include="GraphicStreams\SlimDXBufferBinding.cs" />

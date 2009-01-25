@@ -6,14 +6,17 @@ using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Rendering;
 using TheNewEngine.Graphics.SlimDX;
 using TheNewEngine.Math;
+using TheNewEngine.Graphics.Textures;
 
 namespace TheNewEngine.Graphics
 {
     public class FunctionalTest_ColladaImporter : SceneTestBase
     {
-        private const string COLLAD_PLANE = "thing.dae";
+        private const string COLLAD_PLANE = "plane.dae";
 
         private EffectParameter<Matrix> mWorldViewProjectionParameter;
+
+        private EffectParameter<ITexture> mTextureParameter;
 
         private Camera mCamera;
 
@@ -37,11 +40,19 @@ namespace TheNewEngine.Graphics
             //bufferBindings = container.Select(stream => bufferService.CreateFor(stream));
 
             mEffect = new SlimDXEffectCompiler(RenderWindow.Device)
-                .Compile("NormalLighting10.fx");
+                //.Compile("NormalLighting10.fx");
+                .Compile("MyTextureShader10.fx");
             mRenderer = new SlimDXObjectRenderer(RenderWindow, mEffect, bufferBindings);
 
             mWorldViewProjectionParameter =
                 new SlimDXMatrixEffectParameter("WorldViewProjection");
+
+            var texture = new SlimDXTexture("texture.png", RenderWindow.Device);
+            texture.Load();
+
+            mTextureParameter = new SlimDXTextureEffectParameter(
+                RenderWindow.Device,
+                "Texture", texture);
 
             mStand = new OrbitingStand(5.0f, 0, 0);
             mCamera = new Camera(mStand, new PerspectiveProjectionLense());
@@ -64,6 +75,7 @@ namespace TheNewEngine.Graphics
         {
             mWorldViewProjectionParameter.Value = mCamera.ViewProjectionMatrix;
             mWorldViewProjectionParameter.SetParameterOn(mEffect);
+            mTextureParameter.SetParameterOn(mEffect);
 
             RenderWindow.StartRendering();
 

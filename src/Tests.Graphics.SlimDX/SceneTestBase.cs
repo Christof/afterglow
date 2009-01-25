@@ -40,7 +40,7 @@ namespace TheNewEngine.Graphics.SlimDX
                     Update(0.1f);
                     Render();
 
-                    AssertWithScreenshot();
+                    //AssertWithScreenshot();
 
                     Application.DoEvents();
                 };
