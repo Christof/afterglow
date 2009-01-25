@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace TheNewEngine.Infrastructure
 {
@@ -92,6 +93,11 @@ namespace TheNewEngine.Infrastructure
         public static TargetType DowncastTo<TargetType>(this object baseInstance)
         {
             return (TargetType)baseInstance;
+        }
+
+        public static void DisposeIfNotNull(this IDisposable disposable)
+        {
+            disposable.Dispose();
         }
     }
 }

@@ -108,6 +108,7 @@ namespace TheNewEngine.Graphics
         }
 
         [Test]
+        [Ignore("Implement dependency injection first.")]
         public void WithDependencyInjection()
         {
             using (var form = new Form())

@@ -78,7 +78,6 @@
     <Compile Include="Importers\Collada\Test_SourceParser.cs" />
     <Compile Include="Importers\Collada\Test_TriangleParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Test_ResourceDecorator.cs" />
     <Compile Include="Utilities\Test_ImageComparer.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,14 @@
 using SlimDX.Direct3D10;
-using TheNewEngine.Graphics.Resources;
 
 namespace TheNewEngine.Graphics.Textures
 {
     /// <summary>
     /// SlimDX texture implementation.
     /// </summary>
-    public class SlimDXTexture : IResource
+    public class SlimDXTexture
     {
+        private readonly string mFilename;
+
         private readonly Device mDevice;
 
         private Texture2D mTexture;
@@ -15,9 +16,11 @@ namespace TheNewEngine.Graphics.Textures
         /// <summary>
         /// Initializes a new instance of the <see cref="SlimDXTexture"/> class.
         /// </summary>
+        /// <param name="filename">The filename.</param>
         /// <param name="device">The device.</param>
-        public SlimDXTexture(Device device)
+        public SlimDXTexture(string filename, Device device)
         {
+            mFilename = filename;
             mDevice = device;
         }
 
@@ -31,10 +34,9 @@ namespace TheNewEngine.Graphics.Textures
         /// <summary>
         /// Loads the resource.
         /// </summary>
-        /// <param name="decoree">The decoree.</param>
-        public void Load(IResource decoree)
+        public void Load()
         {
-            mTexture = Texture2D.FromFile(mDevice, ((NamedResourceDecorator)decoree).Name);
+            mTexture = Texture2D.FromFile(mDevice, mFilename);
         }
 
         /// <summary>

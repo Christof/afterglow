@@ -26,9 +26,9 @@ namespace TheNewEngine.Graphics.Cameras
             var lense = new Mock<ILense>();
 
             var viewMatrix = new Matrix(11, 12, 13, 14, 21, 22, 23, 24, 31, 32, 33, 34, 41, 42, 43, 44);
-            stand.ExpectGet(x => x.ViewMatrix).Returns(viewMatrix);
+            stand.SetupGet(x => x.ViewMatrix).Returns(viewMatrix);
             var projectionMatrix = new Matrix(0, 1, 2, 3, 10, 11, 12, 13, 20, 21, 22, 23, 30, 31, 32, 33);
-            lense.ExpectGet(x => x.ProjectionMatrix).Returns(projectionMatrix);
+            lense.SetupGet(x => x.ProjectionMatrix).Returns(projectionMatrix);
 
             var cam = new Camera(stand.Object, lense.Object);
 

@@ -80,10 +80,6 @@
     <Compile Include="IScreenshotTaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\IObjectRenderer.cs" />
-    <Compile Include="Resources\IResource.cs" />
-    <Compile Include="Resources\IResourceContainer.cs" />
-    <Compile Include="Resources\NamedResourceDecorator.cs" />
-    <Compile Include="Resources\ResourceDecorator.cs" />
     <Compile Include="Utilities\ImageComparer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +91,10 @@
       <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
       <Name>Math %28Math\Math%29</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Textures\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using MbUnit.Framework;
+using System;
+using Moq;
 
 namespace TheNewEngine.Infrastructure
 {
@@ -61,6 +63,16 @@ namespace TheNewEngine.Infrastructure
             List<int> downcastList = listInterface.DowncastTo<List<int>>();
 
             Assert.IsNotNull(downcastList);
+        }
+
+        [Test]
+        public void DisposeIfNotNull()
+        {
+            var disposable = new Mock<IDisposable>();
+            
+            disposable.Object.DisposeIfNotNull();
+
+            disposable.Verify(d => d.Dispose());
         }
     }
 }
