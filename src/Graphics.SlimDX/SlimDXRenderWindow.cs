@@ -3,6 +3,7 @@ using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
 using Device = SlimDX.Direct3D10.Device;
+using ResultCode=SlimDX.Direct3D10.ResultCode;
 
 namespace TheNewEngine.Graphics
 {
@@ -41,7 +42,15 @@ namespace TheNewEngine.Graphics
         {
             mWindowHandle = windowHandle;
 
-            mDevice = new Device(DeviceCreationFlags.Debug);
+            try
+            {
+                // the debug mode requires the sdk to be installed otherwise an exception is thrown
+                mDevice = new Device(DeviceCreationFlags.Debug);
+            }
+            catch (Direct3D10Exception)
+            {
+                mDevice = new Device(DeviceCreationFlags.None);
+            }
 
             if (mIsWindowed)
             {

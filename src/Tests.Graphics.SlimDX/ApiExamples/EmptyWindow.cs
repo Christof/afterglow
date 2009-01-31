@@ -42,7 +42,7 @@ namespace TheNewEngine.Graphics.SlimDX.ApiExamples
         public static void CreateDeviceSwapChainAndRenderTarget(Form form,
             out Device device, out SwapChain swapChain, out RenderTargetView renderTarget)
         {
-            device = new Device(DeviceCreationFlags.Debug);
+            device = new Device(DeviceCreationFlags.None);
 
             var swapChainDescription = new SwapChainDescription();
             var modeDescription = new ModeDescription();
