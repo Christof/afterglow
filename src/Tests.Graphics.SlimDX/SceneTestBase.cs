@@ -2,6 +2,7 @@ using System.IO;
 using System.Windows.Forms;
 using MbUnit.Framework;
 using TheNewEngine.Graphics.Utilities;
+using System.Diagnostics;
 
 namespace TheNewEngine.Graphics.SlimDX
 {
@@ -34,10 +35,18 @@ namespace TheNewEngine.Graphics.SlimDX
         {
             Load();
 
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            long last = stopwatch.ElapsedMilliseconds;
+
             Application.Idle +=
                 delegate
                 {
-                    Update(0.1f);
+                    long now = stopwatch.ElapsedMilliseconds;
+                    float frametime = (now - last) / 1000.0f;
+                    last = now;
+
+                    Update(frametime);
                     Render();
 
                     //AssertWithScreenshot();
