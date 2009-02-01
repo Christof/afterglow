@@ -10,7 +10,7 @@ using TheNewEngine.Graphics.Textures;
 
 namespace TheNewEngine.Graphics
 {
-    public class FunctionalTest_ColladaImporter : SceneTestBase
+    public class FunctionalTest : SceneTestBase
     {
         private const string COLLAD_PLANE = "plane.dae";
 
