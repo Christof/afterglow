@@ -72,7 +72,7 @@ namespace TheNewEngine.Graphics.Cameras
         /// <value>The direction.</value>
         public Vector3 Direction
         {
-            get { return -Position; }
+            get { return -Position.Normalized(); }
             set { throw new NotSupportedException(); }
         }
 
@@ -83,7 +83,7 @@ namespace TheNewEngine.Graphics.Cameras
         public Vector3 Up
         {
             get { return Vector3.YAxis; }
-            set { throw new NotImplementedException(); }
+            set { throw new NotSupportedException(); }
         }
 
         /// <summary>
