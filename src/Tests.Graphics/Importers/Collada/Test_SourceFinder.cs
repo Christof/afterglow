@@ -40,5 +40,13 @@ namespace TheNewEngine.Graphics.Importers.Collada
             Assert.IsNotNull(source);
             Assert.AreEqual("Plane-Geometry-Position", source.Attribute("id").Value);
         }
+
+        [Test]
+        public void FindSource_for_not_existing_id()
+        {
+            var parser = new SourceFinder(mMesh);
+
+            Assert.IsNull(parser.FindSource("#Not existing id"));
+        }
     }
 }

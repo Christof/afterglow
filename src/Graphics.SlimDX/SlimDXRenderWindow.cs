@@ -3,7 +3,6 @@ using SlimDX;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
 using Device = SlimDX.Direct3D10.Device;
-using ResultCode=SlimDX.Direct3D10.ResultCode;
 
 namespace TheNewEngine.Graphics
 {

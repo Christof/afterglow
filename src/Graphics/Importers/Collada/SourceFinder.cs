@@ -34,19 +34,23 @@ namespace TheNewEngine.Graphics
                 return foundSources.First();
             }
 
-            var inputElement = mMeshElement
-                .Element(ColladaImporter.Namespace + "vertices")
-                .Element(ColladaImporter.Namespace + "input");
+            var verticesElement = mMeshElement
+                .Elements(ColladaImporter.Namespace + "vertices")
+                .Where(x => x.Attribute("id").Value == reference.Replace("#", string.Empty))
+                .FirstOrDefault();
 
+            if (verticesElement == null)
+            {
+                return null;
+            }
+
+            var inputElement = verticesElement
+                .Element(ColladaImporter.Namespace + "input");
+            
             string referenceFromVertices = inputElement.Attribute("source").Value;
             foundSources = FindSources(referenceFromVertices);
 
-            if (foundSources.Count() == 1)
-            {
-                return foundSources.First();
-            }
-
-            return null;
+            return foundSources.First();
         }
 
         private IEnumerable<XElement> FindSources(string reference)

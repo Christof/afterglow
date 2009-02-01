@@ -5,6 +5,5 @@ namespace TheNewEngine.Graphics.Textures
     /// </summary>
     public interface ITexture
     {
-        
     }
 }
