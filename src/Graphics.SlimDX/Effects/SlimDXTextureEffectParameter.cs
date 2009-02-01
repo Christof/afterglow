@@ -7,7 +7,7 @@ namespace TheNewEngine.Graphics.Effects
     /// <summary>
     /// Texture effect parameter.
     /// </summary>
-    public class SlimDXTextureEffectParameter : EffectParameter<ITexture>
+    public class SlimDXTextureEffectParameter : SemanticEffectParameter<ITexture>
     {
         private readonly Device mDevice;
 

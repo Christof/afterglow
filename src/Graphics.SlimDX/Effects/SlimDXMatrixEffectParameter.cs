@@ -5,7 +5,7 @@ namespace TheNewEngine.Graphics.Effects
     /// <summary>
     /// Matrix effect parameter.
     /// </summary>
-    public class SlimDXMatrixEffectParameter : EffectParameter<Matrix>
+    public class SlimDXMatrixEffectParameter : SemanticEffectParameter<Matrix>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SlimDXMatrixEffectParameter"/> class.

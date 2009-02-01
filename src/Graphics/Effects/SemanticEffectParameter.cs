@@ -5,7 +5,7 @@ namespace TheNewEngine.Graphics.Effects
     /// and a value.
     /// </summary>
     /// <typeparam name="T">Type of the parameter's value</typeparam>
-    public abstract class EffectParameter<T>
+    public abstract class SemanticEffectParameter<T>
     {
         /// <summary>
         /// Gets the semantic-name of the parameter.
@@ -20,10 +20,10 @@ namespace TheNewEngine.Graphics.Effects
         public virtual T Value { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EffectParameter&lt;T&gt;"/> class.
+        /// Initializes a new instance of the <see cref="SemanticEffectParameter{T}"/> class.
         /// </summary>
         /// <param name="semanticName">Semantic name.</param>
-        protected EffectParameter(string semanticName)
+        protected SemanticEffectParameter(string semanticName)
         {
             SemanticName = semanticName;
         }

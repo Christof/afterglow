@@ -14,9 +14,9 @@ namespace TheNewEngine.Graphics
     {
         private const string COLLAD_PLANE = "plane.dae";
 
-        private EffectParameter<Matrix> mWorldViewProjectionParameter;
+        private SemanticEffectParameter<Matrix> mWorldViewProjectionParameter;
 
-        private EffectParameter<ITexture> mTextureParameter;
+        private SemanticEffectParameter<ITexture> mTextureParameter;
 
         private Camera mCamera;
 

@@ -10,7 +10,7 @@ namespace TheNewEngine.Graphics.SlimDX.Examples
     {
         private IEffect mEffect;
 
-        private EffectParameter<Matrix> mWorldViewProjectionParameter;
+        private SemanticEffectParameter<Matrix> mWorldViewProjectionParameter;
 
         private IObjectRenderer mRenderer;
 
