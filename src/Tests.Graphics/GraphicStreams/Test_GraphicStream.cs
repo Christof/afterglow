@@ -1,5 +1,6 @@
 using MbUnit.Framework;
 using TheNewEngine.Math;
+using System.Collections;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {
@@ -48,13 +49,24 @@ namespace TheNewEngine.Graphics.GraphicStreams
         }
 
         [Test]
-        public void GetEnumerator()
+        public void GetEnumerator_generic_version()
         {
             var data = new[] { 1f, 2f };
             var graphicStream = new GraphicStream<float>(GraphicStreamUsage.Color, data);
 
             Assert.IsNotNull(graphicStream);
             Assert.AreElementsEqual(data, graphicStream);
+        }
+
+        [Test]
+        public void GetEnumerator()
+        {
+            var data = new[] { 1f, 2f };
+            var graphicStream = new GraphicStream<float>(
+                GraphicStreamUsage.Color, data) as IEnumerable;
+            var enumerator = graphicStream.GetEnumerator();
+
+            Assert.IsNotNull(enumerator);
         }
     }
 }

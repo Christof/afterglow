@@ -2,6 +2,7 @@ using MbUnit.Framework;
 using Moq;
 using System.Linq;
 using TheNewEngine.Infrastructure;
+using System.Collections;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {
@@ -29,7 +30,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
         }
 
         [Test]
-        public void GetEnumerator()
+        public void GetEnumerator_gernic_version()
         {
             var container = new GraphicStreamContainer();
 
@@ -39,6 +40,21 @@ namespace TheNewEngine.Graphics.GraphicStreams
             container.Add(streams[1]);
 
             Assert.AreElementsEqual(streams, container);
+        }
+
+        [Test]
+        public void GetEnumerator()
+        {
+            var container = new GraphicStreamContainer();
+
+            var streams = new[] { new Mock<IGraphicStream>().Object, new Mock<IGraphicStream>().Object };
+
+            container.Add(streams[0]);
+            container.Add(streams[1]);
+
+            var enumerator = (container as IEnumerable).GetEnumerator();
+
+            Assert.IsNotNull(enumerator);
         }
 
         [Test]
