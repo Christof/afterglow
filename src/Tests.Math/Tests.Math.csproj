@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interpolators\Test_LinearInterpolator.cs" />
+    <Compile Include="Interpolators\Test_SquareInterpolator.cs" />
     <Compile Include="Primitives\Test_Matrix.cs" />
     <Compile Include="Primitives\Test_Vector2.cs" />
     <Compile Include="Primitives\Test_Vector3.cs" />
