@@ -50,8 +50,10 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="IDeltaEquatable.cs" />
+    <Compile Include="Interpolators\IInterpolator.cs" />
     <Compile Include="Interpolators\LinearInterpolator.cs" />
     <Compile Include="Interpolators\SquareInterpolator.cs" />
+    <Compile Include="Interpolators\SquareRootInterpolator.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="Primitives\ICoordinateSystem.cs" />
     <Compile Include="Primitives\Matrix.cs" />
