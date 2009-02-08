@@ -1,4 +1,5 @@
 using MbUnit.Framework;
+using TheNewEngine.Infrastructure;
 
 namespace TheNewEngine.Math
 {
@@ -17,7 +18,7 @@ namespace TheNewEngine.Math
         [Row(3, 9)]
         public void Sqrt(float squareRoot, float value)
         {
-            Assert.AreEqual(squareRoot, Functions.Sqrt(value));
+            Functions.Sqrt(value).ShouldEqual(squareRoot);
         }
 
         [Test]
@@ -25,7 +26,7 @@ namespace TheNewEngine.Math
         [Row(1, 3, 0)]
         public void Pow(float result, float baseValue, float exponent)
         {
-            Assert.AreEqual(result, Functions.Pow(baseValue, exponent));
+            Functions.Pow(baseValue, exponent).ShouldEqual(result);
         }
 
         [Test]
@@ -35,7 +36,7 @@ namespace TheNewEngine.Math
         [Row(-1, PI_HALF * 3)]
         public void Sin(float sin, float angle)
         {
-            Assert.AreApproximatelyEqual(sin, Functions.Sin(angle), DELTA);
+            Functions.Sin(angle).ShouldEqual(sin, DELTA);
         }
 
         [Test]
@@ -45,7 +46,7 @@ namespace TheNewEngine.Math
         [Row(0, PI_HALF * 3)]
         public void Cos(float cos, float angle)
         {
-            Assert.AreApproximatelyEqual(cos, Functions.Cos(angle), DELTA);
+            Functions.Cos(angle).ShouldEqual(cos, DELTA);
         }
 
         [Test]
@@ -54,7 +55,8 @@ namespace TheNewEngine.Math
         [Row(0, PI)]
         public void Tan(float tan, float angle)
         {
-            Assert.AreApproximatelyEqual(tan, Functions.Tan(angle), DELTA);
+            Functions.Tan(angle).ShouldEqual(tan, DELTA);
+
         }
 
         [Test]
@@ -63,7 +65,7 @@ namespace TheNewEngine.Math
         [Row(float.PositiveInfinity, 0.0f)]
         public void CoTan(float coTan, float angle)
         {
-            Assert.AreApproximatelyEqual(coTan, Functions.CoTan(angle), DELTA);
+            Functions.CoTan(angle).ShouldEqual(coTan, DELTA);
         }
 
         [Test]
@@ -72,7 +74,7 @@ namespace TheNewEngine.Math
         [Row(-PI_HALF, -1)]
         public void Asin(float acos, float angle)
         {
-            Assert.AreEqual(acos, Functions.Asin(angle));
+            Functions.Asin(angle).ShouldEqual(acos);
         }
 
         [Test]
@@ -81,7 +83,7 @@ namespace TheNewEngine.Math
         [Row(PI, -1)]
         public void Acos(float acos, float angle)
         {
-            Assert.AreEqual(acos, Functions.Acos(angle));
+            Functions.Acos(angle).ShouldEqual(acos);
         }
 
         [Test]
@@ -89,7 +91,7 @@ namespace TheNewEngine.Math
         [Row(PI_QUATER, 1)]
         public void Atan(float atan, float angle)
         {
-            Assert.AreEqual(atan, Functions.Atan(angle));
+            Functions.Atan(angle).ShouldEqual(atan);
         }
 
         [Test]
@@ -97,7 +99,7 @@ namespace TheNewEngine.Math
         [Row(1.0f, -1.0f)]
         public void Abs(float abs, float value)
         {
-            Assert.AreEqual(abs, Functions.Abs(value));
+            Functions.Abs(value).ShouldEqual(abs);
         }
     }
 }

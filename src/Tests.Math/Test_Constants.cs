@@ -1,4 +1,5 @@
 using MbUnit.Framework;
+using TheNewEngine.Infrastructure;
 
 namespace TheNewEngine.Math
 {
@@ -16,7 +17,7 @@ namespace TheNewEngine.Math
         [Row(PI_HALF, Constants.HALF_PI, Description = "0.5 Pi")]
         public void Constant_values(float expected, float actual)
         {
-            Assert.AreApproximatelyEqual(expected, actual, DELTA);
+            actual.ShouldEqual(expected, DELTA);
         }
     }
 }
