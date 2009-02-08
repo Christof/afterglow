@@ -11,6 +11,7 @@ namespace TheNewEngine.Math
     /// that the positive x-axis points right, the positive y-axis points up and
     /// the positive z-axis points forward (towards you).
     /// </remarks>
+    [Serializable]
     public struct Vector3
     {
         private static readonly Vector3 ZERO = new Vector3(0, 0, 0);

@@ -1,8 +1,10 @@
+using System;
 namespace TheNewEngine.Graphics.GraphicStreams
 {
     /// <summary>
     /// Info about a graphic stream.
     /// </summary>
+    [Serializable]
     public struct GraphicStreamDescription
     {
         private readonly GraphicStreamUsage mUsage;

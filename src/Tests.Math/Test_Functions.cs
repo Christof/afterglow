@@ -56,7 +56,6 @@ namespace TheNewEngine.Math
         public void Tan(float tan, float angle)
         {
             Functions.Tan(angle).ShouldEqual(tan, DELTA);
-
         }
 
         [Test]

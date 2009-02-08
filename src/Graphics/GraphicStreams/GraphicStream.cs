@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {
@@ -9,6 +10,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
     /// Abstract implementation of <see cref="IGraphicStream"/>.
     /// </summary>
     /// <typeparam name="ElementType">The type of the element.</typeparam>
+    [Serializable]
     public class GraphicStream<ElementType> : IGraphicStream, IEnumerable<ElementType>
         where ElementType : struct 
     {

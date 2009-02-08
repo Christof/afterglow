@@ -88,7 +88,7 @@ namespace TheNewEngine.Infrastructure
         /// <typeparam name="T">Type of the values which have to be a reference type.</typeparam>
         /// <param name="value">The value.</param>
         /// <param name="unexpectedValue">The unexpected value.</param>
-        /// <returns>The value.</returns>
+        /// <returns>The value for further expectations.</returns>
         public static T ShouldNotBeTheSameAs<T>(this T value, T unexpectedValue)
             where T : class
         {
@@ -152,7 +152,7 @@ namespace TheNewEngine.Infrastructure
         /// <typeparam name="T">Type of the value</typeparam>
         /// <typeparam name="ExpectedType">The expected type.</typeparam>
         /// <param name="value">The value.</param>
-        /// <returns>The value.</returns>
+        /// <returns>The value to use for further expectations.</returns>
         public static T ShouldBe<T, ExpectedType>(this T value)
         {
             Assert.IsInstanceOfType(typeof(ExpectedType), value);

@@ -73,6 +73,7 @@
     <Compile Include="GraphicStreams\Test_BufferBinding.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStream.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStreamContainer.cs" />
+    <Compile Include="GraphicStreams\Test_GraphicStreamContainerSerialization.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStreamFormatHelper.cs" />
     <Compile Include="Importers\Collada\Test_SemanticHelper.cs" />
     <Compile Include="Importers\Collada\Test_ColladaImporter.cs" />
@@ -94,6 +95,10 @@
     <ProjectReference Include="..\Math\Math.csproj">
       <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
       <Name>Math %28Math\Math%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj">
+      <Project>{80F94562-64F0-48BB-8CFC-327CA0637B82}</Project>
+      <Name>TestInfrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace TheNewEngine.Graphics.GraphicStreams
 {
     /// <summary>
     /// Container for graphic streams.
     /// </summary>
+    [Serializable]
     public class GraphicStreamContainer : IEnumerable<IGraphicStream>
     {
         private readonly List<IGraphicStream> mStreams = new List<IGraphicStream>();

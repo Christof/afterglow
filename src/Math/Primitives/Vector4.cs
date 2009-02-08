@@ -11,6 +11,7 @@ namespace TheNewEngine.Math
     /// that the positive x-axis points right, the positive y-axis points up and
     /// the positive z-axis points forward.
     /// </remarks>
+    [Serializable]
     public struct Vector4
     {
         // Don't use auto properties because then the 

@@ -1,10 +1,12 @@
 using System.Globalization;
+using System;
 
 namespace TheNewEngine.Math
 {
     /// <summary>
     /// 2-dimensional vector which has properties for each axis (x-axis, y-axis).
     /// </summary>
+    [Serializable]
     public struct Vector2
     {
         private static readonly Vector2 ZERO = new Vector2(0, 0);
