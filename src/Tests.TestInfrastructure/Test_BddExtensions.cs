@@ -11,15 +11,17 @@ namespace TheNewEngine.Infrastructure
         {
             object value = null;
 
+            bool threwException = false;
             try
             {
                 value.ShouldNotBeNull();
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -44,15 +46,18 @@ namespace TheNewEngine.Infrastructure
         public void ShouldBeNull_throws_exception_for_none_null_values()
         {
             var value = new Exception();
+
+            bool threwException = false;
             try
             {
                 value.ShouldBeNull();
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -72,30 +77,33 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldEqual_throws_exception_for_different_values()
         {
+            bool threwException = false;
             try
             {
                 1.ShouldEqual(2);
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
-            
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
         public void ShouldEqual_with_delta_throws_exception_for_very_different_values()
         {
+            bool threwException = false;
             try
             {
                 1.0f.ShouldEqual(20.0f, 1.0f);
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -113,15 +121,17 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldNotEqual_throws_exception_for_same_values()
         {
+            bool threwException = false;
             try
             {
                 1.ShouldNotEqual(1);
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -133,15 +143,17 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldBeTheSameAs_throws_exception_if_the_values_are_not_the_same_instance()
         {
+            bool threwException = false;
             try
             {
                 new Exception().ShouldBeTheSameAs(new Exception());
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -155,16 +167,18 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldNotBeTheSameAs_thorws_exception_for_same_instance()
         {
+            bool threwException = false;
             try
             {
                 var exception = new Exception();
                 exception.ShouldNotBeTheSameAs(exception);
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -190,15 +204,17 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldBeTrue_throws_exception_for_false_values()
         {
+            bool threwException = false;
             try
             {
                 false.ShouldBeTrue();
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -210,15 +226,17 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldBeFalse_throws_exception_for_true_values()
         {
+            bool threwException = false;
             try
             {
                 true.ShouldBeFalse();
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -250,13 +268,17 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldThrow_throws_exception_if_the_wrong_exception_was_thrown()
         {
+            bool threwException = false;
             try
             {
                 The.Action(MethodThatThrowsAnException).ShouldThrow<ArgumentException>();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         private static void MethodThatThrowsArgumentException(string argument)
@@ -275,15 +297,17 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldThrow_throws_an_exception_if_no_exception_was_thrown()
         {
+            bool threwException = false;
             try
             {
                 The.Action(() => { }).ShouldThrow<Exception>();
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
@@ -303,15 +327,17 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void ShouldBe_throws_exception_for_wrong_type()
         {
+            bool threwException = false;
             try
             {
                 0.ShouldBe<string>();
-
-                Assert.Fail();
             }
             catch (AssertionException)
             {
+                threwException = true;
             }
+
+            Assert.IsTrue(threwException, "Should have triggered an assertion.");
         }
 
         [Test]
