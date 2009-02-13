@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Button.cs" />
+    <Compile Include="IButtonAction.cs" />
+    <Compile Include="IButtonState.cs" />
+    <Compile Include="IInputDevice.cs" />
+    <Compile Include="IInputDevices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
