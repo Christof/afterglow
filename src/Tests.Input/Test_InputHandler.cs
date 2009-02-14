@@ -13,15 +13,11 @@ namespace TheNewEngine.Input
 
             var inputDevicesMock = new Mock<IInputDevices>();
             var inputDeviceMock = new Mock<IInputDevice>();
-            var buttonStateMock = new Mock<IButtonState>();
-            var buttonActionMock = new Mock<IButtonAction>();
 
             var inputDevices = inputDevicesMock.Object;
             
             inputDevicesMock.SetupGet(i => i.Keyboard).Returns(inputDeviceMock.Object);
-            inputDeviceMock.Setup(i => i.On(Button.W)).Returns(buttonStateMock.Object);
-            buttonStateMock.Setup(i => i.IsDown()).Returns(buttonActionMock.Object);
-            buttonActionMock.Setup(i => i.Do(action));
+            inputDeviceMock.Setup(i => i.On(Button.W)).Returns(new ButtonAction(Button.W));
             
             inputDevices.Keyboard.On(Button.W).IsDown()
                 .Do(action);
