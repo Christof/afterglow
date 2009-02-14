@@ -85,6 +85,14 @@
       <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
       <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Input.SlimDX\Input.SlimDX.csproj">
+      <Project>{5AF4B16A-E50B-4970-9ADF-0F0D5CF2088C}</Project>
+      <Name>Input.SlimDX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Input\Input.csproj">
+      <Project>{86212696-F63D-439E-8F1C-903B6250D916}</Project>
+      <Name>Input %28Input\Input%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Math\Math.csproj">
       <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
       <Name>Math %28Math\Math%29</Name>

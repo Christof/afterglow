@@ -5,6 +5,8 @@ using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Graphics.Rendering;
 using TheNewEngine.Graphics.SlimDX;
+using TheNewEngine.Input;
+using TheNewEngine.Input.SlimDX;
 using TheNewEngine.Math;
 using TheNewEngine.Graphics.Textures;
 
@@ -26,11 +28,17 @@ namespace TheNewEngine.Graphics
 
         private IEffect mEffect;
 
+        private IInputDevices mInputDevices;
+
+        private float mTimeSinceLastFrame;
+
         /// <summary>
         /// Loads the resources for this scene.
         /// </summary>
         public override void Load()
         {
+            mInputDevices = new SlimDXInputDevices(Form);
+
             var importer = new ColladaImporter(COLLAD_PLANE);
             var container = importer.GetFirstMesh();
 
@@ -66,6 +74,10 @@ namespace TheNewEngine.Graphics
         /// <param name="timeSinceLastCall">The time since the last call.</param>
         public override void Update(float timeSinceLastCall)
         {
+            mTimeSinceLastFrame = timeSinceLastCall;
+            Form.Text = string.Format("FrameTime: {0:0000}ms FPS: {1:0000}", 
+                timeSinceLastCall * 1000.0f, 1 / timeSinceLastCall);
+            mInputDevices.Update();
         }
 
         /// <summary>
@@ -86,37 +98,16 @@ namespace TheNewEngine.Graphics
 
         private void SetupKeysAndActions()
         {
-            Form.KeyDown +=
-                delegate(object sender, KeyEventArgs e)
-                {
-                    switch (e.KeyCode)
-                    {
-                        case Keys.W:
-                            mStand.Radius -= 0.1f;
-                            break;
-                        case Keys.S:
-                            mStand.Radius += 0.1f;
-                            break;
-                        case Keys.A:
-                            mStand.Azimuth -= 0.1f;
-                            break;
-                        case Keys.D:
-                            mStand.Azimuth += 0.1f;
-                            break;
-                        case Keys.R:
-                            mStand.Declination += 0.1f;
-                            break;
-                        case Keys.F:
-                            mStand.Declination -= 0.1f;
-                            break;
-                        case Keys.Escape:
-                            Application.Exit();
-                            break;
-                        case Keys.P:
-                            RenderWindow.TakeScreenshot("screenshot.bmp");
-                            break;
-                    }
-                };
+            var keyboard = mInputDevices.Keyboard;
+            keyboard.On(Input.Button.W).IsDown().Do(() => mStand.Radius -= mTimeSinceLastFrame);
+            keyboard.On(Input.Button.S).IsDown().Do(() => mStand.Radius += mTimeSinceLastFrame);
+            keyboard.On(Input.Button.A).IsDown().Do(() => mStand.Azimuth += mTimeSinceLastFrame);
+            keyboard.On(Input.Button.D).IsDown().Do(() => mStand.Azimuth -= mTimeSinceLastFrame);
+            keyboard.On(Input.Button.R).IsDown().Do(() => mStand.Declination += mTimeSinceLastFrame);
+            keyboard.On(Input.Button.F).IsDown().Do(() => mStand.Declination -= mTimeSinceLastFrame);
+
+            keyboard.On(Input.Button.Escape).WasPressed().Do(Application.Exit);
+            keyboard.On(Input.Button.P).WasPressed().Do(() => RenderWindow.TakeScreenshot("screenshot.bmp"));
         }
 
         private static IEnumerable<BufferBinding> CreateBufferBindings(
