@@ -1,4 +1,9 @@
+using System;
+using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Security;
+using System.Threading;
 using System.Windows.Forms;
 using MbUnit.Framework;
 using TheNewEngine.Graphics.Utilities;
@@ -35,26 +40,53 @@ namespace TheNewEngine.Graphics.SlimDX
         {
             Load();
 
+            //Form.Load += (s, e) => MainLoop();
+            MainLoop();
+
+            Application.Run(Form);
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct NativeMessage
+        {
+            public IntPtr hWnd;
+            public uint msg;
+            public IntPtr wParam;
+            public IntPtr lParam;
+            public uint time;
+            public Point p;
+        }
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool PeekMessage(out NativeMessage message, IntPtr hwnd, uint messageFilterMin, uint messageFilterMax, uint flags);
+
+
+        private void MainLoop()
+        {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
             long last = stopwatch.ElapsedMilliseconds;
 
             Application.Idle +=
                 delegate
+            {
+                NativeMessage message;
+                while (!PeekMessage(out message, IntPtr.Zero, 0, 0, 0))
                 {
                     long now = stopwatch.ElapsedMilliseconds;
-                    float frametime = (now - last) / 1000.0f;
+                    float frametime = (now - last)/1000.0f;
                     last = now;
 
                     Update(frametime);
                     Render();
 
+//                    if (frametime < 20)
+//                        Thread.Sleep(10);
                     //AssertWithScreenshot();
-
-                    Application.DoEvents();
-                };
-
-            Application.Run(Form);
+                }
+            };
         }
 
         private void AssertWithScreenshot()
