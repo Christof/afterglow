@@ -1,0 +1,2175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="1.36" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">c:\program files (x86)\microsoft fxcop 1.36\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <AssemblyReferenceDirectories>
+   <Directory>C:/Windows/winsxs/amd64_netfx35linq-system.core_31bf3856ad364e35_6.1.7000.0_none_2be313fa8326532d/</Directory>
+   <Directory>C:/Windows/winsxs/amd64_netfx35linq-system.xml.linq_31bf3856ad364e35_6.1.7000.0_none_686b015417a5bce5/</Directory>
+  </AssemblyReferenceDirectories>
+  <Target Name="$(ProjectDir)/../bin/Graphics.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../bin/Graphics.OpenGL.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../bin/Graphics.SlimDX.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../bin/Graphics.Xna.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../bin/Infrastructure.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../bin/Input.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../bin/Input.SlimDX.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../bin/Math.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../bin/TestInfrastructure.dll" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="1.36">
+  <Namespaces>
+   <Namespace Name="TheNewEngine.Graphics.Rendering">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Created="2009-02-15 14:04:44Z">
+      <Issue>
+       <Item>TheNewEngine.Graphics.Rendering</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="TheNewEngine.Graphics.Textures">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Created="2009-02-15 14:04:44Z">
+      <Issue>
+       <Item>TheNewEngine.Graphics.Textures</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="TheNewEngine.Graphics.Utilities">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Created="2009-02-15 14:04:44Z">
+      <Issue>
+       <Item>TheNewEngine.Graphics.Utilities</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="TheNewEngine.Graphics.Xna">
+    <Messages>
+     <Message Id="Xna" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+      <Issue Name="Namespace">
+       <Item>Xna</Item>
+       <Item>TheNewEngine.Graphics.Xna</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+  </Namespaces>
+  <Targets>
+   <Target Name="$(ProjectDir)/../bin/Graphics.dll">
+    <Modules>
+     <Module Name="graphics.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'Graphics.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'Graphics.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Graphics">
+        <Types>
+         <Type Name="ColladaImporter">
+          <Messages>
+           <Message Id="Collada" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Type">
+             <Item>Collada</Item>
+             <Item>'ColladaImporter'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#GetFirstMesh()">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2009-02-15 14:04:44Z">
+              <Issue Certainty="50">
+               <Item>'ColladaImporter.GetFirstMesh()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IScreenshotTaker">
+          <Members>
+           <Member Name="#TakeScreenshot(System.String)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'IScreenshotTaker.TakeScreenshot(string)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="SemanticHelper">
+          <Members>
+           <Member Name="#GetUsageForSemantic(System.String)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'SemanticHelper.GetUsageForSemantic(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TriangleParser">
+          <Members>
+           <Member Name="#ParseInput(System.Xml.Linq.XElement)">
+            <Messages>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'TriangleParser.ParseInput(XElement)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.Cameras">
+        <Types>
+         <Type Name="Camera">
+          <Members>
+           <Member Name="#.ctor(TheNewEngine.Graphics.Cameras.IStand,TheNewEngine.Graphics.Cameras.ILense)">
+            <Messages>
+             <Message Id="lense" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameter">
+               <Item>'Camera.Camera(IStand, ILense)'</Item>
+               <Item>lense</Item>
+               <Item>'lense'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ICamera">
+          <Members>
+           <Member Name="#Lense">
+            <Messages>
+             <Message Id="Lense" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Lense</Item>
+               <Item>'ICamera.Lense'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ILense">
+          <Messages>
+           <Message Id="Lense" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Type">
+             <Item>Lense</Item>
+             <Item>'ILense'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="PerspectiveProjectionLense">
+          <Messages>
+           <Message Id="Lense" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Type">
+             <Item>Lense</Item>
+             <Item>'PerspectiveProjectionLense'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.Effects">
+        <Types>
+         <Type Name="IEffect">
+          <Messages>
+           <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Created="2009-02-15 14:04:44Z">
+            <Issue>
+             <Item>'IEffect'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.GraphicStreams">
+        <Types>
+         <Type Name="GraphicStream`1">
+          <Messages>
+           <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+            <Issue Name="TypeTypeParameter">
+             <Item>'GraphicStream&lt;ElementType&gt;'</Item>
+             <Item>'ElementType'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2009-02-15 14:04:44Z">
+            <Issue>
+             <Item>'GraphicStream&lt;ElementType&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Created="2009-02-15 14:04:44Z">
+            <Issue Name="TypeNoAlternate">
+             <Item>'GraphicStream&lt;ElementType&gt;'</Item>
+             <Item>Stream</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(TheNewEngine.Graphics.GraphicStreams.GraphicStreamUsage,System.Collections.Generic.IEnumerable`1&lt;!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'GraphicStream&lt;ElementType&gt;.GraphicStream(GraphicStreamUsage, IEnumerable&lt;ElementType&gt;)'</Item>
+               <Item>'Marshal.SizeOf(Type)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'GraphicStream&lt;ElementType&gt;.GraphicStream(GraphicStreamUsage, IEnumerable&lt;ElementType&gt;)'&#xD;&#xA;   -&gt;'GraphicStream&lt;ElementType&gt;.GraphicStream(GraphicStreamUsage, IEnumerable&lt;ElementType&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="GraphicStreamContainer">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2009-02-15 14:04:44Z">
+            <Issue>
+             <Item>'GraphicStreamContainer'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Create`1(TheNewEngine.Graphics.GraphicStreams.GraphicStreamUsage,!!0[])">
+            <Messages>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'GraphicStreamContainer.Create&lt;ElementType&gt;(GraphicStreamUsage, ElementType[])'</Item>
+               <Item>'ElementType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="GraphicStreamDescription">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Equals">
+             <Item>'GraphicStreamDescription'</Item>
+            </Issue>
+            <Issue Name="op_Equality">
+             <Item>'GraphicStreamDescription'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="GraphicStreamUsage">
+          <Members>
+           <Member Name="#Binormal">
+            <Messages>
+             <Message Id="Binormal" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Binormal</Item>
+               <Item>'GraphicStreamUsage.Binormal'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IBuffer">
+          <Members>
+           <Member Name="#Load`1(TheNewEngine.Graphics.GraphicStreams.GraphicStream`1&lt;!!0&gt;)">
+            <Messages>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'IBuffer.Load&lt;ElementType&gt;(GraphicStream&lt;ElementType&gt;)'</Item>
+               <Item>'ElementType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IBufferService">
+          <Members>
+           <Member Name="#CreateFor`1(TheNewEngine.Graphics.GraphicStreams.GraphicStream`1&lt;!!0&gt;)">
+            <Messages>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'IBufferService.CreateFor&lt;ElementType&gt;(GraphicStream&lt;ElementType&gt;)'</Item>
+               <Item>'ElementType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IGraphicStream">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2009-02-15 14:04:44Z">
+            <Issue>
+             <Item>'IGraphicStream'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Created="2009-02-15 14:04:44Z">
+            <Issue Name="TypeNoAlternate">
+             <Item>'IGraphicStream'</Item>
+             <Item>Stream</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.Rendering">
+        <Types>
+         <Type Name="IObjectRenderer">
+          <Messages>
+           <Message Id="Renderer" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Type">
+             <Item>Renderer</Item>
+             <Item>'IObjectRenderer'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.Textures">
+        <Types>
+         <Type Name="ITexture">
+          <Messages>
+           <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Created="2009-02-15 14:04:44Z">
+            <Issue>
+             <Item>'ITexture'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.Utilities">
+        <Types>
+         <Type Name="ImageComparer">
+          <Members>
+           <Member Name="#Compare(System.Drawing.Bitmap,System.Drawing.Bitmap)">
+            <Messages>
+             <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'firstBitmap'</Item>
+               <Item>'ImageComparer.Compare(Bitmap, Bitmap)'</Item>
+               <Item>'Bitmap'</Item>
+               <Item>'Image'</Item>
+              </Issue>
+              <Issue>
+               <Item>'secondBitmap'</Item>
+               <Item>'ImageComparer.Compare(Bitmap, Bitmap)'</Item>
+               <Item>'Bitmap'</Item>
+               <Item>'Image'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ComparePerByte(System.Drawing.Bitmap,System.Drawing.Bitmap)">
+            <Messages>
+             <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'firstBitmap'</Item>
+               <Item>'ImageComparer.ComparePerByte(Bitmap, Bitmap)'</Item>
+               <Item>'Bitmap'</Item>
+               <Item>'Image'</Item>
+              </Issue>
+              <Issue>
+               <Item>'secondBitmap'</Item>
+               <Item>'ImageComparer.ComparePerByte(Bitmap, Bitmap)'</Item>
+               <Item>'Bitmap'</Item>
+               <Item>'Image'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../bin/Graphics.OpenGL.dll">
+    <Modules>
+     <Module Name="graphics.opengl.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'Graphics.OpenGL.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'Graphics.OpenGL.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Graphics.OpenGL">
+        <Types>
+         <Type Name="RenderWindow">
+          <Messages>
+           <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2009-02-15 14:04:44Z">
+            <Issue Name="ProvideDisposeBool">
+             <Item>'RenderWindow'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.IntPtr)">
+            <Messages>
+             <Message Id="windowHandle" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2009-02-15 14:04:44Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'windowHandle'</Item>
+               <Item>'RenderWindow.RenderWindow(IntPtr)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Dispose()">
+            <Messages>
+             <Message TypeName="CallGCSuppressFinalizeCorrectly" Category="Microsoft.Usage" CheckId="CA1816" Created="2009-02-15 14:04:44Z">
+              <Issue Name="NotCalled">
+               <Item>'RenderWindow.Dispose()'</Item>
+               <Item>'GC.SuppressFinalize(object)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2009-02-15 14:04:44Z">
+              <Issue Name="DisposeImplementation">
+               <Item>'RenderWindow.Dispose()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../bin/Graphics.SlimDX.dll">
+    <Modules>
+     <Module Name="graphics.slimdx.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'Graphics.SlimDX.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'Graphics.SlimDX.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Graphics">
+        <Types>
+         <Type Name="SlimDXExtensions">
+          <Members>
+           <Member Name="#ToFormat(TheNewEngine.Graphics.GraphicStreams.GraphicStreamFormat)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'SlimDXExtensions.ToFormat(this GraphicStreamFormat)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ToSemantic(TheNewEngine.Graphics.GraphicStreams.GraphicStreamUsage)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'SlimDXExtensions.ToSemantic(this GraphicStreamUsage)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="SlimDXRenderWindow">
+          <Messages>
+           <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2009-02-15 14:04:44Z">
+            <Issue Name="ProvideDisposeBool">
+             <Item>'SlimDXRenderWindow'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Dispose()">
+            <Messages>
+             <Message TypeName="CallGCSuppressFinalizeCorrectly" Category="Microsoft.Usage" CheckId="CA1816" Created="2009-02-15 14:04:44Z">
+              <Issue Name="NotCalled">
+               <Item>'SlimDXRenderWindow.Dispose()'</Item>
+               <Item>'GC.SuppressFinalize(object)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2009-02-15 14:04:44Z">
+              <Issue Name="DisposeImplementation">
+               <Item>'SlimDXRenderWindow.Dispose()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SwitchFullscreen()">
+            <Messages>
+             <Message Id="Fullscreen" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Fullscreen</Item>
+               <Item>'SlimDXRenderWindow.SwitchFullscreen()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.Effects">
+        <Types>
+         <Type Name="SlimDXTextureEffectParameter">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2009-02-15 14:04:44Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'SlimDXTextureEffectParameter'</Item>
+             <Item>'ShaderResourceView'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.GraphicStreams">
+        <Types>
+         <Type Name="SlimDXBuffer">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2009-02-15 14:04:44Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'SlimDXBuffer'</Item>
+             <Item>'Buffer'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Load`1(TheNewEngine.Graphics.GraphicStreams.GraphicStream`1&lt;!!0&gt;)">
+            <Messages>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'SlimDXBuffer.Load&lt;ElementType&gt;(GraphicStream&lt;ElementType&gt;)'</Item>
+               <Item>'ElementType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="SlimDXBufferService">
+          <Members>
+           <Member Name="#CreateFor`1(TheNewEngine.Graphics.GraphicStreams.GraphicStream`1&lt;!!0&gt;)">
+            <Messages>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'SlimDXBufferService.CreateFor&lt;ElementType&gt;(GraphicStream&lt;ElementType&gt;)'</Item>
+               <Item>'ElementType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.Rendering">
+        <Types>
+         <Type Name="SlimDXObjectRenderer">
+          <Messages>
+           <Message Id="Renderer" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Type">
+             <Item>Renderer</Item>
+             <Item>'SlimDXObjectRenderer'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2009-02-15 14:04:44Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'SlimDXObjectRenderer'</Item>
+             <Item>'InputLayout'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="TheNewEngine.Graphics.Textures">
+        <Types>
+         <Type Name="SlimDXTexture">
+          <Members>
+           <Member Name="#.ctor(System.String,SlimDX.Direct3D10.Device)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'SlimDXTexture.SlimDXTexture(string, Device)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#OnFrame()">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2009-02-15 14:04:44Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'SlimDXTexture.OnFrame()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../bin/Graphics.Xna.dll">
+    <Modules>
+     <Module Name="graphics.xna.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'Graphics.Xna.dll'</Item>
+        </Issue>
+       </Message>
+       <Message Id="Xna" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+        <Issue Name="Assembly">
+         <Item>Xna</Item>
+         <Item>'Graphics.Xna.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'Graphics.Xna.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Graphics.Xna">
+        <Types>
+         <Type Name="Extensions">
+          <Members>
+           <Member Name="#ToXna(TheNewEngine.Math.Matrix)">
+            <Messages>
+             <Message Id="Xna" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Xna</Item>
+               <Item>'Extensions.ToXna(this Matrix)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ToXna(TheNewEngine.Math.Vector3)">
+            <Messages>
+             <Message Id="Xna" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Xna</Item>
+               <Item>'Extensions.ToXna(this Vector3)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="RenderWindow">
+          <Messages>
+           <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2009-02-15 14:04:44Z">
+            <Issue Name="ProvideDisposeBool">
+             <Item>'RenderWindow'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Device">
+            <Accessors>
+             <Accessor Name="#get_Device()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2009-02-15 14:04:44Z">
+                <Issue>
+                 <Item>'RenderWindow.Device.get()'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+             <Accessor Name="#set_Device(Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2009-02-15 14:04:44Z">
+                <Issue>
+                 <Item>'RenderWindow.Device.set(GraphicsDevice)'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#Dispose()">
+            <Messages>
+             <Message TypeName="CallGCSuppressFinalizeCorrectly" Category="Microsoft.Usage" CheckId="CA1816" Created="2009-02-15 14:04:44Z">
+              <Issue Name="NotCalled">
+               <Item>'RenderWindow.Dispose()'</Item>
+               <Item>'GC.SuppressFinalize(object)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2009-02-15 14:04:44Z">
+              <Issue Name="DisposeImplementation">
+               <Item>'RenderWindow.Dispose()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../bin/Infrastructure.dll">
+    <Modules>
+     <Module Name="infrastructure.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'Infrastructure.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'Infrastructure.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Infrastructure">
+        <Types>
+         <Type Name="DependencyResolver">
+          <Members>
+           <Member Name="#Resolve`1()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'DependencyResolver.Resolve&lt;T&gt;()'</Item>
+               <Item>'T'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ResolveWith`1(System.String,System.Object)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'DependencyResolver.ResolveWith&lt;T&gt;(string, object)'</Item>
+               <Item>'T'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ResolveWith`2(!!1)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'DependencyResolver.ResolveWith&lt;T, ArgumentType&gt;(ArgumentType)'</Item>
+               <Item>'T'</Item>
+              </Issue>
+             </Message>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'DependencyResolver.ResolveWith&lt;T, ArgumentType&gt;(ArgumentType)'</Item>
+               <Item>'ArgumentType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Extensions">
+          <Members>
+           <Member Name="#DowncastTo`1(System.Object)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'Extensions.DowncastTo&lt;TargetType&gt;(this object)'</Item>
+               <Item>'TargetType'</Item>
+              </Issue>
+             </Message>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'Extensions.DowncastTo&lt;TargetType&gt;(this object)'</Item>
+               <Item>'TargetType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Foreach`1(System.Collections.Generic.IEnumerable`1&lt;!!0&gt;,System.Action`1&lt;!!0&gt;)">
+            <Messages>
+             <Message Id="Foreach" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Foreach</Item>
+               <Item>'Extensions.Foreach&lt;T&gt;(this IEnumerable&lt;T&gt;, Action&lt;T&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IndexIsMultipleOf`1(System.Collections.Generic.IEnumerable`1&lt;!!0&gt;,System.Int32)">
+            <Messages>
+             <Message Id="n" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Extensions.IndexIsMultipleOf&lt;T&gt;(this IEnumerable&lt;T&gt;, int)'</Item>
+               <Item>'n'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IndexIsMultipleOf`1(System.Collections.Generic.IEnumerable`1&lt;!!0&gt;,System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="n" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Extensions.IndexIsMultipleOf&lt;T&gt;(this IEnumerable&lt;T&gt;, int, int)'</Item>
+               <Item>'n'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Serializer">
+          <Members>
+           <Member Name="#DeserializeBinary`1(System.String)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'Serializer.DeserializeBinary&lt;T&gt;(string)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'Serializer.DeserializeBinary&lt;T&gt;(string)'</Item>
+               <Item>'T'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SerializeBinary`1(!!0,System.String)">
+            <Messages>
+             <Message Id="filename" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterShouldBeCompoundWord">
+               <Item>'Serializer.SerializeBinary&lt;T&gt;(T, string)'</Item>
+               <Item>filename</Item>
+               <Item>'filename'</Item>
+               <Item>fileName</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../bin/Input.dll">
+    <Modules>
+     <Module Name="input.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'Input.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'Input.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Input">
+        <Types>
+         <Type Name="Button">
+          <Members>
+           <Member Name="#A">
+            <Messages>
+             <Message Id="A" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.A'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#AbntC1">
+            <Messages>
+             <Message Id="Abnt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Abnt</Item>
+               <Item>'Button.AbntC1'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#AbntC2">
+            <Messages>
+             <Message Id="Abnt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Abnt</Item>
+               <Item>'Button.AbntC2'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#B">
+            <Messages>
+             <Message Id="B" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.B'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#C">
+            <Messages>
+             <Message Id="C" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.C'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#D">
+            <Messages>
+             <Message Id="D" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.D'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#E">
+            <Messages>
+             <Message Id="E" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.E'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#F">
+            <Messages>
+             <Message Id="F" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.F'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#G">
+            <Messages>
+             <Message Id="G" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.G'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#H">
+            <Messages>
+             <Message Id="H" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.H'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#I">
+            <Messages>
+             <Message Id="I" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.I'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#J">
+            <Messages>
+             <Message Id="J" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.J'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#K">
+            <Messages>
+             <Message Id="K" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.K'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#L">
+            <Messages>
+             <Message Id="L" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.L'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#M">
+            <Messages>
+             <Message Id="M" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.M'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#N">
+            <Messages>
+             <Message Id="N" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.N'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#O">
+            <Messages>
+             <Message Id="O" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.O'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#P">
+            <Messages>
+             <Message Id="P" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.P'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Q">
+            <Messages>
+             <Message Id="Q" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.Q'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#R">
+            <Messages>
+             <Message Id="R" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.R'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#S">
+            <Messages>
+             <Message Id="S" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.S'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#T">
+            <Messages>
+             <Message Id="T" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.T'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#U">
+            <Messages>
+             <Message Id="U" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.U'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#V">
+            <Messages>
+             <Message Id="V" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.V'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#W">
+            <Messages>
+             <Message Id="W" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.W'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#X">
+            <Messages>
+             <Message Id="X" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.X'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Y">
+            <Messages>
+             <Message Id="Y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.Y'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Z">
+            <Messages>
+             <Message Id="Z" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Button.Z'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IButtonAction">
+          <Members>
+           <Member Name="#Do(System.Action)">
+            <Messages>
+             <Message Id="Do" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>'IButtonAction.Do(Action)'</Item>
+               <Item>Do</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IInputDevice">
+          <Members>
+           <Member Name="#On(TheNewEngine.Input.Button)">
+            <Messages>
+             <Message Id="On" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>'IInputDevice.On(Button)'</Item>
+               <Item>On</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../bin/Input.SlimDX.dll">
+    <Modules>
+     <Module Name="input.slimdx.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'Input.SlimDX.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'Input.SlimDX.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Input.SlimDX">
+        <Types>
+         <Type Name="SlimDXKeyboard">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2009-02-15 14:04:44Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'SlimDXKeyboard'</Item>
+             <Item>'Device&lt;KeyboardState&gt;'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="SlimDXMouse">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2009-02-15 14:04:44Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'SlimDXMouse'</Item>
+             <Item>'Device&lt;MouseState&gt;'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../bin/Math.dll">
+    <Modules>
+     <Module Name="math.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'Math.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'Math.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Math">
+        <Types>
+         <Type Name="Constants">
+          <Members>
+           <Member Name="#DELTA">
+            <Messages>
+             <Message Id="DELTA" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>DELTA</Item>
+               <Item>'Constants.DELTA'</Item>
+               <Item>Delta</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#HALF_PI">
+            <Messages>
+             <Message Id="HALF" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>HALF</Item>
+               <Item>'Constants.HALF_PI'</Item>
+               <Item>Half</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>'Constants.HALF_PI'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TWO_PI">
+            <Messages>
+             <Message Id="TWO" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>TWO</Item>
+               <Item>'Constants.TWO_PI'</Item>
+               <Item>Two</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>'Constants.TWO_PI'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Functions">
+          <Members>
+           <Member Name="#CoTan(System.Single)">
+            <Messages>
+             <Message Id="Co" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Co</Item>
+               <Item>'Functions.CoTan(float)'</Item>
+               <Item>CO</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Sqrt(System.Single)">
+            <Messages>
+             <Message Id="Sqrt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="Member">
+               <Item>Sqrt</Item>
+               <Item>'Functions.Sqrt(float)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="x" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Functions.Sqrt(float)'</Item>
+               <Item>'x'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IDeltaEquatable`1">
+          <Messages>
+           <Message Id="Equatable" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Type">
+             <Item>Equatable</Item>
+             <Item>'IDeltaEquatable&lt;T&gt;'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Matrix">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2009-02-15 14:04:44Z">
+            <Issue Name="op_Equality">
+             <Item>'Matrix'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <Messages>
+             <Message Id="c" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r1c1'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r1c2'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r1c3'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r1c4'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r2c1'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r2c2'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r2c3'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r2c4'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r3c1'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r3c2'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r3c3'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r3c4'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r4c1'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r4c2'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r4c3'</Item>
+               <Item>C</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>c</Item>
+               <Item>'r4c4'</Item>
+               <Item>C</Item>
+              </Issue>
+             </Message>
+             <Message Id="r" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r1c1'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r1c2'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r1c3'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r1c4'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r2c1'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r2c2'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r2c3'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r2c4'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r3c1'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r3c2'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r3c3'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r3c4'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r4c1'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r4c2'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r4c3'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Matrix.Matrix(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)'</Item>
+               <Item>r</Item>
+               <Item>'r4c4'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Equals(System.Object)">
+            <Messages>
+             <Message TypeName="OverloadOperatorEqualsOnOverridingValueTypeEquals" Category="Microsoft.Usage" CheckId="CA2231" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'Matrix'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#op_Multiply(TheNewEngine.Math.Matrix,TheNewEngine.Math.Matrix)">
+            <Messages>
+             <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>Multiply</Item>
+               <Item>'Matrix.operator *(Matrix, Matrix)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ToString()">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'string.Format(string, params object[])'</Item>
+               <Item>'Matrix.ToString()'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Vector2">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Equals">
+             <Item>'Vector2'</Item>
+            </Issue>
+            <Issue Name="op_Equality">
+             <Item>'Vector2'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.Single,System.Single)">
+            <Messages>
+             <Message Id="x" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector2.Vector2(float, float)'</Item>
+               <Item>'x'</Item>
+              </Issue>
+             </Message>
+             <Message Id="y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector2.Vector2(float, float)'</Item>
+               <Item>'y'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#X">
+            <Messages>
+             <Message Id="X" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector2.X'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Y">
+            <Messages>
+             <Message Id="Y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector2.Y'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Vector3">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Equals">
+             <Item>'Vector3'</Item>
+            </Issue>
+            <Issue Name="op_Equality">
+             <Item>'Vector3'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.Single,System.Single,System.Single)">
+            <Messages>
+             <Message Id="x" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector3.Vector3(float, float, float)'</Item>
+               <Item>'x'</Item>
+              </Issue>
+             </Message>
+             <Message Id="y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector3.Vector3(float, float, float)'</Item>
+               <Item>'y'</Item>
+              </Issue>
+             </Message>
+             <Message Id="z" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector3.Vector3(float, float, float)'</Item>
+               <Item>'z'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Item[System.Int32]">
+            <Accessors>
+             <Accessor Name="#get_Item(System.Int32)">
+              <Messages>
+               <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Created="2009-02-15 14:04:44Z" FixCategory="Breaking">
+                <Issue Name="PropertyGetter" Level="Warning">
+                 <Item>'Vector3.this.get(int)'</Item>
+                 <Item>'IndexOutOfRangeException'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2009-02-15 14:04:44Z">
+                <Issue Name="Reserved">
+                 <Item>'Vector3.this.get(int)'</Item>
+                 <Item>'IndexOutOfRangeException'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#op_Addition(TheNewEngine.Math.Vector3,TheNewEngine.Math.Vector3)">
+            <Messages>
+             <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>Add</Item>
+               <Item>'Vector3.operator +(Vector3, Vector3)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="OverloadOperatorEqualsOnOverloadingAddAndSubtract" Category="Microsoft.Design" CheckId="CA1013" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'Vector3'</Item>
+               <Item>'Vector3.operator +(Vector3, Vector3)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#op_Multiply(System.Single,TheNewEngine.Math.Vector3)">
+            <Messages>
+             <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>Multiply</Item>
+               <Item>'Vector3.operator *(float, Vector3)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#op_Multiply(TheNewEngine.Math.Vector3,System.Single)">
+            <Messages>
+             <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>Multiply</Item>
+               <Item>'Vector3.operator *(Vector3, float)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#op_Subtraction(TheNewEngine.Math.Vector3,TheNewEngine.Math.Vector3)">
+            <Messages>
+             <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>Subtract</Item>
+               <Item>'Vector3.operator -(Vector3, Vector3)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="OverloadOperatorEqualsOnOverloadingAddAndSubtract" Category="Microsoft.Design" CheckId="CA1013" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'Vector3'</Item>
+               <Item>'Vector3.operator -(Vector3, Vector3)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#op_UnaryNegation(TheNewEngine.Math.Vector3)">
+            <Messages>
+             <Message TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>Negate</Item>
+               <Item>'Vector3.operator -(Vector3)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#X">
+            <Messages>
+             <Message Id="X" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector3.X'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Y">
+            <Messages>
+             <Message Id="Y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector3.Y'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Z">
+            <Messages>
+             <Message Id="Z" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector3.Z'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Vector3EqualityComparer">
+          <Members>
+           <Member Name="#Equals(TheNewEngine.Math.Vector3,TheNewEngine.Math.Vector3)">
+            <Messages>
+             <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'Vector3EqualityComparer.Equals(Vector3, Vector3)'</Item>
+               <Item>'firstVector'</Item>
+               <Item>'x'</Item>
+               <Item>'IEqualityComparer&lt;Vector3&gt;.Equals(Vector3, Vector3)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'Vector3EqualityComparer.Equals(Vector3, Vector3)'</Item>
+               <Item>'secondVector'</Item>
+               <Item>'y'</Item>
+               <Item>'IEqualityComparer&lt;Vector3&gt;.Equals(Vector3, Vector3)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Vector4">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Equals">
+             <Item>'Vector4'</Item>
+            </Issue>
+            <Issue Name="op_Equality">
+             <Item>'Vector4'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(System.Single,System.Single,System.Single,System.Single)">
+            <Messages>
+             <Message Id="w" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector4.Vector4(float, float, float, float)'</Item>
+               <Item>'w'</Item>
+              </Issue>
+             </Message>
+             <Message Id="x" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector4.Vector4(float, float, float, float)'</Item>
+               <Item>'x'</Item>
+              </Issue>
+             </Message>
+             <Message Id="y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector4.Vector4(float, float, float, float)'</Item>
+               <Item>'y'</Item>
+              </Issue>
+             </Message>
+             <Message Id="z" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Vector4.Vector4(float, float, float, float)'</Item>
+               <Item>'z'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Item[System.Int32]">
+            <Accessors>
+             <Accessor Name="#get_Item(System.Int32)">
+              <Messages>
+               <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Created="2009-02-15 14:04:44Z" FixCategory="Breaking">
+                <Issue Name="PropertyGetter" Level="Warning">
+                 <Item>'Vector4.this.get(int)'</Item>
+                 <Item>'IndexOutOfRangeException'</Item>
+                </Issue>
+               </Message>
+               <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2009-02-15 14:04:44Z">
+                <Issue Name="Reserved">
+                 <Item>'Vector4.this.get(int)'</Item>
+                 <Item>'IndexOutOfRangeException'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#W">
+            <Messages>
+             <Message Id="W" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector4.W'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#X">
+            <Messages>
+             <Message Id="X" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector4.X'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Y">
+            <Messages>
+             <Message Id="Y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector4.Y'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Z">
+            <Messages>
+             <Message Id="Z" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Vector4.Z'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../bin/TestInfrastructure.dll">
+    <Modules>
+     <Module Name="testinfrastructure.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2009-02-15 14:04:44Z">
+        <Issue Name="NoStrongName">
+         <Item>'TestInfrastructure.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-02-15 14:04:44Z">
+        <Issue>
+         <Item>'TestInfrastructure.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="TheNewEngine.Infrastructure">
+        <Types>
+         <Type Name="BddExtensions">
+          <Messages>
+           <Message Id="Bdd" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2009-02-15 14:04:44Z">
+            <Issue Name="Type">
+             <Item>Bdd</Item>
+             <Item>'BddExtensions'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#GetPossibleException(System.Action)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'BddExtensions.GetPossibleException(this Action)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ShouldBe`1(System.Object)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'BddExtensions.ShouldBe&lt;ExpectedType&gt;(this object)'</Item>
+               <Item>'ExpectedType'</Item>
+              </Issue>
+             </Message>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'BddExtensions.ShouldBe&lt;ExpectedType&gt;(this object)'</Item>
+               <Item>'ExpectedType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ShouldBe`2(!!0)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'BddExtensions.ShouldBe&lt;T, ExpectedType&gt;(this T)'</Item>
+               <Item>'ExpectedType'</Item>
+              </Issue>
+             </Message>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'BddExtensions.ShouldBe&lt;T, ExpectedType&gt;(this T)'</Item>
+               <Item>'ExpectedType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ShouldThrow`1(System.Action)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'BddExtensions.ShouldThrow&lt;ExceptionType&gt;(this Action)'</Item>
+               <Item>'ExceptionType'</Item>
+              </Issue>
+             </Message>
+             <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2009-02-15 14:04:44Z" FixCategory="NonBreaking">
+              <Issue Name="MethodTypeParameter">
+               <Item>'BddExtensions.ShouldThrow&lt;ExceptionType&gt;(this Action)'</Item>
+               <Item>'ExceptionType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="The">
+          <Members>
+           <Member Name="#Action(System.Action)">
+            <Messages>
+             <Message Id="0#" TypeName="ParameterNamesShouldNotMatchMemberNames" Category="Microsoft.Naming" CheckId="CA1719" Created="2009-02-15 14:04:44Z">
+              <Issue>
+               <Item>'action'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Rules>
+   <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+    <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040">
+    <Resolution Name="Default">Define a custom attribute to replace {0}.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020">
+    <Resolution Name="Default">Consider merging the types defined in '{0}' with another namespace.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="CallGCSuppressFinalizeCorrectly" Category="Microsoft.Usage" CheckId="CA1816">
+    <Resolution Name="NotCalled">Change {0} to call {1}. This will prevent unnecessary finalization of the object once it has been disposed and it has fallen out of scope.</Resolution>
+   </Rule>
+   <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
+    <Resolution Name="MemberParameterShouldBeCompoundWord">In member {0}, the discrete term '{1}' in parameter name {2} should be expressed as a compound word, '{3}'.</Resolution>
+   </Rule>
+   <Rule TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011">
+    <Resolution Name="Default">Consider changing the type of parameter {0} in {1} from {2} to its base type {3}. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+    <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122">
+    <Resolution Name="Default">{0} calls into {1} which has a LinkDemand. By making this call, {1} is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: {2}</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065">
+    <Resolution Name="PropertyGetter">{0} creates an exception of type {1}, an exception type that should not be raised in a property. If this exception instance might be raised, use a different exception type, convert this property into a method, or change this property's logic so that it no longer raises an exception.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201">
+    <Resolution Name="Reserved">{0} creates an exception of type {1}, an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Resolution>
+   </Rule>
+   <Rule TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004">
+    <Resolution Name="Default">Consider a design where {0} doesn't require explicit type parameter {1} in any call to it.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+    <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
+    <Resolution Name="MemberParameter">In member {0}, correct the casing of '{1}' in parameter name {2} by changing it to '{3}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+    <Resolution Name="Assembly">Correct the spelling of '{0}' in assembly name {1}.</Resolution>
+    <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="MemberMoreMeaningfulName">Consider providing a more meaningful name than member name {0}.</Resolution>
+    <Resolution Name="MemberParameter">In method {0}, correct the spelling of '{1}' in parameter name {2} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="MemberParameterMoreMeaningfulName">In method {0}, consider providing a more meaningful name than parameter name {1}.</Resolution>
+    <Resolution Name="Namespace">Correct the spelling of '{0}' in namespace name '{1}'.</Resolution>
+    <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715">
+    <Resolution Name="MethodTypeParameter">On method {0}, prefix generic type parameter name {1} with 'T'.</Resolution>
+    <Resolution Name="TypeTypeParameter">On type {0}, prefix generic type parameter name {1} with 'T'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710">
+    <Resolution Name="Default">Rename {0} to end in '{1}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707">
+    <Resolution Name="Member">Remove the underscores from member name {0}.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711">
+    <Resolution Name="TypeNoAlternate">Rename type name {0} so that it does not end in '{1}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716">
+    <Resolution Name="Member">Rename virtual/interface member {0} so that it no longer conflicts with the reserved language keyword '{1}'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Resolution>
+   </Rule>
+   <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
+    <Resolution Name="DisposeImplementation">Modify {0} so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Resolution>
+    <Resolution Name="ProvideDisposeBool">Provide an overridable implementation of Dispose(bool) on {0} or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+    <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="OperatorOverloadsHaveNamedAlternates" Category="Microsoft.Usage" CheckId="CA2225">
+    <Resolution Name="Default">Provide a method named '{0}' as a friendly alternate for operator {1}.</Resolution>
+   </Rule>
+   <Rule TypeName="OverloadOperatorEqualsOnOverloadingAddAndSubtract" Category="Microsoft.Design" CheckId="CA1013">
+    <Resolution Name="Default">Consider adding an overload of the equality operator for {0} that takes the same parameters as {1}.</Resolution>
+   </Rule>
+   <Rule TypeName="OverloadOperatorEqualsOnOverridingValueTypeEquals" Category="Microsoft.Usage" CheckId="CA2231">
+    <Resolution Name="Default">Because {0} is a value type that overrides ValueType.Equals, it should also overload the equality and inequality operators (== and !=).</Resolution>
+   </Rule>
+   <Rule TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815">
+    <Resolution Name="Equals">{0} should override Equals.</Resolution>
+    <Resolution Name="op_Equality">{0} should override the equality (==) and inequality (!=) operators.</Resolution>
+   </Rule>
+   <Rule TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725">
+    <Resolution Name="Default">In member {0}, change parameter name {1} to {2} in order to match the identifier as it has been declared in {3}.</Resolution>
+   </Rule>
+   <Rule TypeName="ParameterNamesShouldNotMatchMemberNames" Category="Microsoft.Naming" CheckId="CA1719">
+    <Resolution Name="Default">Change either member or parameter name {0} so that one differs from the other.</Resolution>
+   </Rule>
+   <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+    <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
+   </Rule>
+   <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+    <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   </Rule>
+   <Rule TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024">
+    <Resolution Name="Default">Change {0} to a property if appropriate.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>
