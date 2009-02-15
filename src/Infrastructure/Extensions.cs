@@ -106,5 +106,19 @@ namespace TheNewEngine.Infrastructure
                 disposable.Dispose();
             }
         }
+
+        /// <summary>
+        /// Calls the given action for each element in the enumerable.
+        /// </summary>
+        /// <typeparam name="T">Element type.</typeparam>
+        /// <param name="enumerable">The enumerable.</param>
+        /// <param name="action">The action.</param>
+        public static void Foreach<T>(this IEnumerable<T> enumerable, Action<T> action)
+        {
+            foreach (var element in enumerable)
+            {
+                action(element);
+            }
+        }
     }
 }
