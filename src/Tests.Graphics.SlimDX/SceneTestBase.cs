@@ -3,7 +3,6 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Threading;
 using System.Windows.Forms;
 using MbUnit.Framework;
 using TheNewEngine.Graphics.Utilities;
@@ -13,16 +12,16 @@ namespace TheNewEngine.Graphics.SlimDX
 {
     public abstract class SceneTestBase : IScene
     {
-        public Form Form { get; set; }
+        protected Form Form { get; private set; }
 
-        public SlimDXRenderWindow RenderWindow { get; set; }
+        protected SlimDXRenderWindow RenderWindow { get; private set; }
 
         [SetUp]
         public void Setup()
         {
             Form = new Form
             {
-                ClientSize = new System.Drawing.Size(800, 600)
+                ClientSize = new Size(800, 600)
             };
 
             RenderWindow = new SlimDXRenderWindow(Form.Handle);
@@ -82,8 +81,6 @@ namespace TheNewEngine.Graphics.SlimDX
                     Update(frametime);
                     Render();
 
-//                    if (frametime < 20)
-//                        Thread.Sleep(10);
                     //AssertWithScreenshot();
                 }
             };
