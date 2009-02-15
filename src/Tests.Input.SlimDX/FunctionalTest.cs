@@ -18,10 +18,18 @@ namespace TheNewEngine.Input.SlimDX
             keyboard.On(Button.W).WasPressed().Do(() => form.Text = "Pressed");
             keyboard.On(Button.S).IsDown().Do(() => form.Text = "Down");
 
+            var mouse = inputDevices.Mouse;
+            mouse.On(Button.LeftMouse).IsDown().Do(() => form.Text = "Left Mouse down");
+            mouse.On(Button.RightMouse).WasPressed().Do(() => form.Text = "Right Mouse was pressed");
+
             form.Show();
             
             var timer = new Timer {Interval = 10};
-            timer.Tick += (s, e) => keyboard.Update();
+            timer.Tick += (s, e) =>
+            {
+                keyboard.Update();
+                mouse.Update();
+            };
 
             timer.Start();
 
@@ -29,6 +37,8 @@ namespace TheNewEngine.Input.SlimDX
             {
                 Application.DoEvents();
             }
+            timer.Stop();
+            timer.Dispose();
         }
     }
 }

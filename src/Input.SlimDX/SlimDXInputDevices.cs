@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Forms;
 
 namespace TheNewEngine.Input.SlimDX
@@ -15,6 +14,7 @@ namespace TheNewEngine.Input.SlimDX
         public SlimDXInputDevices(Control control)
         {
             Keyboard = new SlimDXKeyboard(control);
+            Mouse = new SlimDXMouse(control);
         }
 
         /// <summary>
@@ -22,6 +22,12 @@ namespace TheNewEngine.Input.SlimDX
         /// </summary>
         /// <value>The keyboard.</value>
         public IInputDevice Keyboard { get; private set; }
+
+        /// <summary>
+        /// Gets the mouse.
+        /// </summary>
+        /// <value>The mouse.</value>
+        public IInputDevice Mouse { get; private set; }
 
         /// <summary>
         /// Updates the input devices.

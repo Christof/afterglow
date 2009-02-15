@@ -12,6 +12,12 @@ namespace TheNewEngine.Input
         IInputDevice Keyboard { get; }
 
         /// <summary>
+        /// Gets the mouse.
+        /// </summary>
+        /// <value>The mouse.</value>
+        IInputDevice Mouse { get; }
+
+        /// <summary>
         /// Updates the input devices.
         /// </summary>
         void Update();

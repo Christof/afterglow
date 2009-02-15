@@ -1,5 +1,7 @@
 namespace TheNewEngine.Input
 {
+    // ReSharper disable UnusedMember.Global
+
     /// <summary>
     /// Defines possible keyboard key codes.
     /// </summary>
@@ -728,6 +730,48 @@ namespace TheNewEngine.Input
         /// <summary>
         /// Unknown key.
         /// </summary>
-        Unknown
-    } ;
+        Unknown,
+
+        /// <summary>
+        /// Left mouse button
+        /// </summary>
+        LeftMouse,
+
+        /// <summary>
+        /// Right mouse button
+        /// </summary>
+        RightMouse,
+
+        /// <summary>
+        /// Middle mouse button
+        /// </summary>
+        MiddleMouse,
+
+        /// <summary>
+        /// Fourth mouse button
+        /// </summary>
+        Mouse4,
+
+        /// <summary>
+        /// Fifth mouse button
+        /// </summary>
+        Mouse5,
+
+        /// <summary>
+        /// Sixth mouse button
+        /// </summary>
+        Mouse6,
+
+        /// <summary>
+        /// Seventh mouse button
+        /// </summary>
+        Mouse7,
+
+        /// <summary>
+        /// Eighth mouse button
+        /// </summary>
+        Mouse8,
+    }
+
+    // ReSharper restore UnusedMember.Global
 }

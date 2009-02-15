@@ -8,7 +8,7 @@ namespace TheNewEngine.Input.SlimDX
     /// <summary>
     /// Keyboard implementation for SlimDX.
     /// </summary>
-    public class SlimDXKeyboard : InputDeviceBase
+    public class SlimDXKeyboard : SlimDXInputDeviceBase
     {
         private readonly Device<KeyboardState> mKeyboard;
 
@@ -52,40 +52,12 @@ namespace TheNewEngine.Input.SlimDX
 
             foreach (Key key in state.PressedKeys)
             {
-                CheckPressedKey(key);
+                CheckPressedButton((Button)key);
             }
 
             foreach (var key in state.ReleasedKeys)
             {
-                CheckReleasedKey(key);
-            }
-        }
-
-        private void CheckPressedKey(Key key)
-        {
-            var button = (Button) key;
-            if (RegisteredButtons.ContainsKey(button))
-            {
-                var buttonAction = RegisteredButtons[button];
-                buttonAction.WasDown = true;
-                if (buttonAction.State == ButtonState.IsDown)
-                {
-                    buttonAction.ExecuteAction();
-                }
-            }
-        }
-
-        private void CheckReleasedKey(Key key)
-        {
-            var button = (Button)key;
-            if (RegisteredButtons.ContainsKey(button))
-            {
-                var buttonAction = RegisteredButtons[button];
-                if (buttonAction.State == ButtonState.WasPressed && buttonAction.WasDown)
-                {
-                    buttonAction.ExecuteAction();
-                }
-                buttonAction.WasDown = false;
+                CheckReleasedButton((Button)key);
             }
         }
     }
