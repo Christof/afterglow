@@ -8,6 +8,15 @@ namespace TheNewEngine.Input
     public class ButtonAction : IButtonState, IButtonAction
     {
         private Action mAction;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ButtonAction"/> class.
+        /// </summary>
+        /// <param name="button">The button.</param>
+        public ButtonAction(Button button)
+        {
+            Button = button;
+        }
 
         /// <summary>
         /// Gets the button.
@@ -28,15 +37,6 @@ namespace TheNewEngine.Input
         /// </summary>
         /// <value><c>true</c> if the button was down; otherwise, <c>false</c>.</value>
         public bool WasDown { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ButtonAction"/> class.
-        /// </summary>
-        /// <param name="button">The button.</param>
-        public ButtonAction(Button button)
-        {
-            Button = button;
-        }
 
         /// <summary>
         /// The action will be triggered if the button is pressed.

@@ -59,6 +59,10 @@
     <Compile Include="Test_InputHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
+      <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Input\Input.csproj">
       <Project>{86212696-F63D-439E-8F1C-903B6250D916}</Project>
       <Name>Input %28Input\Input%29</Name>

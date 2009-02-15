@@ -7,7 +7,7 @@ namespace TheNewEngine.Input
     public class Test_InputHandler
     {
         [Test]
-        public void FluentInterface()
+        public void FluentInterface_for_buttons()
         {
             Action action = () => { };
 
@@ -21,6 +21,22 @@ namespace TheNewEngine.Input
             
             inputDevices.Keyboard.On(Button.W).IsDown()
                 .Do(action);
+        }
+
+        [Test]
+        public void FluentInterface_for_axes()
+        {
+            Action<int> action = delta => { };
+
+            var inputDevicesMock = new Mock<IInputDevices>();
+            var axesInputDevice = new Mock<IAxesInputDevice>();
+
+            var inputDevices = inputDevicesMock.Object;
+
+            inputDevicesMock.SetupGet(i => i.Mouse).Returns(axesInputDevice.Object);
+            axesInputDevice.Setup(i => i.On(Axis.X)).Returns(new AxisAction(Axis.X));
+
+            inputDevices.Mouse.On(Axis.X).Do(action);
         }
     }
 }

@@ -1,9 +1,11 @@
+using TheNewEngine.Infrastructure;
+
 namespace TheNewEngine.Input
 {
     /// <summary>
     /// Provides access to all input devices.
     /// </summary>
-    public interface IInputDevices
+    public interface IInputDevices : IFluentInterface
     {
         /// <summary>
         /// Gets the keyboard.
@@ -15,7 +17,7 @@ namespace TheNewEngine.Input
         /// Gets the mouse.
         /// </summary>
         /// <value>The mouse.</value>
-        IInputDevice Mouse { get; }
+        IAxesInputDevice Mouse { get; }
 
         /// <summary>
         /// Updates the input devices.

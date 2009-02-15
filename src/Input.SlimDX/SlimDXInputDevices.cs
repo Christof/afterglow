@@ -27,7 +27,7 @@ namespace TheNewEngine.Input.SlimDX
         /// Gets the mouse.
         /// </summary>
         /// <value>The mouse.</value>
-        public IInputDevice Mouse { get; private set; }
+        public IAxesInputDevice Mouse { get; private set; }
 
         /// <summary>
         /// Updates the input devices.

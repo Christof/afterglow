@@ -62,6 +62,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
+      <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Input.SlimDX\Input.SlimDX.csproj">
       <Project>{5AF4B16A-E50B-4970-9ADF-0F0D5CF2088C}</Project>
       <Name>Input.SlimDX</Name>

@@ -47,15 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Axis.cs" />
+    <Compile Include="AxisAction.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="ButtonAction.cs" />
     <Compile Include="ButtonState.cs" />
+    <Compile Include="IAxesInputDevice.cs" />
+    <Compile Include="IAxisAction.cs" />
     <Compile Include="IButtonAction.cs" />
     <Compile Include="IButtonState.cs" />
     <Compile Include="IInputDevice.cs" />
     <Compile Include="IInputDevices.cs" />
     <Compile Include="InputDeviceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
+      <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
