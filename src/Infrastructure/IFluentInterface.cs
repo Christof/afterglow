@@ -25,7 +25,7 @@ namespace TheNewEngine.Infrastructure
         /// <summary>
         /// Hides the GetType method.
         /// </summary>
-        /// <returns>The type.</returns>
+        /// <returns>The type of the object.</returns>
         [EditorBrowsable(EditorBrowsableState.Never)]
         Type GetType();
         

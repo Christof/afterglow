@@ -62,7 +62,9 @@ namespace TheNewEngine.Input.SlimDX
 
             MouseState state = mMouse.GetCurrentState();
             if (Result.Last.IsFailure)
+            {
                 return;
+            }
 
             if (state.X != 0)
             {
@@ -79,10 +81,10 @@ namespace TheNewEngine.Input.SlimDX
                 mAxesActions[Axis.Z].ExecuteAction(state.Z);
             }
 
-            const int mouseOffset = (int) Button.LeftMouse;
+            var mouseOffset = (int) Button.LeftMouse;
             for (int i = 0; i < 8; i++)
             {
-                var button = (Button) (mouseOffset + i);
+                var button = (Button)(mouseOffset + i);
                 if (state.IsPressed(i))
                 {
                     CheckPressedButton(button);

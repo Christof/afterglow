@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Graphics.Effects;
@@ -10,7 +9,6 @@ using TheNewEngine.Input;
 using TheNewEngine.Input.SlimDX;
 using TheNewEngine.Math;
 using TheNewEngine.Graphics.Textures;
-using MbUnit.Framework;
 
 namespace TheNewEngine.Graphics
 {
@@ -111,37 +109,6 @@ namespace TheNewEngine.Graphics
 
             keyboard.On(Input.Button.Escape).WasPressed().Do(Application.Exit);
             keyboard.On(Input.Button.P).WasPressed().Do(() => RenderWindow.TakeScreenshot("screenshot.bmp"));
-        }
-
-        private static IEnumerable<BufferBinding> CreateBufferBindings(
-            IEnumerable<IGraphicStream> container,
-            IBufferService bufferService)
-        {
-            foreach (var graphicStream in container)
-            {
-                switch (graphicStream.Description.Format)
-                {
-                    case GraphicStreamFormat.UInt:
-                        yield return bufferService.CreateFor(
-                            (GraphicStream<uint>)graphicStream);
-                        break;
-
-                    case GraphicStreamFormat.Vector2:
-                        yield return bufferService.CreateFor(
-                            (GraphicStream<Vector2>)graphicStream);
-                        break;
-
-                    case GraphicStreamFormat.Vector3:
-                        yield return bufferService.CreateFor(
-                            (GraphicStream<Vector3>)graphicStream);
-                        break;
-
-                    case GraphicStreamFormat.Vector4:
-                        yield return bufferService.CreateFor(
-                            (GraphicStream<Vector4>)graphicStream);
-                        break;
-                }
-            }
         }
     }
 }

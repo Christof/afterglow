@@ -48,19 +48,18 @@ namespace TheNewEngine.Graphics.SlimDX
         [StructLayout(LayoutKind.Sequential)]
         private struct NativeMessage
         {
-            public IntPtr hWnd;
-            public uint msg;
-            public IntPtr wParam;
-            public IntPtr lParam;
-            public uint time;
-            public Point p;
+            public IntPtr HWnd;
+            public uint Message;
+            public IntPtr WParam;
+            public IntPtr LParam;
+            public uint Time;
+            public Point Point;
         }
 
         [SuppressUnmanagedCodeSecurity]
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool PeekMessage(out NativeMessage message, IntPtr hwnd, uint messageFilterMin, uint messageFilterMax, uint flags);
-
 
         private void MainLoop()
         {
@@ -75,7 +74,7 @@ namespace TheNewEngine.Graphics.SlimDX
                 while (!PeekMessage(out message, IntPtr.Zero, 0, 0, 0))
                 {
                     long now = stopwatch.ElapsedMilliseconds;
-                    float frametime = (now - last)/1000.0f;
+                    float frametime = (now - last) / 1000.0f;
                     last = now;
 
                     Update(frametime);

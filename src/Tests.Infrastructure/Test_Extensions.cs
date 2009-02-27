@@ -86,7 +86,7 @@ namespace TheNewEngine.Infrastructure
         [Test]
         public void Foreach_calls_given_lambda_for_each_element()
         {
-            var elements = new[] {1, 2, 3};
+            var elements = new[] { 1, 2, 3 };
             int sum = 0;
             elements.Foreach(element => sum += element);
 

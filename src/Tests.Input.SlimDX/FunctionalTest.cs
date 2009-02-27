@@ -31,7 +31,7 @@ namespace TheNewEngine.Input.SlimDX
 
             form.Show();
             
-            var timer = new Timer {Interval = 10};
+            var timer = new Timer { Interval = 10 };
             timer.Tick += (s, e) =>
             {
                 keyboard.Update();
