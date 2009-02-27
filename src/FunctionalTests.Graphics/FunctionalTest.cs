@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using TheNewEngine.Graphics.Cameras;
@@ -9,6 +10,7 @@ using TheNewEngine.Input;
 using TheNewEngine.Input.SlimDX;
 using TheNewEngine.Math;
 using TheNewEngine.Graphics.Textures;
+using MbUnit.Framework;
 
 namespace TheNewEngine.Graphics
 {
@@ -44,8 +46,9 @@ namespace TheNewEngine.Graphics
 
             IBufferService bufferService = new SlimDXBufferService(RenderWindow.Device);
 
-            var bufferBindings = CreateBufferBindings(container, bufferService);
-            //bufferBindings = container.Select(stream => bufferService.CreateFor(stream));
+            var bufferBindings = container
+                .Select(stream => bufferService.CreateFor(stream))
+                .ToArray(); // otherwise an interanl error of SlimDX occurs.
 
             mEffect = new SlimDXEffectCompiler(RenderWindow.Device)
                 //.Compile("NormalLighting10.fx");
@@ -114,35 +117,31 @@ namespace TheNewEngine.Graphics
             IEnumerable<IGraphicStream> container,
             IBufferService bufferService)
         {
-            var bindings = new List<BufferBinding>();
-
             foreach (var graphicStream in container)
             {
                 switch (graphicStream.Description.Format)
                 {
                     case GraphicStreamFormat.UInt:
-                        bindings.Add(bufferService.CreateFor(
-                            (GraphicStream<uint>)graphicStream));
+                        yield return bufferService.CreateFor(
+                            (GraphicStream<uint>)graphicStream);
                         break;
 
                     case GraphicStreamFormat.Vector2:
-                        bindings.Add(bufferService.CreateFor(
-                            (GraphicStream<Vector2>)graphicStream));
+                        yield return bufferService.CreateFor(
+                            (GraphicStream<Vector2>)graphicStream);
                         break;
 
                     case GraphicStreamFormat.Vector3:
-                        bindings.Add(bufferService.CreateFor(
-                            (GraphicStream<Vector3>)graphicStream));
+                        yield return bufferService.CreateFor(
+                            (GraphicStream<Vector3>)graphicStream);
                         break;
 
                     case GraphicStreamFormat.Vector4:
-                        bindings.Add(bufferService.CreateFor(
-                            (GraphicStream<Vector4>)graphicStream));
+                        yield return bufferService.CreateFor(
+                            (GraphicStream<Vector4>)graphicStream);
                         break;
                 }
             }
-
-            return bindings;
         }
     }
 }
