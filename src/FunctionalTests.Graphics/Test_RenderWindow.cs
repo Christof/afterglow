@@ -16,7 +16,7 @@ namespace TheNewEngine.Graphics
             {
                 form.ClientSize = new Size(800, 600);
 
-                IRenderWindow renderWindow = new Xna.RenderWindow(form.Handle);
+                IRenderWindow renderWindow = new XnaRenderWindow(form.Handle);
 
                 form.KeyPress +=
                     delegate(object sender, KeyPressEventArgs args)
@@ -27,7 +27,7 @@ namespace TheNewEngine.Graphics
                         }
                         else if (args.KeyChar == 's')
                         {
-                            if (renderWindow is Xna.RenderWindow)
+                            if (renderWindow is XnaRenderWindow)
                             {
                                 renderWindow.Dispose();
                                 renderWindow = new SlimDXRenderWindow(form.Handle);
@@ -35,7 +35,7 @@ namespace TheNewEngine.Graphics
                             else
                             {
                                 renderWindow.Dispose();
-                                renderWindow = new Xna.RenderWindow(form.Handle);
+                                renderWindow = new XnaRenderWindow(form.Handle);
                             }
                         }
                     };
@@ -67,7 +67,7 @@ namespace TheNewEngine.Graphics
                 var button = new Button { Size = new Size(800, 600), Top = 112, Left = 80, Parent = form };
 
                 IntPtr handle = button.Handle;
-                IRenderWindow renderWindow = new Xna.RenderWindow(handle);
+                IRenderWindow renderWindow = new XnaRenderWindow(handle);
 
                 button.KeyPress +=
                     delegate(object sender, KeyPressEventArgs args)
@@ -78,7 +78,7 @@ namespace TheNewEngine.Graphics
                         }
                         else if (args.KeyChar == 's')
                         {
-                            if (renderWindow is Xna.RenderWindow)
+                            if (renderWindow is XnaRenderWindow)
                             {
                                 renderWindow.Dispose();
                                 renderWindow = new SlimDXRenderWindow(handle);
@@ -86,7 +86,7 @@ namespace TheNewEngine.Graphics
                             else
                             {
                                 renderWindow.Dispose();
-                                renderWindow = new Xna.RenderWindow(handle);
+                                renderWindow = new XnaRenderWindow(handle);
                             }
                         }
                     };
@@ -116,7 +116,7 @@ namespace TheNewEngine.Graphics
                 form.ClientSize = new Size(800, 600);
                 
                 var renderWindow = DependencyResolver.ResolveWith<IRenderWindow>(
-                    "control", form); //new Xna.RenderWindow(form.Handle);
+                    "control", form); //new Xna.XnaRenderWindow(form.Handle);
 
                 form.KeyPress +=
                     delegate(object sender, KeyPressEventArgs args)
@@ -133,7 +133,7 @@ namespace TheNewEngine.Graphics
 
                             renderWindow = DependencyResolver.ResolveWith<IRenderWindow>(
                                 "windowHandle", form.Handle);
-//                            if (renderWindow is Xna.RenderWindow)
+//                            if (renderWindow is Xna.XnaRenderWindow)
 //                            {
 //                                renderWindow.Dispose();
 //                                renderWindow = new SlimDX.SlimDXRenderWindow(form.Handle);
@@ -141,7 +141,7 @@ namespace TheNewEngine.Graphics
 //                            else
 //                            {
 //                                renderWindow.Dispose();
-//                                renderWindow = new Xna.RenderWindow(form.Handle);
+//                                renderWindow = new Xna.XnaRenderWindow(form.Handle);
 //                            }
                         }
                     };

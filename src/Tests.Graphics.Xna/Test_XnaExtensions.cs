@@ -1,11 +1,40 @@
+using System;
 using MbUnit.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using TheNewEngine.Graphics.GraphicStreams;
 using TheNewEngine.Math;
 using XnaMatrix = Microsoft.Xna.Framework.Matrix;
 
-namespace TheNewEngine.Graphics.Xna
+namespace TheNewEngine.Graphics
 {
-    public class Test_Extensions
+    public class Test_XnaExtensions
     {
+        [Test]
+        [Row(GraphicStreamUsage.Position, VertexElementUsage.Position)]
+        [Row(GraphicStreamUsage.Color, VertexElementUsage.Color)]
+        [Row(GraphicStreamUsage.Normal, VertexElementUsage.Normal)]
+        [Row(GraphicStreamUsage.Tangent, VertexElementUsage.Tangent)]
+        [Row(GraphicStreamUsage.Binormal, VertexElementUsage.Binormal)]
+        [Row(GraphicStreamUsage.TextureCoordinate, VertexElementUsage.TextureCoordinate)]
+        [Row(GraphicStreamUsage.Index, VertexElementUsage.Fog, ExpectedException = typeof(InvalidOperationException))]
+        public void ToSemantic(GraphicStreamUsage graphicStreamUsage, VertexElementUsage usage)
+        {
+            Assert.AreEqual(usage, graphicStreamUsage.ToVertexElementUsage());
+        }
+
+        [Test]
+        [Row(GraphicStreamFormat.Float, VertexElementFormat.Single)]
+        [Row(GraphicStreamFormat.Vector2, VertexElementFormat.Vector2)]
+        [Row(GraphicStreamFormat.Vector3, VertexElementFormat.Vector3)]
+        [Row(GraphicStreamFormat.Vector4, VertexElementFormat.Vector4)]
+        [Row(GraphicStreamFormat.Color4, VertexElementFormat.Vector4)]
+        [Row(GraphicStreamFormat.Int, VertexElementFormat.Unused, ExpectedException = typeof(InvalidOperationException))]
+        [Row(GraphicStreamFormat.UInt, VertexElementFormat.Unused, ExpectedException = typeof(InvalidOperationException))]
+        public void ToFormat(GraphicStreamFormat graphicStreamFormat, VertexElementFormat format)
+        {
+            Assert.AreEqual(format, graphicStreamFormat.ToFormat());
+        }
+
         [Test]
         public void Vector_Conversion()
         {

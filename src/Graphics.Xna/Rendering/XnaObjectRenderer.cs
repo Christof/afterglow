@@ -1,41 +1,41 @@
-using SlimDX.Direct3D10;
-using TheNewEngine.Graphics.Effects;
-using TheNewEngine.Infrastructure;
-using TheNewEngine.Graphics.GraphicStreams;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework.Graphics;
+using TheNewEngine.Graphics.Effects;
+using TheNewEngine.Graphics.GraphicStreams;
+using TheNewEngine.Infrastructure;
 
 namespace TheNewEngine.Graphics.Rendering
 {
     /// <summary>
-    /// Object renderer for SlimDX.
+    /// Object renderer for Xna.
     /// </summary>
-    public class SlimDXObjectRenderer : IObjectRenderer
+    public class XnaObjectRenderer : IObjectRenderer
     {
         private readonly IEnumerable<BufferBinding> mBufferBindings;
 
-        private readonly Device mDevice;
+        private readonly GraphicsDevice mDevice;
 
-        private readonly SlimDXEffect mEffect;
+        private readonly XnaEffect mEffect;
 
         private readonly int mIndexCount;
 
         private readonly int mVertexCount;
 
-        private InputLayout mInputLayout;
+        private VertexDeclaration mVertexDeclaration;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SlimDXObjectRenderer"/> class.
+        /// Initializes a new instance of the <see cref="XnaObjectRenderer"/> class.
         /// </summary>
         /// <param name="renderWindow">The render window.</param>
         /// <param name="effect">The effect.</param>
         /// <param name="bufferBindings">The buffer bindings.</param>
-        public SlimDXObjectRenderer(IRenderWindow renderWindow, IEffect effect, 
+        public XnaObjectRenderer(IRenderWindow renderWindow, IEffect effect, 
             IEnumerable<BufferBinding> bufferBindings)
         {
             mBufferBindings = bufferBindings;
-            mDevice = renderWindow.DowncastTo<SlimDXRenderWindow>().Device;
-            mEffect = effect.DowncastTo<SlimDXEffect>();
+            mDevice = renderWindow.DowncastTo<XnaRenderWindow>().Device;
+            mEffect = effect.DowncastTo<XnaEffect>();
 
             foreach (var bufferBinding in bufferBindings)
             {
@@ -57,50 +57,48 @@ namespace TheNewEngine.Graphics.Rendering
         /// </summary>
         public void Render()
         {
-            if (mInputLayout == null)
+            if (mVertexDeclaration == null)
             {
-                CreateInputLayout();
+                CreateVertexDeclarations();
             }
 
-            mDevice.InputAssembler.SetInputLayout(mInputLayout);
-            mDevice.InputAssembler.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
+            mDevice.VertexDeclaration = mVertexDeclaration;
 
             foreach (var bufferBinding in mBufferBindings)
             {
                 bufferBinding.Bind();
             }
 
-            var technique = mEffect.Effect.GetTechniqueByIndex(0);
-            
-            for (int actualPass = 0; actualPass < technique.Description.PassCount; ++actualPass)
+            var effect = mEffect.Effect;
+            effect.Begin();
+            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {
-                var pass = technique.GetPassByIndex(actualPass);
-                pass.Apply();
+                pass.Begin();
 
                 if (mIndexCount != 0)
                 {
-                    mDevice.DrawIndexed(mIndexCount, 0, 0);
+                    mDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList,
+                        0, 0, mVertexCount, 0, mIndexCount / 3);
                 }
                 else
                 {
-                    mDevice.Draw(mVertexCount, 0);
+                    mDevice.DrawPrimitives(PrimitiveType.TriangleList, 0, mVertexCount / 3);
                 }
+
+                pass.End();
             }
+            effect.End();
         }
 
-        private void CreateInputLayout()
+        private void CreateVertexDeclarations()
         {
-            var technique = mEffect.Effect.GetTechniqueByIndex(0);
-            var pass = technique.GetPassByIndex(0);
-
             var inputElements = mBufferBindings
                 .Where(binding => binding.Description.Usage != GraphicStreamUsage.Index)
-                .Select((binding, index) => binding.DowncastTo<SlimDXBufferBinding>()
+                .Select((binding, index) => binding.DowncastTo<XnaBufferBinding>()
                     .CreateInputElement(index))
                 .ToArray();
 
-            mInputLayout = new InputLayout(mDevice, inputElements,
-                pass.Description.Signature);
+            mVertexDeclaration = new VertexDeclaration(mDevice, inputElements);
         }
     }
 }

@@ -5,7 +5,7 @@ using SlimDX;
 namespace TheNewEngine.Graphics.GraphicStreams
 {
     /// <summary>
-    /// Implementation of a frame resource with a <see cref="SlimDXBuffer"/>.
+    /// Implementation of a buffer with SlimDX.
     /// </summary>
     public class SlimDXBuffer : ISlimDXBuffer
     {

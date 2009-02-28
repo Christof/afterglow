@@ -55,7 +55,7 @@ namespace TheNewEngine.Graphics.GraphicStreams
         /// </remarks>
         /// <param name="slot">The input slot for binding.</param>
         /// <returns>An input element.</returns>
-        public InputElement CreateInputElement(int slot)
+        internal InputElement CreateInputElement(int slot)
         {
             mSlot = slot;
 

@@ -2,12 +2,12 @@ using System;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TheNewEngine.Graphics.Xna
+namespace TheNewEngine.Graphics
 {
     /// <summary>
     /// Encapsulates the Xna-device so that it renders in the given window.
     /// </summary>
-    public class RenderWindow : IRenderWindow
+    public class XnaRenderWindow : IRenderWindow
     {
         private const int WIDTH = 800;
         private const int HEIGHT = 600;
@@ -15,19 +15,19 @@ namespace TheNewEngine.Graphics.Xna
         private GraphicsDevice mDevice;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RenderWindow"/> class.
+        /// Initializes a new instance of the <see cref="XnaRenderWindow"/> class.
         /// </summary>
         /// <param name="control">The control.</param>
-        public RenderWindow(Control control)
+        public XnaRenderWindow(Control control)
             : this(control.Handle)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RenderWindow"/> class.
+        /// Initializes a new instance of the <see cref="XnaRenderWindow"/> class.
         /// </summary>
         /// <param name="windowHandle">The window handle.</param>
-        public RenderWindow(IntPtr windowHandle)
+        public XnaRenderWindow(IntPtr windowHandle)
         {
             var presentationParameters = new PresentationParameters
             {

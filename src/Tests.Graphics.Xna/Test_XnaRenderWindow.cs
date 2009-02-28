@@ -2,9 +2,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics
+namespace TheNewEngine.Graphics.Xna
 {
-    public class Test_RenderWindow
+    public class Test_XnaRenderWindow
     {
         [Test]
         public void Run()
@@ -13,24 +13,22 @@ namespace TheNewEngine.Graphics
             {
                 form.ClientSize = new Size(800, 600);
 
-                using (var renderWindow = new SlimDXRenderWindow(form.Handle))
+                using (var renderWindow = new XnaRenderWindow(form.Handle))
                 {
                     form.KeyPress +=
                         delegate(object sender, KeyPressEventArgs args)
                         {
                             if (args.KeyChar == 'p')
                             {
-                                renderWindow.TakeScreenshot("testSlimDX.bmp");
-                            }
-                            else if (args.KeyChar == 'f')
-                            {
-                                renderWindow.SwitchFullscreen();
+                                renderWindow.TakeScreenshot("testXna.bmp");
                             }
                         };
 
                     Application.Idle +=
                         delegate
                         {
+                            renderWindow.StartRendering();
+
                             renderWindow.Render();
 
                             Application.DoEvents();

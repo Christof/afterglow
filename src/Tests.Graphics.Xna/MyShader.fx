@@ -35,6 +35,7 @@ Technique DefaultTechnique
 {
 	Pass FirstPass
 	{
+		CullMode = None;
 		VertexShader = compile vs_2_0 mainVS();
 		PixelShader = compile ps_2_0 mainPS();
 	}	

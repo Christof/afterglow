@@ -8,7 +8,7 @@ using SlimDXMatrix = SlimDX.Matrix;
 
 namespace TheNewEngine.Graphics.SlimDX
 {
-    public class Test_Extensions
+    public class Test_SlimDXExtensions
     {
         [Test]
         [Row(GraphicStreamUsage.Position, "POSITION")]
