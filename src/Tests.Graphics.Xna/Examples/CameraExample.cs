@@ -89,7 +89,7 @@ namespace TheNewEngine.Graphics.Xna.Examples
             var left = new Vector3(-1f, -1f, 0f);
             var right = new Vector3(1f, -1f, 0f);
 
-            return new[] { top, left, right };
+            return new[] { top, right, left };
         }
 
         private static Vector3[] CreateColors()

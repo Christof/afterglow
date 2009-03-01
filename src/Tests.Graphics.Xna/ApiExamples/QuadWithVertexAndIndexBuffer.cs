@@ -2,7 +2,6 @@ using System.Windows.Forms;
 using MbUnit.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Runtime.InteropServices;
 
 namespace TheNewEngine.Graphics.Xna.ApiExamples
 {

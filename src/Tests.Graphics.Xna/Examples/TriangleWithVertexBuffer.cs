@@ -182,13 +182,6 @@ namespace TheNewEngine.Graphics.Xna.Examples
             mWorldViewProjectionParameter.Value = worldViewProjection;
             mWorldViewProjectionParameter.SetParameterOn(mEffect);
 
-            //Microsoft.Xna.Framework.Matrix view = Microsoft.Xna.Framework.Matrix.CreateLookAt(new Microsoft.Xna.Framework.Vector3(0, 0, -3), new Microsoft.Xna.Framework.Vector3(), new Microsoft.Xna.Framework.Vector3(0, 1, 0));
-            //Microsoft.Xna.Framework.Matrix projection = Microsoft.Xna.Framework.Matrix.CreatePerspectiveFieldOfView((float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
-            //Microsoft.Xna.Framework.Matrix world = Microsoft.Xna.Framework.Matrix.Identity;
-
-            //mEffect.DowncastTo<XnaEffect>().Effect.Parameters.GetParameterBySemantic("WorldViewProjection").SetValue(
-            //    world * view * projection);
-
             mRenderer.Render();
 
             RenderWindow.Render();
@@ -200,7 +193,7 @@ namespace TheNewEngine.Graphics.Xna.Examples
             var left = new Vector3(-1f, -1f, 0f);
             var right = new Vector3(1f, -1f, 0f);
 
-            return new[] { top, left, right };
+            return new[] { top, right, left };
         }
 
         private static Vector3[] CreateColors()

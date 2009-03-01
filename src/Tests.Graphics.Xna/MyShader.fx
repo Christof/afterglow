@@ -34,7 +34,7 @@ float4 mainPS(float3 color : COLOR) : COLOR
 Technique DefaultTechnique
 {
 	Pass FirstPass
-	{
+	{		
 		VertexShader = compile vs_2_0 mainVS();
 		PixelShader = compile ps_2_0 mainPS();
 	}	
