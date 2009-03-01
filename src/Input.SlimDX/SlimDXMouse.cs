@@ -33,7 +33,7 @@ namespace TheNewEngine.Input.SlimDX
         /// <summary>
         /// Starts a configuration for an axis change.
         /// </summary>
-        /// <param name="axis">The axis.</param>
+        /// <param name="axis">The axis for which a configuration should be added.</param>
         /// <returns>An axis action.</returns>
         public IAxisAction On(Axis axis)
         {

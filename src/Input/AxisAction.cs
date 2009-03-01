@@ -13,7 +13,7 @@ namespace TheNewEngine.Input
         /// <summary>
         /// Initializes a new instance of the <see cref="AxisAction"/> class.
         /// </summary>
-        /// <param name="axis">The axis.</param>
+        /// <param name="axis">The axis for which an action should be created.</param>
         public AxisAction(Axis axis)
         {
             Axis = axis;
@@ -22,7 +22,7 @@ namespace TheNewEngine.Input
         /// <summary>
         /// Gets the axis.
         /// </summary>
-        /// <value>The axis.</value>
+        /// <value>The axis for which triggers the action.</value>
         public Axis Axis { get; private set; }
 
         /// <summary>

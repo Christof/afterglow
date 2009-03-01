@@ -1,8 +1,8 @@
 using System;
 using TheNewEngine.Math;
-using XnaMatrix = Microsoft.Xna.Framework.Matrix;
 using Microsoft.Xna.Framework.Graphics;
 using TheNewEngine.Graphics.GraphicStreams;
+using XnaMatrix = Microsoft.Xna.Framework.Matrix;
 
 namespace TheNewEngine.Graphics
 {

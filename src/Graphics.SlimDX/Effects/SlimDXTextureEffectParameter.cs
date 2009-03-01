@@ -45,6 +45,10 @@ namespace TheNewEngine.Graphics.Effects
         /// <value>The value.</value>
         public override ITexture Value
         {
+            get
+            {
+                return base.Value;
+            }
             set
             {
                 base.Value = value;

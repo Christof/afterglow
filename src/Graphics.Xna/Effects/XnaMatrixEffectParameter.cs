@@ -16,6 +16,7 @@ namespace TheNewEngine.Graphics.Effects
             : base(semanticName)
         {
         }
+
         /// <summary>
         /// Sets the parameter on the given effect.
         /// </summary>

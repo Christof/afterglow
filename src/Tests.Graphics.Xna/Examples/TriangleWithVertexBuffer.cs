@@ -8,7 +8,6 @@ using TheNewEngine.Graphics.Rendering;
 using TheNewEngine.Graphics.Effects;
 using TheNewEngine.Graphics.Cameras;
 using TheNewEngine.Graphics.Utilities;
-using TheNewEngine.Infrastructure;
 using TheNewEngine.Math;
 using System.Windows.Forms;
 using System.Drawing;
