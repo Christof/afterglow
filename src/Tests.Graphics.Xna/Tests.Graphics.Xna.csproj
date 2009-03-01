@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="ApiExamples\CustomEffect.cs" />
     <Compile Include="ApiExamples\EmptyWindow.cs" />
+    <Compile Include="ApiExamples\QuadWithVertexAndIndexBuffer.cs" />
     <Compile Include="ApiExamples\TriangleWithStreams.cs" />
     <Compile Include="ApiExamples\TriangleWithVertexBuffer.cs" />
     <Compile Include="Comparison\Test_Comparison_PerspectiveProjectionLense.cs" />

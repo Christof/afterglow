@@ -2,11 +2,12 @@ using System.Windows.Forms;
 using MbUnit.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Runtime.InteropServices;
 
 namespace TheNewEngine.Graphics.Xna.ApiExamples
 {
     [TestFixture]
-    public class TriangleWithVertexBuffer
+    public class QuadWithVertexAndIndexBuffer
     {
         private struct Vertex
         {
@@ -32,7 +33,13 @@ namespace TheNewEngine.Graphics.Xna.ApiExamples
 
                 vertexBuffer.SetData(vertices, 0, vertices.Length);
 
-                VertexDeclaration vertexDeclaration = CreateVertexDeclaration(device);
+                var indices = CreateIndices();
+                var indexBuffer = new IndexBuffer(device,
+                    sizeof (int) * indices.Length, BufferUsage.None, 
+                    IndexElementSize.ThirtyTwoBits);
+                indexBuffer.SetData(indices);
+
+                VertexDeclaration vertexDeclaration = TriangleWithVertexBuffer.CreateVertexDeclaration(device);
 
                 var basicEffect = new BasicEffect(device, new EffectPool())
                 {
@@ -48,6 +55,8 @@ namespace TheNewEngine.Graphics.Xna.ApiExamples
 
                         device.VertexDeclaration = vertexDeclaration;
                         device.Vertices[0].SetSource(vertexBuffer, 0, 24);
+                        device.Indices = indexBuffer;
+                        device.RenderState.CullMode = CullMode.None;
 
                         basicEffect.Projection = Matrix.CreatePerspectiveFieldOfView(
                             (float)(System.Math.PI / 3), 800f / 600.0f, 0.01f, 100f);
@@ -55,7 +64,18 @@ namespace TheNewEngine.Graphics.Xna.ApiExamples
                             new Vector3(0, 0, -3), new Vector3(), new Vector3(0, 1, 0));
                         basicEffect.World = Matrix.Identity;
 
-                        RenderPrimitive(device, basicEffect);
+                        basicEffect.Begin();
+                        foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
+                        {
+                            pass.Begin();
+
+                            device.DrawIndexedPrimitives(PrimitiveType.TriangleList,
+                                0, 0, vertices.Length, 0, 2);
+
+                            pass.End();
+                        }
+
+                        basicEffect.End();
 
                         device.Present();
 
@@ -66,46 +86,19 @@ namespace TheNewEngine.Graphics.Xna.ApiExamples
             }
         }
 
-        /// <summary>
-        /// Renders one primitive with the given effect.
-        /// </summary>
-        /// <param name="device">The device.</param>
-        /// <param name="effect">The effect.</param>
-        public static void RenderPrimitive(GraphicsDevice device, Effect effect)
-        {
-            effect.Begin();
-            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
-            {
-                pass.Begin();
-
-                device.DrawPrimitives(PrimitiveType.TriangleList, 0, 1);
-
-                pass.End();
-            }
-
-            effect.End();
-        }
-
-        public static VertexDeclaration CreateVertexDeclaration(GraphicsDevice device)
-        {
-            var elements = new[]
-            {
-                new VertexElement(0, 0, VertexElementFormat.Vector3,
-                    VertexElementMethod.Default, VertexElementUsage.Position, 0),
-                new VertexElement(0, 12, VertexElementFormat.Vector3,
-                    VertexElementMethod.Default, VertexElementUsage.Color, 0)
-            };
-
-            return new VertexDeclaration(device, elements);
-        }
-
         private static Vertex[] CreateVertices()
         {
-            var top = new Vertex { Position = new Vector3(0f, 1f, 0f), Color = new Vector3(0.5f, 1f, 0f) };
-            var left = new Vertex { Position = new Vector3(-1f, -1f, 0f), Color = new Vector3(0f, 0f, 0f) };
-            var right = new Vertex { Position = new Vector3(1f, -1f, 0f), Color = new Vector3(1f, 0f, 0f) };
+            var topLeft = new Vertex { Position = new Vector3(-1f, 1f, 0f), Color = new Vector3(1f, 0f, 0f) };
+            var topRight = new Vertex { Position = new Vector3(1f, 1f, 0f), Color = new Vector3(0f, 0f, 1f) };
+            var bottomLeft = new Vertex { Position = new Vector3(-1f, -1f, 0f), Color = new Vector3(0f, 1f, 0f) };
+            var bottomRight = new Vertex { Position = new Vector3(1f, -1f, 0f), Color = new Vector3(1f, 1f, 0f) };
 
-            return new[] { top, left, right };
+            return new[] { topLeft, topRight, bottomLeft, bottomRight };
+        }
+
+        private static uint[] CreateIndices()
+        {
+            return new uint[] { 0, 1, 3, 0, 3, 2 };
         }
     }
 }
