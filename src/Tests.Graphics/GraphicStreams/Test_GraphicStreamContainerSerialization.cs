@@ -26,12 +26,12 @@ namespace TheNewEngine.Graphics.GraphicStreams
 
             deserializedContainer.GetByUsage(GraphicStreamUsage.Position)
                 .ShouldNotBeNull()
-                .ShouldBe<GraphicStream<Vector3>>()
+                .TypeShouldBe<GraphicStream<Vector3>>()
                 .Data.ShouldEqual(positions);
 
             deserializedContainer.GetByUsage(GraphicStreamUsage.TextureCoordinate)
                 .ShouldNotBeNull()
-                .ShouldBe<GraphicStream<Vector2>>()
+                .TypeShouldBe<GraphicStream<Vector2>>()
                 .Data.ShouldEqual(texCoords);
         }
     }

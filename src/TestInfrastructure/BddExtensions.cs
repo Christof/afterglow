@@ -153,7 +153,7 @@ namespace TheNewEngine.Infrastructure
         /// <typeparam name="ExpectedType">The expected type.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>The value to use for further expectations.</returns>
-        public static T ShouldBe<T, ExpectedType>(this T value)
+        public static T TypeShouldBe<T, ExpectedType>(this T value)
         {
             Assert.IsInstanceOfType(typeof(ExpectedType), value);
 
@@ -166,7 +166,7 @@ namespace TheNewEngine.Infrastructure
         /// <typeparam name="ExpectedType">The expected type.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>The value cast to the expected type.</returns>
-        public static ExpectedType ShouldBe<ExpectedType>(this object value)
+        public static ExpectedType TypeShouldBe<ExpectedType>(this object value)
         {
             Assert.IsInstanceOfType(typeof(ExpectedType), value);
 
