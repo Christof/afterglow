@@ -26,7 +26,7 @@ namespace TheNewEngine.Graphics.Effects
                 .Effect
                 .Parameters
                 .GetParameterBySemantic(SemanticName)
-                .SetValue(Value.Transposed().ToXna());
+                .SetValue(Value.ToXna());
         }
     }
 }
