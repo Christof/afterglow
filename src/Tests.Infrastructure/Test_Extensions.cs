@@ -34,7 +34,7 @@ namespace TheNewEngine.Infrastructure
         {
             var numbers = new[] { 1, 2, 3, 4, 5, 6 };
 
-            var result = numbers.IndexIsMultipleOf(2);
+            var result = numbers.EachNthElement(2);
 
             var expected = new[] { 1, 3, 5 };
 
@@ -47,7 +47,7 @@ namespace TheNewEngine.Infrastructure
         {
             var numbers = new[] { 1, 2, 3, 4, 5, 6 };
 
-            var result = numbers.IndexIsMultipleOf(2, 1);
+            var result = numbers.EachNthElement(2, 1);
 
             var expected = new[] { 2, 4, 6 };
 
@@ -88,7 +88,7 @@ namespace TheNewEngine.Infrastructure
         {
             var elements = new[] { 1, 2, 3 };
             int sum = 0;
-            elements.Foreach(element => sum += element);
+            elements.ForEach(element => sum += element);
 
             sum.ShouldEqual(6);
         }

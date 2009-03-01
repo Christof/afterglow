@@ -311,26 +311,26 @@ namespace TheNewEngine.Infrastructure
         }
 
         [Test]
-        public void ShouldBe_does_nothing_for_the_right_type()
+        public void TypeShouldBe_does_nothing_for_the_right_type()
         {
             int value = 0;
 
-            value.ShouldBe<int, int>();
+            value.TypeShouldBe<int, int>();
         }
 
         [Test]
-        public void ShouldBe_on_object_does_nothing_for_the_right_type()
+        public void TypeShouldBe_on_object_does_nothing_for_the_right_type()
         {
-            0.ShouldBe<IComparable>();
+            0.TypeShouldBe<IComparable>();
         }
 
         [Test]
-        public void ShouldBe_throws_exception_for_wrong_type()
+        public void TypeShouldBe_throws_exception_for_wrong_type()
         {
             bool threwException = false;
             try
             {
-                0.ShouldBe<string>();
+                0.TypeShouldBe<string>();
             }
             catch (AssertionException)
             {
@@ -341,11 +341,11 @@ namespace TheNewEngine.Infrastructure
         }
 
         [Test]
-        public void ShouldBe_returns_the_value_cast_to_the_expected_type()
+        public void TypeShouldBe_returns_the_value_cast_to_the_expected_type()
         {
             IComparable value = 2;
 
-            int returnedValue = value.ShouldBe<int>();
+            int returnedValue = value.TypeShouldBe<int>();
 
             Assert.AreEqual(2, returnedValue);
         }

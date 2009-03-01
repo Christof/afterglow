@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System;
 
 namespace TheNewEngine.Infrastructure
@@ -22,28 +21,28 @@ namespace TheNewEngine.Infrastructure
         }
 
         /// <summary>
-        /// Divides the given enumerable into slices of the given size.
+        /// Divides the given enumerable into slices of the given sliceSize.
         /// </summary>
         /// <typeparam name="T">Type of the elements in the enumerable</typeparam>
         /// <param name="enumerable">The sequence.</param>
-        /// <param name="size">The size of slice.</param>
+        /// <param name="sliceSize">The size of slice.</param>
         /// <returns>
-        /// A enumerable of slices with the given size.
+        /// A enumerable of slices with the given sliceSize.
         /// </returns>
-        public static IEnumerable<T[]> Slice<T>(this IEnumerable<T> enumerable, int size)
+        public static IEnumerable<T[]> Slice<T>(this IEnumerable<T> enumerable, int sliceSize)
         {
             int counter = 0;
-            var slice = new T[size];
+            var slice = new T[sliceSize];
 
             foreach (var item in enumerable)
             {
                 slice[counter++] = item;
 
-                if (counter == size)
+                if (counter == sliceSize)
                 {
                     yield return slice;
                     counter = 0;
-                    slice = new T[size];
+                    slice = new T[sliceSize];
                 }
             }
         }
@@ -58,7 +57,7 @@ namespace TheNewEngine.Infrastructure
         /// <returns>
         /// Each element with an index multiple of n plus offset.
         /// </returns>
-        public static IEnumerable<T> IndexIsMultipleOf<T>(
+        public static IEnumerable<T> EachNthElement<T>(
             this IEnumerable<T> enumerable, int n, int offset)
         {
             int index = 0;
@@ -78,10 +77,10 @@ namespace TheNewEngine.Infrastructure
         /// <param name="enumerable">The enumerable.</param>
         /// <param name="n">Number n to specify the nth elements.</param>
         /// <returns>Each element with an index multiple of n.</returns>
-        public static IEnumerable<T> IndexIsMultipleOf<T>(
+        public static IEnumerable<T> EachNthElement<T>(
             this IEnumerable<T> enumerable, int n)
         {
-            return enumerable.IndexIsMultipleOf(n, 0);
+            return enumerable.EachNthElement(n, 0);
         }
 
         /// <summary>
@@ -113,7 +112,7 @@ namespace TheNewEngine.Infrastructure
         /// <typeparam name="T">Element type.</typeparam>
         /// <param name="enumerable">The enumerable.</param>
         /// <param name="action">The action.</param>
-        public static void Foreach<T>(this IEnumerable<T> enumerable, Action<T> action)
+        public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
             foreach (var element in enumerable)
             {

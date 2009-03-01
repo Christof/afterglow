@@ -81,7 +81,7 @@ namespace TheNewEngine.Graphics
             var segmentLenght = allIndices.Count() / triangleCount / 3;
 
             var container = new GraphicStreamContainer();
-            var indices = allIndices.IndexIsMultipleOf(segmentLenght).ToArray();
+            var indices = allIndices.EachNthElement(segmentLenght).ToArray();
             container.Create(GraphicStreamUsage.Index, indices);
             var vertexCount = (int)indices.Max() + 1;
 
@@ -94,7 +94,7 @@ namespace TheNewEngine.Graphics
 
                 if (usage != GraphicStreamUsage.Position)
                 {
-                    var specificIndices = allIndices.IndexIsMultipleOf(
+                    var specificIndices = allIndices.EachNthElement(
                         segmentLenght, input.Offset).ToArray();
 
                     var newData = new float[vertexCount][];
