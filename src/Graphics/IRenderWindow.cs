@@ -1,6 +1,6 @@
 using System;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// Interface for a window which can render object through an api implementation.

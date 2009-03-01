@@ -1,6 +1,6 @@
 using System;
 
-namespace TheNewEngine.Math
+namespace Afterglow.Math
 {
     /// <summary>
     /// 4x4 Matrix which can represent transformations like translation, scale, rotation.

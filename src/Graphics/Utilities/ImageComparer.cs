@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Linq;
 
-namespace TheNewEngine.Graphics.Utilities
+namespace Afterglow.Graphics.Utilities
 {
     /// <summary>
     /// Compares images either in memory or from the hard disk.

@@ -1,4 +1,4 @@
-namespace TheNewEngine.Math
+namespace Afterglow.Math
 {
     /// <summary>
     /// Provides an Equals method which compares under the consideration of a given delta value.

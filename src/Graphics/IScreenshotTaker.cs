@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// Classes which implement this interface can take a screenshot.

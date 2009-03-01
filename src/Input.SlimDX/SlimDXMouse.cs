@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using SlimDX;
 using SlimDX.DirectInput;
 
-namespace TheNewEngine.Input.SlimDX
+namespace Afterglow.Input.SlimDX
 {
     /// <summary>
     /// SlimDX mouse implementation.

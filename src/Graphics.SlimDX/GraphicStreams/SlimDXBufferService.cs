@@ -1,6 +1,6 @@
 using SlimDX.Direct3D10;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Creates SlimDX buffers for graphic streams.

@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TheNewEngine.Graphics.Effects
+namespace Afterglow.Graphics.Effects
 {
     /// <summary>
     /// Xna effect compiler.

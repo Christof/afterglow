@@ -1,6 +1,6 @@
-using TheNewEngine.Math;
+using Afterglow.Math;
 
-namespace TheNewEngine.Graphics.Cameras
+namespace Afterglow.Graphics.Cameras
 {
     /// <summary>
     /// Camera, which is the 'window' to the 3d-world.

@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// Interface for a scene.

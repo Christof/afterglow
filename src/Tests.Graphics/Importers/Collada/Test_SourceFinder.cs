@@ -1,7 +1,7 @@
 using System.Xml.Linq;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.Importers.Collada
+namespace Afterglow.Graphics.Importers.Collada
 {
     public class Test_SourceFinder
     {

@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.Rendering
+namespace Afterglow.Graphics.Rendering
 {
     /// <summary>
     /// Renders a specific object.

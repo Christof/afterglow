@@ -2,7 +2,7 @@ using MbUnit.Framework;
 using Moq;
 using System;
 
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     public class Test_InputHandler
     {

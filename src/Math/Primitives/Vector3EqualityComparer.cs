@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TheNewEngine.Math
+namespace Afterglow.Math
 {
     /// <summary>
     /// Equality comparer for two <see cref="Vector3"/>.

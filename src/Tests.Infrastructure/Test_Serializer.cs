@@ -1,7 +1,7 @@
 using MbUnit.Framework;
 using System.IO;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     public class Test_Serializer
     {

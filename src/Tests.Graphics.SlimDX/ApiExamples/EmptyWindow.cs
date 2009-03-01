@@ -5,7 +5,7 @@ using SlimDX.Direct3D10;
 using SlimDX.DXGI;
 using Device = SlimDX.Direct3D10.Device;
 
-namespace TheNewEngine.Graphics.SlimDX.ApiExamples
+namespace Afterglow.Graphics.SlimDX.ApiExamples
 {
     [TestFixture]
     public class EmptyWindow

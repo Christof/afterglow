@@ -2,7 +2,7 @@ using System;
 using MbUnit.Framework;
 using Gallio.Framework.Assertions;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     public class Test_BddExtensions
     {

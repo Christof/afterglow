@@ -1,7 +1,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     /// <summary>
     /// Contains helper methods to serialize and deserialize objects.

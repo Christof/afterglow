@@ -1,6 +1,6 @@
 using System;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     /// <summary>
     /// Provides a method to get an action.

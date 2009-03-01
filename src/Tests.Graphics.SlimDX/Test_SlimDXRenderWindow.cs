@@ -2,7 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     public class Test_SlimDXRenderWindow
     {

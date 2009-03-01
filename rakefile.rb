@@ -2,7 +2,7 @@ require 'rexml/document'
 include REXML
 
 BUILD_DIR = "bin"
-SOLUTION_NAME = "TheNewEngine.sln"
+SOLUTION_NAME = "Afterglow.sln"
 
 task :default => [:build]
 #task :all => [ :removeBuildDir, :removeVsDirs, :default]

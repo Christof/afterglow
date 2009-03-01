@@ -1,12 +1,12 @@
 using System;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Math;
 using MbUnit.Framework;
 using SlimDX.DXGI;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Math;
 using SlimDXVector3 = SlimDX.Vector3;
 using SlimDXMatrix = SlimDX.Matrix;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace Afterglow.Graphics.SlimDX
 {
     public class Test_SlimDXExtensions
     {

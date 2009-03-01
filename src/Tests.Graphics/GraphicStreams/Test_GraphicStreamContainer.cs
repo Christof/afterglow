@@ -1,10 +1,10 @@
 using MbUnit.Framework;
 using Moq;
 using System.Linq;
-using TheNewEngine.Infrastructure;
+using Afterglow.Infrastructure;
 using System.Collections;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     [TestFixture]
     public class Test_GraphicStreamContainer

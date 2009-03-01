@@ -1,4 +1,4 @@
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Interface for all input devices.

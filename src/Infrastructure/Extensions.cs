@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     /// <summary>
     /// Some handy extension methods.

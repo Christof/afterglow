@@ -1,7 +1,7 @@
 using MbUnit.Framework;
 using System;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     /// <summary>
     /// Contains extension to write expectations in a more speaking, bdd-style.

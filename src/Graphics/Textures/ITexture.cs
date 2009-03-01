@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.Textures
+namespace Afterglow.Graphics.Textures
 {
     /// <summary>
     /// Texture interface.

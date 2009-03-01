@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Container for graphic streams.

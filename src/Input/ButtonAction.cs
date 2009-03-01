@@ -1,6 +1,6 @@
 using System;
 
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Action for a button and the information when the button is triggered.

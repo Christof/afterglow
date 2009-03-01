@@ -1,7 +1,7 @@
 using System;
-using TheNewEngine.Infrastructure;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Action for an axis.s

@@ -1,6 +1,6 @@
 using System;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Provides helper functions for the <see cref="GraphicStreamFormat"/>-enum.

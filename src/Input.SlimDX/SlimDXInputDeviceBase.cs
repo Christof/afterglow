@@ -1,4 +1,4 @@
-namespace TheNewEngine.Input.SlimDX
+namespace Afterglow.Input.SlimDX
 {
     /// <summary>
     /// Base class for SlimDX input devices.

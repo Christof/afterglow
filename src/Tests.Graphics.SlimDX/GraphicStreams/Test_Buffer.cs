@@ -2,7 +2,7 @@ using MbUnit.Framework;
 using Moq;
 using SlimDX.Direct3D10;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     public class Test_Buffer
     {

@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Provides functions to store graphic streams in buffers.

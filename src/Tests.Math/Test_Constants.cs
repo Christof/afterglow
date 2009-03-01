@@ -1,7 +1,7 @@
 using MbUnit.Framework;
-using TheNewEngine.Infrastructure;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Math
+namespace Afterglow.Math
 {
     public class Test_Constants
     {

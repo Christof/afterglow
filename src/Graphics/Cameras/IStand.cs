@@ -1,6 +1,6 @@
-using TheNewEngine.Math;
+using Afterglow.Math;
 
-namespace TheNewEngine.Graphics.Cameras
+namespace Afterglow.Graphics.Cameras
 {
     /// <summary>
     /// The stand defines the position and orientation of the camera.

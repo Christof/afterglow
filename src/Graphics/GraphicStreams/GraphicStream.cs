@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Abstract implementation of <see cref="IGraphicStream"/>.

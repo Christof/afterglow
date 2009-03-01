@@ -3,11 +3,11 @@ using System.Globalization;
 using System.Xml.Linq;
 using System.Linq;
 using System;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Infrastructure;
-using TheNewEngine.Math;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Math;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// Parser for the triangle element.

@@ -1,6 +1,6 @@
 using SlimDX.Direct3D10;
 
-namespace TheNewEngine.Graphics.Effects
+namespace Afterglow.Graphics.Effects
 {
     /// <summary>
     /// Implementation of an effect compiler for SlimDX.

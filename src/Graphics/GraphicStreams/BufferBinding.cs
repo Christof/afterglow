@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Encapsulates the behavior to bind a (part of a) buffer.

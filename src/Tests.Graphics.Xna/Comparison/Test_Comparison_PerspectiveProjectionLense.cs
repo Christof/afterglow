@@ -1,7 +1,7 @@
 using MbUnit.Framework;
-using TheNewEngine.Graphics.Xna;
+using Afterglow.Graphics.Xna;
 
-namespace TheNewEngine.Graphics.Cameras
+namespace Afterglow.Graphics.Cameras
 {
     public class Test_Comparison_PerspectiveProjectionLense
     {

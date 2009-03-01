@@ -2,7 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.Xna
+namespace Afterglow.Graphics.Xna
 {
     public class Test_XnaRenderWindow
     {

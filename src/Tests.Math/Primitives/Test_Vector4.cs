@@ -1,7 +1,7 @@
 using System;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Math
+namespace Afterglow.Math
 {
     public class Test_Vector4
     {

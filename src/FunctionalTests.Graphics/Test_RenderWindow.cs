@@ -1,10 +1,10 @@
 using System.Drawing;
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using System;
-using TheNewEngine.Infrastructure;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     [TestFixture]
     public class Test_RenderWindow

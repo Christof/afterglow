@@ -1,4 +1,4 @@
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Interface for a input device which has buttons and three axes.

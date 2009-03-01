@@ -3,17 +3,17 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Graphics.Rendering;
-using TheNewEngine.Graphics.Effects;
-using TheNewEngine.Graphics.Cameras;
-using TheNewEngine.Graphics.Utilities;
-using TheNewEngine.Math;
+using Afterglow.Graphics.Cameras;
+using Afterglow.Graphics.Effects;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Graphics.Rendering;
+using Afterglow.Graphics.Utilities;
+using Afterglow.Math;
 using System.Windows.Forms;
 using System.Drawing;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.Xna.Examples
+namespace Afterglow.Graphics.Xna.Examples
 {
     public abstract class SceneTestBase : IScene
     {

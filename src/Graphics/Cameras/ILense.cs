@@ -1,6 +1,6 @@
-using TheNewEngine.Math;
+using Afterglow.Math;
 
-namespace TheNewEngine.Graphics.Cameras
+namespace Afterglow.Graphics.Cameras
 {
     /// <summary>
     /// Defines a lense which is responsible to project a 3d scene to a 2d picture.

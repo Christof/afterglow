@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Interface for graphic streams which contain data for an element of a vertex,

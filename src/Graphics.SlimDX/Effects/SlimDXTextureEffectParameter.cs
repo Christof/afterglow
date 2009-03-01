@@ -1,8 +1,8 @@
-using TheNewEngine.Graphics.Textures;
+using Afterglow.Graphics.Textures;
 using SlimDX.Direct3D10;
-using TheNewEngine.Infrastructure;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Graphics.Effects
+namespace Afterglow.Graphics.Effects
 {
     /// <summary>
     /// Texture effect parameter.

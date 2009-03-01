@@ -1,7 +1,7 @@
 using MbUnit.Framework;
 using Moq;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     public class Test_BufferBinding
     {

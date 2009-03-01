@@ -1,6 +1,6 @@
-using TheNewEngine.Math;
+using Afterglow.Math;
 
-namespace TheNewEngine.Graphics.Cameras
+namespace Afterglow.Graphics.Cameras
 {
     /// <summary>
     /// Implements the <see cref="ILense"/>-interface by converting

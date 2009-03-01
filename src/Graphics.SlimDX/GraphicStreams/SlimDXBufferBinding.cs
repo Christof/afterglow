@@ -1,7 +1,7 @@
 using SlimDX.Direct3D10;
 using System.Diagnostics.Contracts;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Binds a <see cref="ISlimDXBuffer"/> to the input assembler.

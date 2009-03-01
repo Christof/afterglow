@@ -1,6 +1,6 @@
 using Autofac;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     /// <summary>
     /// Resolves dependencies with an underlying IoC-Framework.

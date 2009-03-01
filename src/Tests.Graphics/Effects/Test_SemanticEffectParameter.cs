@@ -1,7 +1,7 @@
 using MbUnit.Framework;
 using Moq;
 
-namespace TheNewEngine.Graphics.Effects
+namespace Afterglow.Graphics.Effects
 {
     public class Test_SemanticEffectParameter
     {

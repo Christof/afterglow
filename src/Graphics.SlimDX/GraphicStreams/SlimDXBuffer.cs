@@ -2,7 +2,7 @@ using System.Linq;
 using SlimDX.Direct3D10;
 using SlimDX;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Implementation of a buffer with SlimDX.

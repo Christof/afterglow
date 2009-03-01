@@ -1,7 +1,7 @@
-using TheNewEngine.Infrastructure;
-using TheNewEngine.Math;
+using Afterglow.Math;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Graphics.Effects
+namespace Afterglow.Graphics.Effects
 {
     /// <summary>
     /// Matrix effect parameter.

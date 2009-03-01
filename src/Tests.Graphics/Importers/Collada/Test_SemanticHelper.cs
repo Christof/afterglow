@@ -1,8 +1,8 @@
+using Afterglow.Graphics.GraphicStreams;
 using MbUnit.Framework;
-using TheNewEngine.Graphics.GraphicStreams;
 using System;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     public class Test_SemanticHelper
     {

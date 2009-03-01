@@ -1,6 +1,6 @@
 using System;
 
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Defines the action of a button action.

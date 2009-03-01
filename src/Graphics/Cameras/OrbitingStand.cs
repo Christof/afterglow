@@ -1,7 +1,7 @@
 using System;
-using TheNewEngine.Math;
+using Afterglow.Math;
 
-namespace TheNewEngine.Graphics.Cameras
+namespace Afterglow.Graphics.Cameras
 {
     /// <summary>
     /// Stand which can orbit on an imaginery sphere.

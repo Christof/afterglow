@@ -1,9 +1,9 @@
 using System.Diagnostics.Contracts;
 using System.Xml.Linq;
-using TheNewEngine.Infrastructure;
-using TheNewEngine.Graphics.GraphicStreams;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// Importer for collada files.

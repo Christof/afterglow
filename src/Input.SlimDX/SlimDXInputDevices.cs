@@ -1,6 +1,6 @@
 using System.Windows.Forms;
 
-namespace TheNewEngine.Input.SlimDX
+namespace Afterglow.Input.SlimDX
 {
     /// <summary>
     /// SlimDX input devices.

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Base class for input devices which stores the configuration for registered buttons.

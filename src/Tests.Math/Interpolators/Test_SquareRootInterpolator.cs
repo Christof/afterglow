@@ -1,6 +1,6 @@
 using MbUnit.Framework;
 
-namespace TheNewEngine.Math.Interpolators
+namespace Afterglow.Math.Interpolators
 {
     public class Test_SquareRootInterpolator
     {

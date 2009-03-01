@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Buffer which contains vertex or index data.

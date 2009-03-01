@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using Afterglow.Graphics.Effects;
+using Afterglow.Graphics.GraphicStreams;
 using Microsoft.Xna.Framework.Graphics;
-using TheNewEngine.Graphics.Effects;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Infrastructure;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Graphics.Rendering
+namespace Afterglow.Graphics.Rendering
 {
     /// <summary>
     /// Object renderer for Xna.

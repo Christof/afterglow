@@ -1,11 +1,11 @@
 using System.Windows.Forms;
-using TheNewEngine.Graphics.Cameras;
-using TheNewEngine.Graphics.Effects;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Graphics.Rendering;
-using TheNewEngine.Math;
+using Afterglow.Graphics.Cameras;
+using Afterglow.Graphics.Effects;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Graphics.Rendering;
+using Afterglow.Math;
 
-namespace TheNewEngine.Graphics.SlimDX.Examples
+namespace Afterglow.Graphics.SlimDX.Examples
 {
     public class CameraExample : SceneTestBase
     {

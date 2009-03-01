@@ -1,4 +1,4 @@
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     // ReSharper disable UnusedMember.Global
 

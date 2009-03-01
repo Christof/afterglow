@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.Effects
+namespace Afterglow.Graphics.Effects
 {
     /// <summary>
     /// Base class for effect parameters which has a semantic-name

@@ -3,7 +3,7 @@ using MbUnit.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Windows.Forms;
 
-namespace TheNewEngine.Graphics.Xna.ApiExamples
+namespace Afterglow.Graphics.Xna.ApiExamples
 {
     [TestFixture]
     public class EmptyWindow

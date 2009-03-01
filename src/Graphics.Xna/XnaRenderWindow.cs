@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// Encapsulates the Xna-device so that it renders in the given window.

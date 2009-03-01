@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Defines usage of a graphic stream.

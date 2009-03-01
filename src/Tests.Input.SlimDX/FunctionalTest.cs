@@ -1,7 +1,7 @@
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Input.SlimDX
+namespace Afterglow.Input.SlimDX
 {
     public class FunctionalTest
     {

@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics.Effects
+namespace Afterglow.Graphics.Effects
 {
     /// <summary>
     /// Interface for all effects.

@@ -1,4 +1,4 @@
-namespace TheNewEngine.Math
+namespace Afterglow.Math
 {
     /// <summary>
     /// Defines a coordinate system in 3d-space.

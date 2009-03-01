@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework.Graphics;
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Binds a <see cref="IXnaVertexBuffer"/> to the device.

@@ -1,8 +1,8 @@
+using Afterglow.Math;
 using MbUnit.Framework;
-using TheNewEngine.Math;
 using System.Collections;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     [TestFixture]
     public class Test_GraphicStream

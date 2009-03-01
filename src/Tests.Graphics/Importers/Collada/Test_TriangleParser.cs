@@ -1,11 +1,11 @@
 using System.Linq;
 using System.Xml.Linq;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Math;
 using MbUnit.Framework;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Infrastructure;
-using TheNewEngine.Math;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     public class Test_TriangleParser
     {

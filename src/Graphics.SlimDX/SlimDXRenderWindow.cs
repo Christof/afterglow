@@ -4,7 +4,7 @@ using SlimDX.Direct3D10;
 using SlimDX.DXGI;
 using Device = SlimDX.Direct3D10.Device;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// Encapsulates the SlimDX-device so that it renders in the given window.

@@ -2,7 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.OpenGL
+namespace Afterglow.Graphics.OpenGL
 {
     public class Test_RenderWindow
     {

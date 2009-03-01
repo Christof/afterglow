@@ -1,12 +1,12 @@
 using System;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Math;
 using SlimDX.Direct3D10;
 using SlimDX.DXGI;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Math;
 using SlimDXVector3 = SlimDX.Vector3;
 using SlimDXMatrix = SlimDX.Matrix;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// This class contains extension methods which help to map engine types to

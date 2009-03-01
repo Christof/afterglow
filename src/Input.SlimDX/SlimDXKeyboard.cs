@@ -3,7 +3,7 @@ using SlimDX;
 using SlimDX.DirectInput;
 using System;
 
-namespace TheNewEngine.Input.SlimDX
+namespace Afterglow.Input.SlimDX
 {
     /// <summary>
     /// Keyboard implementation for SlimDX.

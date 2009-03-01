@@ -1,7 +1,7 @@
 using System.Globalization;
 using System;
 
-namespace TheNewEngine.Math
+namespace Afterglow.Math
 {
     /// <summary>
     /// 2-dimensional vector which has properties for each axis (x-axis, y-axis).

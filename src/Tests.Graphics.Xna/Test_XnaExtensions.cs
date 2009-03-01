@@ -1,11 +1,11 @@
 using System;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Math;
 using MbUnit.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Math;
 using XnaMatrix = Microsoft.Xna.Framework.Matrix;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     public class Test_XnaExtensions
     {

@@ -2,7 +2,7 @@ using System.Linq;
 using System.Xml.Linq;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     public class Test_SourceParser
     {

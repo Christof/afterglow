@@ -1,8 +1,8 @@
+using Afterglow.Math;
 using MbUnit.Framework;
-using TheNewEngine.Math;
 using System;
 
-namespace TheNewEngine.Graphics.Cameras
+namespace Afterglow.Graphics.Cameras
 {
     public class Test_OrbitingStand
     {

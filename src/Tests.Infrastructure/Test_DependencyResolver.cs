@@ -1,7 +1,7 @@
 using Autofac.Builder;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     public class Test_DependencyResolver
     {

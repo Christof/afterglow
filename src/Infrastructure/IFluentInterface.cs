@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     /// <summary>
     /// Hides the methods from object (ToString(), GetHashCode(), GetType()).

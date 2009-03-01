@@ -1,16 +1,16 @@
 using System.Linq;
 using System.Windows.Forms;
-using TheNewEngine.Graphics.Cameras;
-using TheNewEngine.Graphics.Effects;
-using TheNewEngine.Graphics.GraphicStreams;
-using TheNewEngine.Graphics.Rendering;
-using TheNewEngine.Graphics.SlimDX;
-using TheNewEngine.Input;
-using TheNewEngine.Input.SlimDX;
-using TheNewEngine.Math;
-using TheNewEngine.Graphics.Textures;
+using Afterglow.Graphics.Cameras;
+using Afterglow.Graphics.Effects;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Graphics.Rendering;
+using Afterglow.Graphics.SlimDX;
+using Afterglow.Graphics.Textures;
+using Afterglow.Input;
+using Afterglow.Input.SlimDX;
+using Afterglow.Math;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     public class FunctionalTest : SceneTestBase
     {

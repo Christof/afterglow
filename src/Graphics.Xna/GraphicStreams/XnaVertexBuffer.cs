@@ -1,8 +1,8 @@
 using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
-using TheNewEngine.Infrastructure;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Implementation of a buffer with Xna.

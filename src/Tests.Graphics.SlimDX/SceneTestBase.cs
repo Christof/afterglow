@@ -4,11 +4,11 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows.Forms;
+using Afterglow.Graphics.Utilities;
 using MbUnit.Framework;
-using TheNewEngine.Graphics.Utilities;
 using System.Diagnostics;
 
-namespace TheNewEngine.Graphics.SlimDX
+namespace Afterglow.Graphics.SlimDX
 {
     public abstract class SceneTestBase : IScene
     {

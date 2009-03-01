@@ -3,7 +3,7 @@ using MbUnit.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TheNewEngine.Graphics.Xna.ApiExamples
+namespace Afterglow.Graphics.Xna.ApiExamples
 {
     [TestFixture]
     public class TriangleWithVertexBuffer

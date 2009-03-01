@@ -1,4 +1,4 @@
-namespace TheNewEngine.Math
+namespace Afterglow.Math
 {
     /// <summary>
     /// Interface for all interpolators. The interface contains

@@ -1,5 +1,5 @@
 using System;
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Info about a graphic stream.

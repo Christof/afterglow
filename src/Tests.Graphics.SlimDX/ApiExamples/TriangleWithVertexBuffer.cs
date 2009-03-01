@@ -9,7 +9,7 @@ using SlimDX.DXGI;
 using Buffer = SlimDX.Direct3D10.Buffer;
 using Device = SlimDX.Direct3D10.Device;
 
-namespace TheNewEngine.Graphics.SlimDX.ApiExamples
+namespace Afterglow.Graphics.SlimDX.ApiExamples
 {
     [TestFixture]
     public class TriangleWithVertexBuffer

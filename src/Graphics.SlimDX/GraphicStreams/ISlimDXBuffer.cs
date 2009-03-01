@@ -1,6 +1,6 @@
 ﻿using SlimDX.Direct3D10;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Interface for SlimDX buffers which must know the index of the buffer

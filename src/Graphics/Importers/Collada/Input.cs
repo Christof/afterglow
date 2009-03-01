@@ -1,6 +1,6 @@
 using System.Xml.Linq;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     internal class Input
     {

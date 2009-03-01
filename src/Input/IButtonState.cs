@@ -1,4 +1,4 @@
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Defines the state for a button action.

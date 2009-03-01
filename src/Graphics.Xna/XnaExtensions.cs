@@ -1,10 +1,10 @@
 using System;
-using TheNewEngine.Math;
+using Afterglow.Graphics.GraphicStreams;
+using Afterglow.Math;
 using Microsoft.Xna.Framework.Graphics;
-using TheNewEngine.Graphics.GraphicStreams;
 using XnaMatrix = Microsoft.Xna.Framework.Matrix;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// This class contains extension methods which help to map engine types to

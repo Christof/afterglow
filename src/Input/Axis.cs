@@ -1,4 +1,4 @@
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Defines the possible axes for an axes input device.

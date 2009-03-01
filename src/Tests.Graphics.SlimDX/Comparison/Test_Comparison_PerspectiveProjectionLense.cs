@@ -1,8 +1,8 @@
 using MbUnit.Framework;
-using TheNewEngine.Graphics.SlimDX;
+using Afterglow.Graphics.SlimDX;
 using SlimDXMatrix = SlimDX.Matrix;
 
-namespace TheNewEngine.Graphics.Cameras
+namespace Afterglow.Graphics.Cameras
 {
     public class Test_Comparison_PerspectiveProjectionLense
     {

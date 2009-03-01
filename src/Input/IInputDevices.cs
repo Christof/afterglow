@@ -1,6 +1,6 @@
-using TheNewEngine.Infrastructure;
+using Afterglow.Infrastructure;
 
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Provides access to all input devices.

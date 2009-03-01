@@ -1,4 +1,4 @@
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     public static class Categories
     {

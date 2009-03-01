@@ -1,11 +1,11 @@
+using Afterglow.Graphics.Effects;
+using Afterglow.Graphics.GraphicStreams;
 using SlimDX.Direct3D10;
-using TheNewEngine.Graphics.Effects;
-using TheNewEngine.Infrastructure;
-using TheNewEngine.Graphics.GraphicStreams;
+using Afterglow.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TheNewEngine.Graphics.Rendering
+namespace Afterglow.Graphics.Rendering
 {
     /// <summary>
     /// Object renderer for SlimDX.

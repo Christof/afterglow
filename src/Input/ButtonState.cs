@@ -1,4 +1,4 @@
-namespace TheNewEngine.Input
+namespace Afterglow.Input
 {
     /// <summary>
     /// Possible states of button on which an action can be triggered.

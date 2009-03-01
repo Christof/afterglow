@@ -1,7 +1,7 @@
 using System;
-using TheNewEngine.Math;
+using Afterglow.Math;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Contains an extension method to make the adding of <see cref="BufferBinding"/>s easier.

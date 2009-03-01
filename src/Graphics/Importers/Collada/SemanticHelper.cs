@@ -1,7 +1,7 @@
 using System;
-using TheNewEngine.Graphics.GraphicStreams;
+using Afterglow.Graphics.GraphicStreams;
 
-namespace TheNewEngine.Graphics
+namespace Afterglow.Graphics
 {
     /// <summary>
     /// Provides helper function to convert the semantic to a <see cref="GraphicStreamUsage"/>

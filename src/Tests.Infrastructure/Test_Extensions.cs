@@ -4,7 +4,7 @@ using MbUnit.Framework;
 using System;
 using Moq;
 
-namespace TheNewEngine.Infrastructure
+namespace Afterglow.Infrastructure
 {
     public class Test_Extensions
     {

@@ -1,9 +1,9 @@
 using System.Linq;
+using Afterglow.Infrastructure;
+using Afterglow.Math;
 using MbUnit.Framework;
-using TheNewEngine.Infrastructure;
-using TheNewEngine.Math;
 
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     public class Test_GraphicStreamContainerSerialization
     {

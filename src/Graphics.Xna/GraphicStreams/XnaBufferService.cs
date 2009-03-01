@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework.Graphics;
-namespace TheNewEngine.Graphics.GraphicStreams
+namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
     /// Implementaiton of a <see cref="IBufferService"/> for Xna.

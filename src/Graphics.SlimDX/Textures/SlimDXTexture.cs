@@ -1,6 +1,6 @@
 using SlimDX.Direct3D10;
 
-namespace TheNewEngine.Graphics.Textures
+namespace Afterglow.Graphics.Textures
 {
     /// <summary>
     /// SlimDX texture implementation.

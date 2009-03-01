@@ -3,7 +3,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using MbUnit.Framework;
 
-namespace TheNewEngine.Graphics.Utilities
+namespace Afterglow.Graphics.Utilities
 {
     public class Test_ImageComparer
     {
