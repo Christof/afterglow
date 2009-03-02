@@ -7,6 +7,7 @@ SOLUTION_NAME = "Afterglow.sln"
 task :default => [:build]
 #task :all => [ :removeBuildDir, :removeVsDirs, :default]
 
+desc "Cleans the screen."
 task :clear do
 	sh "cls"
 end
@@ -54,6 +55,7 @@ class Gallio
 	end
 end
 
+desc "Removes the build directory."
 task :removeBuildDir => :clear do
 	puts "removing build directory (#{BUILD_DIR})"
 	if (File.exist?(BUILD_DIR))
@@ -63,10 +65,12 @@ end
 
 directory BUILD_DIR
 
+desc "Builds the solution."
 task :build => [:removeBuildDir, BUILD_DIR] do
 	MsBuild.build(SOLUTION_NAME)
 end
 
+desc "Runs all tests."
 task :test do
 	report_dir = "build"
 	gallio = Gallio.new(BUILD_DIR, report_dir)
@@ -103,6 +107,7 @@ def replace_underlines(path)
 	file.close
 end
 
+desc "Fixes references which use absolute paths or don't use the HintPath at all."
 task :fixRef do
 	#get all dependency names
 	puts 'dependencies'
