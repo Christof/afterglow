@@ -1,37 +1,28 @@
 using System;
 using System.Linq;
-using Microsoft.Xna.Framework.Graphics;
 using Afterglow.Infrastructure;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
-    /// Implementation of a buffer with Xna.
+    /// Implementation of an index buffer with Xna.
     /// </summary>
-    public class XnaVertexBuffer : IXnaBuffer
+    public class XnaIndexBuffer : IXnaBuffer
     {
         private readonly GraphicsDevice mDevice;
 
-        private VertexBuffer mBuffer;
+        private IndexBuffer mBuffer;
 
         private GraphicStreamDescription mDescription;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XnaVertexBuffer"/> class.
+        /// Initializes a new instance of the <see cref="XnaIndexBuffer"/> class.
         /// </summary>
         /// <param name="device">The device.</param>
-        public XnaVertexBuffer(GraphicsDevice device)
+        public XnaIndexBuffer(GraphicsDevice device)
         {
             mDevice = device;
-        }
-
-        /// <summary>
-        /// Gets the vertex buffer.
-        /// </summary>
-        /// <value>The vertex buffer.</value>
-        public VertexBuffer VertexBuffer
-        {
-            get { return mBuffer; }
         }
 
         /// <summary>
@@ -40,7 +31,16 @@ namespace Afterglow.Graphics.GraphicStreams
         /// <value>The index buffer.</value>
         public IndexBuffer IndexBuffer
         {
-            get { throw new InvalidOperationException("No IndexBuffer for a XnaVertexBuffer does exist!"); }
+            get { return mBuffer; }
+        }
+
+        /// <summary>
+        /// Gets the vertex buffer.
+        /// </summary>
+        /// <value>The vertex buffer.</value>
+        public VertexBuffer VertexBuffer
+        {
+            get { throw new InvalidOperationException("No VertexBuffer for a XnaIndexBuffer does exist!"); }
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Afterglow.Graphics.GraphicStreams
         {
             mDescription = graphicStream.Description;
 
-            mBuffer = new VertexBuffer(mDevice, typeof(ElementType), 
+            mBuffer = new IndexBuffer(mDevice, typeof(ElementType), 
                 mDescription.Count, BufferUsage.None);
 
             mBuffer.SetData(graphicStream.Data.ToArray());

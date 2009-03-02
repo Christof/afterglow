@@ -25,7 +25,7 @@ namespace Afterglow.Graphics.Xna.Examples
             var container = new GraphicStreamContainer();
             var positions = container.Create(GraphicStreamUsage.Position, CreatePositions());
             var colors = container.Create(GraphicStreamUsage.Color, CreateColors());
-
+            
             IBufferService bufferService = new XnaBufferService(RenderWindow.Device);
 
             var bufferBindings = new[]

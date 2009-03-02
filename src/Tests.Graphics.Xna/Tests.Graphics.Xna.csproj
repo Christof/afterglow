@@ -71,6 +71,7 @@
     <Compile Include="Comparison\Test_Comparison_PerspectiveProjectionLense.cs" />
     <Compile Include="Comparison\Test_Comparison_Stand.cs" />
     <Compile Include="Examples\CameraExample.cs" />
+    <Compile Include="Examples\QuadWithIndexBuffer.cs" />
     <Compile Include="Examples\TriangleWithVertexBuffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_XnaExtensions.cs" />

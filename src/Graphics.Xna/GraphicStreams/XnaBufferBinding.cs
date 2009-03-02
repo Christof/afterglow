@@ -2,13 +2,13 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
-    /// Binds a <see cref="IXnaVertexBuffer"/> to the device.
+    /// Binds a <see cref="IXnaBuffer"/> to the device.
     /// </summary>
     public class XnaBufferBinding : BufferBinding
     {
         private readonly GraphicsDevice mDevice;
 
-        private readonly IXnaVertexBuffer mBuffer;
+        private readonly IXnaBuffer mBuffer;
 
         private int mSlot = -1;
 
@@ -17,7 +17,7 @@ namespace Afterglow.Graphics.GraphicStreams
         /// </summary>
         /// <param name="device">The device.</param>
         /// <param name="buffer">The buffer.</param>
-        public XnaBufferBinding(GraphicsDevice device, IXnaVertexBuffer buffer)
+        public XnaBufferBinding(GraphicsDevice device, IXnaBuffer buffer)
             : base(buffer.Description)
         {
             mDevice = device;
@@ -31,13 +31,12 @@ namespace Afterglow.Graphics.GraphicStreams
         {
             if (Description.Usage == GraphicStreamUsage.Index)
             {
-                //mDevice.Indices
-                //mDevice.InputAssembler.SetIndexBuffer(mBuffer.Buffer, Description.Format.ToFormat(), 0);
+                mDevice.Indices = mBuffer.IndexBuffer;
             }
             else
             {
                 mDevice.Vertices[mSlot].SetSource(
-                    mBuffer.Buffer, 0, mBuffer.Description.ElementSize);
+                    mBuffer.VertexBuffer, 0, mBuffer.Description.ElementSize);
             }
         }
         

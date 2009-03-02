@@ -3,16 +3,22 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
-    /// Interface for Xna vertex buffers which must know the index of the buffer
+    /// Interface for Xna vertex and index buffers which must know the index of the buffer
     /// in the container to be able to set the buffer on the device.
     /// </summary>
-    public interface IXnaVertexBuffer : IBuffer
+    public interface IXnaBuffer : IBuffer
     {
         /// <summary>
-        /// Gets the buffer.
+        /// Gets the vertex buffer.
         /// </summary>
-        /// <value>The buffer.</value>
-        VertexBuffer Buffer { get; }
+        /// <value>The vertex buffer.</value>
+        VertexBuffer VertexBuffer { get; }
+
+        /// <summary>
+        /// Gets the index buffer.
+        /// </summary>
+        /// <value>The index buffer.</value>
+        IndexBuffer IndexBuffer { get; }
 
         /// <summary>
         /// Gets the description for the elements in the buffer.

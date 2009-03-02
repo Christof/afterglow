@@ -26,7 +26,15 @@ namespace Afterglow.Graphics.GraphicStreams
         public BufferBinding CreateFor<ElementType>(GraphicStream<ElementType> graphicStream)
             where ElementType : struct
         {
-            var buffer = new XnaVertexBuffer(mDevice);
+            IXnaBuffer buffer;
+            if (graphicStream.Description.Usage == GraphicStreamUsage.Index)
+            {
+                buffer = new XnaIndexBuffer(mDevice);
+            }
+            else
+            {
+                buffer = new XnaVertexBuffer(mDevice);
+            }
             buffer.Load(graphicStream);
 
             return new XnaBufferBinding(mDevice, buffer);
