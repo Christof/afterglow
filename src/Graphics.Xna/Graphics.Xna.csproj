@@ -55,6 +55,7 @@
     <Compile Include="Effects\XnaEffect.cs" />
     <Compile Include="Effects\XnaEffectCompiler.cs" />
     <Compile Include="Effects\XnaMatrixEffectParameter.cs" />
+    <Compile Include="Effects\XnaTextureEffectParameter.cs" />
     <Compile Include="GraphicStreams\IXnaBuffer.cs" />
     <Compile Include="GraphicStreams\XnaBufferBinding.cs" />
     <Compile Include="GraphicStreams\XnaBufferService.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="GraphicStreams\XnaVertexBuffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\XnaObjectRenderer.cs" />
+    <Compile Include="Textures\XnaTexture.cs" />
     <Compile Include="XnaExtensions.cs" />
     <Compile Include="XnaRenderWindow.cs" />
   </ItemGroup>
