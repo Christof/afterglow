@@ -35,7 +35,7 @@ namespace Afterglow.Graphics.Xna.Examples
             };
 
             mEffect = new XnaEffectCompiler(RenderWindow.Device).Compile("MyShader.fx");
-            mRenderer = new XnaObjectRenderer(RenderWindow, mEffect, bufferBindings);
+            mRenderer = new XnaObjectRenderer(RenderWindow.Device, mEffect, bufferBindings);
 
             mWorldViewProjectionParameter = new XnaMatrixEffectParameter("WorldViewProjection");
 

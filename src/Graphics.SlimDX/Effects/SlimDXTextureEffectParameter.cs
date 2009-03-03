@@ -68,7 +68,7 @@ namespace Afterglow.Graphics.Effects
         /// <param name="effect">The effect.</param>
         public override void SetParameterOn(IEffect effect)
         {
-            ((SlimDXEffect)effect).Effect
+            effect.DowncastTo<SlimDXEffect>().Effect
                 .GetVariableBySemantic(SemanticName)
                 .AsResource()
                 .SetResource(mShaderResourceView);

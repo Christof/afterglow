@@ -33,7 +33,7 @@ namespace Afterglow.Graphics.SlimDX.Examples
 
             mEffect = new SlimDXEffectCompiler(RenderWindow.Device).Compile("MyShader10.fx");
 
-            mRenderer = new SlimDXObjectRenderer(RenderWindow,
+            mRenderer = new SlimDXObjectRenderer(RenderWindow.Device,
                 mEffect, bufferBindings);
 
             mWorldViewProjectionParameter = new SlimDXMatrixEffectParameter("WorldViewProjection");

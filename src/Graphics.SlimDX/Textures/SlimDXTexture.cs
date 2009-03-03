@@ -23,14 +23,7 @@ namespace Afterglow.Graphics.Textures
             mFilename = filename;
             mDevice = device;
         }
-
-        /// <summary>
-        /// Called each frame before rendering so the the resource could be updated.
-        /// </summary>
-        public void OnFrame()
-        {
-        }
-
+        
         /// <summary>
         /// Loads the resource.
         /// </summary>

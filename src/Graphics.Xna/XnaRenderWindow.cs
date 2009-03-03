@@ -102,7 +102,8 @@ namespace Afterglow.Graphics
         /// Gets or sets the device.
         /// </summary>
         /// <value>The device.</value>
-        internal GraphicsDevice Device
+        // TODO : change to internal
+        public GraphicsDevice Device
         {
             get { return mDevice; }
             set { mDevice = value; }

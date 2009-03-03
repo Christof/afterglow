@@ -27,14 +27,14 @@ namespace Afterglow.Graphics.Rendering
         /// <summary>
         /// Initializes a new instance of the <see cref="XnaObjectRenderer"/> class.
         /// </summary>
-        /// <param name="renderWindow">The render window.</param>
+        /// <param name="device">The device.</param>
         /// <param name="effect">The effect.</param>
         /// <param name="bufferBindings">The buffer bindings.</param>
-        public XnaObjectRenderer(IRenderWindow renderWindow, IEffect effect, 
+        public XnaObjectRenderer(GraphicsDevice device, IEffect effect, 
             IEnumerable<BufferBinding> bufferBindings)
         {
             mBufferBindings = bufferBindings;
-            mDevice = renderWindow.DowncastTo<XnaRenderWindow>().Device;
+            mDevice = device;
             mEffect = effect.DowncastTo<XnaEffect>();
 
             foreach (var bufferBinding in bufferBindings)

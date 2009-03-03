@@ -27,14 +27,14 @@ namespace Afterglow.Graphics.Rendering
         /// <summary>
         /// Initializes a new instance of the <see cref="SlimDXObjectRenderer"/> class.
         /// </summary>
-        /// <param name="renderWindow">The render window.</param>
+        /// <param name="device">The device.</param>
         /// <param name="effect">The effect.</param>
         /// <param name="bufferBindings">The buffer bindings.</param>
-        public SlimDXObjectRenderer(IRenderWindow renderWindow, IEffect effect, 
+        public SlimDXObjectRenderer(Device device, IEffect effect, 
             IEnumerable<BufferBinding> bufferBindings)
         {
             mBufferBindings = bufferBindings;
-            mDevice = renderWindow.DowncastTo<SlimDXRenderWindow>().Device;
+            mDevice = device;
             mEffect = effect.DowncastTo<SlimDXEffect>();
 
             foreach (var bufferBinding in bufferBindings)

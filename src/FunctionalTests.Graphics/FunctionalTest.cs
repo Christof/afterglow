@@ -4,17 +4,19 @@ using Afterglow.Graphics.Cameras;
 using Afterglow.Graphics.Effects;
 using Afterglow.Graphics.GraphicStreams;
 using Afterglow.Graphics.Rendering;
-using Afterglow.Graphics.SlimDX;
 using Afterglow.Graphics.Textures;
 using Afterglow.Input;
-using Afterglow.Input.SlimDX;
 using Afterglow.Math;
+using Ninject;
+using Ninject.Parameters;
 
 namespace Afterglow.Graphics
 {
     public class FunctionalTest : SceneTestBase
     {
         private const string COLLAD_PLANE = "plane.dae";
+
+        private IRenderWindow mRenderWindow;
 
         private SemanticEffectParameter<Matrix> mWorldViewProjectionParameter;
 
@@ -32,36 +34,46 @@ namespace Afterglow.Graphics
 
         private float mTimeSinceLastFrame;
 
+        private IKernel mKernel;
+
         /// <summary>
         /// Loads the resources for this scene.
         /// </summary>
         public override void Load()
         {
-            mInputDevices = new SlimDXInputDevices(Form);
+            mRenderWindow = new XnaRenderWindow(Form.Handle);
+            mKernel = new StandardKernel(new XnaModule(mRenderWindow));
+
+            mInputDevices = mKernel.Get<IInputDevices>(
+                new ConstructorArgument("control", Form));
 
             var importer = new ColladaImporter(COLLAD_PLANE);
             var container = importer.GetFirstMesh();
 
-            IBufferService bufferService = new SlimDXBufferService(RenderWindow.Device);
+            var bufferService = mKernel.Get<IBufferService>();
 
             var bufferBindings = container
                 .Select(stream => bufferService.CreateFor(stream))
                 .ToArray(); // otherwise an interanl error of SlimDX occurs.
 
-            mEffect = new SlimDXEffectCompiler(RenderWindow.Device)
+            mEffect = mKernel.Get<IEffectCompiler>()
                 //.Compile("NormalLighting10.fx");
-                .Compile("MyTextureShader10.fx");
-            mRenderer = new SlimDXObjectRenderer(RenderWindow, mEffect, bufferBindings);
+                .Compile("MyTextureShader.fx");
 
-            mWorldViewProjectionParameter =
-                new SlimDXMatrixEffectParameter("WorldViewProjection");
+            mRenderer = mKernel.Get<IObjectRenderer>(
+                new ConstructorArgument("effect", mEffect),
+                new ConstructorArgument("bufferBindings", bufferBindings));
 
-            var texture = new SlimDXTexture("texture.png", RenderWindow.Device);
+            mWorldViewProjectionParameter = mKernel.Get<SemanticEffectParameter<Matrix>>(
+                new ConstructorArgument("semanticName", "WorldViewProjection"));
+
+            var texture = mKernel.Get<ITexture>(
+                new ConstructorArgument("filename", "texture.png"));
             texture.Load();
 
-            mTextureParameter = new SlimDXTextureEffectParameter(
-                RenderWindow.Device,
-                "Texture", texture);
+            mTextureParameter = mKernel.Get<SemanticEffectParameter<ITexture>>(
+                new ConstructorArgument("semanticName", "Texture"),
+                new ConstructorArgument("texture", texture));
 
             mStand = new OrbitingStand(5.0f, 0, 0);
             mCamera = new Camera(mStand, new PerspectiveProjectionLense());
@@ -90,11 +102,11 @@ namespace Afterglow.Graphics
             mWorldViewProjectionParameter.SetParameterOn(mEffect);
             mTextureParameter.SetParameterOn(mEffect);
 
-            RenderWindow.StartRendering();
+            mRenderWindow.StartRendering();
 
             mRenderer.Render();
 
-            RenderWindow.Render();
+            mRenderWindow.Render();
         }
 
         private void SetupKeysAndActions()
@@ -108,7 +120,7 @@ namespace Afterglow.Graphics
             keyboard.On(Input.Button.F).IsDown().Do(() => mStand.Declination -= mTimeSinceLastFrame);
 
             keyboard.On(Input.Button.Escape).WasPressed().Do(Application.Exit);
-            keyboard.On(Input.Button.P).WasPressed().Do(() => RenderWindow.TakeScreenshot("screenshot.bmp"));
+            keyboard.On(Input.Button.P).WasPressed().Do(() => mRenderWindow.TakeScreenshot("screenshot.bmp"));
         }
     }
 }
