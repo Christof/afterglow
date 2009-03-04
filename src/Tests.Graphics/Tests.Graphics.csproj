@@ -71,6 +71,7 @@
     <Compile Include="Categories.cs" />
     <Compile Include="Effects\Test_SemanticEffectParameter.cs" />
     <Compile Include="GraphicStreams\Test_BufferBinding.cs" />
+    <Compile Include="GraphicStreams\Test_BufferServiceExtensions.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStream.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStreamContainer.cs" />
     <Compile Include="GraphicStreams\Test_GraphicStreamContainerSerialization.cs" />
