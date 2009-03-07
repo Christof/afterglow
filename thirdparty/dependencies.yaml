@@ -1,0 +1,6 @@
+---
+slimdx: http://slimdx.googlecode.com/files/SlimDX%20SDK%20%28November%202008%29.exe
+xna: http://www.microsoft.com/downloads/info.aspx?na=90&p=&SrcDisplayLang=en&SrcCategoryId=&SrcFamilyId=6521d889-5414-49b8-ab32-e3fff05a4c50&u=http%3a%2f%2fdownload.microsoft.com%2fdownload%2f0%2ff%2ff%2f0ff8780d-f50a-41ef-a31a-09db7c0589a2%2fxnafx30_redist.msi
+gallio:
+  x86: http://mb-unit.googlecode.com/files/GallioBundle-3.0.5.546-Setup-x86.msi
+  x64: http://mb-unit.googlecode.com/files/GallioBundle-3.0.5.546-Setup-x64.msi

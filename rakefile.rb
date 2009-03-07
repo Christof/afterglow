@@ -1,4 +1,5 @@
 require 'rexml/document'
+require 'net/http'
 include REXML
 
 BUILD_DIR = "bin"
@@ -149,6 +150,41 @@ task :fixRef do
 		s.gsub!('\'', '"')
 		s.gsub!('&apos;', '\'')
 		file.write(s)
+		file.close
+	end
+end
+
+desc "Download dependencies."
+task :download_dependencies do
+	require 'yaml'
+	file = File.new("thirdparty/dependencies.yaml")
+	hash = YAML.load(file)
+	file.close
+	
+	require 'open-uri'
+	hash.each do |name, link|
+		puts "Do you want to download #{name}? [y] Yes [n] No"
+		str = STDIN.gets #gets alone doesn't work
+		str.chomp!
+		if str == "n" then
+			next
+		end
+		
+		if link.is_a? Hash then
+			puts "Which version of #{name} do you want to download? [1] x86 [2] x64"
+			str = STDIN.gets
+			if str == "1" then
+				link = link["x86"]
+				name += "_x86"
+			else
+				link = link["x64"]
+				name += "_x64"
+			end
+		end
+		puts "Downloading #{name}..."
+		filename = name + link[link.rindex(".")..link.length-1]
+		file = open(filename, "wb")
+		file.write(open(link).read)
 		file.close
 	end
 end
