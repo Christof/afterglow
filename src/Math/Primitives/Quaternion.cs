@@ -89,5 +89,25 @@ namespace Afterglow.Math
 
             return new Vector4(mValues.ToVector3() / length, angle);
         }
+
+        /// <summary>
+        /// Converts to quaternion to a rotation matrix.
+        /// </summary>
+        /// <returns>The rotation matrix.</returns>
+        public Matrix ToMatrix()
+        {
+            var m1 = new Matrix(
+                 W, -Z,  Y,  X,
+                 Z,  W, -X,  Y,
+                -Y,  X,  W,  Z,
+                -X, -Y, -Z,  W);
+            var m2 = new Matrix(
+                 W, -Z,  Y, -X,
+                 Z,  W, -X, -Y,
+                -Y,  X,  W, -Z,
+                 X,  Y,  Z,  W);
+
+            return m1 * m2;
+        }
     }
 }

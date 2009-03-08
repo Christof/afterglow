@@ -65,5 +65,24 @@ namespace Afterglow.Math
             axisAngle.Z.ShouldEqual(rotationAxis.Z);
             axisAngle.W.ShouldEqual(angle);
         }
+
+        [Test]
+        public void ToMatrix()
+        {
+            Vector3 rotationAxis = Vector3.ZAxis;
+            var angle = Constants.HALF_PI;
+
+            var quaternion = new Quaternion(rotationAxis, angle);
+
+            Matrix matrix = quaternion.ToMatrix();
+
+            var expected = new Matrix(
+                Functions.Cos(angle), -Functions.Sin(angle), 0, 0,
+                Functions.Sin(angle), Functions.Cos(angle), 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1);
+
+            matrix.ShouldEqual(expected);
+        }
     }
 }
