@@ -1,4 +1,5 @@
 using System;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 
 namespace Afterglow.Math
@@ -96,6 +97,18 @@ namespace Afterglow.Math
             Assert.AreEqual(vector.Y / 2.0f, result.Y);
             Assert.AreEqual(vector.Z / 2.0f, result.Z);
             Assert.AreEqual(vector.W / 2.0f, result.W);
+        }
+
+        [Test]
+        public void ToVector3_returns_the_XYZ_components()
+        {
+            var vector = new Vector4(2.0f, 3.0f, 4.0f, 5.0f);
+
+            var vector3 = vector.ToVector3();
+
+            vector3.X.ShouldEqual(vector.X);
+            vector3.Y.ShouldEqual(vector.Y);
+            vector3.Z.ShouldEqual(vector.Z);
         }
     }
 }

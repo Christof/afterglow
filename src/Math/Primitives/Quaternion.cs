@@ -21,6 +21,27 @@ namespace Afterglow.Math
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Quaternion"/> class.
+        /// </summary>
+        /// <param name="rotationAxis">The rotation axis.</param>
+        /// <param name="angle">The angle.</param>
+        public Quaternion(Vector3 rotationAxis, float angle)
+        {
+            var s = Functions.Sqrt(2 * (1 + Functions.Cos(angle)));
+
+            mValues = new Vector4(rotationAxis / s, s / 2);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Quaternion"/> class.
+        /// </summary>
+        /// <param name="vector3">The vector which should be represented as quaternion.</param>
+        public Quaternion(Vector3 vector3)
+        {
+            mValues = new Vector4(vector3, 0);
+        }
+
+        /// <summary>
         /// Gets the X value.
         /// </summary>
         /// <value>The X value.</value>
@@ -54,6 +75,19 @@ namespace Afterglow.Math
         public float W
         {
             get { return mValues.W; }
+        }
+
+        /// <summary>
+        /// Returns the axis angle representation in a <see cref="Vector4"/>. The
+        /// x, y and z componentes are the axis and w is the angle.
+        /// </summary>
+        /// <returns></returns>
+        public Vector4 ToAxisAngle()
+        {
+            var angle = 2 * Functions.Acos(mValues.W);
+            var length = Functions.Sqrt(1 - mValues.W * mValues.W);
+
+            return new Vector4(mValues.ToVector3() / length, angle);
         }
     }
 }
