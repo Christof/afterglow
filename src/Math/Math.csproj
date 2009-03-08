@@ -57,6 +57,7 @@
     <Compile Include="MathExtensions.cs" />
     <Compile Include="Primitives\ICoordinateSystem.cs" />
     <Compile Include="Primitives\Matrix.cs" />
+    <Compile Include="Primitives\Quaternion.cs" />
     <Compile Include="Primitives\Vector2.cs" />
     <Compile Include="Primitives\Vector3.cs" />
     <Compile Include="Primitives\Vector3EqualityComparer.cs" />

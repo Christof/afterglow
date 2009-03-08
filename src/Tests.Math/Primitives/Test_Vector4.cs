@@ -6,7 +6,7 @@ namespace Afterglow.Math
     public class Test_Vector4
     {
         [Test]
-        public void Constructor_Sets_XYZ()
+        public void Constructor_Sets_XYZW()
         {
             const float X = 1.0f;
             const float Y = 2.0f;
@@ -19,6 +19,20 @@ namespace Afterglow.Math
             Assert.AreEqual(Y, vector4.Y);
             Assert.AreEqual(Z, vector4.Z);
             Assert.AreEqual(W, vector4.W);
+        }
+
+        [Test]
+        public void Constructor_with_Vector4_and_a_sacalar_sets_XYZW()
+        {
+            var vector3 = new Vector3(1, 2, 3);
+            var scalar = 4;
+
+            var vector4 = new Vector4(vector3, scalar);
+
+            Assert.AreEqual(vector3.X, vector4.X);
+            Assert.AreEqual(vector3.Y, vector4.Y);
+            Assert.AreEqual(vector3.Z, vector4.Z);
+            Assert.AreEqual(scalar, vector4.W);
         }
 
         [Test]
@@ -69,6 +83,19 @@ namespace Afterglow.Math
             var vector = new Vector4(1.1f, 2.2f, 3.3f, 4.4f);
 
             Assert.AreEqual("X: 1.1 Y: 2.2 Z: 3.3 W: 4.4", vector.ToString());
+        }
+
+        [Test]
+        public void Division_with_scalar_operator()
+        {
+            var vector = new Vector4(2.0f, 3.0f, 4.0f, 5.0f);
+
+            var result = vector / 2.0f;
+
+            Assert.AreEqual(vector.X / 2.0f, result.X);
+            Assert.AreEqual(vector.Y / 2.0f, result.Y);
+            Assert.AreEqual(vector.Z / 2.0f, result.Z);
+            Assert.AreEqual(vector.W / 2.0f, result.W);
         }
     }
 }

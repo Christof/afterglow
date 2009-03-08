@@ -52,6 +52,19 @@ namespace Afterglow.Math
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Vector4"/> struct.
+        /// </summary>
+        /// <param name="vector3">The vector3.</param>
+        /// <param name="scalar">The scalar.</param>
+        public Vector4(Vector3 vector3, float scalar)
+        {
+            mX = vector3.X;
+            mY = vector3.Y;
+            mZ = vector3.Z;
+            mW = scalar;
+        }
+
+        /// <summary>
         /// Gets the value for the X-axis.
         /// </summary>
         /// <value>The value for the X-axis.</value>
@@ -85,6 +98,21 @@ namespace Afterglow.Math
         public float W
         {
             get { return mW; }
+        }
+
+        /// <summary>
+        /// Implements the division operator with a scalar as divisor.
+        /// </summary>
+        /// <param name="dividend">The dividend.</param>
+        /// <param name="divisor">The divisor.</param>
+        /// <returns>The quotient.</returns>
+        public static Vector4 operator /(Vector4 dividend, float divisor)
+        {
+            return new Vector4(
+                dividend.X / divisor,
+                dividend.Y / divisor,
+                dividend.Z / divisor,
+                dividend.W / divisor);
         }
 
         /// <summary>

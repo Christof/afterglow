@@ -193,6 +193,18 @@ namespace Afterglow.Math
         }
 
         [Test]
+        public void Division_with_scalar_operator()
+        {
+            var vector = new Vector3(2.0f, 3.0f, 4.0f);
+
+            var result = vector / 2.0f;
+
+            Assert.AreEqual(vector.X / 2.0f, result.X);
+            Assert.AreEqual(vector.Y / 2.0f, result.Y);
+            Assert.AreEqual(vector.Z / 2.0f, result.Z);
+        }
+
+        [Test]
         public new void ToString()
         {
             var vector = new Vector3(1.1f, 2.2f, 3.3f);

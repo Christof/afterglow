@@ -69,6 +69,7 @@
     <Compile Include="Test_Constants.cs" />
     <Compile Include="Test_Functions.cs" />
     <Compile Include="Test_MathExtensions.cs" />
+    <Compile Include="Test_Quaternion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Math\Math.csproj">

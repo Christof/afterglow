@@ -246,6 +246,20 @@ namespace Afterglow.Math
         }
 
         /// <summary>
+        /// Implements the division operator with a scalar as divisor.
+        /// </summary>
+        /// <param name="dividend">The dividend.</param>
+        /// <param name="divisor">The divisor.</param>
+        /// <returns>The quotient.</returns>
+        public static Vector3 operator /(Vector3 dividend, float divisor)
+        {
+            return new Vector3(
+                dividend.X / divisor,
+                dividend.Y / divisor,
+                dividend.Z / divisor);
+        }
+
+        /// <summary>
         /// Returns the fully qualified type name of this instance.
         /// </summary>
         /// <returns>
