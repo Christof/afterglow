@@ -84,5 +84,19 @@ namespace Afterglow.Math
 
             matrix.ShouldEqual(expected);
         }
+
+        [Test]
+        public void Concatenation_with_the_multiply_operator()
+        {
+            var quat1 = new Quaternion(Vector3.ZAxis, Constants.HALF_PI);
+            var quat2 = new Quaternion(Vector3.XAxis, Constants.HALF_PI);
+
+            var concatenated = quat2 * quat1;
+
+            concatenated.X.ShouldEqual(0.2580212f, Constants.DELTA);
+            concatenated.Y.ShouldEqual(-0.2580212f, Constants.DELTA);
+            concatenated.Z.ShouldEqual(0.2580212f, Constants.DELTA);
+            concatenated.W.ShouldEqual(0.9689124f, Constants.DELTA);
+        }
     }
 }

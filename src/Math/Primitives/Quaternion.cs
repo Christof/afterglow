@@ -109,5 +109,22 @@ namespace Afterglow.Math
 
             return m1 * m2;
         }
+
+        /// <summary>
+        /// Concatenates two quaternions. The right argument is applied first.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>A quaternion containing the rotations of both given quaternions.</returns>
+        public static Quaternion operator *(Quaternion left, Quaternion right)
+        {
+            var v1 = new Vector3(right.X, right.Y, right.Z);
+            var v2 = new Vector3(left.X, left.Y, left.Z);
+
+            var w = left.W * right.W - v1.Dot(v2);
+            var v = right.W * v2 + left.W * v1 + v2.Cross(v1);
+
+            return new Quaternion(v, w);
+        }
     }
 }
