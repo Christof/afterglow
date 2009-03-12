@@ -6,24 +6,14 @@ using Afterglow.Infrastructure;
 using Afterglow.Input;
 using Afterglow.Input.SlimDX;
 using Afterglow.Math;
-using Microsoft.Xna.Framework.Graphics;
 using Ninject.Modules;
 
 namespace Afterglow.Graphics
 {
     public class XnaModule : Module
     {
-        private readonly GraphicsDevice mDevice;
-
-        public XnaModule(IRenderWindow renderWindow)
-        {
-            mDevice = renderWindow.DowncastTo<XnaRenderWindow>().Device;
-        }
-
         public override void Load()
         {
-            Bind<GraphicsDevice>().ToConstant(mDevice);
-
             Bind<IInputDevices>().To<SlimDXInputDevices>();
 
             Bind<IBufferService>().To<XnaBufferService>().InSingletonScope();
@@ -33,6 +23,8 @@ namespace Afterglow.Graphics
 
             Bind<SemanticEffectParameter<Matrix>>().To<XnaMatrixEffectParameter>().InTransientScope();
             Bind<SemanticEffectParameter<ITexture>>().To<XnaTextureEffectParameter>().InTransientScope();
+
+            Bind<IApiFactory>().To<XnaFactory>().InSingletonScope();
         }
     }
 }

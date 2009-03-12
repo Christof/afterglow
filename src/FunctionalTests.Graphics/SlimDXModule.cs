@@ -13,17 +13,8 @@ namespace Afterglow.Graphics
 {
     public class SlimDXModule : Module
     {
-        private readonly Device mDevice;
-
-        public SlimDXModule(IRenderWindow renderWindow)
-        {
-            mDevice = renderWindow.DowncastTo<SlimDXRenderWindow>().Device;
-        }
-
         public override void Load()
         {
-            Bind<Device>().ToConstant(mDevice);
-
             Bind<IInputDevices>().To<SlimDXInputDevices>();
 
             Bind<IBufferService>().To<SlimDXBufferService>().InSingletonScope();
@@ -33,6 +24,8 @@ namespace Afterglow.Graphics
 
             Bind<SemanticEffectParameter<Matrix>>().To<SlimDXMatrixEffectParameter>().InTransientScope();
             Bind<SemanticEffectParameter<ITexture>>().To<SlimDXTextureEffectParameter>().InTransientScope();
+
+            Bind<IApiFactory>().To<SlimDXFactory>().InSingletonScope();
         }
     }
 }

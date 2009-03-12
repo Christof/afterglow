@@ -65,6 +65,7 @@
     <Compile Include="Rendering\XnaObjectRenderer.cs" />
     <Compile Include="Textures\XnaTexture.cs" />
     <Compile Include="XnaExtensions.cs" />
+    <Compile Include="XnaFactory.cs" />
     <Compile Include="XnaRenderWindow.cs" />
   </ItemGroup>
   <ItemGroup>
