@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using SlimDX;
@@ -9,7 +8,7 @@ namespace Afterglow.Input.SlimDX
     /// <summary>
     /// SlimDX mouse implementation.
     /// </summary>
-    public class SlimDXMouse : SlimDXInputDeviceBase, IAxesInputDevice
+    public class SlimDXMouse : InputDeviceBase, IAxesInputDevice
     {
         private readonly Device<MouseState> mMouse;
 

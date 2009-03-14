@@ -1,14 +1,13 @@
 using System.Windows.Forms;
 using SlimDX;
 using SlimDX.DirectInput;
-using System;
 
 namespace Afterglow.Input.SlimDX
 {
     /// <summary>
     /// Keyboard implementation for SlimDX.
     /// </summary>
-    public class SlimDXKeyboard : SlimDXInputDeviceBase
+    public class SlimDXKeyboard : InputDeviceBase
     {
         private readonly Device<KeyboardState> mKeyboard;
 

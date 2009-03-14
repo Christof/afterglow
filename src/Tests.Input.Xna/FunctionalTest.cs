@@ -1,26 +1,27 @@
 using System.Windows.Forms;
 using MbUnit.Framework;
 
-namespace Afterglow.Input.SlimDX
+namespace Afterglow.Input.Xna
 {
     public class FunctionalTest
     {
         [Test]
         public void Test()
         {
+            var close = false;
             var form = new Form();
+            form.Closing += (s, e) => close = true;
             var xLabel = new Label { Parent = form };
             var yLabel = new Label { Parent = form, Top = 40 };
             var zLabel = new Label { Parent = form, Top = 80 };
-
-            var close = false;
-            var inputDevices = new SlimDXInputDevices(form);
+            
+            var inputDevices = new XnaInputDevices();
             var keyboard = inputDevices.Keyboard;
             keyboard.On(Button.X).IsDown().Do(() => close = true);
             keyboard.On(Button.Escape).WasPressed().Do(() => close = true);
             keyboard.On(Button.W).WasPressed().Do(() => form.Text = "Pressed");
             keyboard.On(Button.S).IsDown().Do(() => form.Text = "Down");
-
+            
             var mouse = inputDevices.Mouse;
             mouse.On(Button.LeftMouse).IsDown().Do(() => form.Text = "Left Mouse down");
             mouse.On(Button.RightMouse).WasPressed().Do(() => form.Text = "Right Mouse was pressed");
