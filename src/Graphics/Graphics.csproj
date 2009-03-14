@@ -70,6 +70,7 @@
     <Compile Include="GraphicStreams\IBufferService.cs" />
     <Compile Include="GraphicStreams\IGraphicStream.cs" />
     <Compile Include="GraphicStreams\IBuffer.cs" />
+    <Compile Include="IApiInterface.cs" />
     <Compile Include="Importers\Collada\ColladaImporter.cs" />
     <Compile Include="Importers\Collada\Input.cs" />
     <Compile Include="Importers\Collada\SemanticHelper.cs" />

@@ -60,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\SlimDXObjectRenderer.cs" />
     <Compile Include="SlimDXExtensions.cs" />
+    <Compile Include="SlimDXFactory.cs" />
     <Compile Include="SlimDXRenderWindow.cs" />
     <Compile Include="Textures\SlimDXTexture.cs" />
   </ItemGroup>

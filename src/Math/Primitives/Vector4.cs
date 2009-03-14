@@ -152,5 +152,14 @@ namespace Afterglow.Math
             return string.Format(CultureInfo.InvariantCulture, 
                 "X: {0} Y: {1} Z: {2} W: {3}", mX, mY, mZ, mW);
         }
+
+        /// <summary>
+        /// Returns the 3d part of the vector.
+        /// </summary>
+        /// <returns>The 3-dimensional part of the vector.</returns>
+        public Vector3 ToVector3()
+        {
+            return new Vector3(mX, mY, mZ);
+        }
     }
 }

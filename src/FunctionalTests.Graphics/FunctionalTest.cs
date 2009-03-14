@@ -41,8 +41,10 @@ namespace Afterglow.Graphics
         /// </summary>
         public override void Load()
         {
-            mRenderWindow = new XnaRenderWindow(Form.Handle);
-            mKernel = new StandardKernel(new XnaModule(mRenderWindow));
+            mKernel = new StandardKernel(new XnaModule());
+
+            var factory = mKernel.Get<IApiFactory>();
+            mRenderWindow = factory.CreateRenderWindow(Form.Handle);
 
             mInputDevices = mKernel.Get<IInputDevices>(
                 new ConstructorArgument("control", Form));
@@ -50,30 +52,25 @@ namespace Afterglow.Graphics
             var importer = new ColladaImporter(COLLAD_PLANE);
             var container = importer.GetFirstMesh();
 
-            var bufferService = mKernel.Get<IBufferService>();
+            var bufferService = factory.GetBufferService();
 
             var bufferBindings = container
                 .Select(stream => bufferService.CreateFor(stream))
                 .ToArray(); // otherwise an interanl error of SlimDX occurs.
 
-            mEffect = mKernel.Get<IEffectCompiler>()
+            mEffect = factory.GetEffectCompiler()
                 //.Compile("NormalLighting10.fx");
                 .Compile("MyTextureShader.fx");
 
-            mRenderer = mKernel.Get<IObjectRenderer>(
-                new ConstructorArgument("effect", mEffect),
-                new ConstructorArgument("bufferBindings", bufferBindings));
+            mRenderer = factory.CreateObjectRenderer(mEffect, bufferBindings);
 
-            mWorldViewProjectionParameter = mKernel.Get<SemanticEffectParameter<Matrix>>(
-                new ConstructorArgument("semanticName", "WorldViewProjection"));
+            mWorldViewProjectionParameter = 
+                factory.CreateMatrixParameter("WorldViewProjection");
 
-            var texture = mKernel.Get<ITexture>(
-                new ConstructorArgument("filename", "texture.png"));
+            var texture = factory.CreateTexture("texture.png");
             texture.Load();
 
-            mTextureParameter = mKernel.Get<SemanticEffectParameter<ITexture>>(
-                new ConstructorArgument("semanticName", "Texture"),
-                new ConstructorArgument("texture", texture));
+            mTextureParameter = factory.CreateTextureParameter("Texture", texture);
 
             mStand = new OrbitingStand(5.0f, 0, 0);
             mCamera = new Camera(mStand, new PerspectiveProjectionLense());
