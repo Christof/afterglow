@@ -8,7 +8,7 @@
     <ProjectGuid>{CC3695DD-C83A-4B97-BD89-2264FCECB281}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheNewEngine.ClassLibraryTemplate</RootNamespace>
+    <RootNamespace>Afterglow.ClassLibraryTemplate</RootNamespace>
     <AssemblyName>ClassLibraryTemplate</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
