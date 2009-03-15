@@ -1,0 +1,1 @@
+alias cd_afterglow="cd; cd Documents/Visual\ Studio\ 2008/Projects/afterglow; ls -l; git status"
