@@ -33,7 +33,7 @@ namespace Afterglow.Graphics.GraphicStreams
         /// </summary>
         public override void Bind()
         {
-            CodeContract.Requires(mSlot != -1, "The slot must be set by calling CreateInputElement.");
+            Contract.Requires(mSlot != -1, "The slot must be set by calling CreateInputElement.");
 
             if (Description.Usage == GraphicStreamUsage.Index)
             {
