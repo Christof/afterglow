@@ -23,7 +23,7 @@ namespace Afterglow.Graphics
         /// <param name="path">Path to a collada file.</param>
         public ColladaImporter(string path)
         {
-            CodeContract.Requires(!path.IsNullOrEmpty());
+            Contract.Requires(!path.IsNullOrEmpty());
 
             mPath = path;
         }

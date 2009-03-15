@@ -8,7 +8,7 @@
     <ProjectGuid>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheNewEngine.Graphics</RootNamespace>
+    <RootNamespace>Afterglow.Graphics</RootNamespace>
     <AssemblyName>Graphics</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
