@@ -2,7 +2,10 @@ namespace Afterglow.Math
 {
     /// <summary>
     /// Represents a rotation in 3d-space with four values (a rotation axis and an angle).
-    /// </summary>
+    /// <remarks>
+    /// http://en.wikipedia.org/wiki/Quaternion
+    /// </remarks>
+    ///</summary>
     public class Quaternion
     {
         private Vector4 mValues;
