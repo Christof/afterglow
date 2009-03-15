@@ -38,5 +38,40 @@ namespace Afterglow.Input
         /// Updates the input device.
         /// </summary>
         public abstract void Update();
+
+        /// <summary>
+        /// Checks whether the pressed button was registered for an action and executes the action.
+        /// </summary>
+        /// <param name="button">The button.</param>
+        protected void CheckPressedButton(Button button)
+        {
+            if (RegisteredButtons.ContainsKey(button))
+            {
+                var buttonAction = RegisteredButtons[button];
+                buttonAction.WasDown = true;
+                if (buttonAction.State == ButtonState.IsDown)
+                {
+                    buttonAction.ExecuteAction();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks whether the released button was pressed and was registered 
+        /// for an action and executes the action.
+        /// </summary>
+        /// <param name="button">The button.</param>
+        protected void CheckReleasedButton(Button button)
+        {
+            if (RegisteredButtons.ContainsKey(button))
+            {
+                var buttonAction = RegisteredButtons[button];
+                if (buttonAction.State == ButtonState.WasPressed && buttonAction.WasDown)
+                {
+                    buttonAction.ExecuteAction();
+                }
+                buttonAction.WasDown = false;
+            }
+        }
     }
 }
