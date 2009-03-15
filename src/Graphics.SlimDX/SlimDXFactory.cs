@@ -1,10 +1,10 @@
+using System.Windows.Forms;
 using Afterglow.Graphics.Effects;
 using Afterglow.Graphics.GraphicStreams;
 using Afterglow.Graphics.Rendering;
 using Afterglow.Graphics.Textures;
 using Afterglow.Math;
 using SlimDX.Direct3D10;
-using System;
 
 namespace Afterglow.Graphics
 {
@@ -16,14 +16,16 @@ namespace Afterglow.Graphics
     {
         private Device mDevice;
 
+        #region IApiFactory Members
+
         /// <summary>
         /// Creates a new render window.
         /// </summary>
-        /// <param name="handle">The handle to a window or control in which the content will be rendered.</param>
+        /// <param name="control">The control in which the content will be rendered.</param>
         /// <returns>A new created render window.</returns>
-        public IRenderWindow CreateRenderWindow(IntPtr handle)
+        public IRenderWindow CreateRenderWindow(Control control)
         {
-            var renderWindow = new SlimDXRenderWindow(handle);
+            var renderWindow = new SlimDXRenderWindow(control.Handle);
 
             mDevice = renderWindow.Device;
 
@@ -89,5 +91,7 @@ namespace Afterglow.Graphics
         {
             return new SlimDXEffectCompiler(mDevice);
         }
+
+        #endregion
     }
 }

@@ -1,9 +1,11 @@
+
+using System.Windows.Forms;
+
 using Afterglow.Graphics.Effects;
 using Afterglow.Graphics.GraphicStreams;
 using Afterglow.Graphics.Rendering;
 using Afterglow.Math;
 using Afterglow.Graphics.Textures;
-using System;
 
 namespace Afterglow.Graphics
 {
@@ -16,9 +18,9 @@ namespace Afterglow.Graphics
         /// <summary>
         /// Creates a new render window.
         /// </summary>
-        /// <param name="handle">The handle to a window or control in which the content will be rendered.</param>
+        /// <param name="control">The control in which the content will be rendered.</param>
         /// <returns>A new created render window.</returns>
-        IRenderWindow CreateRenderWindow(IntPtr handle);
+        IRenderWindow CreateRenderWindow(Control control);
 
         /// <summary>
         /// Gets a buffer service to create buffer bindings.

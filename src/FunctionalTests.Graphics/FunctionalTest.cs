@@ -44,7 +44,7 @@ namespace Afterglow.Graphics
             mKernel = new StandardKernel(new XnaModule());
 
             var factory = mKernel.Get<IApiFactory>();
-            mRenderWindow = factory.CreateRenderWindow(Form.Handle);
+            mRenderWindow = factory.CreateRenderWindow(Form);
 
             mInputDevices = mKernel.Get<IInputDevices>(
                 new ConstructorArgument("control", Form));
