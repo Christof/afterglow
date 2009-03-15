@@ -116,8 +116,8 @@ namespace Afterglow.Graphics
             keyboard.On(Input.Button.R).IsDown().Do(() => mStand.Declination += mTimeSinceLastFrame);
             keyboard.On(Input.Button.F).IsDown().Do(() => mStand.Declination -= mTimeSinceLastFrame);
 
-            keyboard.On(Input.Button.Escape).WasPressed().Do(Application.Exit);
-            keyboard.On(Input.Button.P).WasPressed().Do(() => mRenderWindow.TakeScreenshot("screenshot.bmp"));
+            keyboard.On(Input.Button.Escape).WasReleased().Do(Application.Exit);
+            keyboard.On(Input.Button.P).WasReleased().Do(() => mRenderWindow.TakeScreenshot("screenshot.bmp"));
         }
     }
 }

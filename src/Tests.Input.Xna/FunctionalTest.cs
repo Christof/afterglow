@@ -18,13 +18,13 @@ namespace Afterglow.Input.Xna
             var inputDevices = new XnaInputDevices();
             var keyboard = inputDevices.Keyboard;
             keyboard.On(Button.X).IsDown().Do(() => close = true);
-            keyboard.On(Button.Escape).WasPressed().Do(() => close = true);
-            keyboard.On(Button.W).WasPressed().Do(() => form.Text = "Pressed");
+            keyboard.On(Button.Escape).WasReleased().Do(() => close = true);
+            keyboard.On(Button.W).WasReleased().Do(() => form.Text = "Pressed");
             keyboard.On(Button.S).IsDown().Do(() => form.Text = "Down");
             
             var mouse = inputDevices.Mouse;
             mouse.On(Button.LeftMouse).IsDown().Do(() => form.Text = "Left Mouse down");
-            mouse.On(Button.RightMouse).WasPressed().Do(() => form.Text = "Right Mouse was pressed");
+            mouse.On(Button.RightMouse).WasReleased().Do(() => form.Text = "Right Mouse was pressed");
 
             mouse.On(Axis.X).Do(delta => xLabel.Text = "X: " + delta);
             mouse.On(Axis.Y).Do(delta => yLabel.Text = "Y: " + delta);

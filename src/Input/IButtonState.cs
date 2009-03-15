@@ -12,6 +12,12 @@ namespace Afterglow.Input
         IButtonAction IsDown();
 
         /// <summary>
+        /// The action will be triggered if the button was released.
+        /// </summary>
+        /// <returns>A button action to define the action.</returns>
+        IButtonAction WasReleased();
+
+        /// <summary>
         /// The action will be triggered if the button was pressed.
         /// </summary>
         /// <returns>A button action to define the action.</returns>

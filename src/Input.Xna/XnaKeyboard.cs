@@ -7,6 +7,8 @@ namespace Afterglow.Input.Xna
     /// </summary>
     public class XnaKeyboard : InputDeviceBase
     {
+        private KeyboardState mLastState;
+
         /// <summary>
         /// Updates the input device.
         /// </summary>
@@ -17,14 +19,33 @@ namespace Afterglow.Input.Xna
             foreach (Button button in RegisteredButtons.Keys)
             {
                 Keys xnaKey = button.ToXna();
-                if (state.IsKeyDown(xnaKey))
+                ButtonAction buttonAction = RegisteredButtons[button];
+
+                switch (buttonAction.State)
                 {
-                    RegisteredButtons[button].ExecuteAction();
+                    case ButtonState.IsDown:
+                        if (state.IsKeyDown(xnaKey))
+                        {
+                            buttonAction.ExecuteAction();
+                        }
+                        break;
+
+                    case ButtonState.WasPressed:
+                        if (state.IsKeyDown(xnaKey) && mLastState.IsKeyUp(xnaKey))
+                        {
+                            buttonAction.ExecuteAction();
+                        }
+                        break;
+
+                    case ButtonState.WasReleased:
+                        if (state.IsKeyUp(xnaKey) && mLastState.IsKeyDown(xnaKey))
+                        {
+                            buttonAction.ExecuteAction();
+                        }
+                        break;
                 }
-                if (state.IsKeyUp(xnaKey))
-                {
-                    CheckReleasedButton(button);
-                }
+
+                mLastState = state;
             }
         }
     }
