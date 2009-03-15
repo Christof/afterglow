@@ -5,6 +5,7 @@ struct VS_IN
 {
 	float3 position : POSITION;
 	float3 normal : NORMAL;
+	float3 color : COLOR0;
 };
 
 struct PS_IN
@@ -20,8 +21,7 @@ PS_IN VS( VS_IN input )
 	output.pos = mul(float4(input.position.xyz, 1.0), WorldViewProj);
 	
 	float3 lightDir = normalize(LightPosition - input.position);
-	output.col.rgb = dot(input.normal, lightDir) * 0.5 + 0.5;
-	output.col.rgb = output.col.rgb * 0.8 + 0.2;
+	output.col.rgb = input.color * (dot(input.normal, lightDir) * 0.5 + 0.5);
 	
 	return output;
 }
