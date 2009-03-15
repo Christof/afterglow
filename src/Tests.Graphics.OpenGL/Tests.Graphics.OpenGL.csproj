@@ -37,12 +37,12 @@
   <ItemGroup>
     <Reference Include="Gallio, Version=3.0.4.485, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\thirdparty\tools\Gallio\Gallio.dll</HintPath>
-    </Reference>
+      
+    <HintPath>..\..\thirdparty\tools\Gallio\Gallio.dll</HintPath></Reference>
     <Reference Include="MbUnit, Version=3.0.4.485, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\thirdparty\tools\Gallio\MbUnit.dll</HintPath>
-    </Reference>
+      
+    <HintPath>..\..\thirdparty\tools\Gallio\MbUnit.dll</HintPath></Reference>
     <Reference Include="System"/>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
