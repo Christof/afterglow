@@ -40,10 +40,10 @@ namespace Afterglow.Input
         public abstract void Update();
 
         /// <summary>
-        /// Checks whether the pressed button was registered for an action and executes the action.
+        /// Checks whether the button which is down was registered for an action and executes the action.
         /// </summary>
         /// <param name="button">The button.</param>
-        protected void CheckPressedButton(Button button)
+        protected void CheckDownButton(Button button)
         {
             if (RegisteredButtons.ContainsKey(button))
             {
@@ -66,7 +66,7 @@ namespace Afterglow.Input
             if (RegisteredButtons.ContainsKey(button))
             {
                 var buttonAction = RegisteredButtons[button];
-                if (buttonAction.State == ButtonState.WasPressed && buttonAction.WasDown)
+                if (buttonAction.State == ButtonState.WasReleased && buttonAction.WasDown)
                 {
                     buttonAction.ExecuteAction();
                 }

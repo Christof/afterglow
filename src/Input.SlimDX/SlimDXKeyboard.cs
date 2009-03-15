@@ -51,7 +51,7 @@ namespace Afterglow.Input.SlimDX
 
             foreach (Key key in state.PressedKeys)
             {
-                CheckPressedButton((Button)key);
+                CheckDownButton((Button)key);
             }
 
             foreach (var key in state.ReleasedKeys)

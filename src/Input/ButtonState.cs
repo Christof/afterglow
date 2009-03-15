@@ -11,8 +11,13 @@ namespace Afterglow.Input
         IsDown,
 
         /// <summary>
-        /// The button was down in the last frame and is now released
+        /// The button was down in the last frame and is now released.
         /// </summary>
-        WasPressed,
+        WasReleased,
+
+        /// <summary>
+        /// The button was up in the last frame and is now pressed.
+        /// </summary>
+        WasPressed
     }
 }

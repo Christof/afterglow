@@ -86,7 +86,7 @@ namespace Afterglow.Input.SlimDX
                 var button = (Button)(mouseOffset + i);
                 if (state.IsPressed(i))
                 {
-                    CheckPressedButton(button);
+                    CheckDownButton(button);
                 }
                 if (state.IsReleased(i))
                 {

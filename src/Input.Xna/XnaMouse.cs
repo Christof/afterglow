@@ -57,23 +57,23 @@ namespace Afterglow.Input.Xna
 
             if (state.LeftButton == XnaButtonState.Pressed)
             {
-                CheckPressedButton(Button.LeftMouse);
+                CheckDownButton(Button.LeftMouse);
             }
             if (state.MiddleButton == XnaButtonState.Pressed)
             {
-                CheckPressedButton(Button.MiddleMouse);
+                CheckDownButton(Button.MiddleMouse);
             }
             if (state.RightButton == XnaButtonState.Pressed)
             {
-                CheckPressedButton(Button.RightMouse);
+                CheckDownButton(Button.RightMouse);
             }
             if (state.XButton1 == XnaButtonState.Pressed)
             {
-                CheckPressedButton(Button.Mouse4);
+                CheckDownButton(Button.Mouse4);
             }
             if (state.XButton2 == XnaButtonState.Pressed)
             {
-                CheckPressedButton(Button.Mouse5);
+                CheckDownButton(Button.Mouse5);
             }
 
             if (state.LeftButton == XnaButtonState.Released)

@@ -36,6 +36,7 @@ namespace Afterglow.Input
         /// (Maybe the slimdx implementation should derive from the button action and have this property).
         /// </summary>
         /// <value><c>true</c> if the button was down; otherwise, <c>false</c>.</value>
+        // HACK let the implementation handle this.
         public bool WasDown { get; set; }
 
         /// <summary>
@@ -45,6 +46,16 @@ namespace Afterglow.Input
         public IButtonAction IsDown()
         {
             State = ButtonState.IsDown;
+            return this;
+        }
+
+        /// <summary>
+        /// The action will be triggered if the button was released.
+        /// </summary>
+        /// <returns>A button action to define the action.</returns>
+        public IButtonAction WasReleased()
+        {
+            State = ButtonState.WasReleased;
             return this;
         }
 
