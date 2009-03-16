@@ -65,8 +65,8 @@ namespace Afterglow.Graphics.SlimDX.Examples
         /// <summary>
         /// Updates the scene every frame.
         /// </summary>
-        /// <param name="timeSinceLastCall">The time since the last call.</param>
-        public override void Update(float timeSinceLastCall)
+        /// <param name="frameInfo">The frame info.</param>
+        public override void Update(IFrameInfo frameInfo)
         {
         }
 

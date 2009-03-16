@@ -72,7 +72,7 @@ namespace Afterglow.Graphics
                         float frametime = (now - last) / 1000.0f;
                         last = now;
 
-                        Update(frametime);
+                        Update(new FrameInfo(frametime, now / 1000.0f));
                         Render();
 
                         //AssertWithScreenshot();
@@ -107,8 +107,8 @@ namespace Afterglow.Graphics
         /// <summary>
         /// Updates the scene every frame.
         /// </summary>
-        /// <param name="timeSinceLastCall">The time since the last call.</param>
-        public abstract void Update(float timeSinceLastCall);
+        /// <param name="frameInfo">The frame info.</param>
+        public abstract void Update(IFrameInfo frameInfo);
 
         /// <summary>
         /// Renders the scene.

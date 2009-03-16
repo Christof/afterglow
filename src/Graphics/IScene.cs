@@ -13,8 +13,8 @@ namespace Afterglow.Graphics
         /// <summary>
         /// Updates the scene every frame.
         /// </summary>
-        /// <param name="timeSinceLastCall">The time since the last call.</param>
-        void Update(float timeSinceLastCall);
+        /// <param name="frameInfo">The frame info.</param>
+        void Update(IFrameInfo frameInfo);
 
         /// <summary>
         /// Renders the scene.

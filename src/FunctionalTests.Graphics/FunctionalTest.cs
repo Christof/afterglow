@@ -41,7 +41,7 @@ namespace Afterglow.Graphics
         /// </summary>
         public override void Load()
         {
-            mKernel = new StandardKernel(new XnaModule());
+            mKernel = new StandardKernel(new SlimDXModule());
 
             var factory = mKernel.Get<IApiFactory>();
             mRenderWindow = factory.CreateRenderWindow(Form);
@@ -60,7 +60,7 @@ namespace Afterglow.Graphics
 
             mEffect = factory.GetEffectCompiler()
                 //.Compile("NormalLighting10.fx");
-                .Compile("MyTextureShader.fx");
+                .Compile("MyTextureShader10.fx");
 
             mRenderer = factory.CreateObjectRenderer(mEffect, bufferBindings);
 
@@ -81,12 +81,12 @@ namespace Afterglow.Graphics
         /// <summary>
         /// Updates the scene every frame.
         /// </summary>
-        /// <param name="timeSinceLastCall">The time since the last call.</param>
-        public override void Update(float timeSinceLastCall)
+        /// <param name="frameInfo">The frame info.</param>
+        public override void Update(IFrameInfo frameInfo)
         {
-            mTimeSinceLastFrame = timeSinceLastCall;
-            Form.Text = string.Format("FrameTime: {0:0000}ms FPS: {1:0000}", 
-                timeSinceLastCall * 1000.0f, 1 / timeSinceLastCall);
+            mTimeSinceLastFrame = frameInfo.TimeSinceLastFrame;
+            Form.Text = string.Format("FrameTime: {0:0000}ms FPS: {1:0000}",
+                mTimeSinceLastFrame * 1000.0f, 1 / mTimeSinceLastFrame);
             mInputDevices.Update();
         }
 
