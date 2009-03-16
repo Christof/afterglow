@@ -5,7 +5,7 @@ namespace Afterglow.Math
     /// <remarks>
     /// http://en.wikipedia.org/wiki/Quaternion
     /// </remarks>
-    ///</summary>
+    /// </summary>
     public class Quaternion
     {
         private Vector4 mValues;
@@ -84,7 +84,10 @@ namespace Afterglow.Math
         /// Returns the axis angle representation in a <see cref="Vector4"/>. The
         /// x, y and z componentes are the axis and w is the angle.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// An vector which contains in it's first three elements the rotation axis and in
+        /// the last element the actual rotation angle.
+        /// </returns>
         public Vector4 ToAxisAngle()
         {
             var angle = 2 * Functions.Acos(mValues.W);
@@ -116,8 +119,8 @@ namespace Afterglow.Math
         /// <summary>
         /// Concatenates two quaternions. The right argument is applied first.
         /// </summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
+        /// <param name="left">The left operand which is applied after the right one.</param>
+        /// <param name="right">The right operand which is applied first.</param>
         /// <returns>A quaternion containing the rotations of both given quaternions.</returns>
         public static Quaternion operator *(Quaternion left, Quaternion right)
         {
