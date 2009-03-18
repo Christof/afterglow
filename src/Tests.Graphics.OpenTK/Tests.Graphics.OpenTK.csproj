@@ -40,6 +40,10 @@
       <HintPath>..\..\thirdparty\tools\Gallio\Gallio.dll</HintPath>
     </Reference>
     <Reference Include="MbUnit, Version=3.0.5.546, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL" />
+    <Reference Include="OpenTK, Version=0.9.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\lib\opentk\OpenTK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiExamples\EmptyWindow.cs" />
+    <Compile Include="ApiExamples\SimpleTriangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_OpenTKRenderWindow.cs" />
   </ItemGroup>
@@ -67,6 +73,10 @@
     <ProjectReference Include="..\Graphics\Graphics.csproj">
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests.Graphics\Tests.Graphics.csproj">
+      <Project>{886A66F9-E7A1-4288-9F03-A10E8732E1F2}</Project>
+      <Name>Tests.Graphics</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
