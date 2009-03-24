@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Afterglow.Infrastructure
 {
@@ -34,7 +35,7 @@ namespace Afterglow.Infrastructure
             int counter = 0;
             var slice = new T[sliceSize];
 
-            foreach (var item in enumerable)
+            foreach (T item in enumerable)
             {
                 slice[counter++] = item;
 
@@ -61,7 +62,7 @@ namespace Afterglow.Infrastructure
             this IEnumerable<T> enumerable, int n, int offset)
         {
             int index = 0;
-            foreach (var value in enumerable)
+            foreach (T value in enumerable)
             {
                 if (index++ % n == offset)
                 {
@@ -114,9 +115,67 @@ namespace Afterglow.Infrastructure
         /// <param name="action">The action.</param>
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
-            foreach (var element in enumerable)
+            foreach (T element in enumerable)
             {
                 action(element);
+            }
+        }
+
+        /// <summary>
+        /// Calls the given action for each element in the enumerable.
+        /// </summary>
+        /// <param name="enumerable">The enumerable.</param>
+        /// <param name="action">The action.</param>
+        public static void ForEach(this IEnumerable enumerable, Action<object> action)
+        {
+            foreach (object element in enumerable)
+            {
+                action(element);
+            }
+        }
+
+        /// <summary>
+        /// Transforms a given collection to any other, by doing that for each element
+        /// </summary>
+        /// <typeparam name="TSource">type of the source element</typeparam>
+        /// <typeparam name="TDestination">type of the destination element</typeparam>
+        /// <param name="source">source to transform</param>
+        /// <param name="transformationOfOne">logic for transforming one element</param>
+        /// <returns>array of the transformed elements</returns>
+        public static IEnumerable<TDestination> TransformCollection<TSource, TDestination>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TDestination> transformationOfOne)
+        {
+            if (source == null)
+                throw new ArgumentNullException("source");
+            if (transformationOfOne == null)
+                throw new ArgumentNullException("transformationOfOne");
+
+            foreach (var element in source)
+            {
+                yield return transformationOfOne(element);
+            }
+        }
+
+        /// <summary>
+        /// Transforms a given collection to any other, by doing that for each element
+        /// </summary>
+        /// <typeparam name="TDestination">type of the destination element</typeparam>
+        /// <param name="source">source to transform</param>
+        /// <param name="transformationOfOne">logic for transforming one element</param>
+        /// <returns>array of the transformed elements</returns>
+        public static IEnumerable<TDestination> TransformObjectCollection<TDestination>(
+            this IEnumerable source,
+            Func<object, TDestination> transformationOfOne)
+        {
+            if (source == null)
+                throw new ArgumentNullException("source");
+            if (transformationOfOne == null)
+                throw new ArgumentNullException("transformationOfOne");
+
+            foreach (var element in source)
+            {
+                yield return transformationOfOne(element);
             }
         }
     }
