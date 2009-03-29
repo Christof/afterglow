@@ -11,6 +11,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using OpenTK;
 using OpenTK.Graphics;
@@ -21,6 +22,7 @@ using OpenTK.Math;
 namespace Afterglow.Graphics.OpenTK.ApiExamples
 {
     [TestFixture]
+    [Category(Categories.API_EXAMPLES)]
     public class QuadWithBuffers
     {
         private const int HEIGHT = 600;
@@ -30,7 +32,6 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
         private Vbo mVbo;
 
         [Test]
-        [Category(Categories.API_EXAMPLES)]
         public void Run()
         {
             using (Form form = CreateForm())

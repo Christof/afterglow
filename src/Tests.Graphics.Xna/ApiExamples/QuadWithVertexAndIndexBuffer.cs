@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Afterglow.Graphics.Xna.ApiExamples
 {
     [TestFixture]
+    [Category(Categories.API_EXAMPLES)]
     public class QuadWithVertexAndIndexBuffer
     {
         private struct Vertex
@@ -15,7 +17,6 @@ namespace Afterglow.Graphics.Xna.ApiExamples
         }
 
         [Test]
-        [Category(Categories.API_EXAMPLES)]
         public void Run()
         {
             using (var form = EmptyWindow.CreateForm())

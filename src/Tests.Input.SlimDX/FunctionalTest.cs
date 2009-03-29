@@ -1,8 +1,10 @@
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 
 namespace Afterglow.Input.SlimDX
 {
+    [Category(Categories.MANUAL)]
     public class FunctionalTest
     {
         [Test]

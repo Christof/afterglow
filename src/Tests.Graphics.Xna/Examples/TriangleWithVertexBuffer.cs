@@ -8,6 +8,7 @@ using Afterglow.Graphics.Effects;
 using Afterglow.Graphics.GraphicStreams;
 using Afterglow.Graphics.Rendering;
 using Afterglow.Graphics.Utilities;
+using Afterglow.Infrastructure;
 using Afterglow.Math;
 using System.Windows.Forms;
 using System.Drawing;
@@ -15,6 +16,7 @@ using MbUnit.Framework;
 
 namespace Afterglow.Graphics.Xna.Examples
 {
+    [Category(Categories.EXAMPLES)]
     public abstract class SceneTestBase : IScene
     {
         protected Form Form { get; private set; }
@@ -39,7 +41,6 @@ namespace Afterglow.Graphics.Xna.Examples
         }
 
         [Test]
-        [Category(Categories.EXAMPLES)]
         public void Run()
         {
             Load();

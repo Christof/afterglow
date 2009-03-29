@@ -2,16 +2,18 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gallio.org/">
   <testPackageConfig>
     <assemblyFiles>
-      <assemblyFile>.\bin\Tests.Common.dll</assemblyFile>
       <assemblyFile>.\bin\Tests.Graphics.dll</assemblyFile>
-      <assemblyFile>.\bin\Tests.Graphics.OpenGL.dll</assemblyFile>
       <assemblyFile>.\bin\Tests.Graphics.SlimDX.dll</assemblyFile>
       <assemblyFile>.\bin\Tests.Graphics.Xna.dll</assemblyFile>
       <assemblyFile>.\bin\Tests.Math.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Input.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Input.SlimDX.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Input.Xna.dll</assemblyFile>
+      <assemblyFile>.\bin\Tests.Graphics.OpenTK.dll</assemblyFile>
     </assemblyFiles>
     <hintDirectories />
     <excludedFrameworkIds />
-    <hostSetup enableShadowCopy="false">
+    <hostSetup enableShadowCopy="false" debug="false" configurationFileLocation="temp" processorArchitecture="MSIL">
       <configuration legacyUnhandledExceptionPolicyEnabled="true" assertUiEnabled="false" remotingCustomErrorsEnabled="false">
         <assemblyQualifications />
         <assemblyDependencies />
@@ -20,6 +22,8 @@
     </hostSetup>
   </testPackageConfig>
   <testFilters>
-    <testFilter filterName="LastRun" filter="*" />
+    <testFilter filterName="LastRun" filter="(Id: 1fae61110f49fe54 or Id: 27dc8b31e149e016 or Id: 464706da8cb9df20 or Id: ec460d3eaf128bc5 or Id: c594254b24a441d9 or Id: a2666774ed7e66a1 or Id: a992739adbd9bdfe or Id: 809a40e777771e55 or Id: 526d00832a7326c6 or Id: 1a554892cf772b1c or Id: 86d9a5ccc172b2fd or Id: 3f4d3a98db70856f or Id: cb26c0737c690f44 or Id: ab4e379c7fac748d or Id: 969be8e489e68a28 or Id: d5d02ce3dfe03c06 or Id: 83df46c0c515ede0 or Id: 5dbe5a501e1360e2 or Id: 7878c6347e4b1dc1 or Id: b51890776ee9fd69 or Id: 8dff59f29496f5c1 or Id: c85fc5769548fa3e or Id: 83571e318772ca7c or Id: d5db4259e0e8e8f7 or Id: fb3df847a120398c or Id: bfc44a424c7745f0 or Id: 770a2eb8b907c024 or Id: d4a512bdbb1049ef or Id: b1a2cd762de78406 or Id: 389e0488cd47765b or Id: d527ccbc3b31b0e9 or Id: d7f56567a492f6d3 or Id: 22b90d7fcaea70b1 or Id: 3210ca082c34966 or Id: df343f7a9ac498ba or Id: c013c87b43ee2b95 or Id: 2ee41771b324829)" />
+    <testFilter filterName="AutoSave" filter="(Id: 1fae61110f49fe54 or Id: 27dc8b31e149e016 or Id: 464706da8cb9df20 or Id: ec460d3eaf128bc5 or Id: c594254b24a441d9 or Id: a2666774ed7e66a1 or Id: a992739adbd9bdfe or Id: 809a40e777771e55 or Id: 526d00832a7326c6 or Id: 1a554892cf772b1c or Id: 86d9a5ccc172b2fd or Id: 3f4d3a98db70856f or Id: cb26c0737c690f44 or Id: ab4e379c7fac748d or Id: 969be8e489e68a28 or Id: d5d02ce3dfe03c06 or Id: 83df46c0c515ede0 or Id: 5dbe5a501e1360e2 or Id: 7878c6347e4b1dc1 or Id: b51890776ee9fd69 or Id: 8dff59f29496f5c1 or Id: c85fc5769548fa3e or Id: 83571e318772ca7c or Id: d5db4259e0e8e8f7 or Id: fb3df847a120398c or Id: bfc44a424c7745f0 or Id: 770a2eb8b907c024 or Id: d4a512bdbb1049ef or Id: b1a2cd762de78406 or Id: 389e0488cd47765b or Id: d527ccbc3b31b0e9 or Id: d7f56567a492f6d3 or Id: 22b90d7fcaea70b1 or Id: 3210ca082c34966 or Id: df343f7a9ac498ba or Id: c013c87b43ee2b95 or Id: 2ee41771b324829)" />
+    <testFilter filterName="UnitTests" filter="(Id: 1fae61110f49fe54 or Id: 27dc8b31e149e016 or Id: 464706da8cb9df20 or Id: ec460d3eaf128bc5 or Id: c594254b24a441d9 or Id: a2666774ed7e66a1 or Id: a992739adbd9bdfe or Id: 809a40e777771e55 or Id: 526d00832a7326c6 or Id: 1a554892cf772b1c or Id: 86d9a5ccc172b2fd or Id: 3f4d3a98db70856f or Id: cb26c0737c690f44 or Id: ab4e379c7fac748d or Id: 969be8e489e68a28 or Id: d5d02ce3dfe03c06 or Id: 83df46c0c515ede0 or Id: 5dbe5a501e1360e2 or Id: 7878c6347e4b1dc1 or Id: b51890776ee9fd69 or Id: 8dff59f29496f5c1 or Id: c85fc5769548fa3e or Id: 83571e318772ca7c or Id: d5db4259e0e8e8f7 or Id: fb3df847a120398c or Id: bfc44a424c7745f0 or Id: 770a2eb8b907c024 or Id: d4a512bdbb1049ef or Id: b1a2cd762de78406 or Id: 389e0488cd47765b or Id: d527ccbc3b31b0e9 or Id: d7f56567a492f6d3 or Id: 22b90d7fcaea70b1 or Id: 3210ca082c34966 or Id: df343f7a9ac498ba or Id: c013c87b43ee2b95 or Id: 2ee41771b324829 or Id: 3411adff7c10501f)" />
   </testFilters>
 </project>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,35 +35,39 @@
     </DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gallio, Version=3.0.6.749, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL"><HintPath>..\..\thirdparty\tools\Gallio\Gallio.dll</HintPath></Reference>
-    <Reference Include="MbUnit, Version=3.0.6.749, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL"><HintPath>..\..\thirdparty\tools\Gallio\MbUnit.dll</HintPath></Reference>
+    <Reference Include="Gallio, Version=3.0.6.749, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+      <HintPath>..\..\thirdparty\tools\Gallio\Gallio.dll</HintPath>
+    </Reference>
+    <Reference Include="MbUnit, Version=3.0.6.749, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+      <HintPath>..\..\thirdparty\tools\Gallio\MbUnit.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK, Version=0.9.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
-    <HintPath>..\..\thirdparty\lib\opentk\OpenTK.dll</HintPath></Reference>
-    <Reference Include="System"/>
+      <HintPath>..\..\thirdparty\lib\opentk\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing"/>
-    <Reference Include="System.Windows.Forms"/>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.Xml"/>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiExamples\EmptyWindow.cs"/>
-    <Compile Include="ApiExamples\QuadWithBuffers.cs"/>
-    <Compile Include="ApiExamples\SimpleQuad.cs"/>
-    <Compile Include="ApiExamples\SimpleTriangle.cs"/>
-    <Compile Include="ApiExamples\VertexBuffers.cs"/>
-    <Compile Include="Properties\AssemblyInfo.cs"/>
-    <Compile Include="Test_OpenTKRenderWindow.cs"/>
+    <Compile Include="ApiExamples\EmptyWindow.cs" />
+    <Compile Include="ApiExamples\QuadWithBuffers.cs" />
+    <Compile Include="ApiExamples\SimpleQuad.cs" />
+    <Compile Include="ApiExamples\SimpleTriangle.cs" />
+    <Compile Include="ApiExamples\VertexBuffers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test_OpenTKRenderWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics.OpenTK\Graphics.OpenTK.csproj">
@@ -74,12 +78,16 @@
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj">
+      <Project>{80F94562-64F0-48BB-8CFC-327CA0637B82}</Project>
+      <Name>TestInfrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tests.Graphics\Tests.Graphics.csproj">
       <Project>{886A66F9-E7A1-4288-9F03-A10E8732E1F2}</Project>
       <Name>Tests.Graphics</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

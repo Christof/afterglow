@@ -2,9 +2,11 @@
 using System.Drawing;
 using System.Windows.Forms;
 using MbUnit.Framework;
+using Afterglow.Infrastructure;
 
 namespace Afterglow.Graphics.OpenTK
 {
+    [Category(Categories.EXAMPLES)]
     public class Test_OpenTKRenderWindow
     {
         [Test]
