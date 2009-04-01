@@ -1,4 +1,5 @@
 using System;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Windows.Forms;
@@ -6,13 +7,13 @@ using System.Windows.Forms;
 namespace Afterglow.Graphics.Xna.ApiExamples
 {
     [TestFixture]
+    [Category(Categories.API_EXAMPLES)]
     public class EmptyWindow
     {
         private const int WIDTH = 800;
         private const int HEIGHT = 600;
 
         [Test]
-        [Category(Categories.API_EXAMPLES)]
         public void Run()
         {
             using (var form = CreateForm())

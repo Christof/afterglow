@@ -6,10 +6,12 @@ using System.Security;
 using System.Windows.Forms;
 using System.Drawing;
 using Afterglow.Graphics.Utilities;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 
 namespace Afterglow.Graphics
 {
+    [Category(Categories.EXAMPLES)]
     public abstract class SceneTestBase : IScene
     {
         protected Form Form { get; private set; }
@@ -30,7 +32,6 @@ namespace Afterglow.Graphics
         }
 
         [Test]
-        [Category(Categories.EXAMPLES)]
         public void Run()
         {
             Load();

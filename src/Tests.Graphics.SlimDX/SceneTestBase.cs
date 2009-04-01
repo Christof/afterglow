@@ -5,11 +5,13 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows.Forms;
 using Afterglow.Graphics.Utilities;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using System.Diagnostics;
 
 namespace Afterglow.Graphics.SlimDX
 {
+    [Category(Categories.EXAMPLES)]
     public abstract class SceneTestBase : IScene
     {
         protected Form Form { get; private set; }
@@ -34,7 +36,6 @@ namespace Afterglow.Graphics.SlimDX
         }
 
         [Test]
-        [Category(Categories.EXAMPLES)]
         public void Run()
         {
             Load();

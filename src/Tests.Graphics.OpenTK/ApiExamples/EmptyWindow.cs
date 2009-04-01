@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using OpenTK;
 using OpenTK.Graphics;
@@ -7,13 +8,13 @@ using OpenTK.Graphics;
 namespace Afterglow.Graphics.OpenTK.ApiExamples
 {
     [TestFixture]
+    [Category(Categories.API_EXAMPLES)]
     public class EmptyWindow
     {
         private const int WIDTH = 800;
         private const int HEIGHT = 600;
 
         [Test]
-        [Category(Categories.API_EXAMPLES)]
         public void Run()
         {
             using (var form = CreateForm())

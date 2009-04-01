@@ -12,6 +12,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Afterglow.Graphics;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using OpenTK;
 using OpenTK.Graphics;
@@ -23,6 +24,20 @@ using OpenTK.Platform;
 
 namespace Examples.Tutorial
 {
+    [TestFixture]
+    [Category(Categories.API_EXAMPLES)]
+    public class VertexBuffers
+    {
+        [Test]
+        public void Run()
+        {
+            using (var example = new T08_VBO())
+            {
+                example.Run(30.0, 0.0);
+            }
+        }
+    }
+
     public static class Utilities
     {
         /// <summary>
@@ -106,204 +121,181 @@ namespace Examples.Tutorial
                 Utilities.ColorToRgba32(Color.Gold),
             };
         }
+    }
 
-        #region Nested type: T08_VBO
+    public class T08_VBO : GameWindow
+    {
+        #region --- Private Fields ---
 
-        [TestFixture]
-        public class T08_VBO : GameWindow
+        public static readonly int order = 8;
+
+        private readonly Shape cube = new Cube();
+
+        //Shapes.Shape plane = new Examples.Shapes.Plane(16, 16, 2.0f, 2.0f);
+
+        private readonly Vbo[] vbo = new Vbo[2];
+
+        private struct Vbo
         {
-            #region --- Private Fields ---
+            public int EboID, NumElements;
 
-            public static readonly int order = 8;
+            public int VboID;
+        }
 
-            private readonly Shape cube = new Cube();
+        //float angle;
 
-            //Shapes.Shape plane = new Examples.Shapes.Plane(16, 16, 2.0f, 2.0f);
+        #endregion
 
-            private readonly Vbo[] vbo = new Vbo[2];
+        #region --- Constructor ---
 
-            private struct Vbo
-            {
-                public int EboID, NumElements;
-
-                public int VboID;
-            }
-
-            //float angle;
-
-            #endregion
-
-            #region --- Constructor ---
-
-            public T08_VBO()
-                : base(800, 600)
-            {
-            }
-
-            #endregion
-
-            #region OnLoad override
-
-            public override void OnLoad(EventArgs e)
-            {
-                base.OnLoad(e);
-
-                if (!GL.SupportsExtension("VERSION_1_5"))
-                {
-                    MessageBox.Show(
-                        "You need at least OpenGL 1.5 to run this example. Aborting.", "VBOs not supported",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Exit();
-                }
-
-                GL.ClearColor(0.1f, 0.1f, 0.5f, 0.0f);
-                GL.Enable(EnableCap.DepthTest);
-
-                // Create the Vertex Buffer Object:
-                // 1) Generate the buffer handles.
-                // 2) Bind the Vertex Buffer and upload your vertex buffer. Check that the buffer was uploaded correctly.
-                // 3) Bind the Index Buffer and upload your index buffer. Check that the buffer was uploaded correctly.
-
-                vbo[0] = LoadVBO(cube.Vertices, cube.Indices);
-                vbo[1] = LoadVBO(cube.Vertices, cube.Indices);
-            }
-
-            #endregion
-
-            #region OnResize override
-
-            protected override void OnResize(ResizeEventArgs e)
-            {
-                GL.Viewport(0, 0, Width, Height);
-
-                double ratio = e.Width / (double)e.Height;
-
-                GL.MatrixMode(MatrixMode.Projection);
-                GL.LoadIdentity();
-                Glu.Perspective(45.0, ratio, 1.0, 64.0);
-            }
-
-            #endregion
-
-            #region OnUpdateFrame override
-
-            /// <summary>
-            /// Prepares the next frame for rendering.
-            /// </summary>
-            /// <remarks>
-            /// Place your control logic here. This is the place to respond to user input,
-            /// update object positions etc.
-            /// </remarks>
-            public override void OnUpdateFrame(UpdateFrameEventArgs e)
-            {
-                if (Keyboard[Key.Escape])
-                {
-                    Exit();
-                }
-            }
-
-            #endregion
-
-            #region OnRenderFrame
-
-            public override void OnRenderFrame(RenderFrameEventArgs e)
-            {
-                base.OnRenderFrame(e);
-
-                GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-                GL.MatrixMode(MatrixMode.Modelview);
-                GL.LoadIdentity();
-                Glu.LookAt(
-                    0.0, 5.0, 5.0,
-                    0.0, 0.0, 0.0,
-                    0.0, 1.0, 0.0);
-
-                GL.Color4(Color.Black);
-                Draw(vbo[0]);
-
-                SwapBuffers();
-            }
-
-            #endregion
-
-            private Vbo LoadVBO(Vector3[] vertices, int[] indices)
-            {
-                var handle = new Vbo();
-                int size;
-
-                GL.GenBuffers(1, out handle.VboID);
-                GL.BindBuffer(BufferTarget.ArrayBuffer, handle.VboID);
-                GL.BufferData(
-                    BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Vector3.SizeInBytes), vertices,
-                    BufferUsageHint.StaticDraw);
-                GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize, out size);
-                if (vertices.Length * Vector3.SizeInBytes != size)
-                {
-                    throw new ApplicationException("Vertex array not uploaded correctly");
-                }
-                //GL.BindBuffer(Version15.ArrayBuffer, 0);
-
-                GL.GenBuffers(1, out handle.EboID);
-                GL.BindBuffer(BufferTarget.ElementArrayBuffer, handle.EboID);
-                GL.BufferData(
-                    BufferTarget.ElementArrayBuffer, (IntPtr)(indices.Length * sizeof (int)), indices,
-                    BufferUsageHint.StaticDraw);
-                GL.GetBufferParameter(BufferTarget.ElementArrayBuffer, BufferParameterName.BufferSize, out size);
-                if (indices.Length * sizeof (int) != size)
-                {
-                    throw new ApplicationException("Element array not uploaded correctly");
-                }
-                //GL.BindBuffer(Version15.ElementArrayBuffer, 0);
-
-                handle.NumElements = indices.Length;
-                return handle;
-            }
-
-            private void Draw(Vbo handle)
-            {
-                //GL.PushClientAttrib(ClientAttribMask.ClientVertexArrayBit);
-
-                //GL.EnableClientState(EnableCap.TextureCoordArray);
-                GL.EnableClientState(EnableCap.VertexArray);
-
-                GL.BindBuffer(BufferTarget.ArrayBuffer, handle.VboID);
-                GL.BindBuffer(BufferTarget.ElementArrayBuffer, handle.EboID);
-
-                //GL.TexCoordPointer(2, TexCoordPointerType.Float, vector2_size, (IntPtr)vector2_size);
-                GL.VertexPointer(3, VertexPointerType.Float, Vector3.SizeInBytes, IntPtr.Zero);
-
-                GL.DrawElements(BeginMode.Triangles, handle.NumElements, DrawElementsType.UnsignedInt, IntPtr.Zero);
-                //GL.DrawArrays(BeginMode.LineLoop, 0, vbo.element_count);
-
-                GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-                GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
-
-                GL.DisableClientState(EnableCap.VertexArray);
-                //GL.DisableClientState(EnableCap.TextureCoordArray);
-
-                //GL.PopClientAttrib();
-            }
-
-            #region public static void Main()
-
-            /// <summary>
-            /// Entry point of this example.
-            /// </summary>
-            [STAThread]
-            [Test]
-            [Category(Categories.API_EXAMPLES)]
-            public static void Main()
-            {
-                using (var example = new T08_VBO())
-                {
-                    example.Run(30.0, 0.0);
-                }
-            }
-
-            #endregion
+        public T08_VBO()
+            : base(800, 600)
+        {
         }
 
         #endregion
+
+        #region OnLoad override
+
+        public override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            if (!GL.SupportsExtension("VERSION_1_5"))
+            {
+                MessageBox.Show(
+                    "You need at least OpenGL 1.5 to run this example. Aborting.", "VBOs not supported",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Exit();
+            }
+
+            GL.ClearColor(0.1f, 0.1f, 0.5f, 0.0f);
+            GL.Enable(EnableCap.DepthTest);
+
+            // Create the Vertex Buffer Object:
+            // 1) Generate the buffer handles.
+            // 2) Bind the Vertex Buffer and upload your vertex buffer. Check that the buffer was uploaded correctly.
+            // 3) Bind the Index Buffer and upload your index buffer. Check that the buffer was uploaded correctly.
+
+            vbo[0] = LoadVBO(cube.Vertices, cube.Indices);
+            vbo[1] = LoadVBO(cube.Vertices, cube.Indices);
+        }
+
+        #endregion
+
+        #region OnResize override
+
+        protected override void OnResize(ResizeEventArgs e)
+        {
+            GL.Viewport(0, 0, Width, Height);
+
+            double ratio = e.Width / (double)e.Height;
+
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+            Glu.Perspective(45.0, ratio, 1.0, 64.0);
+        }
+
+        #endregion
+
+        #region OnUpdateFrame override
+
+        /// <summary>
+        /// Prepares the next frame for rendering.
+        /// </summary>
+        /// <remarks>
+        /// Place your control logic here. This is the place to respond to user input,
+        /// update object positions etc.
+        /// </remarks>
+        public override void OnUpdateFrame(UpdateFrameEventArgs e)
+        {
+            if (Keyboard[Key.Escape])
+            {
+                Exit();
+            }
+        }
+
+        #endregion
+
+        #region OnRenderFrame
+
+        public override void OnRenderFrame(RenderFrameEventArgs e)
+        {
+            base.OnRenderFrame(e);
+
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            Glu.LookAt(
+                0.0, 5.0, 5.0,
+                0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0);
+
+            GL.Color4(Color.Black);
+            Draw(vbo[0]);
+
+            SwapBuffers();
+        }
+
+        #endregion
+
+        private Vbo LoadVBO(Vector3[] vertices, int[] indices)
+        {
+            var handle = new Vbo();
+            int size;
+
+            GL.GenBuffers(1, out handle.VboID);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, handle.VboID);
+            GL.BufferData(
+                BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Vector3.SizeInBytes), vertices,
+                BufferUsageHint.StaticDraw);
+            GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize, out size);
+            if (vertices.Length * Vector3.SizeInBytes != size)
+            {
+                throw new ApplicationException("Vertex array not uploaded correctly");
+            }
+            //GL.BindBuffer(Version15.ArrayBuffer, 0);
+
+            GL.GenBuffers(1, out handle.EboID);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, handle.EboID);
+            GL.BufferData(
+                BufferTarget.ElementArrayBuffer, (IntPtr)(indices.Length * sizeof(int)), indices,
+                BufferUsageHint.StaticDraw);
+            GL.GetBufferParameter(BufferTarget.ElementArrayBuffer, BufferParameterName.BufferSize, out size);
+            if (indices.Length * sizeof(int) != size)
+            {
+                throw new ApplicationException("Element array not uploaded correctly");
+            }
+            //GL.BindBuffer(Version15.ElementArrayBuffer, 0);
+
+            handle.NumElements = indices.Length;
+            return handle;
+        }
+
+        private void Draw(Vbo handle)
+        {
+            //GL.PushClientAttrib(ClientAttribMask.ClientVertexArrayBit);
+
+            //GL.EnableClientState(EnableCap.TextureCoordArray);
+            GL.EnableClientState(EnableCap.VertexArray);
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, handle.VboID);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, handle.EboID);
+
+            //GL.TexCoordPointer(2, TexCoordPointerType.Float, vector2_size, (IntPtr)vector2_size);
+            GL.VertexPointer(3, VertexPointerType.Float, Vector3.SizeInBytes, IntPtr.Zero);
+
+            GL.DrawElements(BeginMode.Triangles, handle.NumElements, DrawElementsType.UnsignedInt, IntPtr.Zero);
+            //GL.DrawArrays(BeginMode.LineLoop, 0, vbo.element_count);
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+
+            GL.DisableClientState(EnableCap.VertexArray);
+            //GL.DisableClientState(EnableCap.TextureCoordArray);
+
+            //GL.PopClientAttrib();
+        }
     }
 }

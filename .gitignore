@@ -12,3 +12,4 @@ obj/*
 NDependOut
 /build/test-report*
 /Reports
+*.gallio.user

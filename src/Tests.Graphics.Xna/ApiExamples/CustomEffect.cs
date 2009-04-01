@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,10 +8,10 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Afterglow.Graphics.Xna.ApiExamples
 {
     [TestFixture]
+    [Category(Categories.API_EXAMPLES)]
     public class CustomEffect
     {
         [Test]
-        [Category(Categories.API_EXAMPLES)]
         public void Run()
         {
             using (Form form = EmptyWindow.CreateForm())

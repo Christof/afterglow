@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using SlimDX;
 using SlimDX.Direct3D10;
@@ -12,6 +13,7 @@ using Device = SlimDX.Direct3D10.Device;
 namespace Afterglow.Graphics.SlimDX.ApiExamples
 {
     [TestFixture]
+    [Category(Categories.API_EXAMPLES)]
     public class TriangleWithTexture
     {
         private struct Vertex
@@ -24,7 +26,6 @@ namespace Afterglow.Graphics.SlimDX.ApiExamples
         }
 
         [Test]
-        [Category(Categories.API_EXAMPLES)]
         public void Run()
         {
             using (var form = EmptyWindow.CreateForm())

@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using Gallio.Framework;
 using MbUnit.Framework;
 using SlimDX;
@@ -12,6 +13,7 @@ using Device = SlimDX.Direct3D10.Device;
 namespace Afterglow.Graphics.SlimDX.ApiExamples
 {
     [TestFixture]
+    [Category(Categories.API_EXAMPLES)]
     public class QuadWithVertexAndIndexBuffer
     {
         private struct Vertex
@@ -21,7 +23,6 @@ namespace Afterglow.Graphics.SlimDX.ApiExamples
         }
 
         [Test]
-        [Category(Categories.API_EXAMPLES)]
         public void Run()
         {
             using (var form = EmptyWindow.CreateForm())

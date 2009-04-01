@@ -1,9 +1,11 @@
 using System.Drawing;
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 
 namespace Afterglow.Graphics
 {
+    [Category(Categories.EXAMPLES)]
     public class Test_SlimDXRenderWindow
     {
         [Test]

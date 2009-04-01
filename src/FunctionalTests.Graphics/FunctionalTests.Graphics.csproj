@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0C05E197-3435-40A0-B72A-B922F474A7B6}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -102,6 +102,10 @@
     <ProjectReference Include="..\Math\Math.csproj">
       <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
       <Name>Math %28Math\Math%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj">
+      <Project>{80F94562-64F0-48BB-8CFC-327CA0637B82}</Project>
+      <Name>TestInfrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tests.Graphics.SlimDX\Tests.Graphics.SlimDX.csproj">
       <Project>{A456EFBC-ECB0-4C64-B54E-10941689FB1D}</Project>
