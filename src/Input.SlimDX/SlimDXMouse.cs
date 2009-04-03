@@ -21,8 +21,9 @@ namespace Afterglow.Input.SlimDX
         public SlimDXMouse(Control control)
         {
             mAxesActions = new Dictionary<Axis, AxisAction>(3);
+            var directInput = DirectInput.FromPointer(control.Handle);
 
-            mMouse = new Device<MouseState>(SystemGuid.Mouse);
+            mMouse = new Device<MouseState>(directInput, SystemGuid.Mouse);
             mMouse.SetCooperativeLevel(control,
                 CooperativeLevel.Foreground | CooperativeLevel.Exclusive);
 

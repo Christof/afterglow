@@ -1,9 +1,7 @@
 using Afterglow.Graphics.GraphicStreams;
-using Afterglow.Infrastructure;
 using Afterglow.Input;
 using Afterglow.Input.SlimDX;
 using Ninject.Modules;
-using SlimDX.Direct3D10;
 using Afterglow.Graphics.Effects;
 using Afterglow.Graphics.Rendering;
 using Afterglow.Math;

@@ -17,9 +17,9 @@ namespace Afterglow.Input.SlimDX
         /// <param name="control">The control.</param>
         public SlimDXKeyboard(Control control)
         {
-            DirectInput.Initialize();
+            var directInput = DirectInput.FromPointer(control.Handle);
 
-            mKeyboard = new Device<KeyboardState>(SystemGuid.Keyboard);
+            mKeyboard = new Device<KeyboardState>(directInput, SystemGuid.Keyboard);
             mKeyboard.SetCooperativeLevel(control,
                 CooperativeLevel.Foreground | CooperativeLevel.Exclusive | CooperativeLevel.NoWinKey);
 
