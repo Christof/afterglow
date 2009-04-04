@@ -76,6 +76,9 @@ task :test do
 	report_dir = "build"
 	gallio = Gallio.new(BUILD_DIR, report_dir)
 	gallio.exclude_categories(["API_Examples", "Examples", "Manual"])
+	if (ENV['show_report'] == 'true' || ENV['sr'] == 'true')
+		gallio.show_reports
+	end
 	gallio.run
 	
 	dir = Dir.new(report_dir)
@@ -110,7 +113,7 @@ def replace_underlines(path)
 end
 
 desc "Fixes references which use absolute paths or don't use the HintPath at all."
-task :fixRef do
+task :fix_references do
 	#get all dependency names
 	puts 'dependencies'
 	dependencies = {}
