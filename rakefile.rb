@@ -23,21 +23,21 @@ class MsBuild
 end
 
 class Gallio
-	@@GALLIO_PATH = "C:/Program Files/Gallio/bin/Gallio.Echo.exe"
+	@@GALLIO_PATH = "C:/Program Files (x86)/Gallio/bin/Gallio.Echo.exe"
 	
 	def initialize(build_dir, report_dir)
 		@build_dir = build_dir
 		@report_dir = report_dir
 		@show_reports = false
+		@filter = ""
 	end
 	
 	def assemblies()
 		assemblies = Dir["#{@build_dir}/Tests.*.dll"].join(" ")
 	end
 	
-	def filter_option()
-		#/f:not(CategoryName:API_Examples) " +#/filter:not(Type:TriangleWithTexture) " + 
-		""
+	def exclude_categories(categories)
+		@filter = " \"/f:exclude Category:#{categories.join(", ")}\" "
 	end
 	
 	def show_reports()
@@ -52,7 +52,7 @@ class Gallio
 	
 	def run()
 		sh "\"#{@@GALLIO_PATH}\" #{assemblies}  /working-directory:#{@build_dir} " + 
-			" /report-directory:#{@report_dir} /report-type:Html #{show_reports_option}"
+			" /report-directory:#{@report_dir} /report-type:Html #{show_reports_option} " + @filter
 	end
 end
 
@@ -71,10 +71,11 @@ task :build => [:removeBuildDir, BUILD_DIR] do
 	MsBuild.build(SOLUTION_NAME)
 end
 
-desc "Runs all tests."
+desc "Runs all unit tests."
 task :test do
 	report_dir = "build"
 	gallio = Gallio.new(BUILD_DIR, report_dir)
+	gallio.exclude_categories(["API_Examples", "Examples", "Manual"])
 	gallio.run
 	
 	dir = Dir.new(report_dir)
