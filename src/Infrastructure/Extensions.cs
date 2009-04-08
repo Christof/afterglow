@@ -192,6 +192,10 @@ namespace Afterglow.Infrastructure
                 return 42;
             if (type.Equals(typeof(object)))
                 return 42;
+            if (type.Equals(typeof(Double)))
+                return 4.2;
+            if (type.Equals(typeof(float)))
+                return 4.2f;
 
             var defaultConstructor = type.GetConstructor(new Type[0]);
             if(defaultConstructor != null)
