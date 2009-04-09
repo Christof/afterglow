@@ -173,6 +173,7 @@ task :download_dependencies do
 		if link.is_a? Hash then
 			puts "Which version of #{name} do you want to download? [1] x86 [2] x64"
 			str = STDIN.gets
+			str = str.chomp!
 			if str == "1" then
 				link = link["x86"]
 				name += "_x86"
