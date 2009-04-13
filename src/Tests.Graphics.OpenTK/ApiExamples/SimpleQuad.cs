@@ -74,10 +74,13 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
 
         private void RenderFrame()
         {
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(BeginMode.Triangles);
 
             RenderVertex(0);
             RenderVertex(1);
+            RenderVertex(2);
+
+            RenderVertex(0);
             RenderVertex(2);
             RenderVertex(3);
 

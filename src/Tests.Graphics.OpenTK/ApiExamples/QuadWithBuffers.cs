@@ -10,6 +10,7 @@
 
 using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Afterglow.Infrastructure;
 using MbUnit.Framework;
@@ -29,7 +30,11 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
 
         private const int WIDTH = 800;
 
-        private Vbo mVbo;
+        private int mVertexBufferId;
+
+        private int mIndexBufferId;
+
+        private int mColorBufferId;
 
         [Test]
         public void Run()
@@ -71,16 +76,15 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
                     Color.Blue, Color.Yellow
                 };
 
-                var indices = new int[] { 0, 1, 3, 0, 3, 2 };
+                var indices = new uint[] { 0, 1, 2, 0, 2, 3 };
 
                 // Create the Vertex Buffer Object:
                 // 1) Generate the buffer handles.
                 // 2) Bind the Vertex Buffer and upload your vertex buffer. Check that the buffer was uploaded correctly.
                 // 3) Bind the Index Buffer and upload your index buffer. Check that the buffer was uploaded correctly.
 
-                mVbo = LoadVBO(positions, indices);
-
-
+                LoadVBO(positions, indices, colors);
+                
                 Application.Idle +=
                     delegate
                     {
@@ -101,60 +105,67 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
 
         private void RenderFrame()
         {
-            GL.Begin(BeginMode.Triangles);
-
-            Draw(this.mVbo);
-
-            GL.End();
+            Draw();
         }
 
-        private Vbo LoadVBO(Vector3[] vertices, int[] indices)
+        private void LoadVBO(Vector3[] vertices, uint[] indices, Color[] colors)
         {
-            var handle = new Vbo();
             int size;
 
-            GL.GenBuffers(1, out handle.VboID);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, handle.VboID);
-            GL.BufferData(
-                BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Vector3.SizeInBytes), vertices,
+            GL.GenBuffers(1, out mVertexBufferId);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, mVertexBufferId);
+            GL.BufferData(BufferTarget.ArrayBuffer, 
+                (IntPtr)(vertices.Length * Vector3.SizeInBytes), vertices,
                 BufferUsageHint.StaticDraw);
-            GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize, out size);
+
+            GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize,
+                out size);
             if (vertices.Length * Vector3.SizeInBytes != size)
             {
                 throw new ApplicationException("Vertex array not uploaded correctly");
             }
-            //GL.BindBuffer(Version15.ArrayBuffer, 0);
 
-            GL.GenBuffers(1, out handle.EboID);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, handle.EboID);
-            GL.BufferData(
-                BufferTarget.ElementArrayBuffer, (IntPtr)(indices.Length * sizeof (int)), indices,
+            GL.GenBuffers(1, out mIndexBufferId);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, mIndexBufferId);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, 
+                (IntPtr)(indices.Length * sizeof (uint)), indices,
                 BufferUsageHint.StaticDraw);
             GL.GetBufferParameter(BufferTarget.ElementArrayBuffer, BufferParameterName.BufferSize, out size);
             if (indices.Length * sizeof (int) != size)
             {
                 throw new ApplicationException("Element array not uploaded correctly");
             }
-            //GL.BindBuffer(Version15.ElementArrayBuffer, 0);
 
-            handle.NumElements = indices.Length;
-            return handle;
+            //GL.GenBuffers(1, out mColorBufferId);
+            //GL.BindBuffer(BufferTarget.ArrayBuffer, mColorBufferId);
+            //GL.BufferData(BufferTarget.ArrayBuffer,
+            //    (IntPtr)(colors.Length * Marshal.SizeOf(typeof(Color))), colors,
+            //    BufferUsageHint.StaticDraw);
+
+            //GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize,
+            //    out size);
+            //if (colors.Length * Marshal.SizeOf(typeof(Color)) != size)
+            //{
+            //    throw new ApplicationException("Vertex array not uploaded correctly");
+            //}
         }
 
-        private void Draw(Vbo handle)
+        private void Draw()
         {
+            GL.Color4(Color.Red);
             //GL.PushClientAttrib(ClientAttribMask.ClientVertexArrayBit);
 
             //GL.EnableClientState(EnableCap.TextureCoordArray);
             GL.EnableClientState(EnableCap.VertexArray);
 
-            GL.BindBuffer(BufferTarget.ArrayBuffer, handle.VboID);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, handle.EboID);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, mVertexBufferId);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, mIndexBufferId);
 
             //GL.TexCoordPointer(2, TexCoordPointerType.Float, vector2_size, (IntPtr)vector2_size);
             GL.VertexPointer(3, VertexPointerType.Float, Vector3.SizeInBytes, IntPtr.Zero);
 
-            GL.DrawElements(BeginMode.Triangles, handle.NumElements, DrawElementsType.UnsignedInt, IntPtr.Zero);
+            var indexCount = 6;
+            GL.DrawElements(BeginMode.Triangles, indexCount, DrawElementsType.UnsignedInt, IntPtr.Zero);
             //GL.DrawArrays(BeginMode.LineLoop, 0, vbo.element_count);
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
@@ -178,16 +189,5 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
                 Visible = true
             };
         }
-
-        #region Nested type: Vbo
-
-        private struct Vbo
-        {
-            public int EboID, NumElements;
-
-            public int VboID;
-        }
-
-        #endregion
     }
 }

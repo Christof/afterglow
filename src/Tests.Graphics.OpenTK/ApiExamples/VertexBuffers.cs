@@ -247,9 +247,8 @@ namespace Examples.Tutorial
 
             GL.GenBuffers(1, out handle.VboID);
             GL.BindBuffer(BufferTarget.ArrayBuffer, handle.VboID);
-            GL.BufferData(
-                BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Vector3.SizeInBytes), vertices,
-                BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Vector3.SizeInBytes),
+                vertices, BufferUsageHint.StaticDraw);
             GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize, out size);
             if (vertices.Length * Vector3.SizeInBytes != size)
             {
@@ -260,8 +259,8 @@ namespace Examples.Tutorial
             GL.GenBuffers(1, out handle.EboID);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, handle.EboID);
             GL.BufferData(
-                BufferTarget.ElementArrayBuffer, (IntPtr)(indices.Length * sizeof(int)), indices,
-                BufferUsageHint.StaticDraw);
+                BufferTarget.ElementArrayBuffer, (IntPtr)(indices.Length * sizeof(int)),
+                indices, BufferUsageHint.StaticDraw);
             GL.GetBufferParameter(BufferTarget.ElementArrayBuffer, BufferParameterName.BufferSize, out size);
             if (indices.Length * sizeof(int) != size)
             {
