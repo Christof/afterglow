@@ -57,7 +57,7 @@ namespace Afterglow.Graphics.GraphicStreams
         public GraphicStreamDescription Description { get; private set; }
 
         /// <summary>
-        /// OpenTK specific handle of the buffer
+        /// Gets the OpenTK specific handle of the buffer
         /// </summary>
         public int Handle 
         {

@@ -25,7 +25,7 @@ namespace Afterglow.Graphics
         {
             mGLControl = new GLControl
             {
-                Anchor = (((((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right))),
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
                 BackColor = Color.LightGreen,
                 Location = new Point(1, 0),
                 Name = "GL Control",
@@ -33,7 +33,7 @@ namespace Afterglow.Graphics
                 TabIndex = 0,
                 VSync = false
             };
-            mGLControl.Resize += glControl_Resize;
+            mGLControl.Resize += OnResize;
 
             control.Controls.Add(mGLControl);
 
@@ -100,7 +100,7 @@ namespace Afterglow.Graphics
         /// </summary>
         /// <param name="sender">sender of the event, should be the parent control</param>
         /// <param name="e">arguments for the event</param>
-        private void glControl_Resize(object sender, EventArgs e)
+        private void OnResize(object sender, EventArgs e)
         {
             if (mGLControl.ClientSize.Height == 0)
             {

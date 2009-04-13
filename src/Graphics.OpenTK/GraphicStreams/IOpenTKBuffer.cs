@@ -6,7 +6,7 @@ namespace Afterglow.Graphics.GraphicStreams
     public interface IOpenTKBuffer : IBuffer
     {
         /// <summary>
-        /// OpenTK specific handle of the buffer
+        /// Gets the OpenTK specific handle of the buffer
         /// </summary>
         int Handle
         {

@@ -65,7 +65,6 @@
     <Compile Include="ApiExamples\QuadWithBuffers.cs" />
     <Compile Include="ApiExamples\SimpleQuad.cs" />
     <Compile Include="ApiExamples\SimpleTriangle.cs" />
-    <Compile Include="ApiExamples\VertexBuffers.cs" />
     <Compile Include="Examples\OpenTKQuadWithIndexBuffer.cs" />
     <Compile Include="Examples\OpenTKSceneTestBase.cs" />
     <Compile Include="GraphicStreams\Test_OpenTKBuffer.cs" />

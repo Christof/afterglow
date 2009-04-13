@@ -28,7 +28,7 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
             {
                 var mGLControl = new GLControl
                 {
-                    Anchor = (((((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right))),
+                    Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
                     BackColor = Color.LightGreen,
                     Location = new Point(1, 0),
                     Name = "GL Control",

@@ -43,7 +43,7 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
             {
                 var mGLControl = new GLControl
                 {
-                    Anchor = (((((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right))),
+                    Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
                     BackColor = Color.LightGreen,
                     Location = new Point(1, 0),
                     Name = "GL Control",
@@ -56,12 +56,10 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
                 //have to set this to get a -1 to 1 system view
                 GL.Viewport(0, 0, WIDTH, HEIGHT);
 
-
                 if (!GL.SupportsExtension("VERSION_1_5"))
                 {
                     Assert.Fail("You need at least OpenGL 1.5 to run this example. Aborting.", "VBOs not supported");
                 }
-
 
                 var positions = new[]
                 {

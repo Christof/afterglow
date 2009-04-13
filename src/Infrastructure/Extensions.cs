@@ -133,53 +133,5 @@ namespace Afterglow.Infrastructure
                 action(element);
             }
         }
-
-        /// <summary>
-        /// Tries to create an instance of the type. 
-        /// </summary>
-        /// <param name="type">Type of the instance to create</param>
-        /// <returns>An instance of the type</returns>
-        public static object TryCreateInstance(this Type type)
-        {
-            if (type.Equals(typeof(String)))
-                return "Hello World";
-            if (type.Equals(typeof(int)))
-                return 42;
-            if (type.Equals(typeof(object)))
-                return 42;
-
-            var defaultConstructor = type.GetConstructor(new Type[0]);
-            if(defaultConstructor != null)
-                return defaultConstructor.Invoke(null);
-
-            var constructors = type.GetConstructors();
-            foreach (var constructorInfo in constructors)
-            {
-                var parameters = constructorInfo.GetParameters();
-                if(parameters.Length > 0)
-                {
-                    var parameterValues = new object[parameters.Length];
-                    for (int i = 0; i < parameters.Length; i++)
-                    {
-                        var parameterType = parameters[i].ParameterType;
-                        if(!parameterType.Equals(type))
-                            parameterValues[i] = parameterType.TryCreateInstance();
-                        else
-                            break;
-                    }
-
-                    try
-                    {
-                        return constructorInfo.Invoke(parameterValues);
-                    }
-                    catch (Exception)
-                    {
-                        ;
-                    }
-                }
-            }
-
-            return null;
-        }
     }
 }
