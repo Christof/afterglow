@@ -1,7 +1,7 @@
 namespace Afterglow.Graphics.GraphicStreams
 {
     /// <summary>
-    /// Buffer which contains vertex or index data.
+    /// Storage for geometry data
     /// </summary>
     public interface IBuffer
     {
@@ -17,5 +17,11 @@ namespace Afterglow.Graphics.GraphicStreams
         /// Unloads the resource.
         /// </summary>
         void Unload();
+
+        /// <summary>
+        /// Gets the description for the elements in the buffer.
+        /// </summary>
+        /// <value>The description.</value>
+        GraphicStreamDescription Description { get; }
     }
 }

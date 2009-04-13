@@ -54,7 +54,7 @@ namespace Afterglow.Graphics.GraphicStreams
 
             var isIndexBuffer = mDescription.Usage == GraphicStreamUsage.Index;
 
-            var dataStream = new DataStream(mDescription.Size, false, true);
+            var dataStream = new DataStream(mDescription.TotalSizeInBytes, false, true);
             dataStream.WriteRange(graphicStream.Data.ToArray());
 
             // Important: when specifying initial buffer data like this, the buffer will
@@ -67,7 +67,7 @@ namespace Afterglow.Graphics.GraphicStreams
                 BindFlags = isIndexBuffer ? BindFlags.IndexBuffer : BindFlags.VertexBuffer,
                 CpuAccessFlags = CpuAccessFlags.None,
                 OptionFlags = ResourceOptionFlags.None,
-                SizeInBytes = mDescription.Size,
+                SizeInBytes = mDescription.TotalSizeInBytes,
                 Usage = ResourceUsage.Default
             };
 

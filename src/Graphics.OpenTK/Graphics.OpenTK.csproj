@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DD60BE5D-60A6-48D1-9DFA-3E147A5422CF}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -35,26 +35,31 @@
   <ItemGroup>
     <Reference Include="OpenTK, Version=0.9.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
-    <HintPath>..\..\thirdparty\lib\opentk\OpenTK.dll</HintPath></Reference>
-    <Reference Include="System"/>
+      <HintPath>..\..\thirdparty\lib\opentk\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing"/>
-    <Reference Include="System.Windows.Forms"/>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.Xml"/>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OpenTKRenderWindow.cs"/>
-    <Compile Include="Properties\AssemblyInfo.cs"/>
+    <Compile Include="GraphicStreams\IOpenTKBuffer.cs" />
+    <Compile Include="GraphicStreams\OpenTKBuffer.cs" />
+    <Compile Include="GraphicStreams\OpenTKBufferBinding.cs" />
+    <Compile Include="GraphicStreams\OpenTKBufferService.cs" />
+    <Compile Include="OpenTKRenderWindow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\OpenTKObjectRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics\Graphics.csproj">
@@ -62,7 +67,7 @@
       <Name>Graphics %28Graphics\Graphics%29</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -36,7 +36,7 @@ namespace Afterglow.Graphics.GraphicStreams
             else
             {
                 mDevice.Vertices[mSlot].SetSource(
-                    mBuffer.VertexBuffer, 0, mBuffer.Description.ElementSize);
+                    mBuffer.VertexBuffer, 0, mBuffer.Description.ElementSizeInBytes);
             }
         }
         

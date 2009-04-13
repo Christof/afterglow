@@ -66,6 +66,9 @@
     <Compile Include="ApiExamples\SimpleQuad.cs" />
     <Compile Include="ApiExamples\SimpleTriangle.cs" />
     <Compile Include="ApiExamples\VertexBuffers.cs" />
+    <Compile Include="Examples\OpenTKQuadWithIndexBuffer.cs" />
+    <Compile Include="Examples\OpenTKSceneTestBase.cs" />
+    <Compile Include="GraphicStreams\Test_OpenTKBuffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_OpenTKRenderWindow.cs" />
   </ItemGroup>
@@ -77,6 +80,10 @@
     <ProjectReference Include="..\Graphics\Graphics.csproj">
       <Project>{46A96A45-1CCE-4C94-95A2-9836CFBA2E78}</Project>
       <Name>Graphics %28Graphics\Graphics%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Math\Math.csproj">
+      <Project>{2E903ACD-202D-4B64-B2EF-C262D611C45D}</Project>
+      <Name>Math %28Math\Math%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj">
       <Project>{80F94562-64F0-48BB-8CFC-327CA0637B82}</Project>

@@ -29,8 +29,8 @@ namespace Afterglow.Graphics.GraphicStreams
             var sizeOfFloat = sizeof(float);
 
             Assert.IsNotNull(graphicStream);
-            Assert.AreEqual(sizeOfFloat, graphicStream.Description.ElementSize);
-            Assert.AreEqual(sizeOfFloat * data.Length, graphicStream.Description.Size);
+            Assert.AreEqual(sizeOfFloat, graphicStream.Description.ElementSizeInBytes);
+            Assert.AreEqual(sizeOfFloat * data.Length, graphicStream.Description.TotalSizeInBytes);
             Assert.AreEqual(GraphicStreamFormat.Float, graphicStream.Description.Format);
         }
 
@@ -43,8 +43,8 @@ namespace Afterglow.Graphics.GraphicStreams
             var sizeOfVector3 = 12;
 
             Assert.IsNotNull(graphicStream);
-            Assert.AreEqual(sizeOfVector3, graphicStream.Description.ElementSize);
-            Assert.AreEqual(sizeOfVector3 * data.Length, graphicStream.Description.Size);
+            Assert.AreEqual(sizeOfVector3, graphicStream.Description.ElementSizeInBytes);
+            Assert.AreEqual(sizeOfVector3 * data.Length, graphicStream.Description.TotalSizeInBytes);
             Assert.AreEqual(GraphicStreamFormat.Vector3, graphicStream.Description.Format);
         }
 

@@ -36,6 +36,8 @@ namespace Afterglow.Graphics
             mGLControl.Resize += glControl_Resize;
 
             control.Controls.Add(mGLControl);
+
+            GL.Viewport(0, 0, mGLControl.ClientSize.Width, mGLControl.ClientSize.Height);
         }
 
         /// <summary>

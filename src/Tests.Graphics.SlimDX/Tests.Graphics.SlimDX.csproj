@@ -74,7 +74,7 @@
     <Compile Include="Comparison\Test_Comparison_Stand.cs" />
     <Compile Include="Examples\CameraExample.cs" />
     <Compile Include="Examples\TriangleWithVertexBuffer.cs" />
-    <Compile Include="GraphicStreams\Test_Buffer.cs" />
+    <Compile Include="GraphicStreams\Test_SlimDXBuffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SceneTestBase.cs" />
     <Compile Include="Test_SlimDXExtensions.cs" />

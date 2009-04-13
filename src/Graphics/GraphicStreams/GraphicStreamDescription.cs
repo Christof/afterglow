@@ -11,7 +11,7 @@ namespace Afterglow.Graphics.GraphicStreams
 
         private readonly GraphicStreamFormat mFormat;
 
-        private readonly int mElementSize;
+        private readonly int mElementSizeInBytes;
 
         private readonly int mCount;
 
@@ -20,14 +20,14 @@ namespace Afterglow.Graphics.GraphicStreams
         /// </summary>
         /// <param name="usage">The usage.</param>
         /// <param name="format">The format.</param>
-        /// <param name="elementSize">Size of the element.</param>
+        /// <param name="elementSizeInBytes">Element size in bytes.</param>
         /// <param name="count">The count.</param>
         public GraphicStreamDescription(GraphicStreamUsage usage, 
-            GraphicStreamFormat format, int elementSize, int count)
+            GraphicStreamFormat format, int elementSizeInBytes, int count)
         {
             mUsage = usage;
             mFormat = format;
-            mElementSize = elementSize;
+            mElementSizeInBytes = elementSizeInBytes;
             mCount = count;
         }
 
@@ -53,9 +53,9 @@ namespace Afterglow.Graphics.GraphicStreams
         /// Gets the size of one element in bytes.
         /// </summary>
         /// <value>The size of one element.</value>
-        public int ElementSize
+        public int ElementSizeInBytes
         {
-            get { return mElementSize; }
+            get { return mElementSizeInBytes; }
         }
 
         /// <summary>
@@ -71,11 +71,11 @@ namespace Afterglow.Graphics.GraphicStreams
         /// Gets overall size in bytes.
         /// </summary>
         /// <value>The overall size.</value>
-        public int Size
+        public int TotalSizeInBytes
         {
             get
             {
-                return Count * ElementSize;
+                return Count * ElementSizeInBytes;
             }
         }
     }

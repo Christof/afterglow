@@ -13,11 +13,5 @@ namespace Afterglow.Graphics.GraphicStreams
         /// </summary>
         /// <value>The buffer.</value>
         Buffer Buffer { get; }
-
-        /// <summary>
-        /// Gets the description for the elements in the buffer.
-        /// </summary>
-        /// <value>The description.</value>
-        GraphicStreamDescription Description { get; }
     }
 }

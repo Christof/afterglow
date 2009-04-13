@@ -42,7 +42,7 @@ namespace Afterglow.Graphics.GraphicStreams
             else
             {
                 mDevice.InputAssembler.SetVertexBuffers(mSlot,
-                    new VertexBufferBinding(mBuffer.Buffer, Description.ElementSize, 0));
+                    new VertexBufferBinding(mBuffer.Buffer, Description.ElementSizeInBytes, 0));
             }
         }
 

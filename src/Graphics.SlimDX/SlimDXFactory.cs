@@ -16,8 +16,6 @@ namespace Afterglow.Graphics
     {
         private Device mDevice;
 
-        #region IApiFactory Members
-
         /// <summary>
         /// Creates a new render window.
         /// </summary>
@@ -91,7 +89,5 @@ namespace Afterglow.Graphics
         {
             return new SlimDXEffectCompiler(mDevice);
         }
-
-        #endregion
     }
 }
