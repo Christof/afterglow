@@ -72,8 +72,8 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
                 };
                 var colors = new[]
                 {
-                    Color.Red, Color.Green,
-                    Color.Blue, Color.Yellow
+                    new Vector3(1, 0, 0), new Vector3(0, 1, 0),
+                    new Vector3(0, 0, 1), new Vector3(1, 1, 0)
                 };
 
                 var indices = new uint[] { 0, 1, 2, 0, 2, 3 };
@@ -108,7 +108,7 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
             Draw();
         }
 
-        private void LoadVBO(Vector3[] vertices, uint[] indices, Color[] colors)
+        private void LoadVBO(Vector3[] vertices, uint[] indices, Vector3[] colors)
         {
             int size;
 
@@ -136,33 +136,35 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
                 throw new ApplicationException("Element array not uploaded correctly");
             }
 
-            //GL.GenBuffers(1, out mColorBufferId);
-            //GL.BindBuffer(BufferTarget.ArrayBuffer, mColorBufferId);
-            //GL.BufferData(BufferTarget.ArrayBuffer,
-            //    (IntPtr)(colors.Length * Marshal.SizeOf(typeof(Color))), colors,
-            //    BufferUsageHint.StaticDraw);
+            GL.GenBuffers(1, out mColorBufferId);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, mColorBufferId);
+            GL.BufferData(BufferTarget.ArrayBuffer,
+                (IntPtr)(colors.Length * Vector3.SizeInBytes), colors,
+                BufferUsageHint.StaticDraw);
 
-            //GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize,
-            //    out size);
-            //if (colors.Length * Marshal.SizeOf(typeof(Color)) != size)
-            //{
-            //    throw new ApplicationException("Vertex array not uploaded correctly");
-            //}
+            GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize,
+                out size);
+            if (colors.Length * Vector3.SizeInBytes != size)
+            {
+                throw new ApplicationException("Vertex array not uploaded correctly");
+            }
         }
 
         private void Draw()
         {
-            GL.Color4(Color.Red);
             //GL.PushClientAttrib(ClientAttribMask.ClientVertexArrayBit);
 
             //GL.EnableClientState(EnableCap.TextureCoordArray);
             GL.EnableClientState(EnableCap.VertexArray);
+            GL.EnableClientState(EnableCap.ColorArray);
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, mVertexBufferId);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, mIndexBufferId);
-
-            //GL.TexCoordPointer(2, TexCoordPointerType.Float, vector2_size, (IntPtr)vector2_size);
             GL.VertexPointer(3, VertexPointerType.Float, Vector3.SizeInBytes, IntPtr.Zero);
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, mColorBufferId);
+            GL.ColorPointer(3, ColorPointerType.Float, Vector3.SizeInBytes, IntPtr.Zero);
+
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, mIndexBufferId);
 
             var indexCount = 6;
             GL.DrawElements(BeginMode.Triangles, indexCount, DrawElementsType.UnsignedInt, IntPtr.Zero);
