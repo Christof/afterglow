@@ -78,12 +78,7 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
 
                 var indices = new uint[] { 0, 1, 2, 0, 2, 3 };
 
-                // Create the Vertex Buffer Object:
-                // 1) Generate the buffer handles.
-                // 2) Bind the Vertex Buffer and upload your vertex buffer. Check that the buffer was uploaded correctly.
-                // 3) Bind the Index Buffer and upload your index buffer. Check that the buffer was uploaded correctly.
-
-                LoadVBO(positions, indices, colors);
+                LoadBuffers(positions, indices, colors);
                 
                 Application.Idle +=
                     delegate
@@ -103,12 +98,7 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
             }
         }
 
-        private void RenderFrame()
-        {
-            Draw();
-        }
-
-        private void LoadVBO(Vector3[] vertices, uint[] indices, Vector3[] colors)
+        private void LoadBuffers(Vector3[] vertices, uint[] indices, Vector3[] colors)
         {
             int size;
 
@@ -150,11 +140,8 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
             }
         }
 
-        private void Draw()
+        private void RenderFrame()
         {
-            //GL.PushClientAttrib(ClientAttribMask.ClientVertexArrayBit);
-
-            //GL.EnableClientState(EnableCap.TextureCoordArray);
             GL.EnableClientState(EnableCap.VertexArray);
             GL.EnableClientState(EnableCap.ColorArray);
 
@@ -167,16 +154,13 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, mIndexBufferId);
 
             var indexCount = 6;
-            GL.DrawElements(BeginMode.Triangles, indexCount, DrawElementsType.UnsignedInt, IntPtr.Zero);
-            //GL.DrawArrays(BeginMode.LineLoop, 0, vbo.element_count);
+            GL.DrawElements(BeginMode.Triangles, indexCount, DrawElementsType.UnsignedInt,
+                IntPtr.Zero);
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 
             GL.DisableClientState(EnableCap.VertexArray);
-            //GL.DisableClientState(EnableCap.TextureCoordArray);
-
-            //GL.PopClientAttrib();
         }
 
         /// <summary>
