@@ -53,10 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Effects\OpenTKEffectCompiler.cs" />
     <Compile Include="GraphicStreams\IOpenTKBuffer.cs" />
     <Compile Include="GraphicStreams\OpenTKBuffer.cs" />
     <Compile Include="GraphicStreams\OpenTKBufferBinding.cs" />
     <Compile Include="GraphicStreams\OpenTKBufferService.cs" />
+    <Compile Include="Effects\OpenTKEffect.cs" />
     <Compile Include="OpenTKRenderWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\OpenTKObjectRenderer.cs" />

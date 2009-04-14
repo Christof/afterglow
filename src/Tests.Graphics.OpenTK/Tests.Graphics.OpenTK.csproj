@@ -61,12 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiExamples\CubeWithVertexAndPixelShader.cs" />
     <Compile Include="ApiExamples\EmptyWindow.cs" />
     <Compile Include="ApiExamples\QuadWithBuffers.cs" />
     <Compile Include="ApiExamples\SimpleQuad.cs" />
     <Compile Include="ApiExamples\SimpleTriangle.cs" />
     <Compile Include="Examples\OpenTKQuadWithIndexBuffer.cs" />
     <Compile Include="Examples\OpenTKSceneTestBase.cs" />
+    <Compile Include="Examples\OpenTK3DEffectsBuffers.cs" />
     <Compile Include="GraphicStreams\Test_OpenTKBuffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_OpenTKRenderWindow.cs" />
