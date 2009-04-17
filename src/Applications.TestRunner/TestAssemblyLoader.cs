@@ -47,7 +47,7 @@ namespace Afterglow.Applications.TestRunner
                                 }
                                 foreach (CategoryAttribute categoryAttribute in categoryAttributes)
                                 {
-                                    if (categoryAttribute.Category == "currently_under_development")
+                                    if (categoryAttribute.Category == Categories.CURRENTLY_UNDER_DEVELOPMENT)
                                     storage.AddTestMethod(assemblyFile.Name, type, methodInfo,
                                       categoryAttribute.Category);
                                 }

@@ -19,5 +19,10 @@ namespace Afterglow.Infrastructure
         /// Category name for manual tests.
         /// </summary>
         public const string MANUAL = "Manual";
+
+        /// <summary>
+        /// Category name for manual tests.
+        /// </summary>
+        public const string CURRENTLY_UNDER_DEVELOPMENT = "CURRENTLY_UNDER_DEVELOPMENT";
     }
 }

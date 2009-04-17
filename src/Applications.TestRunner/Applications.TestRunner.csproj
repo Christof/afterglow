@@ -139,6 +139,10 @@
       <Project>{F236295E-8AC5-47A1-B751-23FCDC90688F}</Project>
       <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj">
+      <Project>{80F94562-64F0-48BB-8CFC-327CA0637B82}</Project>
+      <Name>TestInfrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

@@ -31,7 +31,7 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
         private const int HEIGHT = 600;
 
         [Test]
-        [Category("currently_under_development")]
+        [Category(Categories.CURRENTLY_UNDER_DEVELOPMENT)]
         public void Run()
         {
             // Check for necessary capabilities:
