@@ -4,6 +4,7 @@
  * See license.txt for licensing detailed licensing details.
  */
 
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using Afterglow.Infrastructure;
@@ -17,7 +18,7 @@ using System.IO;
 namespace Afterglow.Graphics.OpenTK.ApiExamples
 {
     [TestFixture]
-    [Category(Categories.API_EXAMPLES)]
+    [Category("currently_under_development")]
     public class CubeWithVertexAndPixelShader
     {
         static float angle = 0.0f, rotation_speed = 3.0f;
@@ -30,10 +31,11 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
         private const int HEIGHT = 600;
 
         [Test]
+        [Category("currently_under_development")]
         public void Run()
         {
             // Check for necessary capabilities:
-            if (!GL.SupportsExtension("VERSION_2_0"))
+            if (false)//!GL.SupportsExtension("VERSION_2_0")) opentk bug! http://www.opentk.com/node/534?page=1
             {
                 MessageBox.Show("You need at least OpenGL 2.0 to run this example. Aborting.", "GLSL not supported",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -57,8 +59,8 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
 
                 CreateVBO();
 
-                using (StreamReader vs = new StreamReader("Data/Shaders/Simple_VS.glsl"))
-                using (StreamReader fs = new StreamReader("Data/Shaders/Simple_FS.glsl"))
+                using (StreamReader vs = new StreamReader("Shaders/Simple_VS.glsl"))
+                using (StreamReader fs = new StreamReader("Shaders/Simple_FS.glsl"))
                     CreateShaders(vs.ReadToEnd(), fs.ReadToEnd(),
                         out vertex_shader_object, out fragment_shader_object,
                         out shader_program);
@@ -205,9 +207,9 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
             GL.DisableClientState(EnableCap.ColorArray);
 
 
-            //int error = GL.GetError();
-            //if (error != 0)
-            //    Debug.Print(Glu.ErrorString(Glu.Enums.ErrorCode.INVALID_OPERATION));
+            var error = GL.GetError();
+            if (error != ErrorCode.NoError)
+               Trace.WriteLine(error);
         }
 
         /// <summary>

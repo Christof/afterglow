@@ -56,7 +56,7 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
                 //have to set this to get a -1 to 1 system view
                 GL.Viewport(0, 0, WIDTH, HEIGHT);
 
-                if (!GL.SupportsExtension("VERSION_1_5"))
+                if (false)//!GL.SupportsExtension("VERSION_1_5"))
                 {
                     Assert.Fail("You need at least OpenGL 1.5 to run this example. Aborting.", "VBOs not supported");
                 }

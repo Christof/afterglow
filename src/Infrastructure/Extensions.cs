@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Afterglow.Infrastructure
 {
@@ -132,6 +133,38 @@ namespace Afterglow.Infrastructure
             {
                 action(element);
             }
+        }
+
+        /// <summary>
+        /// Transforms an instance to an array with one element
+        /// </summary>
+        /// <typeparam name="T">type of the instance</typeparam>
+        /// <param name="lonelyElement">the instance</param>
+        /// <returns>an array with one element</returns>
+        public static T[] ToArrayWithOneElement<T>(this T lonelyElement)
+        {
+            return new[] { lonelyElement };
+        }
+
+        /// <summary>
+        /// Returns all given custom attribute instances of the given type
+        ///  of the given provider casted to the correct type
+        /// </summary>
+        /// <typeparam name="T">type of the attribute</typeparam>
+        /// <param name="customAttributeProvider">the provider</param>
+        /// <returns></returns>
+        public static T[] GetCustomAttributes<T>(this ICustomAttributeProvider customAttributeProvider)
+            where T : Attribute
+        {
+            var result = new List<T>();
+
+            var attributes = customAttributeProvider.GetCustomAttributes(typeof(T), true);
+            foreach (var attribute in attributes)
+            {
+                result.Add(attribute.DowncastTo<T>());
+            }
+
+            return result.ToArray();
         }
     }
 }

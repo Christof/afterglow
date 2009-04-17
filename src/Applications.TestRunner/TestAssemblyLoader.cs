@@ -7,6 +7,9 @@ using MbUnit.Framework;
 
 namespace Afterglow.Applications.TestRunner
 {
+    /// <summary>
+    /// Loads tests from an assemly into a test storage
+    /// </summary>
     public class TestAssemblyLoader
     {
         /// <summary>
@@ -36,17 +39,17 @@ namespace Afterglow.Applications.TestRunner
                             TestAttribute[] testAttributes = methodInfo.GetCustomAttributes<TestAttribute>();
                             if (testAttributes.Length == 1)
                             {
-                                string category = null;
                                 CategoryAttribute[] categoryAttributes =
                                     methodInfo.GetCustomAttributes<CategoryAttribute>();
                                 if (categoryAttributes.Length == 0)
                                 {
-                                    storage.AddTestMethod(assemblyFile.Name, type, methodInfo, null);
+                                    //storage.AddTestMethod(assemblyFile.Name, type, methodInfo, null);
                                 }
                                 foreach (CategoryAttribute categoryAttribute in categoryAttributes)
                                 {
+                                    if (categoryAttribute.Category == "currently_under_development")
                                     storage.AddTestMethod(assemblyFile.Name, type, methodInfo,
-                                                          categoryAttribute.Category);
+                                      categoryAttribute.Category);
                                 }
                             }
                         }

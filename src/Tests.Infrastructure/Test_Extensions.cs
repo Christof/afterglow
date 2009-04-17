@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using MbUnit.Framework;
 using System;
 using Moq;
@@ -91,6 +92,39 @@ namespace Afterglow.Infrastructure
             elements.ForEach(element => sum += element);
 
             sum.ShouldEqual(6);
+        }
+
+        [Test]
+        public void ToArrayWithOneElement_int()
+        {
+            const int INTEGER = 3;
+            var a = INTEGER.ToArrayWithOneElement();
+            a.ShouldEqual(new [] { INTEGER });
+        }
+
+        [Test]
+        public void ToArrayWithOneElement_null()
+        {
+            object o = null;
+            var a = o.ToArrayWithOneElement();
+            a.ShouldEqual(new object[] { null });
+
+            var a2 = Extensions.ToArrayWithOneElement<int?>(null);
+            a2.ShouldEqual(new int?[] { null });
+        }
+
+        [Test]
+        public void GetCustomAttributes_test_attribute()
+        {
+            var attributes = MethodBase.GetCurrentMethod().GetCustomAttributes<TestAttribute>();
+            attributes.Length.ShouldEqual(1);
+        }
+
+        [Test]
+        public void GetCustomAttributes_empty()
+        {
+            var attributes = MethodBase.GetCurrentMethod().GetCustomAttributes<TestFixtureAttribute>();
+            attributes.Length.ShouldEqual(0);
         }
     }
 }

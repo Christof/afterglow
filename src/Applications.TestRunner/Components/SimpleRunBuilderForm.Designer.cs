@@ -30,15 +30,15 @@
         {
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.mRunButton = new System.Windows.Forms.Button();
             this.Assembly = new System.Windows.Forms.GroupBox();
             this.mSelectAssemblyButton = new System.Windows.Forms.Button();
             this.mAssemblyTextBox = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.mRunButton = new System.Windows.Forms.Button();
             this.mTraceListenerControl = new Afterglow.Applications.TestRunner.Components.TraceListenerControl();
             this.panel2.SuspendLayout();
-            this.Assembly.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.Assembly.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -55,6 +55,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(609, 100);
             this.panel2.TabIndex = 8;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.mRunButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 52);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(609, 48);
+            this.panel1.TabIndex = 9;
+            // 
+            // mRunButton
+            // 
+            this.mRunButton.Location = new System.Drawing.Point(10, 13);
+            this.mRunButton.Name = "mRunButton";
+            this.mRunButton.Size = new System.Drawing.Size(75, 23);
+            this.mRunButton.TabIndex = 0;
+            this.mRunButton.Text = "Run";
+            this.mRunButton.UseVisualStyleBackColor = true;
+            this.mRunButton.Click += new System.EventHandler(this.mRunButton_Click_1);
             // 
             // Assembly
             // 
@@ -88,25 +107,6 @@
             this.mAssemblyTextBox.Size = new System.Drawing.Size(497, 20);
             this.mAssemblyTextBox.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.mRunButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 52);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(609, 48);
-            this.panel1.TabIndex = 9;
-            // 
-            // mRunButton
-            // 
-            this.mRunButton.Location = new System.Drawing.Point(10, 13);
-            this.mRunButton.Name = "mRunButton";
-            this.mRunButton.Size = new System.Drawing.Size(75, 23);
-            this.mRunButton.TabIndex = 0;
-            this.mRunButton.Text = "Run";
-            this.mRunButton.UseVisualStyleBackColor = true;
-            this.mRunButton.Click += new System.EventHandler(this.mRunButton_Click_1);
-            // 
             // mTraceListenerControl
             // 
             this.mTraceListenerControl.BackColor = System.Drawing.SystemColors.Desktop;
@@ -125,10 +125,11 @@
             this.Controls.Add(this.panel2);
             this.Name = "SimpleRunBuilderForm";
             this.Text = "SimpleRunBuilder";
+            this.Load += new System.EventHandler(this.SimpleRunBuilderForm_Load);
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.Assembly.ResumeLayout(false);
             this.Assembly.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
