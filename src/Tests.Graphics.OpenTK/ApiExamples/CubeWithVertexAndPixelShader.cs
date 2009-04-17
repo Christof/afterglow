@@ -55,6 +55,8 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
                     VSync = false
                 };
                 form.Controls.Add(mGLControl);
+                //have to set this to get a -1 to 1 system view
+                GL.Viewport(0, 0, WIDTH, HEIGHT);
 
 
                 CreateVBO();
@@ -73,9 +75,7 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
 
                         GL.ClearColor(mGLControl.BackColor);
 
-
                         GL.Enable(EnableCap.DepthTest);
-                        GL.Clear(ClearBufferMask.ColorBufferBit);
 
                         double scaleFactor = 1.0f;
                         OnRenderFrame(scaleFactor);
@@ -180,14 +180,14 @@ namespace Afterglow.Graphics.OpenTK.ApiExamples
             GL.Clear(ClearBufferMask.ColorBufferBit |
                      ClearBufferMask.DepthBufferBit);
 
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-            Glu.LookAt(0.0, 5.0, 5.0,
-                       0.0, 0.0, 0.0,
-                       0.0, 1.0, 0.0);
+            //   GL.MatrixMode(MatrixMode.Modelview);
+            //   GL.LoadIdentity();
+            //   Glu.LookAt(0.0, 5.0, 5.0,
+          //             0.0, 0.0, 0.0,
+           //            0.0, 1.0, 0.0);
 
-            angle += rotation_speed * (float)scaleFactor;
-            GL.Rotate(angle, 0.0f, 1.0f, 0.0f);
+           // angle += rotation_speed * (float)scaleFactor;
+           // GL.Rotate(angle, 0.0f, 1.0f, 0.0f);
 
             GL.EnableClientState(EnableCap.VertexArray);
             GL.EnableClientState(EnableCap.ColorArray);
