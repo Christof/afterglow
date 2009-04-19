@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 using Afterglow.Applications.TestRunner.Components.Utils;
-using Afterglow.Infrastructure;
-using MbUnit.Framework;
-using CategoryAttribute=System.ComponentModel.CategoryAttribute;
 
 namespace Afterglow.Applications.TestRunner.Components
 {
@@ -24,27 +14,29 @@ namespace Afterglow.Applications.TestRunner.Components
         {
             InitializeComponent();
 
-            mPriorities.Add(0, this.assembliesTab);
-            mPriorities.Add(1, this.classesTab);
-            mPriorities.Add(2, this.functionsTab);
-            mPriorities.Add(3, this.categoriesTab);
+            mPriorities.Add(0, assembliesTab);
+            mPriorities.Add(1, classesTab);
+            mPriorities.Add(2, functionsTab);
+            mPriorities.Add(3, categoriesTab);
 
-            this.ReloadTabOrder();
+            ReloadTabOrder();
 
             assemblyList.OnSelectedChanged = classList.OnSelectedChanged = functionList.OnSelectedChanged =
-                categoryList.OnSelectedChanged = (checkControl, checkedObjects) =>
-                                                 {
-                                                     mPriorities.Move((TabPage)checkControl.Parent, 0);
-                                                     ReloadTabOrder();
-                                                 };
+                                                                           categoryList.OnSelectedChanged =
+                                                                           (checkControl, checkedObjects) =>
+                                                                               {
+                                                                                   mPriorities.Move(
+                                                                                       (TabPage) checkControl.Parent, 0);
+                                                                                   ReloadTabOrder();
+                                                                               };
         }
 
         private void ReloadTabOrder()
         {
-            this.tabControl.TabPages.Clear();
-            for(int i = 0; i < this.mPriorities.Size; i++)
+            tabControl.TabPages.Clear();
+            for (int i = 0; i < mPriorities.Size; i++)
             {
-                this.tabControl.TabPages.Insert(i, mPriorities[i]);
+                tabControl.TabPages.Insert(i, mPriorities[i]);
             }
         }
 
@@ -58,7 +50,7 @@ namespace Afterglow.Applications.TestRunner.Components
 
             functionList.ClearElements();
             categoryList.ClearElements();
-            foreach (var testFixtureType in mStorage.TestFixtureTypes)
+            foreach (Type testFixtureType in mStorage.TestFixtureTypes)
             {
                 try
                 {
@@ -80,19 +72,19 @@ namespace Afterglow.Applications.TestRunner.Components
         private void reloadButton_Click(object sender, EventArgs e)
         {
             new TestAssemblyLoader().LoadToStorage("Tests.OpenTK.Graphics.dll", mStorage);
-            this.ReloadCheckControls();
+            ReloadCheckControls();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private Func<string[]> ToFilterElements(CheckControl checkControl)
         {
             return () =>
                    (from checkedElement in checkControl.CheckedElements.ToArray()
-                   select checkedElement.ToString()).ToArray();
+                    select checkedElement.ToString()).ToArray();
         }
 
         private void runButton_Click(object sender, EventArgs e)
@@ -101,8 +93,8 @@ namespace Afterglow.Applications.TestRunner.Components
                                                           ToFilterElements(assemblyList),
                                                           ToFilterElements(classList),
                                                           ToFilterElements(functionList),
-                                                          ToFilterElements(categoryList) )
-                                                          );
+                                                          ToFilterElements(categoryList))
+                );
             runner.Run();
         }
     }
