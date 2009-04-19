@@ -12,8 +12,8 @@ namespace Afterglow.Graphics.SlimDX.ApiExamples
     [Category(Categories.API_EXAMPLES)]
     public class EmptyWindow
     {
-        private const int WIDTH = 800;
-        private const int HEIGHT = 600;
+        public const int WIDTH = 800;
+        public const int HEIGHT = 600;
 
         [Test]
         public void Run()

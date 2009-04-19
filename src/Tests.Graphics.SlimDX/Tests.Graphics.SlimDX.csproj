@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiExamples\DefferedShading.cs" />
     <Compile Include="ApiExamples\Text.cs" />
     <Compile Include="ApiExamples\QuadWithVertexAndIndexBuffer.cs" />
     <Compile Include="ApiExamples\EmptyWindow.cs" />
