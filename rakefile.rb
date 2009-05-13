@@ -192,3 +192,10 @@ task :download_dependencies do
 		file.close
 	end
 end
+
+desc "Task for teamcity test config"
+task :teamcity do
+	puts "##teamcity[publishArtifacts '#{BUILD_DIR}/build/*.html']"
+end
+task :teamcity => :build
+task :teamcity => :test

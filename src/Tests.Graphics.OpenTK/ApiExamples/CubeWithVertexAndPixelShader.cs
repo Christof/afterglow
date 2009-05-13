@@ -18,7 +18,7 @@ using System.IO;
 namespace Afterglow.Graphics.OpenTK.ApiExamples
 {
     [TestFixture]
-    [Category("currently_under_development")]
+    [Category(Categories.API_EXAMPLES)]
     public class CubeWithVertexAndPixelShader
     {
         static float angle = 0.0f, rotation_speed = 3.0f;
