@@ -43,7 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\thirdparty\tools\Gallio\MbUnit.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\lib\mscontracts\Microsoft.Contracts.dll</HintPath>
+    </Reference>
     <Reference Include="Moq, Version=2.6.3127.18174, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\thirdparty\tools\Moq\Moq.dll</HintPath>

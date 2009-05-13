@@ -23,7 +23,7 @@ class MsBuild
 end
 
 class Gallio
-	@@GALLIO_PATH = "C:/Program Files (x86)/Gallio/bin/Gallio.Echo.exe"
+	@@GALLIO_PATH = "C:/Programme/Gallio/bin/Gallio.Echo.exe"
 	
 	def initialize(build_dir, report_dir)
 		@build_dir = build_dir
