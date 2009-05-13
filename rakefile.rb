@@ -50,10 +50,10 @@ class Gallio
 		end
 	end
 	
-	def run()
-		sh "\"#{@@GALLIO_PATH}\" #{assemblies}  /working-directory:#{@build_dir} " + 
+	 def run()
+		sh "\"#{@@GALLIO_PATH}\" #{assemblies}  /working-directory:#{@build_dir} /report-name-format:test-report " + 
 			" /report-directory:#{@report_dir} /report-type:Html #{show_reports_option} " + @filter
-	end
+	 end
 end
 
 desc "Removes the build directory."
@@ -194,8 +194,7 @@ task :download_dependencies do
 end
 
 desc "Task for teamcity test config"
-task :teamcity do
-	puts "##teamcity[publishArtifacts '#{BUILD_DIR}/build/*.html']"
+task :teamcity => [:build, :test] do
+	puts "##teamcity[publishArtifacts 'build/*.html']"
+	puts "##teamcity{publishArtifacts 'build/test-report/**']"
 end
-task :teamcity => :build
-task :teamcity => :test
