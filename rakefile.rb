@@ -97,23 +97,7 @@ task :test do
 	
 	print "\nnewest file #{newest_file}\n"
 	
-	replace_underlines("#{report_dir}/#{newest_file}")
-end
-
-def replace_underlines(path)
-	file = File.new(path, "r")
-	lines = file.readlines
-	file.close
-	
-	lines.each do |line|
-		line.gsub!("_", " ")
-	end
-	
-	file = File.new(path, "w")
-	lines.each do |line|
-		file.write(line)
-	end
-	file.close
+	file_substitute("#{report_dir}/#{newest_file}", "_", " ")
 end
 
 desc "Fixes references which use absolute paths or don't use the HintPath at all."
@@ -199,6 +183,24 @@ end
 
 desc "Task for teamcity test config"
 task :teamcity => [:build, :test] do
-	puts "##teamcity[publishArtifacts 'build/*.html']"
-	puts "##teamcity{publishArtifacts 'build/test-report/**']"
+
+    file = "build/test-report.html"
+	file_substitute(file, "test-report/", "http://joe.dragonhill.cc:89/afterglow/")
+	puts "##teamcity[publishArtifacts '#{file}']"
+end
+
+def file_substitute(path, find, replace)
+	file = File.new(path, "r")
+	lines = file.readlines
+	file.close
+	
+	lines.each do |line|
+		line.gsub!(find, replace)
+	end
+	
+	file = File.new(path, "w")
+	lines.each do |line|
+		file.write(line)
+	end
+	file.close
 end
