@@ -43,7 +43,15 @@ namespace Afterglow.Graphics.SlimDX.ApiExamples
         public static void CreateDeviceSwapChainAndRenderTarget(Form form,
             out Device device, out SwapChain swapChain, out RenderTargetView renderTarget)
         {
-            device = new Device(DeviceCreationFlags.None);
+            try
+            {
+                // the debug mode requires the sdk to be installed otherwise an exception is thrown
+                device = new Device(DeviceCreationFlags.Debug);
+            }
+            catch (Direct3D10Exception)
+            {
+                device = new Device(DeviceCreationFlags.None);
+            }
 
             var swapChainDescription = new SwapChainDescription();
             var modeDescription = new ModeDescription();

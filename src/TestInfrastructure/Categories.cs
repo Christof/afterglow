@@ -6,6 +6,11 @@ namespace Afterglow.Infrastructure
     public static class Categories
     {
         /// <summary>
+        /// Category name for direct3d 10 tests
+        /// </summary>
+        public const string DIRECT_3D_10 = "Direct3D10";
+
+        /// <summary>
         /// Category name for api examples.
         /// </summary>
         public const string API_EXAMPLES = "API_Examples";

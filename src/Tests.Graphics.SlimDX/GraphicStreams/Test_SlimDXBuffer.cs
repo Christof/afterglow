@@ -1,10 +1,12 @@
+using Afterglow.Infrastructure;
 using MbUnit.Framework;
 using Moq;
 using SlimDX.Direct3D10;
 
 namespace Afterglow.Graphics.GraphicStreams
 {
-    public class Test_Buffer
+    [Category(Categories.DIRECT_3D_10)]
+    public class Test_SlimDXBuffer
     {
         [Test]
         public void Constructor()

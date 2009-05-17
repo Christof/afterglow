@@ -52,7 +52,11 @@ class Gallio
 	
 	 def run()
 		sh "\"#{@@GALLIO_PATH}\" #{assemblies}  /working-directory:#{@build_dir} /report-name-format:test-report " + 
-			" /report-directory:#{@report_dir} /report-type:Html #{show_reports_option} " + @filter
+			" /report-directory:#{@report_dir} /report-type:Html #{show_reports_option} " + @filter do |ok, res|
+			if ! ok
+			   puts "error while exec gallio: #{res.exitstatus}"
+			end
+		end
 	 end
 end
 
@@ -75,7 +79,7 @@ desc "Runs all unit tests."
 task :test do
 	report_dir = "build"
 	gallio = Gallio.new(BUILD_DIR, report_dir)
-	gallio.exclude_categories(["API_Examples", "Examples", "Manual"])
+	gallio.exclude_categories(["API_Examples", "Examples", "Manual", "Direct3D10"])
 	if (ENV['show_report'] == 'true' || ENV['sr'] == 'true')
 		gallio.show_reports
 	end

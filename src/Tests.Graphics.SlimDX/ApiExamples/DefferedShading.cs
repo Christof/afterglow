@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Afterglow.Infrastructure;
 using Gallio.Framework;
 using MbUnit.Framework;
 using SlimDX;
@@ -11,6 +12,7 @@ using Device=SlimDX.Direct3D10.Device;
 
 namespace Afterglow.Graphics.SlimDX.ApiExamples
 {
+    [Category(Categories.API_EXAMPLES)]
     public class DefferedShading
     {
         private Form mForm;
