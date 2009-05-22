@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -15,7 +15,7 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <UpgradeBackupLocation/>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,7 +37,7 @@
     <DocumentationFile>..\..\bin\Input.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System"/>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -47,23 +47,23 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Data"/>
+    <Reference Include="System.Xml"/>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Axis.cs" />
-    <Compile Include="AxisAction.cs" />
-    <Compile Include="Button.cs" />
-    <Compile Include="ButtonAction.cs" />
-    <Compile Include="ButtonState.cs" />
-    <Compile Include="IAxesInputDevice.cs" />
-    <Compile Include="IAxisAction.cs" />
-    <Compile Include="IButtonAction.cs" />
-    <Compile Include="IButtonState.cs" />
-    <Compile Include="IInputDevice.cs" />
-    <Compile Include="IInputDevices.cs" />
-    <Compile Include="InputDeviceBase.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Axis.cs"/>
+    <Compile Include="AxisAction.cs"/>
+    <Compile Include="Button.cs"/>
+    <Compile Include="ButtonAction.cs"/>
+    <Compile Include="ButtonState.cs"/>
+    <Compile Include="IAxesInputDevice.cs"/>
+    <Compile Include="IAxisAction.cs"/>
+    <Compile Include="IButtonAction.cs"/>
+    <Compile Include="IButtonState.cs"/>
+    <Compile Include="IInputDevice.cs"/>
+    <Compile Include="IInputDevices.cs"/>
+    <Compile Include="InputDeviceBase.cs"/>
+    <Compile Include="Properties\AssemblyInfo.cs"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
@@ -71,7 +71,7 @@
       <Name>Infrastructure %28Infrastructure\Infrastructure%29</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
