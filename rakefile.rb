@@ -23,7 +23,7 @@ class MsBuild
 end
 
 class Gallio
-	@@GALLIO_PATH = "C:/Programme/Gallio/bin/Gallio.Echo.exe"
+	@@GALLIO_PATH = "/thirdparty/tools/Gallio/Gallio.Echo.exe"
 	
 	def initialize(build_dir, report_dir)
 		@build_dir = build_dir
@@ -51,7 +51,7 @@ class Gallio
 	end
 	
 	 def run()
-		sh "\"#{@@GALLIO_PATH}\" #{assemblies}  /working-directory:#{@build_dir} /report-name-format:test-report " + 
+		sh "\"#{Dir.getwd + @@GALLIO_PATH}\" #{assemblies}  /working-directory:#{@build_dir} /report-name-format:test-report " + 
 			" /report-directory:#{@report_dir} /report-type:Html #{show_reports_option} " + @filter do |ok, res|
 			if ! ok
 			   puts "error while exec gallio: #{res.exitstatus}"
@@ -85,19 +85,7 @@ task :test do
 	end
 	gallio.run
 	
-	dir = Dir.new(report_dir)
-	
-	entries = dir.entries.find_all do	|filename|
-		/html/ =~ filename
-	end
-	
-	newest_file = entries.max do |a, b|
-		File.new("#{report_dir}/#{a}").atime <=> File.new("#{report_dir}/#{b}").atime
-	end
-	
-	print "\nnewest file #{newest_file}\n"
-	
-	file_substitute("#{report_dir}/#{newest_file}", "_", " ")
+	file_substitute("#{report_dir}/#{'test-report.html'}", "_", " ")
 end
 
 desc "Fixes references which use absolute paths or don't use the HintPath at all."
@@ -106,12 +94,8 @@ task :fix_references do
 	puts 'dependencies'
 	dependencies = {}
 	Dir['thirdparty/**/*.dll'].each do |path|
-		if (path.include?('x64') == false) # don't support x64 currently
-			dependencies[File.basename(path, '.dll')] = '..\\..\\' + path.gsub('/', '\\')
-		end
+		dependencies[File.basename(path, '.dll')] = '..\\..\\' + path.gsub('/', '\\')
 	end
-	
-	#dependencies.each {|k,v| puts "#{k}: #{v}"}
 	
 	#get all projects.
 	Dir['src/**/*.csproj'].each do |path|
