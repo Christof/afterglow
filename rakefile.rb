@@ -14,7 +14,7 @@ task :clear do
 end
 
 class MsBuild
-	@@DOT_NET_PATH = "#{ENV['windir']}/Microsoft.net/framework/v3.5/"
+	@@DOT_NET_PATH = "#{ENV['windir']}/Microsoft.net/framework/v4.0.20506/"
 
 	def self.build(solution_name, configuration = "Debug", additional_options = "")
 		sh "#{@@DOT_NET_PATH}msbuild.exe /property:Configuration=#{configuration} #{solution_name} " +
